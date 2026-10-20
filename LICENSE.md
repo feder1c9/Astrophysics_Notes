@@ -1,1 +1,5 @@
-Quest'opera è distribuita con Licenza Creative Commons Attribuzione - Non commerciale - Condividi allo stesso modo 4.0 Internazionale (CC BY-NC-SA 4.0). Testo completo: [https://creativecommons.org/licenses/by-nc-sa/4.0/deed.it](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.it)
+Questo lavoro è concesso in licenza sotto la licenza Creative Commons 
+Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0).
+
+Per visualizzare una copia di questa licenza, visita:
+https://creativecommons.org/licenses/by-nc-sa/4.0/deed.it
