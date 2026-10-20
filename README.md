@@ -1,6 +1,6 @@
-# 📚 Appunti di [Nome Corso] - A.A. [Anno/Anno]
+# 📚 Appunti di Astrophysics - A.A. 2026/2027
 
-Benvenuti nella repository condivisa degli appunti del corso! Qui raccogliamo, scriviamo in **LaTeX** e aggiorniamo insieme il materiale delle lezioni.
+Benvenuti nella repository condivisa degli appunti del corso di Astrophysics! Qui raccogliamo, scriviamo in **LaTeX** e aggiorniamo insieme il materiale delle lezioni.
 
 ---
 
