@@ -1,5 +1,5 @@
 # Astrophysics_notes
-# 📚 Appunti di [Nome Corso] - A.A. [Anno/Anno]
+# 📚 Appunti di Astrophysics - A.A. 2026/2027
 
 Benvenuti nella repository condivisa degli appunti del corso! Qui raccogliamo e aggiorniamo insieme il materiale delle lezioni.
 
