@@ -1,5 +1,7 @@
 # 📚 Appunti di Astrophysics - A.A. 2026/2027
 
+[🇬🇧 Read in English](README.en.md)
+
 Benvenuti nella repository condivisa degli appunti del corso di Astrophysics! Qui raccogliamo, scriviamo in **LaTeX** e aggiorniamo insieme il materiale delle lezioni.
 
 ---
