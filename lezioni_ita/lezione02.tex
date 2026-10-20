@@ -1,0 +1,541 @@
+\chapter{Lezione 2 - 07-10-2026}
+
+\section{Introduzione: Considerazioni sulla Lingua del Corso}
+Poiché siamo tutti italiani, condurremo le lezioni in lingua italiana, in quanto risulterebbe superfluo adottare l'inglese in questo contesto. Tuttavia, qualora dovesse sopraggiungere in aula uno studente internazionale (ad esempio un ragazzo indiano), passerei immediatamente e senza alcun problema a erogare la lezione in lingua inglese.
+
+\section{Tempi Scala nell'Evoluzione Stellare}
+Nella lezione precedente abbiamo analizzato cosa comporterebbe la mancata soddisfazione dell'equilibrio idrodinamico (un'eventualità che, nella pratica, si verifica in modo quasi completo nella stragrande maggioranza dei casi). La stella, in assenza di equilibrio, andrebbe incontro a due scenari limite:
+\begin{itemize}
+\item \textbf{Collasso verso il centro}: nel caso in cui venga a mancare il contributo della pressione.
+\item \textbf{Espulsione degli strati (esplosione)}: nel caso in cui venga a mancare l'effetto della gravità.
+\end{itemize}
+Sebbene si tratti di situazioni fisicamente realistiche, esse si verificano solo in condizioni del tutto particolari. Una stella, infatti, non collassa istantaneamente sul proprio centro, poiché non è possibile annullare in modo netto e repentino (non ``switchiamo a zero'') né la pressione né la gravità.
+
+Tuttavia, compiere questo esercizio ideale risulta fondamentale per definire dei \textbf{tempi scala}. Tali parametri si riveleranno estremamente utili nel momento in cui andremo a complicare le equazioni, permettendoci di valutare quali siano i termini dominanti e rilevanti su determinati intervalli temporali. Questa analisi dimensionale è vitale non solo per comprendere la fisica dei vari scenari, ma anche come \textbf{approssimazione numerica}: nei codici numerici computazionali, se un effetto non è rilevante su un certo tempo scala, le equazioni vengono semplificate mediante dei cicli logici condizionali (del tipo \textit{``if [condizione] then [azione]''}).
+
+\subsection{Il Tempo di Free-Fall}
+Abbiamo già definito il \textbf{tempo di free-fall} (caduta libera), legato al collasso gravitazionale. Esso si esprime essenzialmente in funzione del raggio e della gravità, ed è proporzionale all'inverso della radice quadrata della gravità stessa:
+\begin{equation}
+t_{\text{ff}} \approx \sqrt{\frac{R}{g}}
+\end{equation}
+
+\subsection{Il Tempo di Esplosione}
+D'altra parte, ipotizzando idealmente di annullare la gravità, possiamo definire un \textbf{tempo scala di esplosione} ($t_{\text{exp}}$). In assenza di gravità, nel bilancio delle forze sopravvive soltanto il termine di accelerazione legato al gradiente di pressione.
+
+L'equazione per l'accelerazione, espressa in funzione della coordinata di massa $m$, prende in considerazione la forza per unità di superficie:
+\begin{equation}
+a = \frac{d^2 r}{dt^2} = - 4\pi r^2 \frac{\partial P}{\partial m}
+\end{equation}
+In questo contesto, consideriamo $r$ come la distanza del guscio di materia dal centro della stella. Dividendo e moltiplicando opportunamente per l'unità di superficie ($4\pi r^2$) in fase di derivazione, si ottiene la forza per unità di massa.
+Passando, per comodità, a una \textbf{descrizione euleriana}, dividiamo per la densità e la relazione si semplifica nel rapporto spaziale rispetto al raggio:
+\begin{equation}
+a = - \frac{1}{\rho} \frac{\partial P}{\partial r}
+\end{equation}
+
+Ragionando per ordini di grandezza, il termine a primo membro (l'accelerazione) dimensionalmente equivale a uno spazio diviso per un tempo al quadrato. Assumendo come spazio di riferimento il raggio della stella $R$ e come tempo il tempo di esplosione $t_{\text{exp}}$, si ottiene:
+\begin{equation}
+a \approx \frac{R}{t_{\text{exp}}^2}
+\end{equation}
+Il secondo membro dell'equazione (il termine di pressione) può essere approssimato all'ordine di grandezza:
+\begin{equation}
+\frac{1}{\rho} \frac{\partial P}{\partial r} \approx \frac{P}{\rho R}
+\end{equation}
+Uguagliando le due espressioni, possiamo isolare il tempo di esplosione:
+\begin{equation}
+\frac{R}{t_{\text{exp}}^2} \approx \frac{P}{\rho R} \implies t_{\text{exp}}^2 \approx R^2 \frac{\rho}{P}
+\end{equation}
+Applicando la radice quadrata otteniamo:
+\begin{equation}
+t_{\text{exp}} \approx R \sqrt{\frac{\rho}{P}}
+\end{equation}
+Sapendo che il termine sotto radice (invertito rispetto a come scritto poc'anzi, ovvero $\sqrt{P/\rho}$) rappresenta l'ordine di grandezza della \textbf{velocità del suono} ($v_s$) all'interno del mezzo stellare, possiamo riscrivere la formula come:
+\begin{equation}
+t_{\text{exp}} \approx \frac{R}{v_s}
+\end{equation}
+Il significato fisico di questo risultato è molto intuitivo: il tempo scala di esplosione indica, all'incirca, il tempo necessario affinché un'onda sonora viaggi dal centro della stella fino alla sua superficie, propagandosi alla velocità del suono caratteristica del plasma. Si tratta ovviamente di una semplificazione, poiché in situazioni reali di esplosione possono subentrare onde d'urto o shock idrodinamici, ma fissa un tempo scala di riferimento in vista di analisi più complesse.
+
+\section{L'Importanza delle Grandezze Scala in Fisica}
+Vorrei aprire una parentesi su questa questione dei tempi e delle grandezze scala. Quando ero studente, ammetto di non riuscire a digerire questi concetti: mi domandavo come fosse possibile accontentarsi di ragionamenti così approssimati, anziché ricorrere a calcoli più rigorosi e precisi. Con il tempo e l'esperienza, mi sono reso conto della loro immensa importanza strutturale.
+
+Quando i fenomeni fisici si compongono e sovrappongono, avere come riferimento queste grandezze dimensionali è utilissimo. Vi invito perciò a non commettere l'errore che facevo io, ovvero a non sottovalutarle. Al contempo, cercate di comprenderne intimamente le limitazioni insite. È ovvio che un'esplosione stellare non proceda rigidamente con quel preciso tempo scala: man mano che ci si sposta verso l'esterno, subentrano differenze nei gradienti di pressione e di densità. Tuttavia, questa stima ci restituisce un parametro cruciale per confrontare il peso dei vari termini matematici nelle diverse fasi dell'evoluzione stellare.
+
+Senza l'utilizzo degli ordini di grandezza non si compiono progressi in questo campo. A differenza della pura matematica, una delle peculiarità fondamentali della fisica è proprio la necessità per il ricercatore di imparare a destreggiarsi con le grandezze di scala, per stabilire con consapevolezza quale fenomeno sia dominante in una determinata circostanza e quale possa invece essere lecitamente trascurato.
+
+\section{Perturbazioni Locali e Tempo Idrodinamico}
+Allargando il discorso in maniera più generale, esistono situazioni in cui l'interno stellare subisce una \textbf{piccola perturbazione locale} rispetto al bilancio globale della stella (pensiamo ad esempio a un'onda, a un'oscillazione o a una piccola onda d'urto).
+In queste circostanze, il plasma della zona interessata tenderà autonomamente e rapidamente a portarsi verso una condizione di equilibrio coerente con le sue caratteristiche fisiche locali.
+
+L'equilibrio idrostatico è un meccanismo estremamente potente: se viene perturbato (come se il sistema ricevesse un "calcio" e si spostasse dalla sua posizione ideale), la stella agisce subito per ripristinarlo. Se localmente un evento perturba la condizione di equilibrio, il sistema tornerà in assetto bilanciato su un tempo scala ben preciso, che chiamiamo \textbf{tempo idrodinamico} ($t_{\text{idr}}$).
+
+Poiché questo processo di aggiustamento è caratterizzato dall'alternarsi rapidissimo di fasi compensative assimilabili a piccolissime "esplosioni" e "collassi", a livello locale i due tempi scala calcolati precedentemente finiscono per convergere. Il tempo idrodinamico locale diventa perciò all'incirca analogo sia al tempo di free-fall locale sia al tempo di esplosione locale.
+
+\textit{[Nota del redattore: A questo punto della lezione si è verificata una brevissima interruzione di natura informale a causa dell'arrivo in aula di uno studente completamente bagnato per la pioggia, per aver viaggiato in motocicletta senza indossare alcun impermeabile in un giovedì di forte maltempo. Dopo alcune battute bonarie sulla necessità di munirsi in futuro di impermeabile, la spiegazione scientifica è regolarmente proseguita.]}
+
+\subsection{Stima del Tempo Idrodinamico Globale}
+Se vogliamo quantificare in termini di ordine di grandezza il tempo idrodinamico globale della stella eguagliandolo al tempo di free-fall, utilizziamo le dimensioni complessive (il raggio stellare $R$):
+\begin{equation}
+t_{\text{idr}} \approx t_{\text{ff}} \approx \frac{R}{g^{1/2}}
+\end{equation}
+Sapendo che l'accelerazione di gravità superficiale è $g = \frac{GM}{R^2}$, possiamo sostituirla ottenendo:
+\begin{equation}
+t_{\text{idr}} \approx \frac{R}{\left( \frac{GM}{R^2} \right)^{1/2}} = R \cdot \sqrt{\frac{R^2}{GM}}
+\end{equation}
+Da cui si deduce la relazione fondamentale (che corrisponde anche, in ultima analisi, a un termine del tipo $\approx (G\bar{\rho})^{-1/2}$):
+\begin{equation}
+t_{\text{idr}} \propto \sqrt{\frac{R^3}{M}}
+\end{equation}
+Tale equazione ci mostra come questo tempo di ripristino dell'equilibrio scali in proporzione alla radice cubica del raggio diviso la massa.
+
+\subsection{Applicazione a Diverse Tipologie Stellari}
+Sulla base del Sole, il tempo idrodinamico è dell'ordine di \textbf{circa una mezz'ora}. Poiché la grandezza scala globalmente come $\sqrt{R^3/M}$, possiamo effettuare delle stime per tipologie stellari molto differenti, partendo dal valore di riferimento del Sole:
+
+\begin{itemize}
+\item \textbf{Gigante Rossa (Red Giant Branch)}: Consideriamo una stella gigante con una massa all'incirca analoga a quella solare ($M \approx 1 M_\odot$), ma caratterizzata da un raggio espanso, circa $100$ volte il raggio solare ($R \approx 100 R_\odot$). Applicando la relazione di proporzionalità $\sqrt{R^3/M}$ (che vi lascio come esercizio di verifica), il tempo idrodinamico necessario al ripristino dell'equilibrio sale vertiginosamente, passando a un ordine di grandezza di \textbf{decine di giorni}.
+
+```
+\item \textbf{Nana Bianca}: Consideriamo viceversa un relitto stellare ad altissima densità. Una nana bianca possiede una massa confrontabile (tra $0.6$ e $0.8 M_\odot$, quindi approssimabile attorno a $1 M_\odot$), ma inscritta in un raggio che è appena un cinquantesimo di quello solare ($R \approx 1/50 R_\odot$). A causa di questa materia estremamente densa, gli effetti si esasperano e l'aggiustamento avviene in tempi straordinariamente rapidi. Scalando i valori, parleremo in questo caso di un tempo idrodinamico dell'ordine dei \textbf{45 secondi}.
+
+```
+
+\end{itemize}
+
+È perciò lampante constatare come questi effetti dinamici cambino di scala in modo drastico a seconda della fase evolutiva che si sta studiando. Aver preparato in anticipo questo terreno concettuale è la strada metodologica più efficace per affrontare con consapevolezza i problemi fisici più sofisticati. Ci scontreremo con queste nozioni matematiche avanzate, ad esempio, nell'ultima parte del corso, in cui tratteremo l'\textbf{astrosismologia}; ad ogni modo, come già anticipato nella lezione precedente, per completezza di informazioni continueremo a condurre le nostre derivazioni mantenendoci sempre, di base, nell'approssimazione del caso sferico.
+
+\section{Equazioni del moto e deviazioni dalla simmetria sferica}
+
+Nel caso in cui si debba trattare un problema non simmetrico, le equazioni assumono una forma vettoriale. Adottando la descrizione euleriana, l'equazione del moto si esprime come:
+
+\begin{equation}
+\rho \frac{d\mathbf{v}}{dt} = -\nabla P - \rho \nabla \Phi
+\end{equation}
+
+L'operatore derivata $\frac{d}{dt}$ prende il nome di \textbf{derivata sostanziale} (o materiale) ed è definito dalla seguente relazione:
+
+\begin{equation}
+\frac{d}{dt} = \frac{\partial}{\partial t} + \mathbf{v} \cdot \nabla
+\end{equation}
+
+In tale contesto, l'operatore laplaciano applicato nell'equazione di Poisson per la gravità è il laplaciano completo.
+
+Queste deviazioni dalla simmetria sferica diventano fisicamente rilevanti qualora si presentino determinati fenomeni, tra cui:
+\begin{itemize}
+\item Una forte rotazione del corpo stellare;
+\item Interazioni con corpi compagni;
+\item Altre interazioni gravitazionali.
+\end{itemize}
+In termini generali, tuttavia, una stella isolata assume una geometria rigorosamente sferica.
+
+\section{Equilibrio idrostatico in Relatività Generale}
+
+Per completezza d'informazione, è necessario precisare che, all'interno di oggetti estremamente compatti in cui la densità raggiunge ordini di grandezza prossimi alla densità nucleare (come le stelle di neutroni e certe nane bianche), l'equilibrio idrostatico subisce variazioni sostanziali a causa degli effetti previsti dalla Relatività Generale.
+
+In tale regime, l'equazione dell'equilibrio idrostatico assume la forma della nota \textbf{equazione di Tolman-Oppenheimer-Volkoff}.
+\textit{(Nota storica marginale: Oppenheimer non si è occupato esclusivamente dello sviluppo della bomba atomica, ma ha fornito contributi pionieristici anche allo studio delle stelle di neutroni).}
+
+L'equazione presenta un termine principale analogo a quello classico, moltiplicato per una serie di fattori correttivi dettati dalla metrica relativistica:
+
+\begin{equation}
+\frac{dP}{dr} = -\frac{GM\rho}{r^2} \left( 1 + \frac{P}{\rho c^2} \right) \left( 1 + \frac{4\pi r^3 P}{M c^2} \right) \left( 1 - \frac{2GM}{rc^2} \right)^{-1}
+\end{equation}
+
+Osservando l'equazione, è evidente che un'approssimazione al primo ordine ($1 \times 1 \times 1$) restituisce esattamente la forma classica non relativistica. I termini correttivi, che operano al secondo ordine, divengono necessari poiché la struttura dello spaziotempo risulta differente: si introduce infatti la curvatura dello spaziotempo.
+Rigorosamente, la derivazione di questa equazione parte dalle equazioni di campo di Einstein e richiede l'introduzione del tensore metrico, del tensore di Ricci e del tensore di curvatura di Riemann. Tale dimostrazione completa richiede decine di pagine di calcoli matematici e va oltre gli scopi di questo corso.
+
+Le implicazioni di questa fisica, tuttavia, sono centrali per la comprensione dell'evoluzione stellare. È fondamentale determinare i percorsi evolutivi che conducono alla formazione dei vari resti stellari. L'evoluzione di una stella può infatti culminare in scenari radicalmente diversi:
+\begin{itemize}
+\item \textbf{Brown dwarf} (nane brune);
+\item \textbf{Nane bianche} di carbonio e ossigeno;
+\item \textbf{Nane bianche} di elio;
+\item \textbf{Stelle di neutroni};
+\item \textbf{Buchi neri};
+\item Esplosioni complete (supernovae) in cui la stella viene totalmente scompaginata: in questo caso non si forma alcun resto compatto (né buco nero, né stella di neutroni), risolvendosi il tutto in un evento energetico transiente.
+\end{itemize}
+
+\section{Il Teorema del Viriale: una derivazione generalizzabile}
+
+Affrontiamo ora il \textbf{teorema del viriale}. Sebbene sia un concetto già noto e applicato numerose volte, è opportuno fornirne una dimostrazione rigorosa che si presti a generalizzazioni successive.
+
+Di norma, il teorema del viriale viene descritto per un sistema isolato che si trova in uno stato di equilibrio (o prossimo all'equilibrio). Per una stella, questo coincide con la condizione di equilibrio idrostatico. Nella maggior parte dei casi standard, si assume che la stella sia isolata, e che di conseguenza la pressione al suo limite esterno sia rigorosamente nulla ($P=0$).
+Esistono tuttavia scenari in cui occorre applicare queste condizioni in presenza di una pressione esterna non nulla. Un esempio classico è l'evoluzione del nucleo (core) di una stella, il quale si trova sottoposto alla pressione esercitata dall'inviluppo sovrastante. Riesaminiamo perciò il teorema scrivendo delle relazioni che permettano questa generalizzazione.
+
+Partendo dall'equazione dell'equilibrio idrostatico, risulta particolarmente vantaggioso adottare la \textbf{descrizione lagrangiana} anziché la più comune forma euleriana.
+Consideriamo la derivata parziale rispetto alla massa $m$ del termine $4\pi r^3 P$:
+
+\begin{equation}
+\frac{\partial}{\partial m} \left( 4\pi r^3 P \right) = 4\pi r^3 \frac{\partial P}{\partial m} + 12\pi r^2 \frac{\partial r}{\partial m} P
+\end{equation}
+
+Procediamo eseguendo un'integrazione in $dm$ sull'intera massa della struttura (dal centro, $m=0$, alla massa totale, $m=M$):
+
+\begin{equation}
+\int_0^M 4\pi r^3 \frac{\partial P}{\partial m} dm = \left[ 4\pi r^3 P \right]_0^M - \int_0^M 12\pi r^2 \frac{\partial r}{\partial m} P dm
+\end{equation}
+
+Analizziamo il primo termine a destra dell'uguaglianza, valutato agli estremi di integrazione ($\left[ 4\pi r^3 P \right]_0^M$):
+\begin{itemize}
+\item \textbf{Al centro ($m=0$):} Poiché il raggio $r=0$, il termine si annulla indipendentemente dal valore della pressione centrale.
+\item \textbf{In superficie ($m=M$):} Il termine assume il valore $4\pi R^3 P_s$, dove $R$ è il raggio totale e $P_s$ è la pressione superficiale.
+\end{itemize}
+
+\subsection{Caso della stella isolata}
+Nel caso più semplice di una \textbf{stella isolata} (come il Sole), la pressione alla superficie è del tutto trascurabile rispetto alle enormi pressioni degli strati interni, per cui si pone in ottima approssimazione $P_s = 0$.
+Ne consegue che il termine di bordo si annulla completamente:
+\begin{equation}
+\left[ 4\pi r^3 P \right]_0^M = 4\pi R^3 (0) - 0 = 0
+\end{equation}
+
+\subsection{Caso generale con pressione esterna}
+Come anticipato, questa cancellazione non è sempre verificata. Qualora si analizzi il core di una stella avvolto da un inviluppo, la pressione $P_s$ all'interfaccia tra core e inviluppo avrà un valore finito maggiore di zero.
+In questo caso, il termine di bordo $4\pi R^3 P_s$ non sparisce e altera profondamente il bilancio energetico del sistema. Ai fini di questa specifica lezione il termine verrà posto pari a zero assumendo la condizione di stella isolata, ma tale contributo verrà "risuscitato" e reintegrato nelle lezioni future quando verranno analizzati sistemi non isolati.
+
+\vspace{1em}
+\textit{[Nota a margine: la lezione viene temporaneamente sospesa a causa di un'interruzione di alimentazione della strumentazione di registrazione.]}
+
+\section{Integrazione dell'Equazione di Equilibrio Idrostatico}
+
+Iniziamo l'analisi osservando un termine ricorrente nelle equazioni di struttura stellare: la derivata spaziale del raggio in funzione della massa, ovvero $\frac{dr}{dm}$, che corrisponde alla ben nota espressione $\frac{1}{4\pi r^2 \rho}$.
+Sostituendolo all'interno degli integrandi, è possibile ritrovarsi con espressioni in cui compare il fattore $12\pi r^2$ (derivante dal differenziale del volume) moltiplicato per $\frac{1}{4\pi r^2 \rho}$, che permettono di semplificare le variabili spaziali in gioco.
+
+Per dimostrare le relazioni energetiche fondamentali, partiamo dall'equazione dell'\textbf{equilibrio idrostatico} e procediamo integrandola sull'intera stella. Seguiamo i seguenti passaggi:
+\begin{enumerate}
+\item \textbf{Moltiplicazione:} Moltiplichiamo ambo i membri dell'equazione di equilibrio idrostatico per il termine di volume $4\pi r^3$.
+\item \textbf{Integrazione:} Svolgiamo il calcolo in dettaglio esplicitando i limiti di integrazione, che vanno dal centro ($0$) fino alla massa totale ($M$). È un passaggio cruciale esplicitare che si sta integrando su tutta la massa del corpo.
+\end{enumerate}
+
+L'equazione diventa formalmente:
+\begin{equation}
+\int_{0}^{M} 4\pi r^3 \frac{dP}{dm} , dm = - \int_{0}^{M} \frac{Gm}{r} , dm
+\end{equation}
+
+Risolvendo il primo integrale (al primo membro) per parti e sfruttando le relazioni precedentemente viste per i differenziali, i calcoli espliciti ci restituiscono un fattore moltiplicativo negativo pari a $-3$ (derivante dalla semplificazione $\frac{12}{4}$). Contemporaneamente, i termini contenenti $\pi r^2$ si semplificano numeratore con denominatore, lasciando all'interno dell'integrale esclusivamente la densità $\rho$ al denominatore e la pressione $P$ al numeratore.
+Otteniamo quindi per il primo membro:
+\begin{equation}
+-3 \int_{0}^{M} \frac{P}{\rho} , dm
+\end{equation}
+
+Per comodità formale e per rimuovere le quantità negative superflue, effettuiamo un cambio di segno ad ambo i membri dell'equazione complessiva, ottenendo così termini di segno positivo da entrambe le parti.
+
+\section{Definizione delle Energie e Teorema del Viriale}
+
+\subsection{Energia Gravitazionale ($E_G$)}
+Analizziamo la parte destra dell'uguaglianza. L'integrando $\frac{Gm}{r}$ rappresenta il potenziale gravitazionale; integrandolo su tutta la stella, restituisce l'energia gravitazionale totale. Utilizzando il simbolo di uguaglianza per definizione ($\equiv$) --- notazione rigorosa tipica della fisica matematica (come insegnato dal compianto professor Anile) --- definiamo formalmente l'\textbf{energia gravitazionale} $E_G$ della stella:
+\begin{equation}
+E_G \equiv - \int_{0}^{M} \frac{Gm}{r} , dm
+\end{equation}
+Il segno meno è intrinsecamente giustificato dal fatto che stiamo considerando un \textbf{sistema legato}, il quale, per definizione, possiede un'energia totale negativa.
+
+\subsection{Energia Interna ($E_I$) e il Termine Pressione/Densità}
+L'altro termine dell'equazione, presente a sinistra, coinvolge l'integrale del rapporto $\frac{P}{\rho}$. Dal punto di vista fisico, questa grandezza è intimamente legata al quadrato della velocità del suono nel mezzo. Ricorrendo all'equazione di stato dei gas perfetti, possiamo esprimerla in funzione della costante specifica dei gas e della temperatura $T$:
+\begin{equation}
+\frac{P}{\rho} = \frac{R}{\mu} T
+\end{equation}
+Dalla termodinamica classica, ricordiamo che la costante specifica $\frac{R}{\mu}$ può essere scritta come la differenza tra il calore specifico a pressione costante ($c_P$) e il calore specifico a volume costante ($c_V$):
+\begin{equation}
+\frac{R}{\mu} = c_P - c_V
+\end{equation}
+Mettendo in evidenza $c_V$, questa espressione si trasforma in $c_V (\gamma - 1)$, dove $\gamma = \frac{c_P}{c_V}$ rappresenta la \textbf{costante adiabatica} (o indice adiabatico) del gas. Sostituendo nella formula della temperatura otteniamo:
+\begin{equation}
+\frac{P}{\rho} = c_V (\gamma - 1) T
+\end{equation}
+
+Nel caso più comune nell'astrofisica stellare di base, trattiamo un \textbf{gas perfetto monoatomico}. Ricordando i gradi di libertà di tali sistemi, per un gas monoatomico si ha $\gamma = \frac{5}{3}$. Ne consegue che il fattore $(\gamma - 1)$ risulta pari a $\frac{2}{3}$.
+Sostituendo tale valore, è conveniente scrivere:
+\begin{equation}
+\frac{P}{\rho} = \frac{2}{3} c_V T
+\end{equation}
+Questo formalismo è particolarmente vantaggioso perché il prodotto $c_V T$ corrisponde esattamente all'\textbf{energia interna per unità di massa}, che denotiamo con la lettera minuscola $u$:
+\begin{equation}
+u = c_V T \quad \implies \quad \frac{P}{\rho} = \frac{2}{3} u
+\end{equation}
+Grazie a questa relazione intensiva, possiamo definire l'\textbf{energia interna totale} della stella, denotata con $E_I$, come l'integrale dell'energia interna specifica $u$ su tutta la massa del corpo stellare:
+\begin{equation}
+E_I \equiv \int_{0}^{M} u , dm
+\end{equation}
+
+\subsection{Il Teorema del Viriale per il Gas Perfetto Monoatomico}
+Ritornando all'equazione di equilibrio idrostatico integrata e sostituendo le grandezze macroscopiche appena definite, tenendo in considerazione il fattore moltiplicativo $3$ originario e il coefficiente termodinamico $\frac{2}{3}$, la relazione finale vede eguagliati:
+\begin{itemize}
+\item A sinistra: due volte l'energia interna ($2 E_I$).
+\item A destra: l'energia gravitazionale cambiata di segno ($-E_G$).
+\end{itemize}
+Tale formulazione costituisce il celebre \textbf{Teorema del Viriale}:
+\begin{equation}
+2 E_I = - E_G \quad \implies \quad 2 E_I + E_G = 0
+\end{equation}
+Si può dunque affermare che l'energia gravitazionale è pari a meno due volte l'energia interna di tutta la stella. È fondamentale ricordare che questa forma specifica vale strettamente se il mezzo si comporta come un gas perfetto monoatomico.
+
+\section{Il Teorema del Viriale Generalizzato}
+
+Poiché lo studio della struttura stellare richiede di considerare tutte le stelle possibili e i loro cicli evolutivi, ci troveremo di fronte a mezzi che si discostano dal modello di gas perfetto monoatomico. Possono essere presenti miscele molecolari, oppure il gas potrebbe subire un cambiamento di stato. È quindi necessario estendere questa trattazione per accogliere un'\textbf{equazione di stato qualsiasi}.
+
+Nel teorema classico appena dimostrato, la particolarità del gas monoatomico è confinata unicamente nel coefficiente $2$ presente nell'espressione $2 E_I$, un valore derivato in modo diretto dall'assunzione che $\gamma = \frac{5}{3}$.
+Il bilancio complessivo tra energia interna e gravitazionale rimane sempre valido; cambierà semplicemente quel coefficiente numerico in dipendenza dal $\gamma$ del gas in questione e dall'equazione di stato sottostante.
+
+Per generalizzare, caratterizziamo un'equazione di stato arbitraria definendo un parametro adimensionale $\zeta$, tale per cui valga la relazione:
+\begin{equation}
+\zeta u = 3 \frac{P}{\rho}
+\end{equation}
+Ogni specifico stato della materia stellare sarà quindi governato da un peculiare valore del parametro $\zeta$. Integrando questa espressione sulla massa, il termine preposto a moltiplicare l'energia interna diventerà $\zeta$ (invece di $2$). Possiamo quindi scrivere il \textbf{Teorema del Viriale Generalizzato}:
+\begin{equation}
+\zeta E_I + E_G = 0
+\end{equation}
+
+\subsection{Verifica sul gas perfetto}
+Possiamo verificare agilmente la validità di questa generalizzazione applicandola nuovamente al caso di un generico gas perfetto. Come mostrato in precedenza:
+\begin{equation}
+\frac{P}{\rho} = (\gamma - 1) c_V T = (\gamma - 1) u
+\end{equation}
+Sostituendo tale equivalenza nella definizione $\zeta u = 3 \frac{P}{\rho}$, determiniamo che il parametro $\zeta$ è esplicitamente legato all'indice adiabatico:
+\begin{equation}
+\zeta = 3(\gamma - 1)
+\end{equation}
+Riapplicando questo risultato al caso specifico del gas monoatomico ($\gamma = \frac{5}{3}$), otteniamo con un semplice calcolo aritmetico:
+\begin{equation}
+\zeta = 3 \left( \frac{5}{3} - 1 \right) = 3 \left( \frac{2}{3} \right) = 2
+\end{equation}
+Ritroviamo così perfettamente il fattore $2$ dimostrato inizialmente.
+
+In conclusione, questa generalizzazione termodinamica della formulazione si rivela propedeutica e indispensabile ai fini degli sviluppi futuri: nelle prossime fasi del corso dovremo adattare l'equazione di stato in forme ancora più estese, così da poter applicare il Teorema del Viriale Generalizzato anche alla fisica degli \textbf{oggetti compatti}.
+
+\section{Generalizzazione dell'Equazione di Stato e del Teorema del Viriale}
+
+La formulazione del teorema del viriale può essere estesa a qualsiasi equazione di stato, a patto di individuare il corretto parametro di proporzionalità $z$.
+
+\subsection{Dipendenza dai Gradi di Libertà}
+In ambito termodinamico, la natura del sistema e i suoi gradi di libertà determinano il rapporto tra i calori specifici a pressione costante e a volume costante:
+\begin{equation}
+\gamma = \frac{C_p}{C_v}
+\end{equation}
+Il valore di $\gamma$, a sua volta, determina univocamente il valore del parametro $z$. Di conseguenza, per applicare il teorema del viriale a un determinato sistema, è sufficiente calcolare il corretto rapporto tra i calori specifici della sostanza considerata.
+
+\subsection{Estensione del Teorema del Viriale}
+La formulazione classica del teorema del viriale (caratterizzata dal fattore $\frac{1}{2}$ comunemente incontrato nei corsi introduttivi di astronomia e cosmologia) si riferisce specificamente al caso di un \textbf{gas perfetto monoatomico}. In questa sede si procede a una sua generalizzazione a contesti e fluidi aventi equazioni di stato generiche.
+
+\section{Energia Totale della Configurazione}
+
+Si consideri una stella modellizzata come una configurazione sferica di gas autogravitante in equilibrio viriale. La combinazione del teorema del viriale con il principio di conservazione dell'energia totale permette di analizzare e risolvere diverse problematiche fisiche legate alla struttura stellare.
+
+\subsection{Espressione dell'Energia Totale}
+L'energia totale $E_{\text{tot}}$ della configurazione è data dalla somma dell'energia interna $E_i$ e dell'energia gravitazionale $E_g$:
+\begin{equation}
+E_{\text{tot}} = E_i + E_g
+\end{equation}
+
+Combinando questa definizione con la relazione viriale generalizzata tramite il parametro $z$, è possibile esprimere l'energia totale in due forme equivalenti:
+\begin{itemize}
+\item In funzione della sola \textbf{energia interna} $E_i$:
+\begin{equation}
+E_{\text{tot}} = (z - 1) E_i
+\end{equation}
+\item In funzione della sola \textbf{energia gravitazionale} $E_g$:
+\begin{equation}
+E_{\text{tot}} = \frac{z - 1}{z} E_g
+\end{equation}
+\end{itemize}
+
+\subsection{Sistemi Legati e Limite di Stabilità ($\gamma = 4/3$)}
+Affinché la stella costituisca un \textbf{sistema legato}, la sua energia totale deve essere strettamente negativa:
+\begin{equation}
+E_{\text{tot}} < 0
+\end{equation}
+
+Dall'espressione dell'energia totale si deduce direttamente la condizione limite per la stabilità:
+\begin{itemize}
+\item Se $z = 1$, l'energia totale si annulla: $E_{\text{tot}} = 0$.
+\item Esiste quindi un valore limite inferiore per $z$ (e di conseguenza per $\gamma$) al di sotto del quale la configurazione cessa di essere un sistema legato e stabile.
+\end{itemize}
+
+Per un gas perfetto, la relazione tra $z$ e il coefficiente adiabatico $\gamma$ è data da $z = 3(\gamma - 1)$. Ponendo la condizione di limite $z = 1$, si ottiene:
+\begin{equation}
+3(\gamma - 1) = 1 \implies \gamma = \frac{4}{3}
+\end{equation}
+Pertanto, un mezzo fluido caratterizzato da $\gamma = \frac{4}{3}$ si trova al limite della stabilità e presenta gravi problematiche per il mantenimento dell'equilibrio della configurazione.
+
+\section{Conservazione dell'Energia e Luminosità Bolometrica}
+
+Per formulare l'equazione di conservazione dell'energia per una stella, occorre considerare che l'oggetto emette energia sotto forma di radiazione a spese della propria energia totale.
+
+\subsection{Bilancio Energetico e Luminosità}
+Dal punto di vista termodinamico, la variazione temporale dell'energia totale del sistema deve essere bilanciata dalla \textbf{luminosità bolometrica} $L$, definita come l'energia totale irradiata nell'unità di tempo a tutte le lunghezze d'onda:
+\begin{equation}
+L = -\frac{d E_{\text{tot}}}{dt}
+\end{equation}
+
+Sostituendo le espressioni dell'energia totale espresse in funzione del parametro $z$, si ottiene il bilancio energetico:
+\begin{itemize}
+\item In termini di energia interna:
+\begin{equation}
+L = -(z - 1) \frac{d E_i}{dt}
+\end{equation}
+\item In termini di energia gravitazionale:
+\begin{equation}
+L = -\frac{z - 1}{z} \frac{d E_g}{dt}
+\end{equation}
+\end{itemize}
+
+\subsection{Caso del Gas Perfetto Monoatomico}
+Per un \textbf{gas perfetto monoatomico}, dove $\gamma = \frac{5}{3}$, il parametro $z$ assume valore $z = 2$. Sostituendo $z = 2$ nelle equazioni del bilancio energetico, si ottiene:
+\begin{equation}
+L = \frac{d E_i}{dt} = -\frac{1}{2} \frac{d E_g}{dt}
+\end{equation}
+
+\subsection{Interpretazione Fisica della Contrazione Gravitazionale}
+Si consideri il processo di \textbf{contrazione gravitazionale} della stella:
+\begin{enumerate}
+\item Durante la contrazione, la variazione temporale dell'energia gravitazionale è negativa ($\frac{d E_g}{dt} < 0$), in quanto la stella si addensa e l'energia gravitazionale diminuisce (diventando più negativa).
+\item Di conseguenza, la quantità $-\frac{1}{2} \frac{d E_g}{dt}$ risulta essere strettamente positiva ($> 0$).
+\item Questo implica che sia la luminosità $L$ sia la derivata temporale dell'energia interna $\frac{d E_i}{dt}$ siano quantità positive ($> 0$).
+\end{enumerate}
+
+Questo risultato formalizza la formulazione classica del \textbf{teorema del viriale}: durante una contrazione gravitazionale, esattamente la metà dell'energia gravitazionale liberata viene convertita in un incremento di \textbf{energia interna} (provocando il riscaldamento del gas), mentre l'altra metà viene irradiata verso l'esterno sotto forma di \textbf{luminosità}.
+
+\section{Effetti della Contrazione Gravitazionale in Assenza di Reazioni Nucleari}
+
+\subsection{Ripartizione Energetica e Riscaldamento del Plasma}
+Si consideri una stella che attraversa una fase di contrazione gravitazionale in assenza di reazioni nucleari attive al suo interno. Pur mancando una sorgente di energia di fusione, la stella possiede un'energia interna $E_i$ non nulla a causa della temperatura del gas e continua a irradiare una luminosità $L$ verso l'esterno.
+
+In base al bilancio energetico e al teorema del viriale, la variazione temporale dell'energia totale del sistema è pari alla luminosità emessa:
+\begin{equation}
+L = -\frac{dE_{\text{tot}}}{dt}
+\end{equation}
+
+L'energia liberata dalla contrazione gravitazionale viene ripartita equamente in due contributi:
+\begin{itemize}
+\item \textbf{Metà della variazione di energia gravitazionale} ($-\frac{1}{2} \frac{dE_g}{dt}$) viene convertita in radiazione emessa verso l'esterno, determinando la luminosità della stella:
+\begin{equation}
+L = -\frac{1}{2} \frac{dE_g}{dt}
+\end{equation}
+\item \textbf{L'altra metà della variazione di energia gravitazionale} va ad incrementare l'energia interna del plasma ($\frac{dE_i}{dt}$):
+\begin{equation}
+\frac{dE_i}{dt} = -\frac{1}{2} \frac{dE_g}{dt}
+\end{equation}
+\end{itemize}
+
+\subsection{Aumento della Temperatura Interna}
+L'energia interna specifica (per unità di massa) del gas è data dalla relazione termodinamica:
+\begin{equation}
+e_i = c_v T
+\end{equation}
+dove $c_v$ è il calore specifico a volume costante e $T$ è la temperatura locale.
+
+Integando su tutta la massa della stella e ipotizzando che la natura del gas (e dunque il valore di $c_v$) rimanga inalterata, l'aumento dell'energia interna si traduce in un incremento diretto e proporzionale della temperatura del plasma $T$.
+
+\subsection{Comportamento Temporale e Stato Legato}
+Poiché durante una contrazione il raggio della stella diminuisce, la variazione temporale dell'energia gravitazionale risulta negativa ($\frac{dE_g}{dt} < 0$). Trattandosi di un sistema gravitazionalmente legato, l'energia gravitazionale $E_g$ è una quantità negativa; di conseguenza, la contrazione comporta che il suo valore assoluto $\vert{}E_g\vert{}$ aumenti nel tempo, rendendo il sistema energeticamente più legato.
+
+\section{Il Tempo Scala di Kelvin-Helmholtz}
+
+\subsection{Definizione e Significato Fisico}
+Il \textbf{tempo scala di Kelvin-Helmholtz} ($\tau_{\text{KH}}$) caratterizza la fase evolutiva di una stella la cui sorgente energetica primaria è rappresentata esclusivamente dalla contrazione gravitazionale, in assenza di reazioni nucleari. Esso si applica tipicamente alle stelle nella fase di \textbf{pre-sequenza principale}, ovvero nella fase che precede l'innesco del bruciamento dell'idrogeno nel nucleo.
+
+Il tempo scala di Kelvin-Helmholtz è definito come il rapporto tra il modulo dell'energia gravitazionale disponibile e la luminosità irradiata:
+\begin{equation}
+\tau_{\text{KH}} = \frac{|E_g|}{L}
+\end{equation}
+
+Poiché, per il teorema del viriale, l'energia gravitazionale e l'energia interna sono dello stesso ordine di grandezza ($\vert{}E_g\vert{} \sim E_i$), il tempo scala può essere espresso in maniera equivalente come:
+\begin{equation}
+\tau_{\text{KH}} \approx \frac{E_i}{L}
+\end{equation}
+
+Dal punto di vista dimensionale, dividendo un'energia per una potenza (energia nell'unità di tempo), si ottiene correttamente una grandezza espressa in unità di tempo.
+
+\subsection{Stima dell'Ordine di Grandezza}
+Per formulare una stima dell'ordine di grandezza dell'energia gravitazionale $E_g$, si può approssimare l'interazione considerando la massa media e il raggio medio della configurazione stellare (assumendo indicativamente $M_{\text{medio}} \sim \frac{M}{2}$ e $R_{\text{medio}} \sim \frac{R}{2}$):
+\begin{equation}
+|E_g| \sim \frac{G M^2}{2R}
+\end{equation}
+
+Sostituendo tale approssimazione nella definizione, il tempo scala di Kelvin-Helmholtz scala proporzionalmente a:
+\begin{equation}
+\tau_{\text{KH}} \sim \frac{G M^2}{2 R L}
+\end{equation}
+Sebbene durante la contrazione in pre-sequenza principale sia il raggio $R$ sia la luminosità $L$ varino nel tempo, questa formulazione fornisce un'ottima stima dell'ordine di grandezza del tempo evolutivo gravitazionale.
+
+\subsection{Applicazione al Sole e Rilevanza Storica}
+Valutando l'espressione per i parametri attuali del Sole ($M = M_\odot$, $R = R_\odot$, $L = L_\odot$), si ottiene:
+\begin{equation}
+\tau_{\text{KH}, \odot} \approx 1{,}6 \times 10^7 \text{ anni}
+\end{equation}
+
+In generale, il tempo scala varia in funzione del fattore $\frac{M^2}{R L}$.
+
+Questo valore riveste un'importanza storica fondamentale:
+\begin{enumerate}
+\item \textbf{Modello classico pre-quantistico}: Prima dello sviluppo della fisica quantistica e della fisica nucleare, la contrazione di Kelvin-Helmholtz era ritenuta l'unica sorgente di energia solare nota. Si stimava quindi che la vita totale del Sole fosse limitata a circa $10\text{--}20$ milioni di anni.
+\item \textbf{Crisi della cronologia fisica e biologica}: Tale stima entro in netto contrasto con le evidenze geologiche e paleontologiche emerse alla fine del XIX secolo, le quali dimostravano che la Terra e le rocce terrestri avevano un'età nettamente superiore a qualche decina di milioni di anni.
+\item \textbf{Incentivo alla nuova fisica}: Questa palese discrepanza rappresentò uno dei principali stimoli concettuali che portarono alla scoperta delle reazioni di fusione nucleare e allo sviluppo dell'astrofisica stellare moderna.
+\end{enumerate}
+
+\section{Note Conclusive}
+I concetti di bilancio energetico viriale e di tempo scala di Kelvin-Helmholtz costituiscono i fondamenti teorici essenziali per la comprensione delle fasi successive dell'evoluzione stellare e della struttura interna delle stelle in pre-sequenza principale.
+
+\section{Indicazioni Didattiche e Riferimenti Propedeutici}
+
+I concetti fondamentali trattati nelle lezioni introduttive costituiscono la struttura portante per i successivi sviluppi teorici della fisica stellare. Tali argomenti, pur essendo ripresi all'interno di insegnamenti propedeutici (quali \textit{Istituzioni di Astrofisica} o \textit{Elementi di Astronomia e Cosmologia}), vengono presentati con un livello di formalismo matematico, precisione e puntualità superiore. Per tale ragione, si raccomanda uno studio approfondito e tempestivo di queste basi concettuali, indispensabile per affrontare con fluidità i contenuti di maggiore complessità delle lezioni successive.
+
+\section{Il Teorema del Viriale in Presenza di Pressione Esterna Non Nulla}
+
+Si consideri la generalizzazione del teorema del viriale nel caso in cui la pressione alla superficie esterna della struttura stellare, indicata con $P_0$, non sia trascurabile ($P_0 \neq 0$).
+
+In presenza di una pressione esterna non nulla, il termine di superficie — precedentemente omesso nelle derivazioni semplificate — deve essere esplicitamente mantenuto nel bilancio integrato. L'uguaglianza integrale tra l'energia potenziale gravitazionale e il termine pressorio assume la seguente forma:
+\begin{equation}
+\int_0^M \frac{d\Phi}{dm} , dm = 3 \int_0^M \frac{P}{\rho} , dm - 4\pi R^3 P_0
+\end{equation}
+dove $M$ è la massa totale della stella, $R$ è il raggio superficiale, $P$ è la pressione locale e $\rho$ è la densità di massa. Nel caso limite in cui $P_0 = 0$, il termine boundary $-4\pi R^3 P_0$ si annulla, riconducendo l'espressione alla forma standard.
+
+La formulazione del teorema del viriale modificata dalla presenza della pressione esterna $P_0$ si esprime come:
+\begin{equation}
+2 E_i + E_g = 4\pi R^3 P_0
+\end{equation}
+in cui $E_i$ rappresenta l'energia interna totale del sistema ed $E_g$ l'energia potenziale gravitazionale.
+
+\subsection{Analisi Dimensionale del Termine di Superficie}
+La consistenza dimensionale della relazione espressa dall'equazione~(2) trova riscontro diretto nella definizione delle grandezze fisiche coinvolte:
+\begin{itemize}
+\item La pressione $P_0$ rappresenta una forza per unità di superficie ($\left[\text{N}/\text{m}^2\right]$).
+\item Moltiplicando la pressione per una superficie proporzionale a $R^2$, si ottiene una dimensione equivalente a quella di una forza ($\left[\text{N}\right]$).
+\item Un'ulteriore moltiplicazione per una lunghezza $R$ (ottenendo la dipendenza da $R^3$) definisce un lavoro, ovvero una grandezza avente le dimensioni fisiche di un'energia ($\left[\text{J}\right]$).
+\end{itemize}
+Pertanto, il termine $4\pi R^3 P_0$ rappresenta un contributo energetico coerente con i termini $E_i$ ed $E_g$.
+
+\section{Sintesi dei Concetti Chiave per la Fisica e Struttura Stellare}
+
+A conclusione della trattazione, si sintetizzano i principi fondamentali e le relazioni analitiche stabilite, essenziali per il prosieguo dello studio della struttura ed evoluzione stellare.
+
+\subsection{Equazioni Fondamentali di Bilancio e Stato}
+\begin{itemize}
+\item \textbf{Equazione di continuità della massa}: definisce la distribuzione spaziale della massa all'interno del corpo stellare.
+\item \textbf{Equazione di conservazione della quantità di moto}: definisce la condizione di equilibrio idrostatico della struttura stellare.
+\item \textbf{Ruolo dell'equazione di stato}: a seconda della forma analitica dell'equazione di stato adottata, è possibile determinare una soluzione meccanica completa della struttura senza la necessità di ricorrere a ulteriori equazioni legate al trasporto e al bilancio energetico.
+\end{itemize}
+
+\subsection{Relazioni di Scala (\textit{Scaling Laws})}
+Le grandezze termodinamiche interne principali dipendono dalla massa $M$ e dal raggio $R$ del corpo stellare secondo le seguenti proporzionalità:
+\begin{itemize}
+\item \textbf{Pressione interna}: $P \propto \frac{M^2}{R^4}$
+\item \textbf{Temperatura interna}: $T \propto \frac{M}{R}$
+\end{itemize}
+
+\subsection{Tempi Scala Caratteristici}
+I processi dinamici ed evolutivi sono regolati dai seguenti tempi scala fondanti:
+\begin{itemize}
+\item \textbf{Tempo scala di libera caduta} ($\tau_{\text{ff}}$, \textit{free-fall timescale}).
+\item \textbf{Tempo scala di esplosione}.
+\item \textbf{Tempo scala idrodinamico} ($\tau_{\text{dyn}}$).
+\end{itemize}
+
+\subsection{Teorema del Viriale e Implicazioni Termodinamiche}
+\begin{itemize}
+\item Formulazione generale e applicazione al caso del \textbf{gas perfetto monoatomico}.
+\item \textbf{Conservazione dell'energia durante la contrazione}: in assenza di fonti di energia nucleare, la contrazione gravitazionale di una stella comporta che:
+\begin{itemize}
+\item Metà della variazione di energia gravitazionale ($\frac{1}{2} \vert{}\Delta E_g\vert{}$) venga convertita in luminosità $L$ e irradiata verso l'esterno.
+\item La restante metà vada ad incrementare l'energia interna ($\Delta E_i$), causando un aumento della temperatura interna del plasma.
+\end{itemize}
+\item \textbf{Tempo scala di Kelvin-Helmholtz} ($\tau_{\text{KH}}$): rappresenta la scala temporale evolutiva tipica delle stelle in fase di pre-sequenza principale, durante la quale la contrazione gravitazionale costituisce l'unica sorgente energetica della stella.
+\end{itemize}
+
+\section{Note Organizzative e Gestione degli Orari}
+
+In merito alle richieste di anticipare l'orario di svolgimento delle lezioni, si precisa l'impossibilità di modificare il calendario a causa di sovrapposizioni didattiche istituzionali. In particolare, il docente è impegnato nella conduzione del corso di \textit{Istituzioni di Astrofisica} nella giornata di lunedì dalle ore 15:00 alle ore 18:00.

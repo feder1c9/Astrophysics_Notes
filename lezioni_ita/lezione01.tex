@@ -1,0 +1,456 @@
+\chapter{Lezione 1 - 06/10/2026}
+
+\section{Fondamenti di Idrodinamica Stellare: Modelli Unidimensionali}
+
+Per comprendere a fondo il significato essenziale delle equazioni, analizzare le conseguenze fisiche e avere una comprensione intuitiva della situazione, lavoreremo principalmente in \textbf{una dimensione}.
+
+Da un punto di vista idrodinamico, la trattazione si basa su due descrizioni fondamentali che verranno utilizzate alternativamente a seconda della convenienza:
+\begin{itemize}
+\item La \textbf{descrizione euleriana}
+\item La \textbf{descrizione lagrangiana}
+\end{itemize}
+
+\subsection{Descrizione Euleriana}
+
+Nella \textbf{descrizione euleriana}, si scelgono come variabili indipendenti la posizione e il tempo. Operando generalmente in coordinate sferiche, la posizione è definita dalla distanza dal centro della sfera. Definiamo le variabili indipendenti:
+\begin{itemize}
+\item $r$: distanza dal centro (con $r \in [0, R]$, dove $R$ è il raggio totale della stella).
+\item $t$: tempo.
+\end{itemize}
+
+Tutte le altre grandezze fisiche saranno riferite a queste due variabili indipendenti. Ad esempio, nel caso generale, la densità del plasma dipenderà dalla distanza dal centro e dal tempo: $\rho = \rho(r,t)$. Analogamente, la massa racchiusa all'interno di una sfera di raggio $r$ sarà una funzione $m = m(r,t)$.
+
+\subsubsection{Derivazione dell'Equazione di Continuità}
+
+Consideriamo un elemento di massa $dm$, ovvero la massa contenuta in un guscio sferico infinitesimo di spessore $dr$. L'area di tale guscio è $4\pi r^2$. Moltiplicando l'area per lo spessore $dr$ si ottiene il volume, e moltiplicando quest'ultimo per la densità $\rho$ si ricava la massa contenuta nel guscio in condizioni statiche.
+
+Tuttavia, in una situazione dinamica, è necessario considerare anche il flusso di massa che entra ed esce dal guscio. Il flusso di materia attraverso la superficie del guscio è dato dal prodotto tra la densità $\rho$, la velocità del plasma $v$ e l'intervallo di tempo $dt$.
+
+Pertanto, la variazione di massa può essere descritta analizzando le derivate parziali.
+Prendendo la derivata parziale della massa rispetto a $r$, consideriamo solo il contributo statico (poiché il termine di flusso non dipende unicamente dalla geometria spaziale a tempo fissato):
+\begin{equation}
+\frac{\partial m}{\partial r} = 4\pi r^2 \rho
+\end{equation}
+
+Derivando ora questa espressione rispetto al tempo $t$, otteniamo la derivata seconda mista:
+\begin{equation}
+\frac{\partial^2 m}{\partial t \partial r} = 4\pi r^2 \frac{\partial \rho}{\partial t}
+\end{equation}
+
+Eseguiamo ora il procedimento inverso. Prendendo la derivata parziale della massa rispetto al tempo $t$, otteniamo l'espressione del flusso di massa attraverso la superficie:
+\begin{equation}
+\frac{\partial m}{\partial t} = -4\pi r^2 \rho v
+\end{equation}
+
+Derivando questa quantità rispetto al raggio $r$, applichiamo la regola della derivazione del prodotto:
+\begin{equation}
+\frac{\partial^2 m}{\partial r \partial t} = -8\pi r \rho v - 4\pi r^2 \frac{\partial (\rho v)}{\partial r}
+\end{equation}
+
+Per il teorema di Schwarz sulle derivate miste, le due espressioni ricavate devono essere uguali. Uguagliandole e portando tutti i termini allo stesso membro, otteniamo:
+\begin{equation}
+4\pi r^2 \frac{\partial \rho}{\partial t} + 8\pi r \rho v + 4\pi r^2 \frac{\partial (\rho v)}{\partial r} = 0
+\end{equation}
+
+Dividendo l'intera equazione per $4\pi r^2$, si isola la derivata temporale della densità:
+\begin{equation}
+\frac{\partial \rho}{\partial t} = -\frac{2}{r} \rho v - \frac{\partial (\rho v)}{\partial r}
+\end{equation}
+
+Che può essere riscritta in forma compatta raggruppando i termini spaziali:
+\begin{equation}
+\frac{\partial \rho}{\partial t} = -\frac{1}{r^2} \frac{\partial}{\partial r} (r^2 \rho v)
+\end{equation}
+
+In coordinate sferiche, il termine a secondo membro rappresenta l'opposto della divergenza del vettore densità di flusso di massa ($\rho \mathbf{v}$). Abbiamo così ottenuto rigorosamente l'\textbf{equazione di continuità per la massa} nella descrizione euleriana:
+\begin{equation}
+\frac{\partial \rho}{\partial t} = -\nabla \cdot (\rho \mathbf{v})
+\end{equation}
+
+\subsection{Descrizione Lagrangiana}
+
+La \textbf{descrizione lagrangiana} adotta un differente set di variabili indipendenti. Invece della posizione, si sceglie come variabile la massa $m$ contenuta entro un dato guscio.
+Le variabili indipendenti sono quindi:
+\begin{itemize}
+\item $m$: massa.
+\item $t$: tempo.
+\end{itemize}
+
+In questo formalismo, tutte le altre grandezze diventano funzione di $m$ e $t$. Avremo pertanto:
+\begin{itemize}
+\item La densità: $\rho = \rho(m,t)$
+\item La posizione (il raggio del guscio): $r = r(m,t)$
+\end{itemize}
+
+L'approccio lagrangiano è soggetto a precise \textbf{condizioni al contorno}:
+\begin{itemize}
+\item Per $m = 0$, la posizione corrisponde al centro della stella: $r = 0$.
+\item Per $m = M$ (dove $M$ è la massa totale della stella), la posizione corrisponde alla superficie stellare: $r = R$.
+\end{itemize}
+
+\subsection{Confronto Concettuale: Eulero vs Lagrange}
+
+Poiché applichiamo queste descrizioni all'interno delle stelle, stiamo studiando il comportamento dei vari gusci di materia stellare, ma i concetti rimangono validi per l'idrodinamica generale. La differenza fondamentale risiede nel punto di vista dell'osservatore:
+
+\begin{itemize}
+\item \textbf{Approccio Euleriano:} L'attenzione è fissata su un \textbf{punto fisso nello spazio} (una specifica distanza $r$ dal centro stellare). L'osservatore guarda lo scorrere del fluido attraverso quel punto nel tempo, verificando se il gas si sta muovendo verso l'interno o verso l'esterno in quella esatta coordinata.
+
+```
+\item \textbf{Approccio Lagrangiano:} L'attenzione è fissata su un \textbf{determinato elemento di plasma} (nel nostro caso unidimensionale, un guscio di massa $dm$). L'osservatore segue il moto e l'evoluzione di quello specifico elemento di materia nel tempo, verificando se il guscio collassa verso l'interno o si espande verso l'esterno.
+
+```
+
+\end{itemize}
+
+\section{Corrispondenza e Cambio di Variabili tra le Descrizioni Euleriana e Lagrangiana}
+
+Esiste una precisa corrispondenza spaziale e di massa tra le due descrizioni. In particolare, definiamo i limiti del sistema stellare:
+\begin{itemize}
+\item Al \textbf{centro della stella}: si ha $r = 0$, a cui corrisponde una massa racchiusa $m = 0$.
+\item Alla \textbf{superficie della stella}: si ha $r = R$ (dove $R$ è il raggio totale della stella), a cui corrisponde $m = M$ (dove $M$ è la massa totale della stella).
+\end{itemize}
+
+Quando passiamo dalla descrizione euleriana a quella lagrangiana, operiamo un cambio di variabili indipendenti, passando da $(r, t)$ a $(m, t)$. È fondamentale tenere a mente le regole di derivazione a catena per le derivate parziali durante questo passaggio.
+
+Ad esempio, una derivata parziale rispetto alla massa $m$ si esprime come:
+\begin{equation}
+\frac{\partial}{\partial m} = \frac{\partial r}{\partial m} \frac{\partial}{\partial r}
+\end{equation}
+
+In modo analogo, per la derivata parziale rispetto al tempo $t$ (valutata a massa costante, ovvero nella descrizione lagrangiana), si applica la regola della catena tenendo conto della dipendenza di $r$ dal tempo. Otteniamo:
+\begin{equation}
+\left( \frac{\partial}{\partial t} \right)_m = \left( \frac{\partial r}{\partial t} \right)_m \frac{\partial}{\partial r} + \left( \frac{\partial}{\partial t} \right)_r
+\end{equation}
+Dove il pedice indica la variabile mantenuta costante durante l'operazione di derivazione. Quando si effettua un cambio di variabili, è obbligatorio tenere in considerazione il modo in cui le derivate parziali in una descrizione sono collegate a quelle dell'altra.
+
+\subsection{Invarianza della Massa Totale e della Coordinata di Massa}
+
+Rispondiamo ora a un quesito emerso a lezione: \textit{nella descrizione lagrangiana, la massa $m$ o la massa totale $M$ cambiano nel tempo?}
+
+La risposta è no. La massa totale $M$ \textbf{non cambia nel tempo}. In questo contesto, non stiamo trattando il processo di formazione della stella, ma stiamo considerando un oggetto già formato, dotato di una sua massa iniziale stabilita. Nello studio della \textbf{struttura stellare} (che affronteremo prima dell'evoluzione stellare), la massa totale è fissa e rappresenta una condizione al contorno del nostro problema.
+
+Allo stesso modo, la "piccola" massa $m$ (la coordinata di massa) non cambia nel tempo. Nella descrizione lagrangiana, la massa $m$ è assunta come variabile indipendente e, in quanto tale, è fissa. Ciò che si osserva è la \textbf{posizione} in cui si trova il guscio di massa identificato da $m$ dopo un certo intervallo di tempo (cioè se il guscio si sposta verso l'esterno o verso l'interno). Le derivate parziali servono proprio a studiare la variazione delle grandezze mantenendo fissa una delle due variabili indipendenti.
+
+\subsection{Operatore di Trasformazione (Switch Euleriano-Lagrangiano)}
+
+Torniamo all'espressione della massa infinitesima del guscio in condizioni statiche:
+\begin{equation}
+dm = 4\pi r^2 \rho , dr
+\end{equation}
+Introduciamo ora un procedimento matematico che ci permetterà di muoverci agilmente da una descrizione all'altra. Calcoliamo la derivata parziale di $m$ rispetto a se stessa, che banalmente deve essere pari a $1$:
+\begin{equation}
+\frac{\partial m}{\partial m} = 1
+\end{equation}
+Sfruttando la definizione differenziale appena ricordata, possiamo esplicitare questa derivata come:
+\begin{equation}
+\frac{\partial m}{\partial m} = 4\pi r^2 \rho \frac{\partial r}{\partial m} = 1
+\end{equation}
+Questo trucco matematico ci consente di definire un operatore di conversione. Da tale relazione, deduciamo che la derivata parziale di \textit{qualsiasi} grandezza rispetto a $m$ può essere riscritta in termini della derivata rispetto a $r$:
+\begin{equation}
+\frac{\partial}{\partial m} = \frac{1}{4\pi r^2 \rho} \frac{\partial}{\partial r}
+\end{equation}
+
+Sebbene l'approccio lagrangiano possa inizialmente risultare meno intuitivo di quello euleriano (poiché anziché fissare una posizione nello spazio, si "insegue" l'elemento di volume e massa del plasma nei suoi spostamenti), lavoreremo prevalentemente con la descrizione lagrangiana. Il motivo risiede nel fatto che, sfruttando questa semplice relazione, l'approccio lagrangiano semplifica enormemente molti problemi di struttura stellare.
+
+\section{Complicazioni Fisiche nel Modello Stellare}
+
+Stiamo costruendo gli strumenti di base per affrontare i problemi di struttura stellare. Tuttavia, rispetto alla fisica studiata in precedenza, dovremo introdurre ulteriori livelli di complessità prima di entrare nel vivo dell'argomento:
+
+\begin{enumerate}
+\item \textbf{Moti dinamici della materia:} Pur limitandoci a un modello unidimensionale, non possiamo trattare la materia come puramente statica. Dobbiamo considerare i casi in cui la stella si espande o si contrae rapidamente, operando su una scala temporale dinamica.
+\item \textbf{Equazione di stato generalizzata:} La materia stellare non è sempre assimilabile a un gas perfetto. A densità molto elevate, entrano in gioco gli effetti della \textbf{meccanica quantistica} e il gas diventa \textbf{degenere}. Non possiamo permetterci di usare formulazioni disgiunte (una per il gas perfetto e una per il gas degenere); necessitiamo di una \textbf{termodinamica generalizzata} che consenta una transizione fluida tra i due regimi, permettendo al gas di entrare o uscire dallo stato di degenerazione.
+\end{enumerate}
+In sintesi, i tre pilastri fondamentali su cui lavoreremo saranno: \textbf{gravità}, \textbf{termodinamica} e \textbf{meccanica quantistica}.
+
+\section{Trattazione della Gravità}
+
+\subsection{Limiti dell'Approccio Newtoniano}
+In questo corso non tratteremo la \textbf{Relatività Generale}. Gli effetti relativistici diventano dominanti quando si studiano \textbf{oggetti compatti} come le stelle di neutroni o i buchi neri. Sebbene vedremo concettualmente come si forma una stella di neutroni, non dimostreremo le equazioni di stato o la struttura lavorando nel formalismo della relatività generale (che è oggetto di corsi accademici dedicati). Ogniqualvolta un effetto relativistico diventerà rilevante, ci limiteremo semplicemente a menzionarlo, mantenendo il nostro impianto matematico nel limite classico per non appesantire eccessivamente la trattazione.
+
+\subsection{Formalismo Gravitazionale e Potenziale}
+Utilizzeremo l'espressione classica per l'accelerazione di gravità locale, che chiameremo $g$. Nella descrizione euleriana (dove un guscio di massa $m$ si trova alla posizione $r$), l'accelerazione gravitazionale subita dal guscio è:
+\begin{equation}
+g = \frac{G m}{r^2}
+\end{equation}
+dove $G$ è la costante di gravitazione universale. Molte equazioni risultano semplificate dal fatto che $g$ dipende direttamente dalla massa interna $m$.
+
+La gravità, nel nostro contesto, è governata dall'\textbf{equazione di Poisson}. Indicando con $\phi$ il potenziale gravitazionale, l'equazione assume la forma:
+\begin{equation}
+\nabla^2 \phi = 4\pi G \rho
+\end{equation}
+Considerando la geometria sferica in una dimensione spaziale, l'operatore laplaciano $\nabla^2$ si esprime come:
+\begin{equation}
+\nabla^2 = \frac{1}{r^2} \frac{\partial}{\partial r} \left( r^2 \frac{\partial}{\partial r} \right)
+\end{equation}
+Sappiamo inoltre che l'accelerazione di gravità è legata al gradiente del potenziale gravitazionale. Nel nostro caso spaziale unidimensionale, possiamo scrivere:
+\begin{equation}
+\frac{\partial \phi}{\partial r} = \frac{G m}{r^2}
+\end{equation}
+Per ricavare il potenziale gravitazionale $\phi(r)$ in una stella a simmetria sferica, integriamo l'espressione dal centro della stella fino al raggio $r$:
+\begin{equation}
+\phi(r) = \int_0^r \frac{G m}{(r')^2} , dr' + \text{costante}
+\end{equation}
+Questa costante di integrazione viene generalmente fissata imponendo la condizione al contorno asintotica:
+\begin{equation}
+\lim_{r \to \infty} \phi(r) = 0
+\end{equation}
+
+\textbf{Andamento del Potenziale:} Analizzando la curva generale del potenziale gravitazionale $\phi$ per una stella sferica, osserviamo che al centro ($r=0$) la derivata prima è nulla; la curva parte quindi con pendenza zero. Man mano che ci si sposta verso l'esterno, all'aumentare della massa $m$ racchiusa nel guscio, il potenziale cresce (assumendo valori meno negativi), per poi tendere asintoticamente a zero all'infinito. La pendenza di questa curva ($\partial \phi / \partial r$) definisce in ogni punto l'entità della gravità $g$, la quale è un vettore costantemente diretto verso il centro della stella.
+
+
+\section{Proprietà delle Derivate Parziali e Costanza del Tempo}
+
+Riprendendo il discorso introdotto in precedenza, è fondamentale chiarire un concetto matematico essenziale: quando eseguiamo una derivata parziale rispetto alla massa $m$, per definizione stessa di derivata parziale, tutte le altre variabili indipendenti (in questo caso, il tempo $t$) vengono mantenute fisse. Pertanto, in tale contesto, il tempo è da considerarsi costante.
+
+\section{L'Equilibrio Idrostatico (HE)}
+
+Un concetto fondamentale nello studio della struttura stellare è l'\textbf{equilibrio idrostatico} (spesso abbreviato come \textbf{HE}). Il fatto empirico che il Sole non si espanda né si contragga visibilmente è la prova evidente che l'equilibrio idrostatico all'interno di una stella funziona in modo estremamente efficace.
+
+In idrodinamica, la condizione di equilibrio idrostatico equivale all'equazione di \textbf{conservazione della quantità di moto} (o \textit{momentum conservation}).
+
+\subsection{Descrizione Euleriana dell'Equilibrio Idrostatico}
+
+Consideriamo un guscio sferico di spessore infinitesimo $dr$. La massa contenuta all'interno di questo guscio è soggetta all'accelerazione gravitazionale diretta verso l'interno. Affinché la stella sia in equilibrio, questa forza gravitazionale deve essere perfettamente bilanciata dalla differenza di pressione (ovvero il \textbf{gradiente di pressione}) tra la parte interna e la parte esterna del guscio.
+
+In termini matematici, l'accelerazione gravitazionale moltiplicata per la densità ($\rho g$) è bilanciata dal gradiente della pressione. Sostituendo l'espressione dell'accelerazione di gravità $g = \frac{Gm}{r^2}$, otteniamo l'equazione dell'equilibrio idrostatico nella \textbf{descrizione euleriana}:
+
+\begin{equation}
+\frac{\partial P}{\partial r} = -\frac{G m}{r^2} \rho
+\end{equation}
+
+\subsection{Descrizione Lagrangiana dell'Equilibrio Idrostatico}
+
+Vediamo ora come si trasforma questa equazione passando alla \textbf{descrizione lagrangiana}. Per farlo, applichiamo la regola di trasformazione per il cambio di variabili ricavata in precedenza, basata sull'equazione di continuità della massa:
+
+\begin{equation}
+\frac{\partial r}{\partial m} = \frac{1}{4\pi r^2 \rho}
+\end{equation}
+
+Moltiplicando l'equazione euleriana per questo fattore, otteniamo l'espressione del gradiente di pressione rispetto alla coordinata di massa $m$:
+
+\begin{equation}
+\frac{\partial P}{\partial m} = -\frac{G m}{4\pi r^4}
+\end{equation}
+
+Sebbene a prima vista questa equazione possa sembrare più complessa a causa della potenza di $r$ al denominatore, in realtà è notevolmente più semplice. Notiamo infatti due differenze cruciali rispetto al caso euleriano:
+\begin{itemize}
+\item La densità $\rho$ non compare più esplicitamente nell'equazione.
+\item La dipendenza radiale passa da proporzionale a $\frac{1}{r^2}$ a proporzionale a $\frac{1}{r^4}$.
+\end{itemize}
+
+\subsection{Stabilità e Tempi Scala Dinamici}
+
+L'equilibrio idrostatico è la condizione in cui le stelle si trovano per la stragrande maggioranza della loro vita. È un equilibrio molto difficile da violare in modo permanente.
+
+Se una stella viene parzialmente perturbata, essa ripristinerà l'equilibrio idrostatico in un intervallo di tempo estremamente breve, noto come \textbf{tempo scala dinamico} (o tempo scala idrodinamico). Ad esempio, se perturbassimo l'intera struttura del Sole, esso ritornerebbe in equilibrio idrostatico in appena mezz'ora. Questo meccanismo di ripristino è estremamente potente; pertanto, per violare significativamente l'equilibrio idrostatico, la perturbazione iniziale deve essere eccezionalmente severa e violenta. Anche in presenza di lievi perturbazioni interne, l'equazione dell'equilibrio idrostatico rimane valida a meno di violazioni percentuali minuscole.
+
+\section{Modelli Puramente Meccanici di Struttura Stellare}
+
+Grazie alla sola condizione di equilibrio idrostatico, siamo già in grado di ricavare alcune prime soluzioni semplici al problema della struttura stellare. Chiameremo queste soluzioni elementari "soluzioni alla lavagna" (\textit{whiteboard simple solutions}). Esse si basano esclusivamente sulle due equazioni introdotte finora, utilizzando preferibilmente la descrizione lagrangiana in quanto matematicamente più agevole:
+
+\begin{enumerate}
+\item \textbf{Continuità della massa:}
+\begin{equation}
+\frac{\partial r}{\partial m} = \frac{1}{4\pi r^2 \rho}
+\end{equation}
+
+```
+\item \textbf{Continuità della quantità di moto (Equilibrio Idrostatico):}
+\begin{equation}
+    \frac{\partial P}{\partial m} = -\frac{G m}{4\pi r^4}
+\end{equation}
+
+```
+
+\end{enumerate}
+
+\subsection{Il Problema della Chiusura del Sistema}
+
+Il sistema appena descritto è composto da sole due equazioni ma presenta \textbf{tre incognite} (il raggio $r$, la densità $\rho$ e la pressione $P$, tutte in funzione della massa $m$).
+Per chiudere il problema e ottenere una soluzione analitica, necessitiamo di una terza equazione: l'\textbf{equazione di stato}.
+
+Se utilizzassimo l'equazione di stato di un gas perfetto, verrebbe introdotta un'ulteriore variabile termodinamica, ovvero la \textbf{temperatura} ($T$). Ricordiamo che l'equazione di stato dei gas perfetti può essere scritta come:
+
+\begin{equation}
+\rho = \frac{\mu}{\mathcal{R}} \frac{P}{T}
+\end{equation}
+
+dove $\mu$ è il \textbf{peso molecolare medio} e $\mathcal{R}$ è la costante dei gas. In questo scenario generico (dove $\rho$ è funzione sia di $P$ che di $T$), il sistema non sarebbe chiuso e necessiterebbe di un'ulteriore equazione (legata al trasporto e alla generazione di energia) per essere risolto.
+
+\subsection{Gas Barotropici}
+
+Tuttavia, esistono situazioni fisiche specifiche in cui l'equazione di stato non introduce una terza variabile. Questi casi si verificano quando abbiamo a che fare con \textbf{gas barotropici}, ovvero fluidi in cui la densità dipende \textit{esclusivamente} dalla pressione: $\rho = \rho(P)$. In tali circostanze non serve una terza incognita e il sistema formato da continuità della massa ed equilibrio idrostatico può essere risolto autonomamente, dando origine a quelli che definiamo \textbf{modelli puramente meccanici}.
+
+Alcuni esempi notevoli di condizioni o gas barotropici includono:
+\begin{itemize}
+\item \textbf{Sfera omogenea:} la densità è assunta costante in tutta la stella ($\rho = \text{costante}$). Questo funge direttamente da terza equazione.
+\item \textbf{Sfera isoterma:} un gas mantenuto a temperatura costante in tutta la sua struttura.
+\item \textbf{Gas completamente degenere:} la pressione di degenerazione quantistica dipende solo dalla densità (e non dalla temperatura). Questa approssimazione si applica perfettamente a oggetti compatti come le \textbf{nane bianche} e, in forma semplificata, per la materia degenere all'interno delle \textbf{stelle di neutroni}.
+\item \textbf{Modelli politropici:} astrazioni matematiche in cui la relazione tra pressione e densità assume la forma $P \propto \rho^\gamma$. Questi modelli si rivelano estremamente utili; storicamente, sono stati utilizzati da Subrahmanyan Chandrasekhar per calcolare analiticamente la celebre \textbf{massa limite di Chandrasekhar} per gli oggetti degeneri.
+\end{itemize}
+
+\section{Applicazioni dell'Equilibrio Idrostatico: Stime dell'Ordine di Grandezza}
+
+Sulla base dell'equazione dell'equilibrio idrostatico introdotta finora, è possibile ricavare il valore stimato della pressione e della temperatura al centro di una stella. Non siamo interessati a calcolare il valore esatto in questa fase, bensì a determinare l'ordine di grandezza, ovvero come ci aspettiamo che la pressione e la temperatura dipendano dalla massa e dal raggio della stella. Questa analisi delle relazioni di scala è una pratica molto comune in astrofisica.
+
+\subsection{Stima della Pressione Centrale}
+
+Scriviamo l'equazione dell'equilibrio idrostatico nella sua forma lagrangiana:
+\begin{equation}
+\frac{\partial P}{\partial m} = -\frac{G m}{4\pi r^4}
+\end{equation}
+
+Per ricavare l'ordine di grandezza, approssimiamo la derivata al primo membro come il rapporto incrementale tra la differenza di pressione (tra la superficie e il centro) e la massa della stella:
+\begin{equation}
+\frac{\partial P}{\partial m} \approx \frac{P_{sup} - P_c}{M}
+\end{equation}
+dove $P_{sup}$ è la pressione superficiale e $P_c$ è la pressione centrale.
+
+Per valutare il secondo membro dell'equazione, effettuiamo una media valutando le variabili a metà della massa stellare ($m = M/2$) e a metà del raggio ($r = R/2$). Il vantaggio di utilizzare la forma lagrangiana in questo calcolo risiede nel fatto che la densità non compare esplicitamente nell'equazione.
+
+Sostituendo queste approssimazioni, si ottiene:
+\begin{equation}
+\frac{P_{sup} - P_c}{M} \approx - \frac{G \left(\frac{M}{2}\right)}{4\pi \left(\frac{R}{2}\right)^4} = - \frac{\frac{G M}{2}}{4\pi \frac{R^4}{16}} = - \frac{2 G M}{\pi R^4}
+\end{equation}
+
+Poiché la pressione superficiale è del tutto trascurabile rispetto alla pressione centrale ($P_{sup} \ll P_c$), possiamo eliminare $P_{sup}$ e i segni negativi, ricavando per la pressione centrale:
+\begin{equation}
+\frac{P_c}{M} \approx \frac{2 G M}{\pi R^4} \implies P_c \approx \frac{2 G M^2}{\pi R^4}
+\end{equation}
+
+Benché sia un'approssimazione, questa formula ci fornisce un'informazione cruciale: la pressione centrale scala proporzionalmente al quadrato della massa diviso il raggio alla quarta. Questa è la relazione di scala fondamentale per la pressione, che rimane valida in generale:
+\begin{equation}
+P_c \propto \frac{M^2}{R^4}
+\end{equation}
+
+\textbf{Esempio numerico per il Sole:}\
+Inserendo i parametri solari in questa formula approssimata, si ottiene un valore per la pressione centrale dell'ordine di:
+\begin{equation}
+P_c \approx 7 \times 10^{15} , \text{dine/cm}^2
+\end{equation}
+Il valore reale, calcolato mediante modelli computazionali avanzati, è di circa $2.4 \times 10^{17} \, \text{dine/cm}^2$. Considerando la semplicità dell'approssimazione, non siamo troppo lontani dall'ordine di grandezza corretto.
+
+\subsection{Stima della Temperatura Centrale}
+
+Per calcolare la temperatura centrale, l'equazione dell'equilibrio idrostatico non è sufficiente; dobbiamo ricorrere a un'equazione di stato. Approssimiamo il comportamento della materia stellare utilizzando l'equazione di stato dei gas perfetti, valida in tutta la struttura:
+\begin{equation}
+P = \frac{\rho \mathcal{R} T}{\mu} \implies T = \frac{\mu}{\mathcal{R}} \frac{P}{\rho}
+\end{equation}
+dove $\mu$ è il peso molecolare medio e $\mathcal{R}$ è la costante dei gas.
+Valutando l'equazione al centro della stella, la temperatura centrale $T_c$ sarà:
+\begin{equation}
+T_c = \frac{\mu}{\mathcal{R}} \frac{P_c}{\rho_c}
+\end{equation}
+
+Introduciamo ora la \textbf{densità media} $\bar{\rho}$, definita come il rapporto tra la massa totale e il volume della stella:
+\begin{equation}
+\bar{\rho} = \frac{M}{\frac{4}{3}\pi R^3}
+\end{equation}
+
+Per manipolare l'equazione, moltiplichiamo e dividiamo per la densità media $\bar{\rho}$:
+\begin{equation}
+T_c = \frac{\mu}{\mathcal{R}} P_c \left(\frac{1}{\bar{\rho}}\right) \left(\frac{\bar{\rho}}{\rho_c}\right)
+\end{equation}
+
+Sostituendo nell'equazione le espressioni precedentemente trovate per $P_c$ e $\bar{\rho}$, otteniamo:
+\begin{equation}
+T_c = \frac{\mu}{\mathcal{R}} \left( \frac{2 G M^2}{\pi R^4} \right) \left( \frac{\frac{4}{3}\pi R^3}{M} \right) \frac{\bar{\rho}}{\rho_c}
+\end{equation}
+
+Semplificando i termini matematici (come il raggio, la massa e $\pi$), la relazione diventa:
+\begin{equation}
+T_c = \frac{8}{3} \frac{\mu}{\mathcal{R}} \frac{G M}{R} \frac{\bar{\rho}}{\rho_c}
+\end{equation}
+
+Perché abbiamo isolato il rapporto $\bar{\rho} / \rho_c$? Poiché non vogliamo fare assunzioni specifiche sul profilo di densità, possiamo sfruttare la certezza fisica che la densità media è sicuramente minore della densità centrale, ovvero:
+\begin{equation}
+\frac{\bar{\rho}}{\rho_c} < 1
+\end{equation}
+
+Ciò ci permette di definire almeno un limite superiore per la temperatura centrale:
+\begin{equation}
+T_c \lesssim \frac{8}{3} \frac{\mu}{\mathcal{R}} \frac{G M}{R}
+\end{equation}
+Questa frazione di densità assume tipicamente valori compresi tra $0.01$ e $0.03$.
+
+La conclusione fondamentale di questa derivazione, persino più semplice di quella relativa alla pressione, è la \textbf{relazione di scala per la temperatura}: la temperatura centrale aumenta con la massa della stella e diminuisce con il raggio.
+\begin{equation}
+T_c \propto \frac{M}{R}
+\end{equation}
+
+\textbf{Esempio numerico per il Sole:}\
+Ipotizzando per il Sole un peso molecolare medio $\mu \approx 0.5$, il limite per la temperatura centrale calcolato in questo modo risulta essere:
+\begin{equation}
+T_c \lesssim 3 \times 10^7 , \text{K}
+\end{equation}
+Questo limite è coerente con il valore reale della temperatura centrale solare, che si attesta attorno a $1.6 \times 10^7 \, \text{K}$.
+
+Queste leggi di scala (note come "back-of-the-envelope calculations") devono essere imparate a memoria, poiché verranno utilizzate ampiamente nelle lezioni future. La motivazione fisica è diretta: affinché l'equilibrio idrostatico sia garantito, la pressione deve assumere un valore proporzionale a $M^2/R^4$, il che, applicando la legge dei gas perfetti, impone che la temperatura vari proporzionalmente a $M/R$.
+
+\section{Dinamica Stellare: Equazioni di Moto e Tempi Scala}
+
+Rispetto a situazioni idealizzate, l'astrofisica presenta complicazioni in quanto le strutture stellari, in particolari fasi evolutive, possono variare assai rapidamente. Si pensi, ad esempio, all'esplosione di una supernova, evento in cui l'equilibrio idrostatico viene violentemente violato. Per affrontare questi scenari in termini generali, è necessario introdurre le equazioni dinamiche del moto.
+
+\subsection{Derivazione dell'Equazione del Moto}
+
+Riprendiamo il problema del bilanciamento delle forze. Per valutare il moto di un guscio sferico di massa $dm$, dobbiamo calcolare la somma delle forze agenti per unità di area:
+\begin{enumerate}
+\item \textbf{Forza dovuta al gradiente di pressione (per unità di area):} \
+Sfruttando la coordinata di massa, tale forza assume la forma: $- \frac{\partial P}{\partial m} dm$.
+
+```
+\item \textbf{Forza gravitazionale (per unità di area):} \\
+Si ottiene moltiplicando l'accelerazione di gravità ($g$) per la massa del guscio, per poi dividere per la superficie del guscio stesso ($4\pi r^2$):
+\begin{equation}
+    - g \left( \frac{dm}{4\pi r^2} \right) = - \frac{G m}{r^2} \frac{dm}{4\pi r^2} = - \frac{G m}{4\pi r^4} dm
+\end{equation}
+
+```
+
+\end{enumerate}
+
+Se il sistema non è in equilibrio idrostatico, la somma di queste due forze non si annulla, ma causa un'accelerazione radiale. Secondo la seconda legge della dinamica, l'accelerazione è la derivata seconda del raggio rispetto al tempo ($\frac{\partial^2 r}{\partial t^2}$).
+In termini di forza per unità di area, avremo:
+\begin{equation}
+\left(\frac{dm}{4\pi r^2}\right) \frac{\partial^2 r}{\partial t^2} = - \frac{\partial P}{\partial m} dm - \frac{G m}{4\pi r^4} dm
+\end{equation}
+
+Dividendo l'intera equazione per $dm$, si ottiene l'equazione del moto generale del plasma stellare:
+\begin{equation}
+\frac{1}{4\pi r^2} \frac{\partial^2 r}{\partial t^2} = - \frac{\partial P}{\partial m} - \frac{G m}{4\pi r^4}
+\end{equation}
+
+Analizzando i segni al secondo membro: poiché la pressione diminuisce muovendosi verso l'esterno, la derivata $\frac{\partial P}{\partial m}$ è intrinsecamente negativa. Di conseguenza, il termine $-\frac{\partial P}{\partial m}$ risulta positivo, e rappresenta correttamente una forza repulsiva diretta verso l'esterno della stella. Il termine gravitazionale rimane negativo, indicando la sua natura attrattiva verso il centro.
+
+\subsection{Tempo Scala di Collasso Gravitazionale (Free-fall Timescale)}
+
+L'equazione dinamica si rivela estremamente utile per definire i tempi scala dei fenomeni stellari, i quali permettono di stabilire in anticipo quali termini dell'equazione potranno essere trascurati in situazioni fisiche complesse. Date le ampie variazioni degli ordini di grandezza in astrofisica, questa semplificazione è spesso indispensabile.
+
+Possiamo definire il tempo scala introducendo situazioni estreme:
+\begin{itemize}
+\item Valutando il collasso gravitazionale in assenza totale di pressione.
+\item Valutando l'esplosione eliminando la forza di gravità.
+\end{itemize}
+
+Consideriamo il primo caso. Immaginiamo una situazione irrealistica in cui annulliamo del tutto le forze di pressione: il termine $-\frac{\partial P}{\partial m}$ diventa trascurabile. La stella collassa unicamente sotto il suo stesso peso.
+
+L'accelerazione può essere stimata in valore assoluto mediante l'analisi dimensionale, come rapporto tra uno spazio (il raggio stellare $R$) e il quadrato di un tempo (che definiremo come \textbf{tempo di caduta libera} o $\tau_{ff}$):
+\begin{equation}
+\frac{\partial^2 r}{\partial t^2} \approx \frac{R}{\tau_{ff}^2}
+\end{equation}
+
+Inserendo questa approssimazione dimensionale nell'equazione del moto in cui è stata azzerata la pressione, e riferendoci a tutto il volume stellare, otteniamo:
+\begin{equation}
+\frac{1}{4\pi R^2} \frac{R}{\tau_{ff}^2} \approx \frac{G M}{4\pi R^4}
+\end{equation}
+
+Semplificando i termini costanti su ambo i lati, troviamo il legame tra accelerazione cinematica e accelerazione di gravità $g$:
+\begin{equation}
+\frac{R}{\tau_{ff}^2} \approx \frac{G M}{R^2} = g
+\end{equation}
+
+Isolando infine il tempo di caduta libera $\tau_{ff}$, si ricava:
+\begin{equation}
+\tau_{ff} \approx \sqrt{\frac{R}{g}} \approx \sqrt{\frac{R^3}{G M}}
+\end{equation}
+Nella prossima lezione, applicheremo un procedimento analogo per ricavare il tempo scala dell'esplosione termica.
