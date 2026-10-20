@@ -2,154 +2,187 @@
 
 [🇮🇹 Leggi in italiano](README.md)
 
-Benvenuti nella repository condivisa degli appunti del corso di Astrophysics! Qui raccogliamo, scriviamo in **LaTeX** e aggiorniamo insieme il materiale delle lezioni.
+Welcome to the shared repository of the Astrophysics course notes! Here we collect, write in **LaTeX** and update the lecture material together.
 
 ---
 
-## 🛠️ 1. Installazione e Configurazione Iniziale (Solo la prima volta)
+## 🛠️ 1. Initial Installation and Configuration (First time only)
 
-Per scrivere e compilare gli appunti sul tuo computer devi installare **Git**, **Visual Studio Code** e un **compilatore LaTeX**. Segui la guida passo-passo per il tuo sistema operativo.
-
----
-
-### 🪟 GUIDA PER WINDOWS
-
-#### Passo 1.1: Installare Git
-1. Vai sul sito ufficiale di Git: [git-scm.com/download/win](https://git-scm.com/download/win).
-2. Il download dovrebbe partire in automatico (oppure clicca su *Click here to download manually* se usi versioni a 64-bit).
-3. Apri il file scaricato (`.exe`) e clicca su **Avanti (Next)** in tutte le schermate, lasciando attive le impostazioni predefinite consigliate.
-
-#### Passo 1.2: Installare Visual Studio Code (VS Code)
-1. Vai sul sito ufficiale: [code.visualstudio.com](https://code.visualstudio.com/).
-2. Clicca sul grande pulsante blu **Download for Windows** per scaricare l'installer.
-3. Apri il file eseguibile scaricato. Durante l'installazione:
-   * Accetta le condizioni della licenza.
-   * Assicurati di spuntare la casella **"Aggiungi 'Apri con Code' al menu contestuale di Windows"** e **"Aggiungi a PATH"** (così il computer riconoscerà VS Code ovunque).
-   * Clicca su **Installa** e poi su *Fine*.
-
-#### Passo 1.3: Installare il compilatore LaTeX (MiKTeX + Strawberry Perl)
-Per compilare i file `.tex` su Windows serve MiKTeX (il motore LaTeX) e Strawberry Perl (necessario a VS Code per automatizzare la generazione del PDF):
-1. **Installa MiKTeX:** 
-   * Vai su [miktex.org/download](https://miktex.org/download) e scarica l'installer per Windows.
-   * Avvialo, accetta i termini e seleziona *Install MiKTeX only for me* (o per tutti gli utenti).
-   * Nella schermata dei pacchetti mancanti, seleziona **Yes** alla voce *"Install missing packages on-the-fly"* (eviterà errori se usi pacchetti particolari). Al termine, chiudi l'installazione.
-2. **Aggiorna MiKTeX:**
-   * Apri il menu Start di Windows, cerca e apri **MiKTeX Console**.
-   * Clicca su **Updates** nel menu a sinistra, poi su **Check for updates**. Se ci sono aggiornamenti, clicca su **Update now**.
-3. **Installa Strawberry Perl (OBBLIGATORIO per Windows):**
-   * Vai su [strawberryperl.com](https://strawberryperl.com/).
-   * Scarica la versione raccomandata a 64-bit (`.msi` installer).
-   * Apri il file scaricato e clicca su *Avanti* fino al completamento dell'installazione.
-4. **Riavvia il computer** per rendere effettive le modifiche.
+To write and compile the notes on your computer you need to install **Git**, **Visual Studio Code** and a **LaTeX compiler**. Follow the step-by-step guide for your operating system.
 
 ---
 
-### 🍎 GUIDA PER MAC (macOS)
+### 🪟 GUIDE FOR WINDOWS
 
-#### Passo 1.1: Installare Git
-1. Apri l'app **Terminale** sul Mac (premi `Cmd + Spazio`, digita "Terminale" e premi Invio).
-2. Scrivi il comando `git --version` e premi Invio.
-3. Se Git non è installato, macOS aprirà automaticamente una finestra che ti chiederà di installare gli *Strumenti da riga di comando (Command Line Tools)*. Clicca su **Installa** e attendi il termine del download.
+#### Step 1.1: Install Git
 
-#### Passo 1.2: Installare Visual Studio Code (VS Code)
-1. Vai sul sito ufficiale: [code.visualstudio.com](https://code.visualstudio.com/).
-2. Clicca sul pulsante di download per Mac (seleziona la versione *Universal* o quella specifica per il tuo processore Apple Silicon / Intel).
-3. Apri la cartella *Download* e trascina l'icona di **Visual Studio Code** dentro la cartella **Applicazioni**.
+1. Go to the official Git website: [git-scm.com/download/win](https://git-scm.com/download/win).
+​2. The download should start automatically (or click on *Click here to download manually* if you use 64-bit versions).
+2. Open the downloaded file (`.exe`) and click on **Next (Avanti)** in all screens, leaving the recommended default settings active.
 
-#### Passo 1.3: Installare il compilatore LaTeX (MacTeX)
-Su Mac esiste un pacchetto completo che include tutto il necessario senza configurazioni aggiuntive:
-1. Vai sul sito del MacTeX: [tug.org/mactex/mactex-download.html](https://tug.org/mactex/mactex-download.html).
-2. Clicca sul link **`MacTeX.pkg`** per avviare il download (è un file pesante, circa 5 GB, poiché include già tutti i pacchetti di simboli e font matematici).
-3. Una volta completato il download, apri il file `.pkg` e segui la procedura guidata di installazione cliccando sempre su *Continua* e inserendo la password del Mac quando richiesto. *(Nota: su macOS il supporto a Perl è già integrato nativamente nel sistema).*
+#### Step 1.2: Install Visual Studio Code (VS Code)
 
----
+1. Go to the official website: [code.visualstudio.com](https://code.visualstudio.com/).
+​2. Click on the large blue **Download for Windows** button to download the installer.
+2. Open the downloaded executable file. During installation:
+* Accept the license conditions.
+* Make sure to check the box **"Add 'Open with Code' to Windows context menu"** and **"Add to PATH"** (so the computer will recognize VS Code everywhere).
+* Click on **Install** and then on *Finish*.
 
-### ⚙️ Configurare VS Code (Valido per Windows e Mac)
 
-Una volta installati tutti i programmi, apri **Visual Studio Code** e completa questi ultimi passaggi:
 
-1. **Installa l'estensione LaTeX Workshop:**
-   * Clicca sull'icona **Extensions** nella barra laterale a sinistra (i quattro quadratini, oppure premi `Ctrl + Shift + X` su Windows / `Cmd + Shift + X` su Mac).
-   * Digita **`LaTeX Workshop`** (sviluppata da *James Yu*) e clicca su **Install**.
-2. **Configura Git con il tuo nome e la tua email:**
-   * Dal menu in alto di VS Code seleziona **Terminal** -> **New Terminal**.
-   * Nel pannello del terminale in basso, incolla questi due comandi (sostituendo i dati tra virgolette con il tuo nome reale e la mail associata al tuo account GitHub) e premi Invio dopo ciascuno:
-     ```bash
-     git config --global user.name "Tuo Nome"
-     git config --global user.email "tua-email@esempio.com"
-     ```
-3. **Collega il tuo account GitHub a VS Code:**
-   * Clicca sull'icona del **Profilo** (ingranaggio o omino in basso a sinistra nella barra laterale di VS Code).
-   * Clicca su **Sign in with GitHub to use...** e autorizza l'accesso tramite la pagina del browser che si aprirà in automatico.
+#### Step 1.3: Install the LaTeX compiler (MiKTeX + Strawberry Perl)
 
----
+To compile `.tex` files on Windows you need MiKTeX (the LaTeX engine) and Strawberry Perl (necessary for VS Code to automate the PDF generation):
 
-## 📥 2. Come scaricare la Repository su VS Code (Clonazione)
+1. **Install MiKTeX:**
+* Go to [miktex.org/download](https://miktex.org/download) and download the installer for Windows.
+* Launch it, accept the terms and select *Install MiKTeX only for me* (or for all users).
+* In the missing packages screen, select **Yes** for the item *"Install missing packages on-the-fly"* (it will avoid errors if you use particular packages). When finished, close the installation.
 
-1. Apri VS Code.
-2. Premi `Ctrl + Shift + P` (su Windows) oppure `Cmd + Shift + P` (su Mac) per aprire la barra dei comandi in alto.
-3. Digita **`Git: Clone`** e premi Invio.
-4. Seleziona **Clone from GitHub** (oppure incolla direttamente l'URL di questa pagina web).
-5. Seleziona la repository dalla lista che compare e scegli una cartella vuota sul tuo computer in cui salvarla.
-6. Quando VS Code ti chiede in basso a destra se desideri aprire la cartella clonata, clicca su **Open**.
+
+2. **Update MiKTeX:**
+* Open the Windows Start menu, search for and open **MiKTeX Console**.
+* Click on **Updates** in the left menu, then on **Check for updates**. If there are updates, click on **Update now**.
+
+
+3. **Install Strawberry Perl (MANDATORY for Windows):**
+* Go to [strawberryperl.com](https://strawberryperl.com/).
+* Download the recommended 64-bit version (`.msi` installer).
+* Open the downloaded file and click on *Next* until the installation is complete.
+
+
+4. **Restart the computer** to make the changes effective.
 
 ---
 
-## 📄 3. Come sono organizzati i file LaTeX e come compilare il PDF
+### 🍎 GUIDE FOR MAC (macOS)
 
-Per evitare che due persone modifichino lo stesso file contemporaneamente creando conflitti, gli appunti sono organizzati in questo modo:
+#### Step 1.1: Install Git
 
-* **`main.tex`**: è il file principale. Contiene solo l'impostazione grafica, i pacchetti (`\usepackage`), l'indice e i richiami alle singole lezioni (`\input{lezioni/lezioneXX.tex}`). **Non scrivere gli appunti direttamente qui dentro.**
-* **Cartella `lezioni/`**: contiene un file separato per ogni lezione (es. `lezione01.tex`, `lezione02.tex`). Qui dentro va scritto solo il testo della lezione (partendo direttamente da `\section{...}`), **senza** rimettere `\documentclass` o `\begin{document}`.
-* **Cartella `immagini/`**: contiene tutte le immagini o schemi richiamati negli appunti.
+1. Open the **Terminal** app on the Mac (press `Cmd + Space`, type "Terminal" and press Enter).
+​2. Type the command `git --version` and press Enter.
+2. If Git is not installed, macOS will automatically open a window asking you to install the *Command Line Tools*. Click on **Install** and wait for the download to finish.
 
-### Come generare e vedere il PDF su VS Code:
-1. Quando scrivi e salvi un file `.tex` (`Ctrl + S` su Windows / `Cmd + S` su Mac), *LaTeX Workshop* avvierà la compilazione automatica in background.
-2. Per vedere l'anteprima del PDF affiancata al codice, apri il file `main.tex` e clicca sull'icona **View LaTeX PDF** in alto a destra (il foglio con la lente d'ingrandimento). Scegli se visualizzarlo in una tab interna di VS Code o nel browser.
-3. *Nota importante:* Il file PDF finale compilato (`main.pdf`) resta salvato solo sul tuo computer per consentirti di leggere l'anteprima; viene automaticamente ignorato da Git (grazie al file `.gitignore` impostato su `TeX`) per evitare conflitti e blocchi durante la sincronizzazione con i colleghi.
+#### Step 1.2: Install Visual Studio Code (VS Code)
 
----
+1. Go to the official website: [code.visualstudio.com](https://code.visualstudio.com/).
+​2. Click on the download button for Mac (select the *Universal* version or the specific one for your Apple Silicon / Intel processor).
+2. Open the *Downloads* folder and drag the **Visual Studio Code** icon into the **Applications** folder.
 
-## 🔄 4. Come lavorare insieme (Flusso quotidiano)
+#### Step 1.3: Install the LaTeX compiler (MacTeX)
 
-Per non sovrascrivere il lavoro degli altri, segui **sempre** questi 4 passaggi nell'ordine esatto ogni volta che apri VS Code per studiare o aggiungere appunti:
+On Mac there is a complete package that includes everything needed without additional configurations:
 
-### Passo A: Scarica le modifiche degli altri (`Pull`) — *FALLO SEMPRE PRIMA DI INIZIARE*
-Prima di scrivere qualsiasi riga di testo, assicurati di avere l'ultima versione aggiornata:
-1. Clicca sull'icona **Source Control** nella barra a sinistra (quella con i tre pallini collegati da linee, oppure premi `Ctrl + Shift + G`).
-2. Clicca sui tre puntini **`...`** in alto nel pannello Source Control -> **Pull**. *(In alternativa, puoi cliccare sull'icona delle frecce circolari di sincronizzazione in basso a sinistra nella barra di stato).*
-
-### Passo B: Scrivi o modifica gli appunti
-* Apri il file della lezione su cui devi lavorare (dentro la cartella `lezioni/`) oppure creane uno nuovo e aggiungilo in `main.tex` tramite il comando `\input{lezioni/nomefile.tex}`.
-* Salva il file (`Ctrl + S` o `Cmd + S`) e controlla dal pannello PDF che la compilazione avvenga senza errori.
-
-### Passo C: Registra le tue modifiche locali (`Commit`)
-Quando hai finito di scrivere o sistemare una lezione:
-1. Torna nel pannello **Source Control** a sinistra: vedrai l'elenco dei file modificati sotto la voce *Changes*.
-2. Passa il mouse sopra la voce *Changes* e clicca sul simbolo **`+`** (*Stage All Changes*) per aggiungere i file pronti per il salvataggio.
-3. Nella casella di testo **Message** in alto, scrivi un messaggio breve ma chiaro che spiega cosa hai fatto (es. `Aggiunti appunti lezione 04 su matrici e vettori`).
-4. Clicca sul grande pulsante blu **Commit**.
-
-### Passo D: Invia le modifiche online (`Push`)
-1. Subito dopo aver fatto il Commit, il pulsante blu cambierà etichetta in **Sync Changes** (o **Push**). Cliccaci sopra.
-2. Le tue modifiche verranno caricate sulla repository online di GitHub, pronte per essere scaricate dai tuoi colleghi.
+1. Go to the MacTeX website: [tug.org/mactex/mactex-download.html](https://tug.org/mactex/mactex-download.html).
+​2. Click on the **`MacTeX.pkg`** link to start the download (it's a heavy file, about 5 GB, because it already includes all the math symbol and font packages).
+2. Once the download is complete, open the `.pkg` file and follow the installation wizard by always clicking on *Continue* and entering the Mac password when requested. *(Note: on macOS Perl support is already natively integrated into the system).*
 
 ---
 
-## 🌿 5. Lavorare su modifiche grandi senza fare danni (Branch)
+### ⚙️ Configure VS Code (Valid for Windows and Mac)
 
-Se tu o un tuo collega dovete fare una revisione profonda, riorganizzare i capitoli o scrivere molte pagine di prova, **non lavorate direttamente sul ramo principale (`main`)**, ma create un ramo separato:
-1. Clicca sul nome del ramo attuale (solitamente **`main`**) che vedi in basso a sinistra nella barra di stato di VS Code.
-2. Nel menu a tendina che compare in alto, seleziona **+ Create new branch...**.
-3. Dagli un nome descrittivo senza spazi (es. `revisione-analisi` o `aggiunta-esercizi`) e premi Invio.
-4. Lavora normalmente facendo i tuoi *Commit* e *Push* su questo nuovo ramo (cliccando su *Publish Branch* la prima volta).
-5. Quando il lavoro è completo e verificato, vai sulla pagina web di GitHub della repository e apri una **Pull Request** per unire in modo sicuro il tuo ramo al `main`.
+Once all programs are installed, open **Visual Studio Code** and complete these final steps:
+
+1. **Install the LaTeX Workshop extension:**
+* Click on the **Extensions** icon in the left sidebar (the four squares, or press `Ctrl + Shift + X` on Windows / `Cmd + Shift + X` on Mac).
+* Type **`LaTeX Workshop`** (developed by *James Yu*) and click on **Install**.
+
+
+2. **Configure Git with your name and your email:**
+* From the top menu of VS Code select **Terminal** -> **New Terminal**.
+* In the terminal panel at the bottom, paste these two commands (replacing the data in quotes with your real name and the email associated with your GitHub account) and press Enter after each one:
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your-email@example.com"
+
+```
+
+
+
+
+3. **Connect your GitHub account to VS Code:**
+* Click on the **Profile** icon (gear or little person at the bottom left in the VS Code sidebar).
+* Click on **Sign in with GitHub to use...** and authorize access via the browser page that will open automatically.
+
+
 
 ---
 
-## ⚖️ Licenza
+## 📥 2. How to download the Repository on VS Code (Cloning)
 
-Quest'opera è distribuita con Licenza **[Creative Commons Attribuzione - Non commerciale - Condividi allo stesso modo 4.0 Internazionale (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.it)**.
+1. Open VS Code.
+​2. Press `Ctrl + Shift + P` (on Windows) or `Cmd + Shift + P` (on Mac) to open the command bar at the top.
+2. Type **`Git: Clone`** and press Enter.
+3. Select **Clone from GitHub** (or paste the URL of this web page directly).
+4. Select the repository from the list that appears and choose an empty folder on your computer in which to save it.
+5. When VS Code asks you in the bottom right if you wish to open the cloned folder, click on **Open**.
 
-* **Sei libero di:** condividere, copiare e ridistribuire il materiale con qualsiasi mezzo e formato per qualsiasi fine non commerciale.
-* **Alle seguenti condizioni:** devi riconoscere una menzione di paternità adeguata agli autori originali, indicare se sono state effettuate modifiche, non puoi utilizzare il materiale a scopo di lucro e, se remixi o trasformi il materiale, devi distribuire i tuoi contributi con la stessa identica licenza del materiale originario.
+---
+
+## 📄 3. How the LaTeX files are organized and how to compile the PDF
+
+To prevent two people from modifying the same file at the same time creating conflicts, the notes are organized in this way:
+
+* **`main.tex`**: is the main file. It contains only the graphic setting, the packages (`\usepackage`), the index and the references to the individual lectures (`\input{lezioni/lezioneXX.tex}`). **Do not write the notes directly in here.**
+* **`lezioni/` folder**: contains a separate file for each lecture (e.g. `lezione01.tex`, `lezione02.tex`). In here only the text of the lecture must be written (starting directly from `\section{...}`), **without** putting back `\documentclass` or `\begin{document}`.
+* **`immagini/` folder**: contains all the images or diagrams referenced in the notes.
+
+### How to generate and see the PDF on VS Code:
+
+1. When you write and save a `.tex` file (`Ctrl + S` on Windows / `Cmd + S` on Mac), *LaTeX Workshop* will start the automatic compilation in the background.
+​2. To see the PDF preview side by side with the code, open the `main.tex` file and click on the **View LaTeX PDF** icon at the top right (the sheet with the magnifying glass). Choose whether to view it in an internal VS Code tab or in the browser.
+2. *Important note:* The final compiled PDF file (`main.pdf`) remains saved only on your computer to allow you to read the preview; it is automatically ignored by Git (thanks to the `.gitignore` file set to `TeX`) to avoid conflicts and blocks during synchronization with colleagues.
+
+---
+
+## 🔄 4. How to work together (Daily workflow)
+
+To avoid overwriting the work of others, **always** follow these 4 steps in the exact order every time you open VS Code to study or add notes:
+
+### Step A: Download others' changes (`Pull`) — *ALWAYS DO IT BEFORE STARTING*
+
+Before writing any line of text, make sure you have the latest updated version:
+
+1. Click on the **Source Control** icon in the left bar (the one with the three dots connected by lines, or press `Ctrl + Shift + G`).
+​2. Click on the three dots **`...`** at the top in the Source Control panel -> **Pull**. *(Alternatively, you can click on the circular synchronization arrows icon at the bottom left in the status bar).*
+
+### Step B: Write or edit the notes
+
+* Open the file of the lecture you need to work on (inside the `lezioni/` folder) or create a new one and add it in `main.tex` via the `\input{lezioni/nomefile.tex}` command.
+* Save the file (`Ctrl + S` or `Cmd + S`) and check from the PDF panel that the compilation happens without errors.
+
+### Step C: Record your local changes (`Commit`)
+
+When you have finished writing or fixing a lecture:
+
+1. Go back to the **Source Control** panel on the left: you will see the list of modified files under the *Changes* heading.
+​2. Hover the mouse over the *Changes* heading and click on the **`+`** symbol (*Stage All Changes*) to add the files ready for saving.
+2. In the **Message** text box at the top, write a short but clear message that explains what you did (e.g. `Added lecture 04 notes on matrices and vectors`).
+3. Click on the large blue **Commit** button.
+
+### Step D: Send the changes online (`Push`)
+
+1. Immediately after doing the Commit, the blue button will change label to **Sync Changes** (or **Push**). Click on it.
+​2. Your changes will be uploaded to the online GitHub repository, ready to be downloaded by your colleagues.
+
+---
+
+## 🌿 5. Working on major changes without doing damage (Branch)
+
+If you or a colleague have to do a deep revision, reorganize the chapters or write many test pages, **do not work directly on the main branch (`main`)**, but create a separate branch:
+
+1. Click on the name of the current branch (usually **`main`**) that you see at the bottom left in the VS Code status bar.
+​2. In the drop-down menu that appears at the top, select **+ Create new branch...**.
+2. Give it a descriptive name without spaces (e.g. `analysis-revision` or `added-exercises`) and press Enter.
+3. Work normally doing your *Commits* and *Pushes* on this new branch (clicking on *Publish Branch* the first time).
+4. When the work is complete and verified, go to the GitHub web page of the repository and open a **Pull Request** to safely merge your branch to the `main`.
+
+---
+
+## ⚖️ License
+
+This work is distributed under a **[Creative Commons Attribution - NonCommercial - ShareAlike 4.0 International License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.it)**.
+
+* **You are free to:** share, copy and redistribute the material in any medium or format for any non-commercial purpose.
+* **Under the following terms:** you must give appropriate credit to the original authors, indicate if changes were made, you may not use the material for commercial purposes and, if you remix, transform or build upon the material, you must distribute your contributions under the exact same license as the original material.
