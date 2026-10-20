@@ -1,0 +1,542 @@
+\chapter{Lecture 2 - 07-10-2026}
+
+\section{Introduction: Considerations on the Course Language}
+Since we are all Italian, we will conduct the lectures in Italian, as it would be superfluous to adopt English in this context. However, should an international student (for example, an Indian boy) arrive in the classroom, I would immediately and without any problem switch to delivering the lecture in English.
+
+\section{Timescales in Stellar Evolution}
+In the previous lecture we analyzed what the failure to satisfy hydrodynamic equilibrium would entail (an eventuality that, in practice, is almost completely verified in the vast majority of cases). The star, in the absence of equilibrium, would face two limiting scenarios:
+\begin{itemize}
+\item \textbf{Collapse toward the center}: in the event that the contribution of pressure is lacking.
+\item \textbf{Expulsion of the layers (explosion)}: in the event that the effect of gravity is lacking.
+\end{itemize}
+Although these are physically realistic situations, they only occur in highly specific conditions. A star, in fact, does not collapse instantaneously onto its own center, since it is not possible to sharply and suddenly cancel (we do not ``switch to zero'') either pressure or gravity.
+
+However, performing this ideal exercise is fundamental to define \textbf{timescales}. Such parameters will prove extremely useful when we go on to complicate the equations, allowing us to evaluate which terms are dominant and relevant over specific time intervals. This dimensional analysis is vital not only for understanding the physics of the various scenarios, but also as a \textbf{numerical approximation}: in computational numerical codes, if an effect is not relevant on a certain timescale, the equations are simplified by means of conditional logic loops (such as \textit{``if [condition] then [action]''}).
+
+\subsection{The Free-Fall Time}
+We have already defined the \textbf{free-fall time}, linked to gravitational collapse. It is essentially expressed as a function of the radius and gravity, and is proportional to the inverse of the square root of gravity itself:
+\begin{equation}
+t_{\text{ff}} \approx \sqrt{\frac{R}{g}}
+\end{equation}
+
+\subsection{The Explosion Time}
+On the other hand, ideally assuming gravity to be canceled, we can define an \textbf{explosion timescale} ($t_{\text{exp}}$). In the absence of gravity, only the acceleration term linked to the pressure gradient survives in the balance of forces.
+
+The equation for acceleration, expressed as a function of the mass coordinate $m$, takes into consideration the force per unit area:
+\begin{equation}
+a = \frac{d^2 r}{dt^2} = - 4\pi r^2 \frac{\partial P}{\partial m}
+\end{equation}
+In this context, we consider $r$ as the distance of the shell of matter from the center of the star. By appropriately dividing and multiplying by the unit area ($4\pi r^2$) during the derivation phase, the force per unit mass is obtained.
+Switching, for convenience, to an \textbf{Eulerian description}, we divide by the density and the relation simplifies into the spatial ratio with respect to the radius:
+\begin{equation}
+a = - \frac{1}{\rho} \frac{\partial P}{\partial r}
+\end{equation}
+
+Reasoning by orders of magnitude, the term on the left side (the acceleration) is dimensionally equivalent to a distance divided by a time squared. Assuming the radius of the star $R$ as the reference distance and the explosion time $t_{\text{exp}}$ as the time, we obtain:
+\begin{equation}
+a \approx \frac{R}{t_{\text{exp}}^2}
+\end{equation}
+The second side of the equation (the pressure term) can be approximated to the order of magnitude:
+\begin{equation}
+\frac{1}{\rho} \frac{\partial P}{\partial r} \approx \frac{P}{\rho R}
+\end{equation}
+Equating the two expressions, we can isolate the explosion time:
+\begin{equation}
+\frac{R}{t_{\text{exp}}^2} \approx \frac{P}{\rho R} \implies t_{\text{exp}}^2 \approx R^2 \frac{\rho}{P}
+\end{equation}
+Applying the square root we obtain:
+\begin{equation}
+t_{\text{exp}} \approx R \sqrt{\frac{\rho}{P}}
+\end{equation}
+Knowing that the term under the root (inverted with respect to how it was just written, namely $\sqrt{P/\rho}$) represents the order of magnitude of the \textbf{speed of sound} ($v_s$) within the stellar medium, we can rewrite the formula as:
+\begin{equation}
+t_{\text{exp}} \approx \frac{R}{v_s}
+\end{equation}
+The physical meaning of this result is very intuitive: the explosion timescale indicates, roughly, the time required for a sound wave to travel from the center of the star to its surface, propagating at the characteristic speed of sound of the plasma. This is obviously a simplification, since in real explosion situations shock waves or hydrodynamic shocks can come into play, but it sets a reference timescale in view of more complex analyses.
+
+\section{The Importance of Scale Quantities in Physics}
+I would like to open a parenthesis on this issue of timescales and scale quantities. When I was a student, I admit I could not digest these concepts: I wondered how it was possible to be satisfied with such approximate reasoning, rather than resorting to more rigorous and precise calculations. With time and experience, I realized their immense structural importance.
+
+When physical phenomena compose and overlap, having these dimensional quantities as a reference is extremely useful. Therefore, I invite you not to make the mistake I used to make, which is not to underestimate them. At the same time, try to intimately understand their inherent limitations. It is obvious that a stellar explosion does not proceed rigidly with that exact timescale: as one moves outward, differences in pressure and density gradients come into play. However, this estimate provides us with a crucial parameter to compare the weight of the various mathematical terms in the different phases of stellar evolution.
+
+Without the use of orders of magnitude, no progress is made in this field. Unlike pure mathematics, one of the fundamental peculiarities of physics is precisely the need for the researcher to learn to juggle scale quantities, to consciously establish which phenomenon is dominant in a given circumstance and which can instead be legitimately neglected.
+
+\section{Local Perturbations and Hydrodynamic Time}
+Broadening the discussion in a more general way, there are situations in which the stellar interior undergoes a \textbf{small local perturbation} compared to the global balance of the star (think for example of a wave, an oscillation or a small shock wave).
+In these circumstances, the plasma of the affected area will autonomously and rapidly tend to bring itself toward an equilibrium condition consistent with its local physical characteristics.
+
+Hydrostatic equilibrium is an extremely powerful mechanism: if it is perturbed (as if the system received a "kick" and moved from its ideal position), the star acts immediately to restore it. If an event locally perturbs the equilibrium condition, the system will return to a balanced state on a very precise timescale, which we call \textbf{hydrodynamic time} ($t_{\text{idr}}$).
+
+Since this adjustment process is characterized by the very rapid alternation of compensatory phases comparable to very small "explosions" and "collapses", at the local level the two timescales calculated previously end up converging. The local hydrodynamic time therefore becomes roughly analogous to both the local free-fall time and the local explosion time.
+
+\textit{[Editor's note: At this point in the lecture, a very brief informal interruption occurred due to the arrival in the classroom of a student completely wet from the rain, having traveled by motorcycle without wearing any raincoat on a Thursday of severe bad weather. After a few good-natured jokes about the need to equip oneself with a raincoat in the future, the scientific explanation continued regularly.]}
+
+\subsection{Estimate of the Global Hydrodynamic Time}
+If we want to quantify the global hydrodynamic time of the star in terms of order of magnitude by equating it to the free-fall time, we use the overall dimensions (the stellar radius $R$):
+\begin{equation}
+t_{\text{idr}} \approx t_{\text{ff}} \approx \frac{R}{g^{1/2}}
+\end{equation}
+Knowing that the surface acceleration of gravity is $g = \frac{GM}{R^2}$, we can substitute it to obtain:
+\begin{equation}
+t_{\text{idr}} \approx \frac{R}{\left( \frac{GM}{R^2} \right)^{1/2}} = R \cdot \sqrt{\frac{R^2}{GM}}
+\end{equation}
+From which the fundamental relation is deduced (which also corresponds, ultimately, to a term of the type $\approx (G\bar{\rho})^{-1/2}$):
+\begin{equation}
+t_{\text{idr}} \propto \sqrt{\frac{R^3}{M}}
+\end{equation}
+This equation shows us how this equilibrium restoration time scales in proportion to the cube root of the radius divided by the mass.
+
+\subsection{Application to Different Stellar Types}
+Based on the Sun, the hydrodynamic time is on the order of \textbf{about half an hour}. Since the quantity globally scales as $\sqrt{R^3/M}$, we can make estimates for very different stellar types, starting from the reference value of the Sun:
+
+\begin{itemize}
+\item \textbf{Red Giant (Red Giant Branch)}: Let us consider a giant star with a mass roughly analogous to the solar one ($M \approx 1 M_\odot$), but characterized by an expanded radius, about $100$ times the solar radius ($R \approx 100 R_\odot$). Applying the proportionality relation $\sqrt{R^3/M}$ (which I leave to you as a verification exercise), the hydrodynamic time necessary to restore equilibrium rises dramatically, passing to an order of magnitude of \textbf{tens of days}.
+
+```
+\item \textbf{White Dwarf}: Let us consider conversely a very high-density stellar remnant. A white dwarf possesses a comparable mass (between $0.6$ and $0.8 M_\odot$, thus approximable to around $1 M_\odot$), but inscribed in a radius that is barely a fiftieth of the solar one ($R \approx 1/50 R_\odot$). Due to this extremely dense matter, the effects are exacerbated and the adjustment occurs in extraordinarily rapid times. Scaling the values, we will speak in this case of a hydrodynamic time on the order of \textbf{45 seconds}.
+
+
+```
+
+\end{itemize}
+
+It is therefore evident to note how these dynamic effects change scale drastically depending on the evolutionary phase being studied. Having prepared this conceptual ground in advance is the most effective methodological path to consciously tackle the most sophisticated physical problems. We will encounter these advanced mathematical notions, for example, in the last part of the course, where we will treat \textbf{asteroseismology}; however, as already anticipated in the previous lecture, for the sake of completeness we will continue to conduct our derivations always remaining, basically, within the approximation of the spherical case.
+
+\section{Equations of motion and deviations from spherical symmetry}
+
+In the event that a non-symmetric problem must be treated, the equations take on a vector form. Adopting the Eulerian description, the equation of motion is expressed as:
+
+\begin{equation}
+\rho \frac{d\mathbf{v}}{dt} = -\nabla P - \rho \nabla \Phi
+\end{equation}
+
+The derivative operator $\frac{d}{dt}$ takes the name of \textbf{substantial derivative} (or material derivative) and is defined by the following relation:
+
+\begin{equation}
+\frac{d}{dt} = \frac{\partial}{\partial t} + \mathbf{v} \cdot \nabla
+\end{equation}
+
+In this context, the Laplacian operator applied in Poisson's equation for gravity is the full Laplacian.
+
+These deviations from spherical symmetry become physically relevant should certain phenomena occur, including:
+\begin{itemize}
+\item A strong rotation of the stellar body;
+\item Interactions with companion bodies;
+\item Other gravitational interactions.
+\end{itemize}
+In general terms, however, an isolated star assumes a strictly spherical geometry.
+
+\section{Hydrostatic equilibrium in General Relativity}
+
+For the sake of completeness, it is necessary to specify that, inside extremely compact objects where the density reaches orders of magnitude close to nuclear density (such as neutron stars and certain white dwarfs), hydrostatic equilibrium undergoes substantial variations due to the effects predicted by General Relativity.
+
+In this regime, the hydrostatic equilibrium equation assumes the form of the well-known \textbf{Tolman-Oppenheimer-Volkoff equation}.
+\textit{(Marginal historical note: Oppenheimer did not exclusively deal with the development of the atomic bomb, but also provided pioneering contributions to the study of neutron stars).}
+
+The equation presents a main term analogous to the classical one, multiplied by a series of corrective factors dictated by the relativistic metric:
+
+\begin{equation}
+\frac{dP}{dr} = -\frac{GM\rho}{r^2} \left( 1 + \frac{P}{\rho c^2} \right) \left( 1 + \frac{4\pi r^3 P}{M c^2} \right) \left( 1 - \frac{2GM}{rc^2} \right)^{-1}
+\end{equation}
+
+Observing the equation, it is evident that a first-order approximation ($1 \times 1 \times 1$) yields exactly the classical non-relativistic form. The corrective terms, which operate at the second order, become necessary because the structure of spacetime is different: indeed, the curvature of spacetime is introduced.
+Strictly speaking, the derivation of this equation starts from Einstein's field equations and requires the introduction of the metric tensor, the Ricci tensor and the Riemann curvature tensor. This complete proof requires dozens of pages of mathematical calculations and goes beyond the scope of this course.
+
+The implications of this physics, however, are central to the understanding of stellar evolution. It is fundamental to determine the evolutionary paths that lead to the formation of the various stellar remnants. The evolution of a star can indeed culminate in radically different scenarios:
+\begin{itemize}
+\item \textbf{Brown dwarf} (brown dwarfs);
+\item \textbf{White dwarfs} of carbon and oxygen;
+\item \textbf{White dwarfs} of helium;
+\item \textbf{Neutron stars};
+\item \textbf{Black holes};
+\item Complete explosions (supernovae) in which the star is totally disrupted: in this case no compact remnant is formed (neither a black hole nor a neutron star), with everything resolving into a transient energetic event.
+\end{itemize}
+
+\section{The Virial Theorem: a generalizable derivation}
+
+Let us now address the \textbf{virial theorem}. Although it is a concept already known and applied numerous times, it is appropriate to provide a rigorous proof that lends itself to subsequent generalizations.
+
+Normally, the virial theorem is described for an isolated system that is in a state of equilibrium (or close to equilibrium). For a star, this coincides with the condition of hydrostatic equilibrium. In the majority of standard cases, it is assumed that the star is isolated, and that consequently the pressure at its outer limit is strictly zero ($P=0$).
+However, there are scenarios in which these conditions must be applied in the presence of a non-zero external pressure. A classic example is the evolution of the core of a star, which is subjected to the pressure exerted by the overlying envelope. Let us therefore re-examine the theorem by writing relationships that allow for this generalization.
+
+Starting from the hydrostatic equilibrium equation, it is particularly advantageous to adopt the \textbf{Lagrangian description} instead of the more common Eulerian form.
+Let us consider the partial derivative with respect to mass $m$ of the term $4\pi r^3 P$:
+
+\begin{equation}
+\frac{\partial}{\partial m} \left( 4\pi r^3 P \right) = 4\pi r^3 \frac{\partial P}{\partial m} + 12\pi r^2 \frac{\partial r}{\partial m} P
+\end{equation}
+
+We proceed by performing an integration in $dm$ over the entire mass of the structure (from the center, $m=0$, to the total mass, $m=M$):
+
+\begin{equation}
+\int_0^M 4\pi r^3 \frac{\partial P}{\partial m} dm = \left[ 4\pi r^3 P \right]_0^M - \int_0^M 12\pi r^2 \frac{\partial r}{\partial m} P dm
+\end{equation}
+
+Let us analyze the first term on the right side of the equation, evaluated at the integration limits ($\left[ 4\pi r^3 P \right]_0^M$):
+\begin{itemize}
+\item \textbf{At the center ($m=0$):} Since the radius $r=0$, the term vanishes regardless of the value of the central pressure.
+\item \textbf{At the surface ($m=M$):} The term takes the value $4\pi R^3 P_s$, where $R$ is the total radius and $P_s$ is the surface pressure.
+\end{itemize}
+
+\subsection{Isolated star case}
+In the simplest case of an \textbf{isolated star} (like the Sun), the pressure at the surface is completely negligible compared to the enormous pressures of the internal layers, so that in excellent approximation we set $P_s = 0$.
+It follows that the boundary term completely vanishes:
+\begin{equation}
+\left[ 4\pi r^3 P \right]_0^M = 4\pi R^3 (0) - 0 = 0
+\end{equation}
+
+\subsection{General case with external pressure}
+As anticipated, this cancellation is not always verified. If one analyzes the core of a star wrapped by an envelope, the pressure $P_s$ at the interface between the core and the envelope will have a finite value greater than zero.
+In this case, the boundary term $4\pi R^3 P_s$ does not disappear and profoundly alters the energy balance of the system. For the purposes of this specific lecture, the term will be set to zero assuming the condition of an isolated star, but this contribution will be "resurrected" and reintegrated in future lectures when non-isolated systems are analyzed.
+
+\vspace{1em}
+\textit{[Marginal note: the lecture is temporarily suspended due to a power outage of the recording equipment.]}
+
+\section{Integration of the Hydrostatic Equilibrium Equation}
+
+We begin the analysis by observing a recurring term in the stellar structure equations: the spatial derivative of the radius as a function of mass, namely $\frac{dr}{dm}$, which corresponds to the well-known expression $\frac{1}{4\pi r^2 \rho}$.
+Substituting it inside the integrands, it is possible to end up with expressions in which the factor $12\pi r^2$ appears (deriving from the volume differential) multiplied by $\frac{1}{4\pi r^2 \rho}$, which allow simplifying the spatial variables involved.
+
+To prove the fundamental energetic relations, we start from the \textbf{hydrostatic equilibrium} equation and proceed by integrating it over the entire star. We follow the following steps:
+\begin{enumerate}
+\item \textbf{Multiplication:} We multiply both sides of the hydrostatic equilibrium equation by the volume term $4\pi r^3$.
+\item \textbf{Integration:} We carry out the calculation in detail by making explicit the limits of integration, which go from the center ($0$) up to the total mass ($M$). It is a crucial step to explicitly state that we are integrating over the entire mass of the body.
+\end{enumerate}
+
+The equation formally becomes:
+\begin{equation}
+\int_{0}^{M} 4\pi r^3 \frac{dP}{dm} , dm = - \int_{0}^{M} \frac{Gm}{r} , dm
+\end{equation}
+
+Solving the first integral (on the left-hand side) by parts and exploiting the relations seen previously for the differentials, the explicit calculations yield a negative multiplicative factor equal to $-3$ (deriving from the simplification $\frac{12}{4}$). Simultaneously, the terms containing $\pi r^2$ simplify numerator with denominator, leaving inside the integral exclusively the density $\rho$ in the denominator and the pressure $P$ in the numerator.
+We thus obtain for the left-hand side:
+\begin{equation}
+-3 \int_{0}^{M} \frac{P}{\rho} , dm
+\end{equation}
+
+For formal convenience and to remove superfluous negative quantities, we perform a change of sign to both sides of the overall equation, thus obtaining positive terms on both sides.
+
+\section{Definition of Energies and Virial Theorem}
+
+\subsection{Gravitational Energy ($E_G$)}
+Let us analyze the right part of the equation. The integrand $\frac{Gm}{r}$ represents the gravitational potential; integrating it over the whole star yields the total gravitational energy. Using the equality symbol by definition ($\equiv$) --- a rigorous notation typical of mathematical physics (as taught by the late Professor Anile) --- we formally define the \textbf{gravitational energy} $E_G$ of the star:
+\begin{equation}
+E_G \equiv - \int_{0}^{M} \frac{Gm}{r} , dm
+\end{equation}
+The minus sign is intrinsically justified by the fact that we are considering a \textbf{bound system}, which, by definition, possesses a negative total energy.
+
+\subsection{Internal Energy ($E_I$) and the Pressure/Density Term}
+The other term of the equation, present on the left, involves the integral of the ratio $\frac{P}{\rho}$. From a physical point of view, this quantity is intimately linked to the square of the speed of sound in the medium. Resorting to the ideal gas equation of state, we can express it as a function of the specific gas constant and the temperature $T$:
+\begin{equation}
+\frac{P}{\rho} = \frac{R}{\mu} T
+\end{equation}
+From classical thermodynamics, we recall that the specific constant $\frac{R}{\mu}$ can be written as the difference between the specific heat at constant pressure ($c_P$) and the specific heat at constant volume ($c_V$):
+\begin{equation}
+\frac{R}{\mu} = c_P - c_V
+\end{equation}
+Factoring out $c_V$, this expression transforms into $c_V (\gamma - 1)$, where $\gamma = \frac{c_P}{c_V}$ represents the \textbf{adiabatic constant} (or adiabatic index) of the gas. Substituting into the temperature formula we obtain:
+\begin{equation}
+\frac{P}{\rho} = c_V (\gamma - 1) T
+\end{equation}
+
+In the most common case in basic stellar astrophysics, we treat a \textbf{monatomic ideal gas}. Recalling the degrees of freedom of such systems, for a monatomic gas we have $\gamma = \frac{5}{3}$. It follows that the factor $(\gamma - 1)$ is equal to $\frac{2}{3}$.
+Substituting this value, it is convenient to write:
+\begin{equation}
+\frac{P}{\rho} = \frac{2}{3} c_V T
+\end{equation}
+This formalism is particularly advantageous because the product $c_V T$ corresponds exactly to the \textbf{internal energy per unit mass}, which we denote with the lowercase letter $u$:
+\begin{equation}
+u = c_V T \quad \implies \quad \frac{P}{\rho} = \frac{2}{3} u
+\end{equation}
+Thanks to this intensive relation, we can define the \textbf{total internal energy} of the star, denoted by $E_I$, as the integral of the specific internal energy $u$ over the entire mass of the stellar body:
+\begin{equation}
+E_I \equiv \int_{0}^{M} u , dm
+\end{equation}
+
+\subsection{The Virial Theorem for the Monatomic Ideal Gas}
+Returning to the integrated hydrostatic equilibrium equation and substituting the newly defined macroscopic quantities, keeping in mind the original multiplicative factor $3$ and the thermodynamic coefficient $\frac{2}{3}$, the final relation equates:
+\begin{itemize}
+\item On the left: twice the internal energy ($2 E_I$).
+\item On the right: the gravitational energy changed in sign ($-E_G$).
+\end{itemize}
+This formulation constitutes the famous \textbf{Virial Theorem}:
+\begin{equation}
+2 E_I = - E_G \quad \implies \quad 2 E_I + E_G = 0
+\end{equation}
+It can therefore be stated that the gravitational energy is equal to minus twice the internal energy of the whole star. It is fundamental to remember that this specific form strictly holds if the medium behaves as a monatomic ideal gas.
+
+\section{The Generalized Virial Theorem}
+
+Since the study of stellar structure requires considering all possible stars and their evolutionary cycles, we will face media that deviate from the monatomic ideal gas model. Molecular mixtures may be present, or the gas could undergo a change of state. It is therefore necessary to extend this treatment to accommodate \textbf{any equation of state}.
+
+In the classical theorem just proven, the peculiarity of the monatomic gas is confined uniquely in the coefficient $2$ present in the expression $2 E_I$, a value derived directly from the assumption that $\gamma = \frac{5}{3}$.
+The overall balance between internal and gravitational energy always remains valid; simply that numerical coefficient will change depending on the $\gamma$ of the gas in question and the underlying equation of state.
+
+To generalize, let us characterize an arbitrary equation of state by defining a dimensionless parameter $\zeta$, such that the following relation holds:
+\begin{equation}
+\zeta u = 3 \frac{P}{\rho}
+\end{equation}
+Every specific state of stellar matter will therefore be governed by a peculiar value of the parameter $\zeta$. Integrating this expression over the mass, the term intended to multiply the internal energy will become $\zeta$ (instead of $2$). We can therefore write the \textbf{Generalized Virial Theorem}:
+\begin{equation}
+\zeta E_I + E_G = 0
+\end{equation}
+
+\subsection{Verification on the ideal gas}
+We can easily verify the validity of this generalization by applying it again to the case of a generic ideal gas. As previously shown:
+\begin{equation}
+\frac{P}{\rho} = (\gamma - 1) c_V T = (\gamma - 1) u
+\end{equation}
+Substituting this equivalence into the definition $\zeta u = 3 \frac{P}{\rho}$, we determine that the parameter $\zeta$ is explicitly linked to the adiabatic index:
+\begin{equation}
+\zeta = 3(\gamma - 1)
+\end{equation}
+Reapplying this result to the specific case of the monatomic gas ($\gamma = \frac{5}{3}$), we obtain with a simple arithmetic calculation:
+\begin{equation}
+\zeta = 3 \left( \frac{5}{3} - 1 \right) = 3 \left( \frac{2}{3} \right) = 2
+\end{equation}
+We thus perfectly recover the factor $2$ initially proven.
+
+In conclusion, this thermodynamic generalization of the formulation proves to be preparatory and indispensable for the purposes of future developments: in the next phases of the course we will have to adapt the equation of state into even more extended forms, so as to be able to apply the Generalized Virial Theorem also to the physics of \textbf{compact objects}.
+
+\section{Generalization of the Equation of State and the Virial Theorem}
+
+The formulation of the virial theorem can be extended to any equation of state, provided the correct proportionality parameter $z$ is identified.
+
+\subsection{Dependence on the Degrees of Freedom}
+In the thermodynamic field, the nature of the system and its degrees of freedom determine the ratio between the specific heats at constant pressure and at constant volume:
+\begin{equation}
+\gamma = \frac{C_p}{C_v}
+\end{equation}
+The value of $\gamma$, in turn, uniquely determines the value of the parameter $z$. Consequently, to apply the virial theorem to a given system, it is sufficient to calculate the correct ratio between the specific heats of the considered substance.
+
+\subsection{Extension of the Virial Theorem}
+The classical formulation of the virial theorem (characterized by the factor $\frac{1}{2}$ commonly encountered in introductory astronomy and cosmology courses) specifically refers to the case of a \textbf{monatomic ideal gas}. Here we proceed to its generalization to contexts and fluids having generic equations of state.
+
+\section{Total Energy of the Configuration}
+
+Let us consider a star modeled as a spherical configuration of self-gravitating gas in virial equilibrium. The combination of the virial theorem with the principle of conservation of total energy allows analyzing and solving various physical problems related to stellar structure.
+
+\subsection{Expression of Total Energy}
+The total energy $E_{\text{tot}}$ of the configuration is given by the sum of the internal energy $E_i$ and the gravitational energy $E_g$:
+\begin{equation}
+E_{\text{tot}} = E_i + E_g
+\end{equation}
+
+Combining this definition with the generalized virial relation via the parameter $z$, it is possible to express the total energy in two equivalent forms:
+\begin{itemize}
+\item As a function of the \textbf{internal energy} $E_i$ alone:
+\begin{equation}
+E_{\text{tot}} = (z - 1) E_i
+\end{equation}
+\item As a function of the \textbf{gravitational energy} $E_g$ alone:
+\begin{equation}
+E_{\text{tot}} = \frac{z - 1}{z} E_g
+\end{equation}
+\end{itemize}
+
+\subsection{Bound Systems and Stability Limit ($\gamma = 4/3$)}
+In order for the star to constitute a \textbf{bound system}, its total energy must be strictly negative:
+\begin{equation}
+E_{\text{tot}} < 0
+\end{equation}
+
+From the expression of the total energy, the limit condition for stability is directly deduced:
+\begin{itemize}
+\item If $z = 1$, the total energy vanishes: $E_{\text{tot}} = 0$.
+\item There is therefore a lower limit value for $z$ (and consequently for $\gamma$) below which the configuration ceases to be a bound and stable system.
+\end{itemize}
+
+For an ideal gas, the relationship between $z$ and the adiabatic coefficient $\gamma$ is given by $z = 3(\gamma - 1)$. Setting the limit condition $z = 1$, we obtain:
+\begin{equation}
+3(\gamma - 1) = 1 \implies \gamma = \frac{4}{3}
+\end{equation}
+Therefore, a fluid medium characterized by $\gamma = \frac{4}{3}$ is at the limit of stability and presents serious problems for maintaining the equilibrium of the configuration.
+
+\section{Conservation of Energy and Bolometric Luminosity}
+
+To formulate the energy conservation equation for a star, it is necessary to consider that the object emits energy in the form of radiation at the expense of its own total energy.
+
+\subsection{Energy Balance and Luminosity}
+From a thermodynamic point of view, the time variation of the total energy of the system must be balanced by the \textbf{bolometric luminosity} $L$, defined as the total energy radiated per unit time at all wavelengths:
+\begin{equation}
+L = -\frac{d E_{\text{tot}}}{dt}
+\end{equation}
+
+By substituting the expressions of the total energy expressed as a function of the parameter $z$, the energy balance is obtained:
+\begin{itemize}
+\item In terms of internal energy:
+\begin{equation}
+L = -(z - 1) \frac{d E_i}{dt}
+\end{equation}
+\item In terms of gravitational energy:
+\begin{equation}
+L = -\frac{z - 1}{z} \frac{d E_g}{dt}
+\end{equation}
+\end{itemize}
+
+\subsection{Monatomic Ideal Gas Case}
+For a \textbf{monatomic ideal gas}, where $\gamma = \frac{5}{3}$, the parameter $z$ assumes the value $z = 2$. By substituting $z = 2$ into the energy balance equations, we obtain:
+\begin{equation}
+L = \frac{d E_i}{dt} = -\frac{1}{2} \frac{d E_g}{dt}
+\end{equation}
+
+\subsection{Physical Interpretation of Gravitational Contraction}
+Consider the process of \textbf{gravitational contraction} of the star:
+\begin{enumerate}
+\item During the contraction, the time variation of the gravitational energy is negative ($\frac{d E_g}{dt} < 0$), since the star becomes denser and the gravitational energy decreases (becoming more negative).
+\item Consequently, the quantity $-\frac{1}{2} \frac{d E_g}{dt}$ turns out to be strictly positive ($> 0$).
+\item This implies that both the luminosity $L$ and the time derivative of the internal energy $\frac{d E_i}{dt}$ are positive quantities ($> 0$).
+\end{enumerate}
+
+This result formalizes the classical formulation of the \textbf{virial theorem}: during a gravitational contraction, exactly half of the released gravitational energy is converted into an increase in \textbf{internal energy} (causing the heating of the gas), while the other half is radiated outwards in the form of \textbf{luminosity}.
+
+\section{Effects of Gravitational Contraction in the Absence of Nuclear Reactions}
+
+\subsection{Energy Partition and Plasma Heating}
+Let us consider a star going through a phase of gravitational contraction in the absence of active nuclear reactions within it. Even though it lacks a fusion energy source, the star possesses a non-zero internal energy $E_i$ due to the temperature of the gas and continues to radiate a luminosity $L$ outwards.
+
+Based on the energy balance and the virial theorem, the time variation of the total energy of the system is equal to the emitted luminosity:
+\begin{equation}
+L = -\frac{dE_{\text{tot}}}{dt}
+\end{equation}
+
+The energy released by the gravitational contraction is partitioned equally into two contributions:
+\begin{itemize}
+\item \textbf{Half of the variation in gravitational energy} ($-\frac{1}{2} \frac{dE_g}{dt}$) is converted into radiation emitted outwards, determining the luminosity of the star:
+\begin{equation}
+L = -\frac{1}{2} \frac{dE_g}{dt}
+\end{equation}
+\item \textbf{The other half of the variation in gravitational energy} goes to increase the internal energy of the plasma ($\frac{dE_i}{dt}$):
+\begin{equation}
+\frac{dE_i}{dt} = -\frac{1}{2} \frac{dE_g}{dt}
+\end{equation}
+\end{itemize}
+
+\subsection{Increase of the Internal Temperature}
+The specific internal energy (per unit mass) of the gas is given by the thermodynamic relation:
+\begin{equation}
+e_i = c_v T
+\end{equation}
+where $c_v$ is the specific heat at constant volume and $T$ is the local temperature.
+
+Integrating over the entire mass of the star and assuming that the nature of the gas (and thus the value of $c_v$) remains unchanged, the increase in internal energy translates into a direct and proportional increment of the plasma temperature $T$.
+
+\subsection{Temporal Behavior and Bound State}
+Since during a contraction the radius of the star decreases, the time variation of the gravitational energy is negative ($\frac{dE_g}{dt} < 0$). Being a gravitationally bound system, the gravitational energy $E_g$ is a negative quantity; consequently, the contraction entails that its absolute value $\vert{}E_g\vert{}$ increases over time, making the system more energetically bound.
+
+\section{The Kelvin-Helmholtz Timescale}
+
+\subsection{Definition and Physical Meaning}
+The \textbf{Kelvin-Helmholtz timescale} ($\tau_{\text{KH}}$) characterizes the evolutionary phase of a star whose primary energy source is represented exclusively by gravitational contraction, in the absence of nuclear reactions. It typically applies to stars in the \textbf{pre-main sequence} phase, namely the phase preceding the ignition of hydrogen burning in the core.
+
+The Kelvin-Helmholtz timescale is defined as the ratio between the absolute value of the available gravitational energy and the radiated luminosity:
+\begin{equation}
+\tau_{\text{KH}} = \frac{|E_g|}{L}
+\end{equation}
+
+Since, by the virial theorem, the gravitational energy and the internal energy are of the same order of magnitude ($\vert{}E_g\vert{} \sim E_i$), the timescale can be expressed equivalently as:
+\begin{equation}
+\tau_{\text{KH}} \approx \frac{E_i}{L}
+\end{equation}
+
+From a dimensional point of view, dividing an energy by a power (energy per unit time), one correctly obtains a quantity expressed in units of time.
+
+\subsection{Order of Magnitude Estimate}
+To formulate an order of magnitude estimate of the gravitational energy $E_g$, the interaction can be approximated by considering the mean mass and mean radius of the stellar configuration (indicatively assuming $M_{\text{mean}} \sim \frac{M}{2}$ and $R_{\text{mean}} \sim \frac{R}{2}$):
+\begin{equation}
+|E_g| \sim \frac{G M^2}{2R}
+\end{equation}
+
+Substituting this approximation into the definition, the Kelvin-Helmholtz timescale scales proportionally to:
+\begin{equation}
+\tau_{\text{KH}} \sim \frac{G M^2}{2 R L}
+\end{equation}
+Although during the pre-main sequence contraction both the radius $R$ and the luminosity $L$ vary over time, this formulation provides an excellent estimate of the order of magnitude of the gravitational evolutionary time.
+
+\subsection{Application to the Sun and Historical Relevance}
+Evaluating the expression for the current parameters of the Sun ($M = M_\odot$, $R = R_\odot$, $L = L_\odot$), one obtains:
+\begin{equation}
+\tau_{\text{KH}, \odot} \approx 1{,}6 \times 10^7 \text{ years}
+\end{equation}
+
+In general, the timescale varies as a function of the factor $\frac{M^2}{R L}$.
+
+This value holds fundamental historical importance:
+\begin{enumerate}
+\item \textbf{Classical pre-quantum model}: Before the development of quantum physics and nuclear physics, Kelvin-Helmholtz contraction was believed to be the only known source of solar energy. It was therefore estimated that the total life of the Sun was limited to about $10\text{--}20$ million years.
+\item \textbf{Crisis of physical and biological chronology}: This estimate came into sharp contrast with the geological and paleontological evidence that emerged at the end of the 19th century, which demonstrated that the Earth and terrestrial rocks had an age clearly superior to a few tens of millions of years.
+\item \textbf{Incentive for new physics}: This blatant discrepancy represented one of the main conceptual stimuli that led to the discovery of nuclear fusion reactions and the development of modern stellar astrophysics.
+\end{enumerate}
+
+\section{Concluding Notes}
+The concepts of virial energy balance and the Kelvin-Helmholtz timescale constitute the essential theoretical foundations for understanding the subsequent phases of stellar evolution and the internal structure of pre-main sequence stars.
+
+\section{Didactic Indications and Preparatory References}
+
+The fundamental concepts covered in the introductory lectures constitute the backbone for the subsequent theoretical developments of stellar physics. These topics, despite being reviewed within preparatory courses (such as \textit{Foundations of Astrophysics} or \textit{Elements of Astronomy and Cosmology}), are presented with a higher level of mathematical formalism, precision, and punctuality. For this reason, an in-depth and timely study of these conceptual bases is recommended, which is indispensable for fluently tackling the more complex contents of the subsequent lectures.
+
+\section{The Virial Theorem in the Presence of Non-Zero External Pressure}
+
+Let us consider the generalization of the virial theorem in the case where the pressure at the outer surface of the stellar structure, denoted by $P_0$, is not negligible ($P_0 \neq 0$).
+
+In the presence of a non-zero external pressure, the surface term — previously omitted in the simplified derivations — must be explicitly maintained in the integrated balance. The integral equality between the gravitational potential energy and the pressure term takes the following form:
+\begin{equation}
+\int_0^M \frac{d\Phi}{dm} , dm = 3 \int_0^M \frac{P}{\rho} , dm - 4\pi R^3 P_0
+\end{equation}
+where $M$ is the total mass of the star, $R$ is the surface radius, $P$ is the local pressure and $\rho$ is the mass density. In the limiting case where $P_0 = 0$, the boundary term $-4\pi R^3 P_0$ vanishes, leading the expression back to the standard form.
+
+The formulation of the virial theorem modified by the presence of the external pressure $P_0$ is expressed as:
+\begin{equation}
+2 E_i + E_g = 4\pi R^3 P_0
+\end{equation}
+in which $E_i$ represents the total internal energy of the system and $E_g$ the gravitational potential energy.
+
+\subsection{Dimensional Analysis of the Surface Term}
+The dimensional consistency of the relation expressed by equation~(2) finds direct confirmation in the definition of the physical quantities involved:
+\begin{itemize}
+\item The pressure $P_0$ represents a force per unit area ($\left[\text{N}/\text{m}^2\right]$).
+\item By multiplying the pressure by an area proportional to $R^2$, one obtains a dimension equivalent to that of a force ($\left[\text{N}\right]$).
+\item A further multiplication by a length $R$ (obtaining the dependence on $R^3$) defines a work, i.e., a quantity having the physical dimensions of an energy ($\left[\text{J}\right]$).
+\end{itemize}
+Therefore, the term $4\pi R^3 P_0$ represents an energetic contribution consistent with the terms $E_i$ and $E_g$.
+
+\section{Summary of Key Concepts for Stellar Physics and Structure}
+
+At the conclusion of the treatment, the fundamental principles and the analytical relations established, essential for the continuation of the study of stellar structure and evolution, are summarized.
+
+\subsection{Fundamental Equations of Balance and State}
+\begin{itemize}
+\item \textbf{Mass continuity equation}: defines the spatial mass distribution within the stellar body.
+\item \textbf{Momentum conservation equation}: defines the hydrostatic equilibrium condition of the stellar structure.
+\item \textbf{Role of the equation of state}: depending on the analytical form of the adopted equation of state, it is possible to determine a complete mechanical solution of the structure without the need to resort to further equations related to energy transport and balance.
+\end{itemize}
+
+\subsection{Scaling Relations (\textit{Scaling Laws})}
+The main internal thermodynamic quantities depend on the mass $M$ and the radius $R$ of the stellar body according to the following proportionalities:
+\begin{itemize}
+\item \textbf{Internal pressure}: $P \propto \frac{M^2}{R^4}$
+\item \textbf{Internal temperature}: $T \propto \frac{M}{R}$
+\end{itemize}
+
+\subsection{Characteristic Timescales}
+Dynamical and evolutionary processes are governed by the following foundational timescales:
+\begin{itemize}
+\item \textbf{Free-fall timescale} ($\tau_{\text{ff}}$, \textit{free-fall timescale}).
+\item \textbf{Explosion timescale}.
+\item \textbf{Hydrodynamic timescale} ($\tau_{\text{dyn}}$).
+\end{itemize}
+
+\subsection{Virial Theorem and Thermodynamic Implications}
+\begin{itemize}
+\item General formulation and application to the case of the \textbf{monatomic ideal gas}.
+\item \textbf{Conservation of energy during contraction}: in the absence of nuclear energy sources, the gravitational contraction of a star entails that:
+\begin{itemize}
+\item Half of the variation in gravitational energy ($\frac{1}{2} \vert{}\Delta E_g\vert{}$) is converted into luminosity $L$ and radiated outwards.
+\item The remaining half goes to increase the internal energy ($\Delta E_i$), causing an increase in the internal temperature of the plasma.
+\end{itemize}
+\item \textbf{Kelvin-Helmholtz timescale} ($\tau_{\text{KH}}$): represents the typical evolutionary timescale of stars in the pre-main sequence phase, during which gravitational contraction constitutes the only energy source of the star.
+\end{itemize}
+
+\section{Organizational Notes and Schedule Management}
+
+Regarding the requests to anticipate the schedule of the lectures, we specify the impossibility of modifying the calendar due to institutional teaching overlaps. In particular, the professor is engaged in conducting the course of \textit{Foundations of Astrophysics} on Mondays from 15:00 to 18:00.

@@ -1,0 +1,461 @@
+\chapter{Lecture 1 - 06/10/2026}
+
+\section{Fundamentals of Stellar Hydrodynamics: One-Dimensional Models}
+
+To fully understand the essential meaning of the equations, analyze the physical consequences and have an intuitive understanding of the situation, we will work primarily in \textbf{one dimension}.
+
+From a hydrodynamic point of view, the treatment is based on two fundamental descriptions that will be used alternately depending on convenience:
+\begin{itemize}
+\item The \textbf{Eulerian description}
+\item The \textbf{Lagrangian description}
+\end{itemize}
+
+\subsection{Eulerian Description}
+
+In the \textbf{Eulerian description}, position and time are chosen as independent variables. Operating generally in spherical coordinates, position is defined by the distance from the center of the sphere. We define the independent variables:
+\begin{itemize}
+\item $r$: distance from the center (with $r \in [0, R]$, where $R$ is the total radius of the star).
+\item $t$: time.
+\end{itemize}
+
+All other physical quantities will be referred to these two independent variables. For example, in the general case, the plasma density will depend on the distance from the center and on time: $\rho = \rho(r,t)$. Similarly, the mass enclosed within a sphere of radius $r$ will be a function $m = m(r,t)$.
+
+\subsubsection{Derivation of the Continuity Equation}
+
+Let us consider a mass element $dm$, which is the mass contained in an infinitesimal spherical shell of thickness $dr$. The area of this shell is $4\pi r^2$. Multiplying the area by the thickness $dr$ gives the volume, and multiplying the latter by the density $\rho$ yields the mass contained in the shell under static conditions.
+
+However, in a dynamic situation, it is necessary to also consider the mass flux entering and leaving the shell. The matter flux through the surface of the shell is given by the product of the density $\rho$, the plasma velocity $v$ and the time interval $dt$.
+
+Therefore, the mass variation can be described by analyzing the partial derivatives.
+Taking the partial derivative of mass with respect to $r$, we consider only the static contribution (since the flux term does not depend solely on the spatial geometry at a fixed time):
+\begin{equation}
+\frac{\partial m}{\partial r} = 4\pi r^2 \rho
+\end{equation}
+
+Differentiating this expression now with respect to time $t$, we obtain the mixed second derivative:
+\begin{equation}
+\frac{\partial^2 m}{\partial t \partial r} = 4\pi r^2 \frac{\partial \rho}{\partial t}
+\end{equation}
+
+Let us now perform the reverse procedure. Taking the partial derivative of the mass with respect to time $t$, we obtain the expression of the mass flux through the surface:
+\begin{equation}
+\frac{\partial m}{\partial t} = -4\pi r^2 \rho v
+\end{equation}
+
+Differentiating this quantity with respect to the radius $r$, we apply the product rule of differentiation:
+\begin{equation}
+\frac{\partial^2 m}{\partial r \partial t} = -8\pi r \rho v - 4\pi r^2 \frac{\partial (\rho v)}{\partial r}
+\end{equation}
+
+By Schwarz's theorem on mixed derivatives, the two derived expressions must be equal. Equating them and bringing all terms to the same side, we obtain:
+\begin{equation}
+4\pi r^2 \frac{\partial \rho}{\partial t} + 8\pi r \rho v + 4\pi r^2 \frac{\partial (\rho v)}{\partial r} = 0
+\end{equation}
+
+Dividing the entire equation by $4\pi r^2$, we isolate the time derivative of the density:
+\begin{equation}
+\frac{\partial \rho}{\partial t} = -\frac{2}{r} \rho v - \frac{\partial (\rho v)}{\partial r}
+\end{equation}
+
+Which can be rewritten in a compact form by grouping the spatial terms:
+\begin{equation}
+\frac{\partial \rho}{\partial t} = -\frac{1}{r^2} \frac{\partial}{\partial r} (r^2 \rho v)
+\end{equation}
+
+In spherical coordinates, the term on the right-hand side represents the opposite of the divergence of the mass flux density vector ($\rho \mathbf{v}$). We have thus rigorously obtained the \textbf{continuity equation for mass} in the Eulerian description:
+\begin{equation}
+\frac{\partial \rho}{\partial t} = -\nabla \cdot (\rho \mathbf{v})
+\end{equation}
+
+\subsection{Lagrangian Description}
+
+The \textbf{Lagrangian description} adopts a different set of independent variables. Instead of position, the mass $m$ contained within a given shell is chosen as the variable.
+The independent variables are therefore:
+\begin{itemize}
+\item $m$: mass.
+\item $t$: time.
+\end{itemize}
+
+In this formalism, all other quantities become functions of $m$ and $t$. We will therefore have:
+\begin{itemize}
+\item The density: $\rho = \rho(m,t)$
+\item The position (the radius of the shell): $r = r(m,t)$
+\end{itemize}
+
+The Lagrangian approach is subject to precise \textbf{boundary conditions}:
+\begin{itemize}
+\item For $m = 0$, the position corresponds to the center of the star: $r = 0$.
+\item For $m = M$ (where $M$ is the total mass of the star), the position corresponds to the stellar surface: $r = R$.
+\end{itemize}
+
+\subsection{Conceptual Comparison: Euler vs Lagrange}
+
+Since we apply these descriptions inside stars, we are studying the behavior of the various shells of stellar matter, but the concepts remain valid for general hydrodynamics. The fundamental difference lies in the observer's point of view:
+
+\begin{itemize}
+\item \textbf{Eulerian Approach:} Attention is fixed on a \textbf{fixed point in space} (a specific distance $r$ from the stellar center). The observer watches the flow of the fluid through that point over time, verifying whether the gas is moving inward or outward at that exact coordinate.
+
+```
+\item \textbf{Lagrangian Approach:} Attention is fixed on a \textbf{given element of plasma} (in our one-dimensional case, a shell of mass $dm$). The observer follows the motion and evolution of that specific matter element over time, verifying whether the shell collapses inward or expands outward.
+
+
+```
+
+\end{itemize}
+
+\section{Correspondence and Change of Variables between Eulerian and Lagrangian Descriptions}
+
+There is a precise spatial and mass correspondence between the two descriptions. In particular, we define the boundaries of the stellar system:
+\begin{itemize}
+\item At the \textbf{center of the star}: we have $r = 0$, to which an enclosed mass $m = 0$ corresponds.
+\item At the \textbf{surface of the star}: we have $r = R$ (where $R$ is the total radius of the star), to which $m = M$ corresponds (where $M$ is the total mass of the star).
+\end{itemize}
+
+When passing from the Eulerian to the Lagrangian description, we operate a change of independent variables, going from $(r, t)$ to $(m, t)$. It is essential to keep in mind the chain rules for partial derivatives during this transition.
+
+For example, a partial derivative with respect to mass $m$ is expressed as:
+\begin{equation}
+\frac{\partial}{\partial m} = \frac{\partial r}{\partial m} \frac{\partial}{\partial r}
+\end{equation}
+
+Similarly, for the partial derivative with respect to time $t$ (evaluated at constant mass, i.e., in the Lagrangian description), the chain rule is applied taking into account the dependence of $r$ on time. We obtain:
+\begin{equation}
+\left( \frac{\partial}{\partial t} \right)_m = \left( \frac{\partial r}{\partial t} \right)_m \frac{\partial}{\partial r} + \left( \frac{\partial}{\partial t} \right)_r
+\end{equation}
+Where the subscript indicates the variable kept constant during the differentiation operation. When changing variables, it is mandatory to consider how the partial derivatives in one description are connected to those of the other.
+
+\subsection{Invariance of the Total Mass and the Mass Coordinate}
+
+Let us now answer a question raised during the lecture: \textit{in the Lagrangian description, do the mass $m$ or the total mass $M$ change over time?}
+
+The answer is no. The total mass $M$ \textbf{does not change over time}. In this context, we are not treating the star formation process, but rather considering an already formed object, endowed with its established initial mass. In the study of \textbf{stellar structure} (which we will tackle before stellar evolution), the total mass is fixed and represents a boundary condition of our problem.
+
+Likewise, the "small" mass $m$ (the mass coordinate) does not change over time. In the Lagrangian description, the mass $m$ is assumed as an independent variable and, as such, it is fixed. What is observed is the \textbf{position} where the mass shell identified by $m$ is located after a certain time interval (i.e., whether the shell moves outward or inward). Partial derivatives serve precisely to study the variation of quantities while keeping one of the two independent variables fixed.
+
+\subsection{Transformation Operator (Eulerian-Lagrangian Switch)}
+
+Let us return to the expression for the infinitesimal mass of the shell under static conditions:
+\begin{equation}
+dm = 4\pi r^2 \rho , dr
+\end{equation}
+We now introduce a mathematical procedure that will allow us to move nimbly from one description to the other. Let us calculate the partial derivative of $m$ with respect to itself, which trivially must equal $1$:
+\begin{equation}
+\frac{\partial m}{\partial m} = 1
+\end{equation}
+Exploiting the differential definition just recalled, we can express this derivative as:
+\begin{equation}
+\frac{\partial m}{\partial m} = 4\pi r^2 \rho \frac{\partial r}{\partial m} = 1
+\end{equation}
+This mathematical trick allows us to define a conversion operator. From this relation, we deduce that the partial derivative of \textit{any} quantity with respect to $m$ can be rewritten in terms of the derivative with respect to $r$:
+\begin{equation}
+\frac{\partial}{\partial m} = \frac{1}{4\pi r^2 \rho} \frac{\partial}{\partial r}
+\end{equation}
+
+Although the Lagrangian approach may initially seem less intuitive than the Eulerian one (since instead of fixing a position in space, one "tracks" the element of volume and mass of the plasma in its displacements), we will work predominantly with the Lagrangian description. The reason lies in the fact that, by exploiting this simple relationship, the Lagrangian approach enormously simplifies many problems of stellar structure.
+
+\section{Physical Complications in the Stellar Model}
+
+We are building the basic tools to tackle stellar structure problems. However, compared to the physics studied previously, we will have to introduce further levels of complexity before getting to the heart of the subject:
+
+\begin{enumerate}
+\item \textbf{Dynamic motions of matter:} Even though we limit ourselves to a one-dimensional model, we cannot treat matter as purely static. We must consider cases in which the star expands or contracts rapidly, operating on a dynamic timescale.
+\item \textbf{Generalized equation of state:} Stellar matter is not always comparable to an ideal gas. At very high densities, the effects of \textbf{quantum mechanics} come into play and the gas becomes \textbf{degenerate}. We cannot afford to use disjoint formulations (one for the ideal gas and one for the degenerate gas); we need a \textbf{generalized thermodynamics} that allows for a smooth transition between the two regimes, allowing the gas to enter or exit the state of degeneracy.
+\end{enumerate}
+In summary, the three fundamental pillars on which we will work will be: \textbf{gravity}, \textbf{thermodynamics} and \textbf{quantum mechanics}.
+
+\section{Treatment of Gravity}
+
+\subsection{Limits of the Newtonian Approach}
+In this course we will not cover \textbf{General Relativity}. Relativistic effects become dominant when studying \textbf{compact objects} such as neutron stars or black holes. Although we will conceptually see how a neutron star forms, we will not derive the equations of state or the structure working in the formalism of general relativity (which is the subject of dedicated academic courses). Whenever a relativistic effect becomes relevant, we will simply limit ourselves to mentioning it, maintaining our mathematical framework in the classical limit so as not to overly burden the treatment.
+
+\subsection{Gravitational Formalism and Potential}
+We will use the classical expression for the local acceleration of gravity, which we will call $g$. In the Eulerian description (where a mass shell $m$ is located at position $r$), the gravitational acceleration experienced by the shell is:
+\begin{equation}
+g = \frac{G m}{r^2}
+\end{equation}
+where $G$ is the universal gravitational constant. Many equations are simplified by the fact that $g$ depends directly on the internal mass $m$.
+
+Gravity, in our context, is governed by the \textbf{Poisson equation}. Denoting the gravitational potential with $\phi$, the equation takes the form:
+\begin{equation}
+\nabla^2 \phi = 4\pi G \rho
+\end{equation}
+Considering spherical geometry in one spatial dimension, the Laplacian operator $\nabla^2$ is expressed as:
+\begin{equation}
+\nabla^2 = \frac{1}{r^2} \frac{\partial}{\partial r} \left( r^2 \frac{\partial}{\partial r} \right)
+\end{equation}
+We also know that the acceleration of gravity is linked to the gradient of the gravitational potential. In our one-dimensional spatial case, we can write:
+\begin{equation}
+\frac{\partial \phi}{\partial r} = \frac{G m}{r^2}
+\end{equation}
+To derive the gravitational potential $\phi(r)$ in a spherically symmetric star, we integrate the expression from the center of the star up to the radius $r$:
+\begin{equation}
+\phi(r) = \int_0^r \frac{G m}{(r')^2} , dr' + \text{constant}
+\end{equation}
+This integration constant is generally fixed by imposing the asymptotic boundary condition:
+\begin{equation}
+\lim_{r \to \infty} \phi(r) = 0
+\end{equation}
+
+\textbf{Trend of the Potential:} By analyzing the general curve of the gravitational potential $\phi$ for a spherical star, we observe that at the center ($r=0$) the first derivative is zero; the curve thus starts with zero slope. As one moves outward, with the increase of the mass $m$ enclosed in the shell, the potential grows (assuming less negative values), to then tend asymptotically to zero at infinity. The slope of this curve ($\partial \phi / \partial r$) defines at every point the magnitude of gravity $g$, which is a vector constantly directed towards the center of the star.
+
+\section{Properties of Partial Derivatives and Constancy of Time}
+
+Resuming the discussion introduced previously, it is fundamental to clarify an essential mathematical concept: when we perform a partial derivative with respect to mass $m$, by the very definition of partial derivative, all other independent variables (in this case, time $t$) are kept fixed. Therefore, in this context, time is to be considered constant.
+
+\section{Hydrostatic Equilibrium (HE)}
+
+A fundamental concept in the study of stellar structure is \textbf{hydrostatic equilibrium} (often abbreviated as \textbf{HE}). The empirical fact that the Sun neither expands nor contracts visibly is the clear proof that hydrostatic equilibrium within a star works extremely effectively.
+
+In hydrodynamics, the condition of hydrostatic equilibrium is equivalent to the \textbf{conservation of momentum} equation (or \textit{momentum conservation}).
+
+\subsection{Eulerian Description of Hydrostatic Equilibrium}
+
+Let us consider a spherical shell of infinitesimal thickness $dr$. The mass contained within this shell is subject to the inward-directed gravitational acceleration. For the star to be in equilibrium, this gravitational force must be perfectly balanced by the pressure difference (i.e., the \textbf{pressure gradient}) between the inner and outer part of the shell.
+
+In mathematical terms, the gravitational acceleration multiplied by the density ($\rho g$) is balanced by the pressure gradient. Substituting the expression for the acceleration of gravity $g = \frac{Gm}{r^2}$, we obtain the equation of hydrostatic equilibrium in the \textbf{Eulerian description}:
+
+\begin{equation}
+\frac{\partial P}{\partial r} = -\frac{G m}{r^2} \rho
+\end{equation}
+
+\subsection{Lagrangian Description of Hydrostatic Equilibrium}
+
+Let us now see how this equation transforms when passing to the \textbf{Lagrangian description}. To do so, we apply the transformation rule for the change of variables derived previously, based on the mass continuity equation:
+
+\begin{equation}
+\frac{\partial r}{\partial m} = \frac{1}{4\pi r^2 \rho}
+\end{equation}
+
+Multiplying the Eulerian equation by this factor, we obtain the expression of the pressure gradient with respect to the mass coordinate $m$:
+
+\begin{equation}
+\frac{\partial P}{\partial m} = -\frac{G m}{4\pi r^4}
+\end{equation}
+
+Although at first glance this equation might seem more complex due to the power of $r$ in the denominator, in reality it is considerably simpler. Indeed, we note two crucial differences compared to the Eulerian case:
+\begin{itemize}
+\item The density $\rho$ no longer appears explicitly in the equation.
+\item The radial dependence goes from proportional to $\frac{1}{r^2}$ to proportional to $\frac{1}{r^4}$.
+\end{itemize}
+
+\subsection{Stability and Dynamical Timescales}
+
+Hydrostatic equilibrium is the condition in which stars find themselves for the vast majority of their lives. It is an equilibrium that is very difficult to violate permanently.
+
+If a star is partially perturbed, it will restore hydrostatic equilibrium in an extremely short time interval, known as the \textbf{dynamical timescale} (or hydrodynamic timescale). For example, if we were to perturb the entire structure of the Sun, it would return to hydrostatic equilibrium in just half an hour. This restoring mechanism is extremely powerful; therefore, to significantly violate hydrostatic equilibrium, the initial perturbation must be exceptionally severe and violent. Even in the presence of mild internal perturbations, the equation of hydrostatic equilibrium remains valid except for minuscule percentage violations.
+
+\section{Purely Mechanical Models of Stellar Structure}
+
+Thanks to the condition of hydrostatic equilibrium alone, we are already able to derive some first simple solutions to the problem of stellar structure. We will call these elementary solutions "whiteboard solutions" (\textit{whiteboard simple solutions}). They are based exclusively on the two equations introduced so far, preferably using the Lagrangian description as it is mathematically easier:
+
+\begin{enumerate}
+\item \textbf{Mass continuity:}
+\begin{equation}
+\frac{\partial r}{\partial m} = \frac{1}{4\pi r^2 \rho}
+\end{equation}
+
+```
+\item \textbf{Momentum continuity (Hydrostatic Equilibrium):}
+\begin{equation}
+    \frac{\partial P}{\partial m} = -\frac{G m}{4\pi r^4}
+\end{equation}
+
+
+```
+
+\end{enumerate}
+
+\subsection{The Problem of System Closure}
+
+The system just described consists of only two equations but presents \textbf{three unknowns} (the radius $r$, the density $\rho$ and the pressure $P$, all as functions of the mass $m$).
+To close the problem and obtain an analytical solution, we need a third equation: the \textbf{equation of state}.
+
+If we were to use the equation of state of an ideal gas, an additional thermodynamic variable would be introduced, namely the \textbf{temperature} ($T$). Recall that the ideal gas equation of state can be written as:
+
+\begin{equation}
+\rho = \frac{\mu}{\mathcal{R}} \frac{P}{T}
+\end{equation}
+
+where $\mu$ is the \textbf{mean molecular weight} and $\mathcal{R}$ is the gas constant. In this generic scenario (where $\rho$ is a function of both $P$ and $T$), the system would not be closed and would require an additional equation (related to energy transport and generation) to be solved.
+
+\subsection{Barotropic Gases}
+
+However, there are specific physical situations in which the equation of state does not introduce a third variable. These cases occur when we are dealing with \textbf{barotropic gases}, i.e., fluids in which the density depends \textit{exclusively} on the pressure: $\rho = \rho(P)$. In such circumstances, a third unknown is not needed and the system formed by mass continuity and hydrostatic equilibrium can be solved autonomously, giving rise to what we call \textbf{purely mechanical models}.
+
+Some notable examples of barotropic conditions or gases include:
+\begin{itemize}
+\item \textbf{Homogeneous sphere:} the density is assumed constant throughout the star ($\rho = \text{constant}$). This acts directly as the third equation.
+\item \textbf{Isothermal sphere:} a gas kept at a constant temperature throughout its structure.
+\item \textbf{Completely degenerate gas:} the quantum degeneracy pressure depends only on the density (and not on the temperature). This approximation perfectly applies to compact objects such as \textbf{white dwarfs} and, in a simplified form, to degenerate matter inside \textbf{neutron stars}.
+\item \textbf{Polytropic models:} mathematical abstractions in which the relationship between pressure and density takes the form $P \propto \rho^\gamma$. These models prove to be extremely useful; historically, they were used by Subrahmanyan Chandrasekhar to analytically calculate the famous \textbf{Chandrasekhar limit mass} for degenerate objects.
+\end{itemize}
+
+\section{Applications of Hydrostatic Equilibrium: Order of Magnitude Estimates}
+
+Based on the hydrostatic equilibrium equation introduced so far, it is possible to derive the estimated value of the pressure and temperature at the center of a star. We are not interested in calculating the exact value at this stage, but rather in determining the order of magnitude, i.e., how we expect pressure and temperature to depend on the mass and radius of the star. This analysis of scaling relations is a very common practice in astrophysics.
+
+\subsection{Estimate of the Central Pressure}
+
+Let us write the hydrostatic equilibrium equation in its Lagrangian form:
+\begin{equation}
+\frac{\partial P}{\partial m} = -\frac{G m}{4\pi r^4}
+\end{equation}
+
+To derive the order of magnitude, we approximate the derivative on the left-hand side as the incremental ratio between the pressure difference (between the surface and the center) and the mass of the star:
+\begin{equation}
+\frac{\partial P}{\partial m} \approx \frac{P_{sup} - P_c}{M}
+\end{equation}
+where $P_{sup}$ is the surface pressure and $P_c$ is the central pressure.
+
+To evaluate the right-hand side of the equation, we perform an average by evaluating the variables at half the stellar mass ($m = M/2$) and half the radius ($r = R/2$). The advantage of using the Lagrangian form in this calculation lies in the fact that the density does not explicitly appear in the equation.
+
+By substituting these approximations, we obtain:
+\begin{equation}
+\frac{P_{sup} - P_c}{M} \approx - \frac{G \left(\frac{M}{2}\right)}{4\pi \left(\frac{R}{2}\right)^4} = - \frac{\frac{G M}{2}}{4\pi \frac{R^4}{16}} = - \frac{2 G M}{\pi R^4}
+\end{equation}
+
+Since the surface pressure is completely negligible compared to the central pressure ($P_{sup} \ll P_c$), we can eliminate $P_{sup}$ and the negative signs, obtaining for the central pressure:
+\begin{equation}
+\frac{P_c}{M} \approx \frac{2 G M}{\pi R^4} \implies P_c \approx \frac{2 G M^2}{\pi R^4}
+\end{equation}
+
+Although it is an approximation, this formula provides us with crucial information: the central pressure scales proportionally to the square of the mass divided by the radius to the fourth power. This is the fundamental scaling relation for pressure, which remains valid in general:
+\begin{equation}
+P_c \propto \frac{M^2}{R^4}
+\end{equation}
+
+\textbf{Numerical example for the Sun:}
+
+By inserting the solar parameters into this approximate formula, we obtain a value for the central pressure on the order of:
+\begin{equation}
+P_c \approx 7 \times 10^{15} , \text{dynes/cm}^2
+\end{equation}
+The true value, calculated using advanced computational models, is about $2.4 \times 10^{17} \, \text{dynes/cm}^2$. Considering the simplicity of the approximation, we are not too far from the correct order of magnitude.
+
+\subsection{Estimate of the Central Temperature}
+
+To calculate the central temperature, the hydrostatic equilibrium equation is not sufficient; we must resort to an equation of state. We approximate the behavior of stellar matter using the ideal gas equation of state, valid throughout the structure:
+\begin{equation}
+P = \frac{\rho \mathcal{R} T}{\mu} \implies T = \frac{\mu}{\mathcal{R}} \frac{P}{\rho}
+\end{equation}
+where $\mu$ is the mean molecular weight and $\mathcal{R}$ is the gas constant.
+Evaluating the equation at the center of the star, the central temperature $T_c$ will be:
+\begin{equation}
+T_c = \frac{\mu}{\mathcal{R}} \frac{P_c}{\rho_c}
+\end{equation}
+
+We now introduce the \textbf{mean density} $\bar{\rho}$, defined as the ratio between the total mass and the volume of the star:
+\begin{equation}
+\bar{\rho} = \frac{M}{\frac{4}{3}\pi R^3}
+\end{equation}
+
+To manipulate the equation, we multiply and divide by the mean density $\bar{\rho}$:
+\begin{equation}
+T_c = \frac{\mu}{\mathcal{R}} P_c \left(\frac{1}{\bar{\rho}}\right) \left(\frac{\bar{\rho}}{\rho_c}\right)
+\end{equation}
+
+Substituting the previously found expressions for $P_c$ and $\bar{\rho}$ into the equation, we obtain:
+\begin{equation}
+T_c = \frac{\mu}{\mathcal{R}} \left( \frac{2 G M^2}{\pi R^4} \right) \left( \frac{\frac{4}{3}\pi R^3}{M} \right) \frac{\bar{\rho}}{\rho_c}
+\end{equation}
+
+Simplifying the mathematical terms (such as the radius, mass and $\pi$), the relation becomes:
+\begin{equation}
+T_c = \frac{8}{3} \frac{\mu}{\mathcal{R}} \frac{G M}{R} \frac{\bar{\rho}}{\rho_c}
+\end{equation}
+
+Why did we isolate the ratio $\bar{\rho} / \rho_c$? Since we do not want to make specific assumptions about the density profile, we can exploit the physical certainty that the mean density is definitely lower than the central density, namely:
+\begin{equation}
+\frac{\bar{\rho}}{\rho_c} < 1
+\end{equation}
+
+This allows us to define at least an upper limit for the central temperature:
+\begin{equation}
+T_c \lesssim \frac{8}{3} \frac{\mu}{\mathcal{R}} \frac{G M}{R}
+\end{equation}
+This density fraction typically assumes values between $0.01$ and $0.03$.
+
+The fundamental conclusion of this derivation, even simpler than the one concerning pressure, is the \textbf{scaling relation for temperature}: the central temperature increases with the mass of the star and decreases with the radius.
+\begin{equation}
+T_c \propto \frac{M}{R}
+\end{equation}
+
+\textbf{Numerical example for the Sun:}
+
+Assuming a mean molecular weight $\mu \approx 0.5$ for the Sun, the limit for the central temperature calculated in this way turns out to be:
+\begin{equation}
+T_c \lesssim 3 \times 10^7 , \text{K}
+\end{equation}
+This limit is consistent with the true value of the solar central temperature, which stands around $1.6 \times 10^7 \, \text{K}$.
+
+These scaling laws (known as "back-of-the-envelope calculations") must be memorized, as they will be widely used in future lectures. The physical motivation is direct: in order for hydrostatic equilibrium to be guaranteed, the pressure must assume a value proportional to $M^2/R^4$, which, applying the ideal gas law, dictates that the temperature varies proportionally to $M/R$.
+
+\section{Stellar Dynamics: Equations of Motion and Timescales}
+
+Compared to idealized situations, astrophysics presents complications as stellar structures, in particular evolutionary phases, can vary quite rapidly. Consider, for example, a supernova explosion, an event in which hydrostatic equilibrium is violently violated. To address these scenarios in general terms, it is necessary to introduce the dynamical equations of motion.
+
+\subsection{Derivation of the Equation of Motion}
+
+Let us resume the problem of force balancing. To evaluate the motion of a spherical shell of mass $dm$, we must calculate the sum of the acting forces per unit area:
+\begin{enumerate}
+\item \textbf{Force due to the pressure gradient (per unit area):} 
+
+Exploiting the mass coordinate, this force takes the form: $- \frac{\partial P}{\partial m} dm$.
+
+```
+\item \textbf{Gravitational force (per unit area):} \\
+It is obtained by multiplying the acceleration of gravity ($g$) by the mass of the shell, and then dividing by the surface area of the shell itself ($4\pi r^2$):
+\begin{equation}
+    - g \left( \frac{dm}{4\pi r^2} \right) = - \frac{G m}{r^2} \frac{dm}{4\pi r^2} = - \frac{G m}{4\pi r^4} dm
+\end{equation}
+
+
+```
+
+\end{enumerate}
+
+If the system is not in hydrostatic equilibrium, the sum of these two forces does not cancel out, but causes a radial acceleration. According to Newton's second law of motion, the acceleration is the second derivative of the radius with respect to time ($\frac{\partial^2 r}{\partial t^2}$).
+In terms of force per unit area, we will have:
+\begin{equation}
+\left(\frac{dm}{4\pi r^2}\right) \frac{\partial^2 r}{\partial t^2} = - \frac{\partial P}{\partial m} dm - \frac{G m}{4\pi r^4} dm
+\end{equation}
+
+Dividing the entire equation by $dm$, we obtain the general equation of motion of the stellar plasma:
+\begin{equation}
+\frac{1}{4\pi r^2} \frac{\partial^2 r}{\partial t^2} = - \frac{\partial P}{\partial m} - \frac{G m}{4\pi r^4}
+\end{equation}
+
+Analyzing the signs on the right-hand side: since the pressure decreases moving outward, the derivative $\frac{\partial P}{\partial m}$ is intrinsically negative. Consequently, the term $-\frac{\partial P}{\partial m}$ turns out to be positive, and correctly represents a repulsive force directed toward the outside of the star. The gravitational term remains negative, indicating its attractive nature toward the center.
+
+\subsection{Gravitational Collapse Timescale (Free-fall Timescale)}
+
+The dynamical equation proves extremely useful for defining the timescales of stellar phenomena, which allow establishing in advance which terms of the equation can be neglected in complex physical situations. Given the large variations of orders of magnitude in astrophysics, this simplification is often indispensable.
+
+We can define the timescale by introducing extreme situations:
+\begin{itemize}
+\item Evaluating gravitational collapse in the total absence of pressure.
+\item Evaluating the explosion by eliminating the force of gravity.
+\end{itemize}
+
+Let us consider the first case. Imagine an unrealistic situation in which we completely cancel the pressure forces: the term $-\frac{\partial P}{\partial m}$ becomes negligible. The star collapses solely under its own weight.
+
+The acceleration can be estimated in absolute value through dimensional analysis, as the ratio between a distance (the stellar radius $R$) and the square of a time (which we will define as the \textbf{free-fall timescale} or $\tau_{ff}$):
+\begin{equation}
+\frac{\partial^2 r}{\partial t^2} \approx \frac{R}{\tau_{ff}^2}
+\end{equation}
+
+Inserting this dimensional approximation into the equation of motion where the pressure has been set to zero, and referring to the entire stellar volume, we obtain:
+\begin{equation}
+\frac{1}{4\pi R^2} \frac{R}{\tau_{ff}^2} \approx \frac{G M}{4\pi R^4}
+\end{equation}
+
+Simplifying the constant terms on both sides, we find the link between kinematic acceleration and acceleration of gravity $g$:
+\begin{equation}
+\frac{R}{\tau_{ff}^2} \approx \frac{G M}{R^2} = g
+\end{equation}
+
+Finally, isolating the free-fall timescale $\tau_{ff}$, we get:
+\begin{equation}
+\tau_{ff} \approx \sqrt{\frac{R}{g}} \approx \sqrt{\frac{R^3}{G M}}
+\end{equation}
+In the next lecture, we will apply a similar procedure to derive the timescale of the thermal explosion.

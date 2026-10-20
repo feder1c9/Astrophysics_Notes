@@ -1,0 +1,347 @@
+\chapter{Lecture 5 - 20/10/2026}
+
+\section{Conservation of Energy: Global and Local View}
+
+Taking up the concepts previously discussed, we focus on the \textbf{conservation of energy}, analyzing it from both a global and a local point of view.
+
+Analyzing the star layer by layer (or "shell" by "shell"), the local conservation equation describes how energy is transferred within the structure. As long as there is nuclear energy production, the luminosity increases. When the outermost layers are reached where there is no longer any nuclear burning, the luminosity is conserved and becomes constant. Mathematically, this translates into:
+\begin{equation}
+\frac{dL}{dm} = 0 \implies L = \text{constant}
+\end{equation}
+Dividing by $4\pi r^2$, one obtains the corresponding energy flux, which is diluted over the entire spherical surface. In the absence of nuclear production, the overall luminosity is transferred to the surface in a constant manner.
+
+However, one must consider possible contributions deriving from \textbf{thermodynamic work}. If the stellar layers are expanding or contracting, it is necessary to take into account the work involving pressure ($P$) and volume ($V$), as well as the transfer of energy into internal energy, or, conversely, the use of internal energy to perform work.
+
+The local energy equation can be written in its most general form taking into account all possibilities: nuclear reactions, neutrino losses, thermodynamic work and deviations from ideal gas behavior.
+
+From a global point of view, the luminosity produced is strictly linked to the variation in total energy. This luminosity is composed of both photons and neutrinos. The relationship between global energy and local energy is expressed via the following integrals:
+\begin{itemize}
+\item The integral of the local photon luminosity yields the \textbf{total photon luminosity}:
+\begin{equation}
+L_{photons} = \int dL
+\end{equation}
+\item The integral of the energy loss via neutrinos yields the \textbf{neutrino luminosity}:
+\begin{equation}
+L_{\nu} = \int \epsilon_{\nu} , dm
+\end{equation}
+\end{itemize}
+
+\subsection{Gravitational Energy and Internal Energy}
+
+The link between the total energy terms and the gravitational energy requires a reference to the \textbf{virial theorem}. We have seen that the integral of the local internal energy over the mass yields the variation of global internal energy:
+\begin{equation}
+E_{int} = \int_{0}^{M} u , dm
+\end{equation}
+As for the \textbf{gravitational energy} ($E_G$), from the virial theorem one derives:
+\begin{equation}
+E_G = -3 \int \frac{P}{\rho} , dm
+\end{equation}
+Expressing the time derivative (local gravitational work), one obtains a term proportional to $\frac{GM}{r} \frac{\dot{r}}{r}$, which through the virial relations can be rewritten in terms of density variation:
+\begin{equation}
+\dot{E}*G = \int*{0}^{M} \frac{P}{\rho^2} \dot{\rho} , dm
+\end{equation}
+
+The expression for total energy involves kinetic energy, gravitational energy, internal energy and nuclear energy. Assuming \textbf{hydrostatic equilibrium} (there are no global gas movements within the star), the macroscopic kinetic energy is zero ($E_{kin} = 0$).
+
+\section{Stellar Timescales}
+
+\subsection{The Nuclear Timescale}
+Dealing with nuclear energy, we introduce the \textbf{nuclear timescale} ($\tau_{nuc}$), defined in a manner analogous to the other timescales already seen:
+\begin{equation}
+\tau_{nuc} = \frac{E_{nuc}}{L}
+\end{equation}
+where $E_{nuc}$ is the available nuclear energy (expressed in ergs) and $L$ is the luminosity (in erg/s).
+
+In the case of the Sun, this calculation provides a nuclear timescale of about $10^{10}$ years. This result resolved the classic historical problem of the age of the Sun:
+\begin{itemize}
+\item The \textbf{Kelvin-Helmholtz} thermal timescale provided an age of barely $\tau_{KH} \approx 10^7$ years.
+\item The \textbf{nuclear} timescale provides $\tau_{nuc} \approx 10^{10}$ years, a value perfectly compatible with geological evidence.
+\end{itemize}
+
+\subsection{Hierarchy of Timescales}
+For the phase in which hydrogen or helium is burning (\textit{hydrogen / helium burning}), since these elements are very abundant and their cross sections are not excessively high, the following hierarchy for stellar timescales holds:
+\begin{equation}
+\tau_{nuc} \gg \tau_{KH} \gg \tau_{hydro}
+\end{equation}
+For the Sun, we have $10^{10}$ years for the nuclear, $10^7$ years for Kelvin-Helmholtz and about $30$ minutes for the \textbf{hydrodynamic} timescale ($\tau_{hydro}$), which represents the time required to bring the star back into equilibrium in the event of large-scale perturbations.
+
+\section{Order of Magnitude Analysis of the Energy Equation}
+
+Let us take the local energy conservation equation in its full differential form:
+\begin{equation}
+\frac{\partial L}{\partial m} = \epsilon_{nuc} - \epsilon_{\nu} + \epsilon_g
+\end{equation}
+where $\epsilon_g$ represents the thermo-gravitational term (a combination of work and internal energy variation). We express each term in orders of magnitude using the timescales just introduced to understand which terms dominate and which can be neglected depending on the phenomenon.
+
+\begin{enumerate}
+\item \textbf{Spatial variation of luminosity:}
+\begin{equation}
+\frac{\partial L}{\partial m} \sim \frac{L}{M}
+\end{equation}
+Multiplying and dividing by the total internal energy $E_{int}$, we can rewrite it as a function of the Kelvin-Helmholtz timescale:
+\begin{equation}
+\frac{L}{M} \sim \frac{E_{int}}{M , \tau_{KH}}
+\end{equation}
+since $\tau_{KH} \approx \frac{E_{int}}{L} \approx \frac{\vert{}E_G\vert{}}{L}$.
+
+```
+\item \textbf{Production of nuclear energy:}
+\begin{equation}
+\epsilon_{nuc} \sim \frac{L_{nuc}}{M}
+\end{equation}
+Multiplying and dividing by the total nuclear energy $E_{nuc}$, we obtain:
+\begin{equation}
+\epsilon_{nuc} \sim \frac{E_{nuc}}{M \, \tau_{nuc}}
+\end{equation}
+The variation of $L$ therefore scales with the Kelvin-Helmholtz time and depends on the available internal energy, while the rate $\epsilon_{nuc}$ scales with the nuclear time and depends on the available nuclear energy.
+
+\item \textbf{Thermo-gravitational term ($\epsilon_g$):}
+From the first law of thermodynamics (linked to the variation of entropy over time $T \frac{dS}{dt}$), the local term $\epsilon_g$ is expressed as:
+\begin{equation}
+\epsilon_g = -C_P \frac{\partial T}{\partial t} + \frac{\delta}{\rho} \frac{\partial P}{\partial t}
+\end{equation}
+In orders of magnitude, the time derivative introduces the timescale of the \textit{current} phenomenon in progress ($\tau$):
+\begin{equation}
+-C_P \frac{\partial T}{\partial t} \sim \frac{u}{M \, \tau}
+\end{equation}
+where $u$ is the internal energy density. Specifying for an \textbf{ideal gas} ($\delta = 1$ and $\frac{P}{\rho} = \frac{R}{\mu} T$), one finds that the pressure term also has the same order of magnitude:
+\begin{equation}
+\frac{\delta}{\rho} \frac{\partial P}{\partial t} \sim \frac{R}{\mu} \frac{T}{\tau} \sim \frac{u}{M \, \tau}
+\end{equation}
+
+
+```
+
+\end{enumerate}
+
+\section{Applications in Various Evolutionary Scenarios}
+
+This approach allows us to enormously simplify the energy equation by ignoring, case by case, the terms that are orders of magnitude lower compared to the others.
+
+\subsection{Case 1: Evolution on the Main Sequence ($\tau \gg \tau_{KH}$)}
+When analyzing evolution on a nuclear scale (such as during the Main Sequence), the variation of molecular weight and stellar evolution occur on a very long timescale:
+\begin{equation}
+\tau = \tau_{nuc} \gg \tau_{KH}
+\end{equation}
+In this regime, the term $\epsilon_g \propto \frac{1}{\tau_{nuc}}$ becomes negligible compared to the terms $\frac{\partial L}{\partial m} \propto \frac{1}{\tau_{KH}}$. The thermo-gravitational terms (or \textit{gravothermal}, as defined by Kippenhahn) can be completely ignored. The equation reduces to the classic stationary form:
+\begin{equation}
+\frac{\partial L}{\partial m} \approx \epsilon_{nuc} - \epsilon_{\nu}
+\end{equation}
+
+\subsection{Case 2: Rapid Evolution, Explosions and Pulsations ($\tau \ll \tau_{KH}$)}
+Consider instead extremely rapid phenomena, such as a supernova explosion (timescale of days) or the pulsation of a Cepheid. In these cases the timescale of the phenomenon is of the order of the hydrodynamic timescale, neatly lower than that of Kelvin-Helmholtz:
+\begin{equation}
+\tau \approx \tau_{hydro} \ll \tau_{KH}
+\end{equation}
+Since $\frac{\partial L}{\partial m} \propto \frac{1}{\tau_{KH}}$, the variation in luminosity is very slow compared to the phenomenon underway, making the term $\frac{\partial L}{\partial m}$ approximately zero compared to the thermo-gravitational terms. The dominant term is precisely $\epsilon_g$, and the equation is simplified by imposing $\epsilon_g \approx 0$ (assuming the absence of strong nuclear reactions in the same hydrodynamic interval), which is equivalent to describing an \textbf{adiabatic} evolution ($dS \approx 0$). In physical terms:
+\begin{equation}
+\epsilon_g = 0 \implies -C_P \frac{\partial T}{\partial t} + \frac{\delta}{\rho} \frac{\partial P}{\partial t} = 0
+\end{equation}
+\begin{equation}
+C_P \frac{\partial T}{\partial t} \approx \frac{\delta}{\rho} \frac{\partial P}{\partial t}
+\end{equation}
+
+In the specific case of a \textbf{Cepheid}, the pulsation involves the envelope of the star, which contracts and expands significantly over very short timescales (about one day). Since the time required to dissipate that energy radiatively is dictated by $\tau_{KH}$ (much longer), the gaseous layer in motion does not have the physical time to exchange energy with the outside effectively. The variation in internal energy is therefore entirely compensated by the thermodynamic work of the gas, confirming that the expansion and contraction cycle takes place in almost strictly adiabatic conditions.
+
+\section{Energy Transport Within Stars}
+
+The study of internal stellar structure requires understanding how energy is transported from the core toward the outermost layers. The main modes through which this transfer occurs are three:
+\begin{itemize}
+\item \textbf{Radiative transport};
+\item \textbf{Conduction transport};
+\item \textbf{Convection transport}.
+\end{itemize}
+In different physical conditions, different forms of transport will prevail. These modes significantly control the thermodynamic structure of the star. Consequently, the calculation of energy transport joins the other fundamental equations of stellar structure, namely mass conservation, momentum conservation (which translates into hydrostatic equilibrium) and energy conservation.
+
+\section{Radiative Transport as Diffusion}
+
+The problem of radiation transport is, in the general case, extremely complex since it involves in detail the interaction between radiation and matter (as happens, for example, in the study of stellar atmospheres).
+
+However, inside the star it is possible to adopt a very strong approximation. Since the density $\rho$ is extremely high, the \textbf{mean free path} ($l$) of the photons is very small. This allows us to treat radiation transport in stellar interiors with a formal approach analogous to that of \textbf{particle diffusion}, where the particles in question are photons.
+
+The mean free path is inversely proportional to the \textbf{opacity} of matter (which we will denote by $\kappa$) and to the density $\rho$. Since opacity is expressed as a cross section per unit mass (in $\text{cm}^2 \text{g}^{-1}$), the mean free path takes the form:
+\begin{equation}
+l = \frac{1}{\kappa \rho}
+\end{equation}
+
+To give an order of magnitude, inside the Sun the mean free path of photons is about $2 \text{ cm}$. Let us indeed consider typical values for stellar interiors:
+\begin{itemize}
+\item The global average opacity can be of the order of $\kappa \approx 1 \text{ cm}^2 \text{g}^{-1}$.
+\item If we specifically consider electron \textit{scattering}, the opacity is $\kappa_{es} \approx 0.4 \text{ cm}^2 \text{g}^{-1}$.
+\item With an average solar density of about $\rho \approx 1.4 \text{ g cm}^{-3}$, the product $\kappa \rho$ leads to travel distances on the order of a centimeter.
+\end{itemize}
+Since the mean free path is infinitesimal compared to the overall dimensions of the star, photons are continuously emitted and reabsorbed over very short distances. This fully justifies the use of a diffusion regime.
+
+\subsection{The Diffusion Equation for Photons}
+
+In a classical diffusion regime, the particle flux $\vec{J}$ is proportional to the density gradient of the particles themselves, mediated by a \textbf{diffusion coefficient} $D$:
+\begin{equation}
+\vec{J} = - D \nabla n
+\end{equation}
+In the simple non-relativistic case, the diffusion coefficient is given by:
+\begin{equation}
+D = \frac{1}{3} v l
+\end{equation}
+where the factor $1/3$ derives from the three spatial degrees of freedom, $v$ is the average particle velocity and $l$ is their mean free path.
+
+Let us now adapt this formalism to photons. Their velocity is equal to the speed of light, $v = c$ (neglecting the variations of the refractive index in the stellar plasma). Instead of the particle number density, we reason in terms of \textbf{radiation energy density}, which we will denote by $U$.
+
+Being in stellar interiors, we are strictly in conditions of \textbf{Local Thermodynamic Equilibrium (LTE)}. Under such conditions, radiation behaves like a black body and the photon energy density is proportional to the fourth power of temperature $T$:
+\begin{equation}
+U = a T^4
+\end{equation}
+where $a$ is the radiation constant.
+
+Given the symmetries of the stellar problem, all physical quantities vary exclusively as a function of the radial coordinate $r$. The radiative flux $\vec{F}_{rad}$ thus reduces to a scalar directed along the radius.
+By substituting the terms into the diffusion law, we obtain:
+\begin{equation}
+F_{rad} = - D \frac{\partial U}{\partial r} = - \left( \frac{1}{3} c \frac{1}{\kappa \rho} \right) \frac{\partial (a T^4)}{\partial r}
+\end{equation}
+By performing the derivative with respect to the radius, and considering $a$ as a constant, we arrive at the final formulation for the radiative flux:
+\begin{equation}
+F_{rad} = - \frac{4}{3} \frac{a c T^3}{\kappa \rho} \frac{dT}{dr}
+\end{equation}
+In this way, we have reduced the complex problem of radiation-matter interaction to a simple gradient equation.
+
+\section{The Temperature Gradient in Stellar Structure}
+
+From a formal point of view, the newly derived equation highlights that the photon flux is driven by the \textbf{temperature gradient}. We can rewrite it by defining a radiative conductivity coefficient, which we will denote by $\mathcal{K}_{rad}$ to distinguish it from the opacity $\kappa$:
+\begin{equation}
+F_{rad} = - \mathcal{K}*{rad} \frac{dT}{dr}
+\end{equation}
+where the coefficient is equal to:
+\begin{equation}
+\mathcal{K}*{rad} = \frac{4 a c T^3}{3 \kappa \rho}
+\end{equation}
+
+This formulation provides us with an important physical interpretation:
+\begin{itemize}
+\item The radiative flux is \textbf{favored} by high temperatures ($T^3$ in the numerator), since the layer struggles less to transfer energy.
+\item The flux is \textbf{hindered} (slowed down) by opacity $\kappa$ and density $\rho$. A denser or more opaque medium provides greater "resistance" to the passage of radiation, reducing the mean free path and making energy transport more difficult.
+\end{itemize}
+
+\subsection{Explicit Form for Structure Calculations}
+
+In stellar structure codes and calculations, the equation is reversed: starting from the generated energy flux, the temperature gradient necessary to dissipate it is calculated. By inverting the formula we obtain:
+\begin{equation}
+\frac{dT}{dr} = - \frac{3 \kappa \rho}{4 a c T^3} F_{rad}
+\end{equation}
+
+However, in astrophysical practice, instead of the flux $F_{rad}$, the \textbf{luminosity} $L$ is used, which represents the total energy radiated through a spherical surface of radius $r$:
+\begin{equation}
+F_{rad} = \frac{L}{4 \pi r^2}
+\end{equation}
+By substituting the flux, the spatial temperature gradient becomes:
+\begin{equation}
+\frac{dT}{dr} = - \frac{3 \kappa \rho L}{16 \pi a c T^3 r^2}
+\end{equation}
+
+Often, stellar structure models use the enclosed mass $m$ as the independent variable instead of the radius $r$. To perform the change of variable, we exploit the mass conservation equation:
+\begin{equation}
+dm = 4 \pi r^2 \rho , dr \implies \frac{dr}{dm} = \frac{1}{4 \pi r^2 \rho}
+\end{equation}
+Applying the chain rule for derivatives, we calculate $\frac{dT}{dm}$:
+\begin{equation}
+\frac{dT}{dm} = \frac{dT}{dr} \frac{dr}{dm} = \left( - \frac{3 \kappa \rho L}{16 \pi a c T^3 r^2} \right) \left( \frac{1}{4 \pi r^2 \rho} \right)
+\end{equation}
+By simplifying the density $\rho$ and multiplying the terms in the denominator, we obtain the definitive differential equation for the temperature gradient as a function of mass:
+\begin{equation}
+\frac{dT}{dm} = - \frac{3 \kappa L}{64 \pi^2 a c T^3 r^4}
+\end{equation}
+
+In summary, the physics of radiative transport teaches us that, given a certain energy flux in transit outwards, the temperature gradient that is established depends on the characteristics of the layer: if opacity and density increase, the layer opposes greater resistance, and the temperature gradient required to maintain the flux must necessarily increase. If the temperature increases, the resistance decreases and the gradient is reduced.
+
+\section{Transport by Conduction}
+
+In addition to radiation, energy can be transferred via \textbf{thermal conduction}.
+In classical stellar interiors, transport by conduction is considered secondary and often negligible, since the conductivity of the plasma is such that it does not compete with the efficiency of radiative transport.
+
+However, in more accurate physical calculations (and in particular stellar regimes), conduction is included in the equations. The mathematical approach is entirely analogous to the one just seen for photon diffusion: the classical form of the conduction equation applied to the gas particles is used. The conductive flux will be proportional to the temperature gradient via a specific thermal conductivity coefficient:
+\begin{equation}
+F_{cond} = - \mathcal{K}_{cond} \frac{dT}{dr}
+\end{equation}
+The two fluxes (radiative and conductive) can then be formally added together in the study of the global energy balance of the layer.
+The study of internal stellar structure requires understanding how energy is transported from the core toward the outermost layers. The main modes through which this transfer occurs are three:
+\begin{itemize}
+\item \textbf{Radiative transport};
+\item \textbf{Conduction transport};
+\item \textbf{Convection transport}.
+\end{itemize}
+In different physical conditions, different forms of transport will prevail. These modes significantly control the thermodynamic structure of the star. Consequently, the calculation of energy transport joins the other fundamental equations of stellar structure, namely mass conservation, momentum conservation (which translates into hydrostatic equilibrium) and energy conservation.
+
+\section{Energy Transport: Conduction and Total Opacity}
+
+As previously introduced, energy transport via thermal conduction, associated with the motion of gas particles, can be treated analytically by exploiting the classical form of conduction. Analogously to the case of radiative transport, it is possible to define a conductive coefficient $\mathcal{K}_{cond}$ that links the energy flux to the temperature gradient.
+
+In stellar interiors, it is extremely convenient to express the conduction coefficient in a mathematical form completely similar to that of the radiative coefficient. For this purpose, a \textbf{conductive opacity} is introduced, denoted by $\kappa_{cond}$. The total energy flux, $F_{tot}$, will be given by the sum of the radiative flux and the conductive flux:
+\begin{equation}
+F_{tot} = F_{rad} + F_{cond} = - \left( \mathcal{K}*{rad} + \mathcal{K}*{cond} \right) \nabla T
+\end{equation}
+
+Making the terms explicit as a function of the radiative opacity ($\kappa_{rad}$) and the conductive one ($\kappa_{cond}$), one obtains:
+\begin{equation}
+F_{tot} = - \frac{4ac}{3} \frac{T^3}{\rho} \left( \frac{1}{\kappa_{rad}} + \frac{1}{\kappa_{cond}} \right) \nabla T
+\end{equation}
+
+\subsection{The formal invariance of the constant $c$}
+A question naturally arises: why does the speed of light $c$ continue to appear in the total flux expression within the factor $\frac{4ac}{3}$, even for the conductive term which concerns massive particles and not photons?
+
+This is a precise choice of formal convenience. The actual speed of the gas particles is absorbed (incorporated) within the definition of the conductive opacity $\kappa_{cond}$, which is then appropriately scaled by the speed of light $c$. This mathematical artifice allows factoring out the term $\frac{4ac}{3}$, maintaining the structure of the differential equation unchanged.
+
+The result of this operation translates into a simple correction of the opacity coefficient. It is sufficient to define a single \textbf{total opacity} $\kappa$ (or corrected opacity) such that:
+\begin{equation}
+\frac{1}{\kappa} = \frac{1}{\kappa_{rad}} + \frac{1}{\kappa_{cond}}
+\end{equation}
+In this way, the treatment of energy transport is significantly simplified, since the effect of conduction is entirely absorbed into the definition of the equivalent opacity of the medium.
+
+\section{The Calculation of Opacities and Stellar Structure Databases}
+
+The mathematical simplification just seen finds its practical application in numerical calculation codes. The opacity parameter $\kappa$ is calculated a priori, since its analytical computation is a problem of atomic physics of enormous complexity.
+
+In stellar interiors, due to the high energies involved, it is necessary to take into account countless atomic transitions, including those of heavy and complex elements such as iron or vanadium. Between the 90s and the early 2000s, the scientific community made an extraordinary computational effort through international programs such as the \textbf{Opacity Project} and the \textbf{Iron Project}. These projects, exploiting the maximum computational capabilities of the time, calculated all the necessary cross sections to build realistic opacity tables.
+
+The opacity of a stellar mixture strictly depends on:
+\begin{itemize}
+\item Chemical composition of the gas;
+\item Temperature ($T$);
+\item Density ($\rho$);
+\item Equation of state of the gas (which takes into account, for example, the electron degeneracy regime that is established at very high densities and not extremely high temperatures).
+\end{itemize}
+
+Today, modern stellar evolution codes do not calculate the opacity run-time, but directly query vast \textbf{grid databases}. By calling a specific routine, the code extrapolates the correct $\kappa$ value, which already includes within it the contribution of conductive transport. These tables are essential for modeling stars in any phase, including advanced evolutionary phases (e.g., AGB stars) where nuclear reactions produce heavy elements that further complicate radiation-matter interaction.
+
+\section{Radiative Temperature Gradient with respect to Pressure}
+
+Let us return to the temperature gradient equation for radiative transport in Lagrangian coordinates (mass $m$). As previously demonstrated, the physical variables involved are opacity, luminosity, distance from the center $r$ and temperature $T$.
+\begin{equation}
+\frac{dT}{dm} = - \frac{3 \kappa L}{64 \pi^2 a c T^3 r^4}
+\end{equation}
+
+To study the thermodynamic structure as a function of pressure, we combine this equation with the \textbf{hydrostatic equilibrium} equation, which expresses the pressure gradient with respect to mass:
+\begin{equation}
+\frac{dP}{dm} = - \frac{G m}{4 \pi r^4}
+\end{equation}
+
+To obtain the temperature gradient with respect to pressure ($\frac{dT}{dP}$), we take the member-by-member ratio between the two differential equations:
+\begin{equation}
+\frac{dT}{dP} = \frac{\left( \frac{dT}{dm} \right)}{\left( \frac{dP}{dm} \right)} = \frac{\left( - \frac{3 \kappa L}{64 \pi^2 a c T^3 r^4} \right)}{\left( - \frac{G m}{4 \pi r^4} \right)}
+\end{equation}
+
+Performing the algebraic simplifications:
+\begin{itemize}
+\item The spatial term $r^4$ in the denominator cancels out on both sides.
+\item The $\pi^2$ term in the numerator simplifies with the $\pi$ in the denominator, leaving a $\pi$ in the denominator in the final result.
+\item The numerical coefficient is reduced: $\frac{4}{64} = \frac{1}{16}$.
+\end{itemize}
+
+The \textbf{radiative temperature gradient} ($\nabla_{rad}$) is thus obtained:
+\begin{equation}
+\frac{dT}{dP} = \frac{3 \kappa L}{16 \pi a c G m T^3}
+\end{equation}
+This formulation allows expressing the local thermal variation directly in terms of pressure, enclosed mass and luminosity.
+
+\subsection{Note on the density variable ($\rho$)}
+It is important to make an algebraic clarification regarding the absence of the density $\rho$ in the $\frac{dT}{dm}$ equation. During the transition from Eulerian coordinates (radius $r$) to Lagrangian coordinates (mass $m$), the differential relation of mass conservation is used: $dm = 4\pi r^2 \rho dr$. Dividing the initial expression by this term, the density $\rho$ (present in the numerator in the equation in $dr$) exactly simplifies with that introduced by the mass differential. This represents one of the major advantages of the Lagrangian description: density is absorbed by the mass variable, significantly simplifying the system of equations.
+
+\section*{Marginal note: Guidance on the Study Plan}
+In response to a question asked at the end of the lecture regarding the overlaps between the Cosmology (or Elements of Astronomy) course of the bachelor's degree and the programs of the master's degree: it is emphasized that a large part of the introductory topics covered in the bachelor's scope will be taken up and deepened in the various master's courses. The choice of the master's path is not absolutely bound by the optional subjects taken at the bachelor's level. The recommended approach is to select the elective exams based on one's main inclinations and interests; any previous gaps related to non-attended subjects can be easily filled during the master's studies.

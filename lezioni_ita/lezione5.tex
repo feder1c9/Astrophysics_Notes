@@ -1,1 +1,339 @@
 \chapter{Lezione 5 - 20/10/2026}
+
+\section{Conservazione dell'Energia: Visione Globale e Locale}
+
+Riprendendo i concetti trattati in precedenza, ci concentriamo sulla \textbf{conservazione dell'energia}, analizzandola sia da un punto di vista globale sia da un punto di vista locale.
+
+Analizzando la stella strato per strato (o "shell" per "shell"), l'equazione di conservazione locale ci descrive come l'energia viene trasferita all'interno della struttura. Fintanto che vi è produzione di energia nucleare, la luminosità aumenta. Quando si raggiungono gli strati più esterni in cui non vi è più combustione nucleare, la luminosità si conserva e diventa costante. Matematicamente, questo si traduce in:
+\begin{equation}
+\frac{dL}{dm} = 0 \implies L = \text{costante}
+\end{equation}
+Dividendo per $4\pi r^2$, si ottiene il corrispondente flusso di energia, il quale viene diluito su tutta la superficie sferica. In assenza di produzione nucleare, la luminosità complessiva viene trasferita in superficie in maniera costante.
+
+Tuttavia, bisogna considerare eventuali contributi derivanti dal \textbf{lavoro termodinamico}. Se gli strati stellari sono in espansione o in contrazione, occorre tenere conto del lavoro che coinvolge la pressione ($P$) e il volume ($V$), nonché del trasferimento di energia in energia interna, o, viceversa, dell'utilizzo dell'energia interna per compiere lavoro.
+
+L'equazione locale dell'energia può essere scritta nella sua forma più generale tenendo conto di tutte le possibilità: reazioni nucleari, perdite di neutrini, lavoro termodinamico e le deviazioni dal comportamento di gas perfetto.
+
+Da un punto di vista globale, la luminosità prodotta è strettamente legata alla variazione di energia totale. Tale luminosità è composta sia dai fotoni che dai neutrini. La relazione tra energia globale ed energia locale si esprime tramite i seguenti integrali:
+\begin{itemize}
+\item L'integrale della luminosità fotonica locale restituisce la \textbf{luminosità totale dei fotoni}:
+\begin{equation}
+L_{fotoni} = \int dL
+\end{equation}
+\item L'integrale della perdita di energia per neutrini restituisce la \textbf{luminosità dei neutrini}:
+\begin{equation}
+L_{\nu} = \int \epsilon_{\nu} , dm
+\end{equation}
+\end{itemize}
+
+\subsection{Energia Gravitazionale ed Energia Interna}
+
+Il collegamento tra i termini di energia totale e l'energia gravitazionale richiede un richiamo al \textbf{teorema del viriale}. Abbiamo visto che l'integrale dell'energia interna locale sulla massa fornisce la variazione di energia interna globale:
+\begin{equation}
+E_{int} = \int_{0}^{M} u , dm
+\end{equation}
+Per quanto riguarda l'\textbf{energia gravitazionale} ($E_G$), dal teorema del viriale si ricava:
+\begin{equation}
+E_G = -3 \int \frac{P}{\rho} , dm
+\end{equation}
+Esprimendo la derivata temporale (lavoro gravitazionale locale), si ottiene un termine proporzionale a $\frac{GM}{r} \frac{\dot{r}}{r}$, che tramite le relazioni del viriale può essere riscritto in termini di variazione della densità:
+\begin{equation}
+\dot{E}*G = \int*{0}^{M} \frac{P}{\rho^2} \dot{\rho} , dm
+\end{equation}
+
+L'espressione dell'energia totale coinvolge l'energia cinetica, l'energia gravitazionale, l'energia interna e l'energia nucleare. Assumendo l'\textbf{equilibrio idrostatico} (non vi sono movimenti globali del gas all'interno della stella), l'energia cinetica macroscopica è nulla ($E_{cin} = 0$).
+
+\section{I Tempi Scala Stellari}
+
+\subsection{Il Tempo Scala Nucleare}
+Avendo a che fare con l'energia nucleare, introduciamo il \textbf{tempo scala nucleare} ($\tau_{nuc}$), definito in maniera analoga agli altri tempi scala già visti:
+\begin{equation}
+\tau_{nuc} = \frac{E_{nuc}}{L}
+\end{equation}
+dove $E_{nuc}$ è l'energia nucleare a disposizione (espressa in erg) ed $L$ è la luminosità (in erg/s).
+
+Nel caso del Sole, questo conto fornisce un tempo scala nucleare di circa $10^{10}$ anni. Questo risultato ha risolto il classico problema storico dell'età del Sole:
+\begin{itemize}
+\item Il tempo scala termico di \textbf{Kelvin-Helmholtz} forniva un'età di appena $\tau_{KH} \approx 10^7$ anni.
+\item Il tempo scala \textbf{nucleare} fornisce $\tau_{nuc} \approx 10^{10}$ anni, un valore perfettamente compatibile con le evidenze geologiche.
+\end{itemize}
+
+\subsection{Gerarchia dei Tempi Scala}
+Per la fase in cui brucia idrogeno o elio (\textit{hydrogen / helium burning}), dal momento che questi elementi sono molto abbondanti e le loro sezioni d'urto non sono eccessivamente elevate, vale la seguente gerarchia per i tempi scala stellari:
+\begin{equation}
+\tau_{nuc} \gg \tau_{KH} \gg \tau_{idro}
+\end{equation}
+Per il Sole, abbiamo $10^{10}$ anni per il nucleare, $10^7$ anni per Kelvin-Helmholtz e circa $30$ minuti per il tempo scala \textbf{idrodinamico} ($\tau_{idro}$), che rappresenta il tempo necessario per riportare la stella in equilibrio in caso di perturbazioni su larga scala.
+
+\section{Analisi in Ordini di Grandezza dell'Equazione dell'Energia}
+
+Prendiamo l'equazione di conservazione dell'energia locale nella sua forma differenziale completa:
+\begin{equation}
+\frac{\partial L}{\partial m} = \epsilon_{nuc} - \epsilon_{\nu} + \epsilon_g
+\end{equation}
+dove $\epsilon_g$ rappresenta il termine termo-gravitazionale (combinazione di lavoro e variazione di energia interna). Esprimiamo in ordini di grandezza ciascun termine utilizzando i tempi scala appena introdotti per capire quali termini dominano e quali si possono trascurare a seconda del fenomeno.
+
+\begin{enumerate}
+\item \textbf{Variazione spaziale della luminosità:}
+\begin{equation}
+\frac{\partial L}{\partial m} \sim \frac{L}{M}
+\end{equation}
+Moltiplicando e dividendo per l'energia interna totale $E_{int}$, possiamo riscriverlo in funzione del tempo scala di Kelvin-Helmholtz:
+\begin{equation}
+\frac{L}{M} \sim \frac{E_{int}}{M , \tau_{KH}}
+\end{equation}
+poiché $\tau_{KH} \approx \frac{E_{int}}{L} \approx \frac{\vert{}E_G\vert{}}{L}$.
+
+```
+\item \textbf{Produzione di energia nucleare:}
+\begin{equation}
+\epsilon_{nuc} \sim \frac{L_{nuc}}{M}
+\end{equation}
+Moltiplicando e dividendo per l'energia nucleare totale $E_{nuc}$, otteniamo:
+\begin{equation}
+\epsilon_{nuc} \sim \frac{E_{nuc}}{M \, \tau_{nuc}}
+\end{equation}
+La variazione di $L$ scala quindi con il tempo di Kelvin-Helmholtz e dipende dall'energia interna disponibile, mentre il tasso $\epsilon_{nuc}$ scala col tempo nucleare e dipende dall'energia nucleare disponibile.
+
+\item \textbf{Termine termo-gravitazionale ($\epsilon_g$):}
+Dalla prima legge della termodinamica (legata alla variazione di entropia nel tempo $T \frac{dS}{dt}$), il termine locale $\epsilon_g$ è espresso come:
+\begin{equation}
+\epsilon_g = -C_P \frac{\partial T}{\partial t} + \frac{\delta}{\rho} \frac{\partial P}{\partial t}
+\end{equation}
+In ordini di grandezza, la derivata temporale introduce il tempo scala del fenomeno \textit{attuale} in corso ($\tau$):
+\begin{equation}
+-C_P \frac{\partial T}{\partial t} \sim \frac{u}{M \, \tau}
+\end{equation}
+dove $u$ è la densità di energia interna. Specificando per un \textbf{gas perfetto} ($\delta = 1$ e $\frac{P}{\rho} = \frac{R}{\mu} T$), si trova che anche il termine in pressione ha lo stesso ordine di grandezza:
+\begin{equation}
+\frac{\delta}{\rho} \frac{\partial P}{\partial t} \sim \frac{R}{\mu} \frac{T}{\tau} \sim \frac{u}{M \, \tau}
+\end{equation}
+
+```
+
+\end{enumerate}
+
+\section{Applicazioni nei Vari Scenari Evolutivi}
+
+Questa impostazione ci permette di semplificare enormemente l'equazione dell'energia ignorando, caso per caso, i termini che risultano ordini di grandezza inferiori rispetto agli altri.
+
+\subsection{Caso 1: Evoluzione in Sequenza Principale ($\tau \gg \tau_{KH}$)}
+Quando si analizza l'evoluzione su scala nucleare (come durante la Sequenza Principale), la variazione di peso molecolare e l'evoluzione stellare avvengono su un tempo scala lunghissimo:
+\begin{equation}
+\tau = \tau_{nuc} \gg \tau_{KH}
+\end{equation}
+In questo regime, il termine $\epsilon_g \propto \frac{1}{\tau_{nuc}}$ diventa trascurabile rispetto ai termini $\frac{\partial L}{\partial m} \propto \frac{1}{\tau_{KH}}$. I termini termo-gravitazionali (o \textit{gravothermal}, come definiti da Kippenhahn) possono essere completamente ignorati. L'equazione si riduce alla classica forma stazionaria:
+\begin{equation}
+\frac{\partial L}{\partial m} \approx \epsilon_{nuc} - \epsilon_{\nu}
+\end{equation}
+
+\subsection{Caso 2: Evoluzione Rapida, Esplosioni e Pulsazioni ($\tau \ll \tau_{KH}$)}
+Consideriamo invece fenomeni estremamente rapidi, come l'esplosione di una supernova (scala di giorni) o la pulsazione di una Cefeide. In questi casi il tempo scala del fenomeno è dell'ordine del tempo scala idrodinamico, nettamente inferiore a quello di Kelvin-Helmholtz:
+\begin{equation}
+\tau \approx \tau_{idro} \ll \tau_{KH}
+\end{equation}
+Poiché $\frac{\partial L}{\partial m} \propto \frac{1}{\tau_{KH}}$, la variazione della luminosità è lentissima rispetto al fenomeno in atto, rendendo il termine $\frac{\partial L}{\partial m}$ circa nullo rispetto ai termini termo-gravitazionali. Il termine dominante è proprio $\epsilon_g$, e l'equazione si semplifica imponendo $\epsilon_g \approx 0$ (assumendo l'assenza di forti reazioni nucleari nel medesimo intervallo idrodinamico), il che equivale a descrivere un'evoluzione \textbf{adiabatica} ($dS \approx 0$). In termini fisici:
+\begin{equation}
+\epsilon_g = 0 \implies -C_P \frac{\partial T}{\partial t} + \frac{\delta}{\rho} \frac{\partial P}{\partial t} = 0
+\end{equation}
+\begin{equation}
+C_P \frac{\partial T}{\partial t} \approx \frac{\delta}{\rho} \frac{\partial P}{\partial t}
+\end{equation}
+
+Nel caso specifico di una \textbf{Cefeide}, la pulsazione coinvolge l'inviluppo della stella, il quale si contrae ed espande in maniera significativa su tempi scala molto brevi (circa un giorno). Dal momento che il tempo necessario per dissipare quell'energia in modo radiativo è dettato da $\tau_{KH}$ (molto più lungo), lo strato gassoso in movimento non ha il tempo fisico di scambiare energia con l'esterno in maniera efficace. La variazione di energia interna viene quindi interamente compensata dal lavoro termodinamico del gas, confermando che il ciclo di espansione e contrazione avviene in condizioni quasi rigorosamente adiabatiche.
+
+\section{Il Trasporto dell'Energia all'Interno delle Stelle}
+
+Lo studio della struttura interna stellare richiede di comprendere come l'energia venga trasportata dal nucleo verso gli strati più esterni. Le modalità principali attraverso cui avviene questo trasferimento sono tre:
+\begin{itemize}
+\item \textbf{Trasporto radiativo};
+\item \textbf{Trasporto per conduzione};
+\item \textbf{Trasporto per convezione}.
+\end{itemize}
+In diverse condizioni fisiche, prevarranno diverse forme di trasporto. Queste modalità controllano in maniera significativa la struttura termodinamica della stella. Di conseguenza, il calcolo del trasporto dell'energia si unisce alle altre equazioni fondamentali della struttura stellare, ovvero la conservazione della massa, la conservazione dell'impulso (che si traduce nell'equilibrio idrostatico) e la conservazione dell'energia.
+
+\section{Il Trasporto Radiativo come Diffusione}
+
+Il problema del trasporto della radiazione è, nel caso generale, estremamente complesso poiché coinvolge nel dettaglio l'interazione tra radiazione e materia (come avviene, ad esempio, nello studio delle atmosfere stellari).
+
+Tuttavia, all'interno della stella è possibile adottare un'approssimazione molto forte. Poiché la densità $\rho$ è estremamente elevata, il \textbf{cammino libero medio} ($l$) dei fotoni è molto piccolo. Questo ci permette di trattare il trasporto della radiazione negli interni stellari con un approccio formale analogo a quello della \textbf{diffusione di particelle}, dove le particelle in questione sono i fotoni.
+
+Il cammino libero medio è inversamente proporzionale all'\textbf{opacità} della materia (che indicheremo con $\kappa$) e alla densità $\rho$. Essendo l'opacità espressa come una sezione d'urto per unità di massa (in $\text{cm}^2 \text{g}^{-1}$), il cammino libero medio assume la forma:
+\begin{equation}
+l = \frac{1}{\kappa \rho}
+\end{equation}
+
+Per dare un ordine di grandezza, all'interno del Sole il cammino libero medio dei fotoni è di circa $2 \text{ cm}$. Consideriamo infatti dei valori tipici per gli interni stellari:
+\begin{itemize}
+\item L'opacità media globale può essere dell'ordine di $\kappa \approx 1 \text{ cm}^2 \text{g}^{-1}$.
+\item Se consideriamo specificamente lo \textit{scattering} elettronico, l'opacità è $\kappa_{es} \approx 0.4 \text{ cm}^2 \text{g}^{-1}$.
+\item Con una densità media solare di circa $\rho \approx 1.4 \text{ g cm}^{-3}$, il prodotto $\kappa \rho$ porta a distanze di percorrenza dell'ordine del centimetro.
+\end{itemize}
+Essendo il cammino libero medio infinitesimo rispetto alle dimensioni globali della stella, i fotoni vengono continuamente emessi e riassorbiti su distanze brevissime. Questo giustifica pienamente l'utilizzo di un regime di diffusione.
+
+\subsection{L'Equazione di Diffusione per i Fotoni}
+
+In un regime classico di diffusione, il flusso di particelle $\vec{J}$ è proporzionale al gradiente della densità delle particelle stesse, mediato da un \textbf{coefficiente di diffusione} $D$:
+\begin{equation}
+\vec{J} = - D \nabla n
+\end{equation}
+Nel caso semplice non relativistico, il coefficiente di diffusione è dato da:
+\begin{equation}
+D = \frac{1}{3} v l
+\end{equation}
+dove il fattore $1/3$ deriva dai tre gradi di libertà spaziali, $v$ è la velocità media delle particelle e $l$ è il loro cammino libero medio.
+
+Adattiamo ora questo formalismo ai fotoni. La loro velocità è pari alla velocità della luce, $v = c$ (trascurando le variazioni dell'indice di rifrazione nel plasma stellare). Invece della densità numerica delle particelle, ragioniamo in termini di \textbf{densità di energia della radiazione}, che indicheremo con $U$.
+
+Trovandoci negli interni stellari, siamo rigorosamente in condizioni di \textbf{Equilibrio Termodinamico Locale (LTE)}. In tali condizioni, la radiazione si comporta come un corpo nero e la densità di energia dei fotoni è proporzionale alla quarta potenza della temperatura $T$:
+\begin{equation}
+U = a T^4
+\end{equation}
+dove $a$ è la costante di radiazione.
+
+Date le simmetrie del problema stellare, tutte le grandezze fisiche variano esclusivamente in funzione della coordinata radiale $r$. Il flusso radiativo $\vec{F}_{rad}$ si riduce quindi a uno scalare diretto lungo il raggio.
+Sostituendo i termini nella legge di diffusione, otteniamo:
+\begin{equation}
+F_{rad} = - D \frac{\partial U}{\partial r} = - \left( \frac{1}{3} c \frac{1}{\kappa \rho} \right) \frac{\partial (a T^4)}{\partial r}
+\end{equation}
+Svolgendo la derivata rispetto al raggio, e considerando $a$ come costante, giungiamo alla formulazione finale per il flusso radiativo:
+\begin{equation}
+F_{rad} = - \frac{4}{3} \frac{a c T^3}{\kappa \rho} \frac{dT}{dr}
+\end{equation}
+In questo modo, abbiamo ridotto il complesso problema dell'interazione radiazione-materia a una semplice equazione di gradiente.
+
+\section{Il Gradiente di Temperatura nella Struttura Stellare}
+
+Da un punto di vista formale, l'equazione appena ricavata evidenzia che il flusso dei fotoni è guidato dal \textbf{gradiente di temperatura}. Possiamo riscriverla definendo un coefficiente di conducibilità radiativa, che indicheremo con $\mathcal{K}_{rad}$ per distinguerlo dall'opacità $\kappa$:
+\begin{equation}
+F_{rad} = - \mathcal{K}*{rad} \frac{dT}{dr}
+\end{equation}
+dove il coefficiente è pari a:
+\begin{equation}
+\mathcal{K}*{rad} = \frac{4 a c T^3}{3 \kappa \rho}
+\end{equation}
+
+Questa formulazione ci fornisce un'importante chiave di lettura fisica:
+\begin{itemize}
+\item Il flusso radiativo è \textbf{avvantaggiato} da temperature elevate ($T^3$ a numeratore), poiché lo strato fa meno fatica a trasferire energia.
+\item Il flusso è \textbf{ostacolato} (frenato) dall'opacità $\kappa$ e dalla densità $\rho$. Un mezzo più denso o più opaco fa maggiore "resistenza" al passaggio della radiazione, riducendo il libero cammino medio e rendendo più difficile il trasporto energetico.
+\end{itemize}
+
+\subsection{Esplicitazione per i Calcoli di Struttura}
+
+Nei codici e nei calcoli di struttura stellare, l'equazione viene ribaltata: partendo dal flusso di energia generato, si calcola quale debba essere il gradiente di temperatura necessario a smaltirlo. Invertendo la formula si ottiene:
+\begin{equation}
+\frac{dT}{dr} = - \frac{3 \kappa \rho}{4 a c T^3} F_{rad}
+\end{equation}
+
+Tuttavia, nella pratica astrofisica, anziché il flusso $F_{rad}$ si utilizza la \textbf{luminosità} $L$, che rappresenta l'energia totale irradiata attraverso una superficie sferica di raggio $r$:
+\begin{equation}
+F_{rad} = \frac{L}{4 \pi r^2}
+\end{equation}
+Sostituendo il flusso, il gradiente spaziale della temperatura diventa:
+\begin{equation}
+\frac{dT}{dr} = - \frac{3 \kappa \rho L}{16 \pi a c T^3 r^2}
+\end{equation}
+
+Spesso, i modelli di struttura stellare utilizzano come variabile indipendente la massa racchiusa $m$ anziché il raggio $r$. Per effettuare il cambio di variabile, sfruttiamo l'equazione di conservazione della massa:
+\begin{equation}
+dm = 4 \pi r^2 \rho , dr \implies \frac{dr}{dm} = \frac{1}{4 \pi r^2 \rho}
+\end{equation}
+Applicando la regola della catena per le derivate, calcoliamo $\frac{dT}{dm}$:
+\begin{equation}
+\frac{dT}{dm} = \frac{dT}{dr} \frac{dr}{dm} = \left( - \frac{3 \kappa \rho L}{16 \pi a c T^3 r^2} \right) \left( \frac{1}{4 \pi r^2 \rho} \right)
+\end{equation}
+Semplificando la densità $\rho$ e moltiplicando i termini al denominatore, si ottiene l'equazione differenziale definitiva per il gradiente di temperatura in funzione della massa:
+\begin{equation}
+\frac{dT}{dm} = - \frac{3 \kappa L}{64 \pi^2 a c T^3 r^4}
+\end{equation}
+
+Riepilogando, la fisica del trasporto radiativo ci insegna che, fissato un certo flusso di energia in transito verso l'esterno, il gradiente di temperatura che si instaura dipende dalle caratteristiche dello strato: se aumentano opacità e densità, lo strato oppone maggiore resistenza, e il gradiente di temperatura richiesto per mantenere il flusso deve necessariamente aumentare. Se aumenta la temperatura, la resistenza diminuisce e il gradiente si riduce.
+
+\section{Il Trasporto per Conduzione}
+
+Oltre alla radiazione, l'energia può essere trasferita tramite \textbf{conduzione termica}.
+Negli interni stellari classici, il trasporto per conduzione è considerato secondario e spesso trascurabile, poiché la conducibilità del plasma è tale da non competere con l'efficienza del trasporto radiativo.
+
+Tuttavia, nei calcoli fisici più accurati (e in particolari regimi stellari), la conduzione viene inclusa nelle equazioni. L'approccio matematico è del tutto analogo a quello appena visto per la diffusione dei fotoni: si utilizza la forma classica dell'equazione di conduzione applicata alle particelle del gas. Il flusso conduttivo sarà proporzionale al gradiente di temperatura tramite un apposito coefficiente di conducibilità termica:
+\begin{equation}
+F_{cond} = - \mathcal{K}_{cond} \frac{dT}{dr}
+\end{equation}
+I due flussi (radiativo e conduttivo) possono poi essere sommati formalmente nello studio del bilancio energetico globale dello strato.
+
+\section{Trasporto dell'Energia: Conduzione e Opacità Totale}
+
+Come introdotto in precedenza, il trasporto di energia tramite conduzione termica, associato al moto delle particelle del gas, può essere trattato analiticamente sfruttando la forma classica della conduzione. Analogamente al caso del trasporto radiativo, è possibile definire un coefficiente conduttivo $\mathcal{K}_{cond}$ che lega il flusso di energia al gradiente di temperatura.
+
+Negli interni stellari, risulta estremamente conveniente esprimere il coefficiente di conduzione in una forma matematicamente del tutto simile a quella del coefficiente radiativo. A tale scopo, si introduce una \textbf{opacità conduttiva}, indicata con $\kappa_{cond}$. Il flusso totale di energia, $F_{tot}$, sarà dato dalla somma del flusso radiativo e del flusso conduttivo:
+\begin{equation}
+F_{tot} = F_{rad} + F_{cond} = - \left( \mathcal{K}*{rad} + \mathcal{K}*{cond} \right) \nabla T
+\end{equation}
+
+Esplicitando i termini in funzione dell'opacità radiativa ($\kappa_{rad}$) e di quella conduttiva ($\kappa_{cond}$), si ottiene:
+\begin{equation}
+F_{tot} = - \frac{4ac}{3} \frac{T^3}{\rho} \left( \frac{1}{\kappa_{rad}} + \frac{1}{\kappa_{cond}} \right) \nabla T
+\end{equation}
+
+\subsection{L'invarianza formale della costante $c$}
+Sorge spontanea una domanda: perché nell'espressione del flusso totale continua a comparire la velocità della luce $c$ nel fattore $\frac{4ac}{3}$, anche per il termine conduttivo che riguarda particelle massive e non fotoni?
+
+Questa è una precisa scelta di convenienza formale. La velocità reale delle particelle del gas viene assorbita (inglobata) all'interno della definizione dell'opacità conduttiva $\kappa_{cond}$, la quale viene poi opportunamente scalata per la velocità della luce $c$. Questo artifizio matematico permette di raccogliere a fattor comune il termine $\frac{4ac}{3}$, mantenendo inalterata la struttura dell'equazione differenziale.
+
+Il risultato di questa operazione si traduce in una semplice correzione del coefficiente di opacità. È sufficiente definire un'unica \textbf{opacità totale} $\kappa$ (o opacità corretta) tale che:
+\begin{equation}
+\frac{1}{\kappa} = \frac{1}{\kappa_{rad}} + \frac{1}{\kappa_{cond}}
+\end{equation}
+In questo modo, la trattazione del trasporto energetico si semplifica notevolmente, poiché l'effetto della conduzione è interamente assorbito nella definizione dell'opacità equivalente del mezzo.
+
+\section{Il Calcolo delle Opacità e i Database di Struttura Stellare}
+
+La semplificazione matematica appena vista trova la sua applicazione pratica nei codici di calcolo numerico. Il parametro di opacità $\kappa$ viene calcolato a priori, poiché il suo computo analitico è un problema di fisica atomica di enorme complessità.
+
+Negli interni stellari, a causa delle alte energie in gioco, è necessario tenere conto di innumerevoli transizioni atomiche, incluse quelle di elementi pesanti e complessi come il ferro o il vanadio. Tra gli anni '90 e i primi anni 2000, la comunità scientifica ha compiuto uno sforzo computazionale straordinario attraverso programmi internazionali come l'\textbf{Opacity Project} e l'\textbf{Iron Project}. Questi progetti, sfruttando le massime capacità computazionali dell'epoca, hanno calcolato tutte le sezioni d'urto necessarie per costruire tabelle di opacità realistiche.
+
+L'opacità di una miscela stellare dipende strettamente da:
+\begin{itemize}
+\item Composizione chimica del gas;
+\item Temperatura ($T$);
+\item Densità ($\rho$);
+\item Equazione di stato del gas (che tiene conto, ad esempio, del regime di degenerazione elettronica che si instaura a densità molto elevate e temperature non altissime).
+\end{itemize}
+
+Oggi, i moderni codici di evoluzione stellare non calcolano l'opacità *run-time*, ma interrogano direttamente dei vasti \textbf{database a griglia}. Richiamando un'apposita *routine*, il codice estrapola il valore di $\kappa$ corretto, il quale include già al suo interno il contributo del trasporto conduttivo. Queste tabelle sono essenziali per modellare stelle in qualsiasi fase, comprese le fasi evolutive avanzate (es. stelle AGB) dove le reazioni nucleari producono elementi pesanti che complicano ulteriormente l'interazione radiazione-materia.
+
+\section{Gradiente Radiativo di Temperatura rispetto alla Pressione}
+
+Torniamo all'equazione del gradiente di temperatura per il trasporto radiativo in coordinate lagrangiane (massa $m$). Come precedentemente dimostrato, le variabili fisiche coinvolte sono l'opacità, la luminosità, la distanza dal centro $r$ e la temperatura $T$.
+\begin{equation}
+\frac{dT}{dm} = - \frac{3 \kappa L}{64 \pi^2 a c T^3 r^4}
+\end{equation}
+
+Per studiare la struttura termodinamica in funzione della pressione, combiniamo questa equazione con l'equazione dell'\textbf{equilibrio idrostatico}, che esprime il gradiente di pressione rispetto alla massa:
+\begin{equation}
+\frac{dP}{dm} = - \frac{G m}{4 \pi r^4}
+\end{equation}
+
+Per ottenere il gradiente di temperatura rispetto alla pressione ($\frac{dT}{dP}$), facciamo il rapporto membro a membro tra le due equazioni differenziali:
+\begin{equation}
+\frac{dT}{dP} = \frac{\left( \frac{dT}{dm} \right)}{\left( \frac{dP}{dm} \right)} = \frac{\left( - \frac{3 \kappa L}{64 \pi^2 a c T^3 r^4} \right)}{\left( - \frac{G m}{4 \pi r^4} \right)}
+\end{equation}
+
+Eseguendo le semplificazioni algebriche:
+\begin{itemize}
+\item Il termine spaziale $r^4$ a denominatore si elide in ambo i membri.
+\item Il termine $\pi^2$ a numeratore si semplifica con il $\pi$ a denominatore, lasciando un $\pi$ a denominatore nel risultato finale.
+\item Il coefficiente numerico si riduce: $\frac{4}{64} = \frac{1}{16}$.
+\end{itemize}
+
+Si ricava così il \textbf{gradiente di temperatura radiativo} ($\nabla_{rad}$):
+\begin{equation}
+\frac{dT}{dP} = \frac{3 \kappa L}{16 \pi a c G m T^3}
+\end{equation}
+Questa formulazione permette di esprimere la variazione termica locale direttamente in termini di pressione, massa racchiusa e luminosità.
+
+\subsection{Nota sulla variabile densità ($\rho$)}
+È importante fare una precisazione algebrica riguardante l'assenza della densità $\rho$ nell'equazione di $\frac{dT}{dm}$. Durante il passaggio dalle coordinate euleriane (raggio $r$) alle coordinate lagrangiane (massa $m$), si utilizza la relazione differenziale della conservazione della massa: $dm = 4\pi r^2 \rho dr$. Dividendo l'espressione iniziale per questo termine, la densità $\rho$ (presente a numeratore nell'equazione in $dr$) si semplifica esattamente con quella introdotta dal differenziale di massa. Questo rappresenta uno dei maggiori vantaggi della descrizione lagrangiana: la densità viene assorbita dalla variabile massa, semplificando notevolmente il sistema di equazioni.
+
+\section*{Nota a margine: Orientamento sul Piano di Studi}
+In risposta a un quesito posto a fine lezione riguardante le sovrapposizioni tra il corso di Cosmologia (o Elementi di Astronomia) della laurea triennale e i programmi della laurea magistrale: si sottolinea che gran parte degli argomenti introduttivi trattati in ambito triennale verranno ripresi e approfonditi nei vari corsi magistrali. La scelta del percorso magistrale non è vincolata in maniera assoluta dalle materie opzionali seguite alla triennale. L'approccio consigliato è quello di selezionare gli esami a scelta basandosi sulle proprie inclinazioni e interessi principali; eventuali lacune pregresse relative a materie non seguite potranno essere agevolmente colmate durante gli studi magistrali.
