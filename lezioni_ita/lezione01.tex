@@ -212,6 +212,58 @@ In idrodinamica, la condizione di equilibrio idrostatico equivale all'equazione 
 
 Consideriamo un guscio sferico di spessore infinitesimo $dr$. La massa contenuta all'interno di questo guscio è soggetta all'accelerazione gravitazionale diretta verso l'interno. Affinché la stella sia in equilibrio, questa forza gravitazionale deve essere perfettamente bilanciata dalla differenza di pressione (ovvero il \textbf{gradiente di pressione}) tra la parte interna e la parte esterna del guscio.
 
+\begin{tikzpicture}[
+    scale=1.2,
+    >=stealth,
+    % Definizione degli stili per uniformità e facilità di modifica
+    shell/.style={thick, fill=blue!5},
+    force_out/.style={->, thick, blue!80!black},
+    force_in/.style={->, thick, red!80!black},
+    gravity/.style={->, thick, green!40!black}
+]
+
+    % 1. Definizione delle variabili geometriche principali
+    \coordinate (O) at (0,0); % Centro della stella
+    \def\Rin{2.5}             % Raggio della superficie interna (r)
+    \def\Rout{4.0}            % Raggio della superficie esterna (r + dr)
+    \def\AngStart{100}        % Angolo di inizio del settore sferico
+    \def\AngEnd{150}          % Angolo di fine del settore sferico
+
+    % 2. Disegno del guscio sferico (massa dm) con campitura leggera
+    \fill[shell] (\AngEnd:\Rin) arc (\AngEnd:\AngStart:\Rin) 
+              -- (\AngStart:\Rout) arc (\AngStart:\AngEnd:\Rout) -- cycle;
+              
+    % Bordi del guscio
+    \draw[thick] (\AngEnd:\Rin) arc (\AngEnd:\AngStart:\Rin);
+    \draw[thick] (\AngStart:\Rout) arc (\AngStart:\AngEnd:\Rout);
+    \draw[thick] (\AngEnd:\Rin) -- (\AngEnd:\Rout);
+    \draw[thick] (\AngStart:\Rin) -- (\AngStart:\Rout);
+
+    % 3. Elementi di riferimento spaziale (centro e direzioni radiali)
+    \draw[dashed, gray] (O) -- (\AngStart:\Rin);
+    \draw[dashed, gray] (O) -- (\AngEnd:\Rin);
+    \filldraw[black] (O) circle (1.5pt) node[below right] {Centro ($r=0$)};
+
+    % 4. Spessore del guscio (dr)
+    % Posizionato leggermente all'esterno del settore per non sovrapporsi
+    \draw[<->] (\AngStart-5:\Rin) -- (\AngStart-5:\Rout) node[midway, right] {$dr$};
+
+    % 5. Vettori delle forze (Equilibrio Idrostatico)
+    
+    % Pressione interna (Pi) che spinge verso l'esterno
+    % Nel contesto euleriano corrisponde a P(r)
+    \draw[force_out] (140:\Rin) -- (140:\Rin+1.2) node[above left] {$P_i \equiv P(r)$};
+
+    % Pressione esterna (Pe) che spinge verso l'interno
+    % Nel contesto euleriano corrisponde a P(r+dr)
+    \draw[force_in] (115:\Rout) -- (115:\Rout-1.2) node[above right] {$P_e \equiv P(r+dr)$};
+
+    % Forza di gravità / Peso del guscio
+    % Centrato nel guscio, diretto verso il centro (r=0)
+    \draw[gravity] (127.5:\Rout-0.2) -- (127.5:\Rin-0.8) node[midway, right] {$\rho g$};
+
+\end{tikzpicture}
+
 In termini matematici, l'accelerazione gravitazionale moltiplicata per la densità ($\rho g$) è bilanciata dal gradiente della pressione. Sostituendo l'espressione dell'accelerazione di gravità $g = \frac{Gm}{r^2}$, otteniamo l'equazione dell'equilibrio idrostatico nella \textbf{descrizione euleriana}:
 
 \begin{equation}
