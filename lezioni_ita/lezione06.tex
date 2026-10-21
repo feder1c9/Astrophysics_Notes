@@ -1,0 +1,303 @@
+\chapter{Lezione 6 - 21/10/2026}
+
+\section{Il Gradiente Radiativo e il Gradiente Adiabatico}
+
+Il \textbf{gradiente radiativo} ($\nabla_{rad}$) è una grandezza che descrive le condizioni dell'interno stellare nel suo complesso. Come si evince dalla sua espressione analitica, esso non dipende unicamente dalle condizioni termodinamiche locali del plasma (opacità $\kappa$, pressione $P$ e temperatura $T$), ma dipende anche, e in modo cruciale, da quantità strutturali globali della stella, quali:
+\begin{itemize}
+\item La \textbf{luminosità} ($L$) che attraversa un determinato strato sferico (o \textit{shell}).
+\item La \textbf{massa racchiusa} (massa relativa) a cui si trova tale strato.
+\end{itemize}
+Poiché coinvolge direttamente il trasporto di energia radiativa, la dipendenza dal termine di luminosità lo lega indissolubilmente allo stato dell'intero interno stellare.
+
+Al contrario, il \textbf{gradiente adiabatico} ($\nabla_{ad}$) viene derivato e dipende esclusivamente dalle proprietà termodinamiche locali del gas.
+
+Vi sono situazioni fisiche all'interno della stella in cui la stratificazione diviene di tipo adiabatico. In assenza di condizioni che innescano la convezione, il gradiente reale del profilo termico assume il valore del gradiente radiativo. Tuttavia, se le condizioni lo permettono, il gradiente radiativo può uguagliare il gradiente adiabatico ($\nabla_{rad} = \nabla_{ad}$); in tal caso si instaura, per l'appunto, una \textbf{stratificazione adiabatica}.
+
+\section{Instabilità Dinamica e Trasporto Convettivo}
+
+Introduciamo ora il concetto di \textbf{instabilità dinamica} (\textit{dynamic instability}), ovvero le condizioni fisiche sotto le quali si instaura il \textbf{trasporto convettivo}. La notazione che utilizzeremo sarà valida per un'equazione di stato generalizzata.
+
+L'instabilità dinamica è un fenomeno strettamente locale: non riguarda l'intera struttura della stella, ma deve essere analizzata strato per strato. In queste condizioni locali, l'\textbf{equilibrio idrostatico globale viene comunque mantenuto}, ma il trasporto di energia abbandona il regime puramente radiativo a favore di un meccanismo differente: si instaura un \textbf{regime convettivo}. È proprio l'innesco di questo regime che definiamo come condizione di instabilità dinamica.
+
+\subsection{Analisi di Stabilità: Il Metodo dell'Elemento di Plasma}
+
+Per studiare le condizioni di stabilità o instabilità, ragioniamo in termini cinematici e termodinamici seguendo il moto di un \textbf{elemento di plasma} (o bolla) all'interno della stella.
+
+Supponiamo che questo elemento si trovi in una posizione iniziale di equilibrio, caratterizzata da una determinata temperatura $T$, densità $\rho$ e pressione $P$. Per valutare la stabilità del sistema, applichiamo una piccola perturbazione spaziale, spostando l'elemento in una nuova posizione radiale:
+\begin{equation}
+r' = r + \Delta r
+\end{equation}
+Nel nuovo ambiente circostante (\textit{surrounding}), i parametri termodinamici di base sono variati in:
+\begin{equation}
+T_s = T + \Delta T, \quad \rho_s = \rho + \Delta \rho, \quad P_s = P + \Delta P
+\end{equation}
+Il problema consiste nel determinare se l'elemento perturbato (che inizialmente conserva le sue grandezze $T$, $\rho$ e $P$) tenderà a ritornare nella sua posizione di partenza (condizione di \textbf{stabilità}) oppure se continuerà il suo moto di risalita/discesa (condizione di \textbf{instabilità}). L'analisi può essere formulata anche in modo equivalente: si può immaginare di variare leggermente la temperatura o la densità dall'interno dell'elemento stesso, mantenendolo fermo, e osservarne la reazione dinamica.
+
+Per formalizzare il problema, per una generica quantità termodinamica $A$, definiamo la variazione $dA$ come la differenza tra il valore assunto all'interno dell'elemento (\textit{element}, pedice $e$) e quello dell'ambiente circostante (\textit{surrounding}, pedice $s$):
+\begin{equation}
+dA = A_e - A_s
+\end{equation}
+
+\subsubsection{L'Equilibrio di Pressione e la Spinta di Archimede}
+Consideriamo il caso in cui, a seguito di una perturbazione, la temperatura dell'elemento sia maggiore di quella dell'ambiente:
+\begin{equation}
+dT = T_e - T_s > 0
+\end{equation}
+Il tempo scala su cui la pressione si equilibra è estremamente più breve rispetto ai tempi scala termici. Pertanto, possiamo assumere ragionevolmente che in ogni singolo istante l'elemento di plasma si trovi in \textbf{perfetto equilibrio di pressione} con l'ambiente circostante:
+\begin{equation}
+dP = P_e - P_s = 0 \implies P_e = P_s
+\end{equation}
+
+Se assumiamo come esempio il comportamento di un gas perfetto, l'equazione di stato ci dice che la densità è proporzionale al rapporto tra pressione e temperatura:
+\begin{equation}
+\rho \propto \frac{P}{T}
+\end{equation}
+Essendo la pressione costante tra interno ed esterno ($dP = 0$), l'aumento di temperatura ($dT > 0$) implica necessariamente una diminuzione della densità dell'elemento rispetto all'ambiente:
+\begin{equation}
+d\rho = \rho_e - \rho_s < 0
+\end{equation}
+Avere una densità minore dell'ambiente comporta che l'elemento subirà una \textbf{forza di galleggiamento} (forza di Archimede) verso l'esterno, che lo porterà a salire. Lo stesso identico ragionamento si applica se spostiamo fisicamente l'elemento di un $\Delta r > 0$: l'equilibrio di pressione si ripristina istantaneamente, ma la differenza termica residua genererà un gradiente di densità.
+
+\subsection{Criterio di Stabilità Dinamica sui Gradienti di Densità}
+
+Il fattore fondamentale che determina la stabilità o l'instabilità dinamica è la \textbf{differenza di densità} ($d\rho$) tra l'elemento in moto e l'ambiente.
+
+Possiamo esprimere questa differenza analizzando i gradienti spaziali. La variazione di densità totale rispetto allo spostamento $\Delta r$ è data dalla differenza tra il gradiente di densità che si realizza \textit{all'interno} dell'elemento in espansione/contrazione (guidato unicamente dall'equazione di stato) e il gradiente di densità dell'ambiente circostante (dettato dalla struttura della stella):
+\begin{equation}
+d\rho = \left[ \left( \frac{d\rho}{dr} \right)_e - \left( \frac{d\rho}{dr} \right)_s \right] \Delta r
+\end{equation}
+
+Una volta stabilitasi questa differenza di densità, si genera una forza di galleggiamento radiale $K_r$. Per la seconda legge della dinamica, ragionando in termini di \textbf{forza per unità di volume} (quindi utilizzando la massa per unità di volume, ovvero la densità), la forza agente sull'elemento è proporzionale all'accelerazione di gravità locale $g$ e alla differenza di densità rispetto all'ambiente:
+\begin{equation}
+K_r = - g , d\rho
+\end{equation}
+
+In base al segno di questa differenza di densità, si distinguono due regimi:
+
+\begin{enumerate}
+\item \textbf{Condizione di Stabilità:}
+Se la differenza di densità è positiva ($d\rho > 0$), l'elemento è più denso dell'ambiente circostante. In termini di gradienti, si ha:
+\begin{equation}
+\left( \frac{d\rho}{dr} \right)_e - \left( \frac{d\rho}{dr} \right)_s > 0
+\end{equation}
+In questo caso, la forza di galleggiamento agisce come una \textbf{forza di richiamo}. Se l'elemento viene spostato, la forza tenderà a riportarlo esattamente nella sua posizione radiale di partenza.
+
+\item \textbf{Condizione di Instabilità (Convezione):} 
+Se la differenza di densità risulta negativa ($d\rho < 0$), significa che la densità all'interno dell'elemento diminuisce meno rapidamente (o in proporzione differente) rispetto alla diminuzione di densità dell'ambiente esterno, rendendo la differenza dei gradienti negativa:
+\begin{equation}
+    \left( \frac{d\rho}{dr} \right)_e - \left( \frac{d\rho}{dr} \right)_s < 0
+\end{equation}
+In questo scenario, la forza di galleggiamento è \textbf{positiva} (diretta nello stesso verso dello spostamento iniziale). Se l'elemento di plasma viene spostato verso l'alto ($\Delta r > 0$), si ritroverà ad avere una densità costantemente più bassa rispetto all'ambiente circostante. Di conseguenza, continuerà inesorabilmente a muoversi e a salire, innescando il moto convettivo.
+
+\end{enumerate}
+
+\section{Criteri di Stabilità Dinamica}
+
+Le condizioni per determinare la stabilità o l'instabilità di uno strato stellare si riconducono, come visto precedentemente, allo studio del galleggiamento di un elemento di plasma. Possiamo definire queste condizioni paragonando il gradiente di densità \textit{interno} all'elemento rispetto a quello dell'\textit{ambiente} in cui esso è immerso (la cosiddetta \textit{surrounding}, indicata con il pedice $s$, in accordo con la notazione del testo di Kippenhahn).
+
+Il principio fisico alla base è del tutto analogo al principio di Archimede classico: se il nostro elemento (o "blob" di gas) viene riscaldato, in presenza di un gas perfetto e trovandosi costantemente in equilibrio di pressione con l'ambiente circostante, la sua densità diminuisce. Tale elemento si troverà pertanto ad avere una densità inferiore rispetto all'ambiente circostante e subirà una spinta verso l'alto.
+
+La stabilità si decide osservando cosa accade durante l'ascensione:
+\begin{itemize}
+\item Se, salendo, l'elemento continua ad avere una densità \textbf{minore} di quella dell'ambiente (la sua densità varia meno rapidamente di quanto non faccia quella degli strati stellari che attraversa), continuerà a essere spinto in alto. Questa è una condizione di \textbf{instabilità dinamica} (innesco della convezione).
+\item Se, invece, salendo la sua densità diminuisce più rapidamente rispetto a quella dell'ambiente, presto raggiungerà un livello in cui la sua densità diventerà uguale (o maggiore) rispetto al mezzo esterno. La forza di Archimede cesserà (o si invertirà), riportando il blob verso la sua posizione di equilibrio iniziale. Questa è la condizione di \textbf{stabilità dinamica} (trasporto radiativo puro).
+\end{itemize}
+
+\subsection{Dalla Densità alla Temperatura}
+
+Esprimere la condizione di stabilità in termini di differenze di densità ($d\rho$) o di gradienti di densità non risulta tuttavia agevole per i calcoli di struttura stellare. Le equazioni fondamentali del trasporto di energia radiativo sono infatti scritte in termini di \textbf{gradienti di temperatura}. Vogliamo quindi convertire la nostra condizione di stabilità dinamica, passando da una disuguaglianza in densità a una esplicitata in funzione delle variazioni termiche.
+
+Per operare questo passaggio mantenendo la massima generalità, dobbiamo utilizzare l'\textbf{equazione di stato generalizzata}. È infatti essenziale che la nostra formulazione possa descrivere non solo il comportamento di un gas perfetto, ma anche regimi più complessi tipici dei corpi astrofisici, come il gas degenere, gas parzialmente cristallizzati o gli interni planetari (condizioni ben diverse dalla semplice degenerazione elettronica).
+
+\section{L'Equazione di Stato Generalizzata}
+
+L'equazione di stato generalizzata definisce la variazione relativa della densità in funzione delle variazioni relative delle quantità termodinamiche da cui dipende. Nel caso più generale, la densità $\rho$ non dipende solo dalla pressione $P$ e dalla temperatura $T$, ma anche dalla composizione chimica, espressa tramite il \textbf{peso molecolare medio} $\mu$.
+
+La variazione frazionaria (o logaritmica) della densità si esprime pertanto come un differenziale esatto, pesato per opportuni coefficienti dipendenti dalla fisica del gas:
+\begin{equation}
+\frac{d\rho}{\rho} = \alpha \frac{dP}{P} - \delta \frac{dT}{T} + \phi \frac{d\mu}{\mu}
+\end{equation}
+
+I coefficienti $\alpha$, $\delta$ e $\phi$ descrivono la risposta del materiale a variazioni specifiche, mantenendo costanti le altre due variabili. Essi sono formalmente definiti tramite le derivate parziali dei logaritmi naturali, calcolate secondo l'equazione di stato adottata nel regime specifico:
+\begin{itemize}
+\item Il parametro di compressibilità \textbf{$\alpha$}:
+\begin{equation}
+\alpha = \left( \frac{\partial \ln \rho}{\partial \ln P} \right)*{T, \mu}
+\end{equation}
+\item Il parametro di espansione termica \textbf{$\delta$} (notare il segno meno convenzionale):
+\begin{equation}
+\delta = - \left( \frac{\partial \ln \rho}{\partial \ln T} \right)*{P, \mu}
+\end{equation}
+\item Il parametro chimico \textbf{$\phi$}:
+\begin{equation}
+\phi = \left( \frac{\partial \ln \rho}{\partial \ln \mu} \right)_{P, T}
+\end{equation}
+\end{itemize}
+
+L'aggiunta del termine legato alla variazione del peso molecolare medio $\mu$ permette di trattare scenari fisici realistici in cui la composizione chimica dello strato stellare non è omogenea, come accade, ad esempio, in prossimità delle zone in cui avvengono reazioni nucleari. Nel caso semplificato in cui la composizione chimica sia strettamente uniforme ($\mu = \text{costante}$), la derivata rispetto a $\mu$ è nulla e il coefficiente $\phi$ scompare dalle equazioni ($\phi = 0$).
+
+\section{Equazione di Stato Generalizzata e Variazioni Chimiche}
+
+Nel caso in cui vi siano variazioni di \textbf{peso molecolare medio} ($\mu$), il coefficiente $\phi$ non è nullo. Tale parametro deriva direttamente dall'equazione di stato ed è definito come la derivata parziale del logaritmo naturale della densità rispetto al logaritmo naturale del peso molecolare medio:
+\begin{equation}
+\phi = \left( \frac{\partial \ln \rho}{\partial \ln \mu} \right)_{P,T}
+\end{equation}
+Il valore assunto da $\phi$ dipende strettamente da come $\mu$ entra nell'equazione di stato che stiamo considerando. Questa formulazione generalizza l'equazione di stato, la quale, si ricordi, nel caso di un \textbf{gas perfetto} assume la forma proporzionale a:
+\begin{equation}
+\rho \propto \frac{\mu}{R} \frac{P}{T}
+\end{equation}
+
+Riprendiamo ora la condizione di stabilità dinamica, definita in termini di gradienti spaziali di densità tra l'elemento di plasma (pedice $e$, \textit{element}) e l'ambiente circostante (pedice $s$, \textit{surrounding}):
+\begin{equation}
+\left( \frac{d\rho}{dr} \right)_e - \left( \frac{d\rho}{dr} \right)_s > 0
+\end{equation}
+Questa disuguaglianza rimane valida e inalterata se dividiamo ambo i membri per la densità $\rho$:
+\begin{equation}
+\frac{1}{\rho} \left( \frac{d\rho}{dr} \right)_e - \frac{1}{\rho} \left( \frac{d\rho}{dr} \right)_s > 0
+\end{equation}
+
+\subsection{Sostituzione dell'Equazione di Stato e Semplificazioni}
+
+Scritta in questa forma frazionaria, l'espressione equivale alle derivate logaritmiche della densità ($\frac{d\ln\rho}{dr}$). Possiamo quindi sostituire il termine $\frac{1}{\rho} \frac{d\rho}{dr}$ con lo sviluppo fornito dall'equazione di stato generalizzata:
+\begin{equation}
+\left[ \alpha \frac{1}{P} \frac{dP}{dr} - \delta \frac{1}{T} \frac{dT}{dr} \right]_e - \left[ \alpha \frac{1}{P} \frac{dP}{dr} - \delta \frac{1}{T} \frac{dT}{dr} + \phi \frac{1}{\mu} \frac{d\mu}{dr} \right]_s > 0
+\end{equation}
+
+Analizziamo i termini inseriti:
+\begin{itemize}
+\item All'interno dell'elemento in moto (\textit{blob}), non vi è variazione di composizione chimica, pertanto il termine in $d\mu$ è assente.
+\item Nell'ambiente (\textit{surrounding}), man mano che il blob si sposta, potrebbe attraversare strati caratterizzati da una diversa composizione chimica; per questo motivo, il termine legato alla variazione del peso molecolare medio viene incluso esclusivamente per il mezzo circostante.
+\end{itemize}
+
+Possiamo immediatamente semplificare l'equazione. Come stabilito in precedenza, l'elemento si porta istantaneamente in \textbf{equilibrio di pressione} con l'ambiente circostante. Questo avviene su tempi scala brevissimi, dettati dai tempi di collisione tra le particelle nel plasma. Avendo in ogni istante $P_e = P_s$, ne consegue che i gradienti di pressione sono identici:
+\begin{equation}
+\left( \frac{dP}{dr} \right)_e = \left( \frac{dP}{dr} \right)_s
+\end{equation}
+I due termini in $\alpha$ si cancellano vicendevolmente. La condizione di stabilità si riduce ai soli termini dipendenti dalla temperatura e al termine aggiuntivo della variazione di $\mu$:
+\begin{equation}
+- \delta \left( \frac{1}{T} \frac{dT}{dr} \right)_e + \delta \left( \frac{1}{T} \frac{dT}{dr} \right)_s - \phi \left( \frac{1}{\mu} \frac{d\mu}{dr} \right)_s > 0
+\end{equation}
+
+\section{L'Altezza Scala di Pressione}
+
+Prima di procedere, è necessario introdurre il concetto di \textbf{altezza scala di pressione} ($H_P$). Si tratta di una lunghezza caratteristica entro la quale la pressione varia in maniera significativa. Ai nostri scopi, definiremo $H_P$ come l'inverso del gradiente frazionario di pressione:
+\begin{equation}
+H_P = - \left( \frac{1}{P} \frac{dP}{dr} \right)^{-1} = - \frac{dr}{d\ln P}
+\end{equation}
+La presenza del segno meno garantisce che l'altezza scala sia una quantità positiva. Infatti, in virtù dell'equilibrio idrostatico, la pressione decresce procedendo verso l'esterno (all'aumentare del raggio), rendendo il termine $\frac{dP}{dr}$ intrinsecamente negativo.
+
+Considerando l'equazione dell'equilibrio idrostatico ($\frac{dP}{dr} = - \rho g$), l'altezza scala di pressione si esplicita come:
+\begin{equation}
+H_P = \frac{P}{\rho g}
+\end{equation}
+
+\section{I Criteri di Schwarzschild e Ledoux}
+
+Torniamo all'equazione di stabilità e moltiplichiamo tutti i membri per l'altezza scala di pressione $H_P$ (che corrisponde a moltiplicare per $-\frac{dr}{d\ln P}$). Questa operazione ci permette di trasformare le derivate spaziali rispetto a $r$ in derivate logaritmiche rispetto a $P$:
+\begin{equation}
+\delta \left( \frac{d\ln T}{d\ln P} \right)_e - \delta \left( \frac{d\ln T}{d\ln P} \right)_s - \phi \left( \frac{d\ln \mu}{d\ln P} \right)_s > 0
+\end{equation}
+
+Riorganizzando la disuguaglianza per isolare il gradiente strutturale dell'ambiente, otteniamo la condizione di stabilità nella sua forma definitiva:
+\begin{equation}
+\left( \frac{d\ln T}{d\ln P} \right)_s < \left( \frac{d\ln T}{d\ln P} \right)*e + \text{termine}(\nabla*\mu)
+\end{equation}
+
+Introducendo la notazione compatta convenzionale per i gradienti ($\nabla \equiv \frac{d\ln T}{d\ln P}$), possiamo riscrivere l'equazione in modo elegante:
+\begin{equation}
+\nabla < \nabla_e + \nabla_\mu^*
+\end{equation}
+dove:
+\begin{itemize}
+\item \textbf{$\nabla$} è il gradiente termico strutturale reale dell'ambiente.
+\item \textbf{$\nabla_e$} è il gradiente termico dell'elemento in moto (la risposta della temperatura del gas a una variazione di pressione, dettata dall'equazione di stato).
+\item \textbf{$\nabla_\mu^*$} è il termine correttivo che assorbe la variazione di peso molecolare medio e i coefficienti $\phi$ e $\delta$.
+\end{itemize}
+
+Da questa singola disuguaglianza discendono i due criteri fondamentali per la stabilità stellare:
+\begin{enumerate}
+\item \textbf{Criterio di Ledoux:} Si applica quando vi è una variazione della composizione chimica (peso molecolare medio non costante). La stabilità è garantita se il gradiente reale è minore del gradiente dell'elemento sommato al termine chimico.
+\item \textbf{Criterio di Schwarzschild:} Si applica in regioni chimicamente omogenee, dove non vi sono variazioni di peso molecolare medio ($\nabla_\mu^* = 0$). La condizione di stabilità si riduce alla forma classica:
+\begin{equation}
+\nabla < \nabla_e
+\end{equation}
+Fisicamente, affinché vi sia stabilità, la temperatura dell'ambiente deve variare più lentamente rispetto a quanto non vari la temperatura all'interno dell'elemento al variare della pressione.
+\end{enumerate}
+
+\subsection{Significato del Gradiente dell'Elemento e Adiabaticità}
+
+Il gradiente $\nabla_e$ rappresenta una proprietà intrinseca del gas: descrive la sua variazione di temperatura al variare della pressione.
+
+Nel caso in cui gli spostamenti della bolla di plasma avvengano rapidamente, senza che vi sia uno scambio termico significativo tra l'elemento e l'ambiente circostante, la trasformazione è \textbf{adiabatica}. Sotto questa assunzione, il gradiente dell'elemento coincide con il \textbf{gradiente adiabatico}:
+\begin{equation}
+\nabla_e = \nabla_{ad}
+\end{equation}
+
+Qualora invece si debba tenere conto di condizioni non adiabatiche — come le perdite radiative o uno scambio di calore attivo tra il \textit{blob} e la \textit{surrounding} — il gradiente $\nabla_e$ subirà delle modifiche rispetto a $\nabla_{ad}$ per inglobare l'effetto di tali scambi energetici.
+
+\subsection{Vantaggi del Formalismo Logaritmico}
+Sebbene a prima vista l'utilizzo di derivate logaritmiche e dell'equazione di stato in forma differenziale possa sembrare algebricamente complesso, questo approccio si rivela estremamente agile. Esso consente di ricondurre una pluralità di regimi fisici a notazioni matematiche semplici e compatte, fornendo uno strumento che favorisce un'intuizione fisica molto più immediata del comportamento termodinamico degli interni stellari.
+
+\section{Astrosismologia ed Eliosismologia}
+
+La fisica stellare contemporanea si è notevolmente arricchita e avvantaggiata grazie all'analisi approfondita delle \textbf{oscillazioni stellari}. Tali oscillazioni derivano da condizioni fisiche prossime alla stabilità, le quali inducono piccole perturbazioni periodiche nel plasma della stella.
+
+Storicamente, lo studio si è basato sulla teoria classica delle stelle pulsanti; tuttavia, un enorme avanzamento nella comprensione della struttura stellare è giunto in tempi recenti grazie all'\textbf{astrosismologia}, e in primis dall'\textbf{eliosismologia}.
+
+Tra gli anni '80 e '90, il notevole sviluppo tecnologico della strumentazione (in particolare nella \textbf{spettroscopia} della superficie solare) ha permesso di raggiungere livelli altissimi di precisione e stabilità nelle misurazioni delle lunghezze d'onda. Questi spettrografi avanzati hanno consentito di isolare e studiare i modi propri di oscillazione del Sole. L'approccio concettuale è del tutto analogo allo studio dei \textbf{terremoti} sulla Terra: così come l'analisi della propagazione delle onde sismiche trasversali e longitudinali in vari punti della superficie terrestre ci ha permesso di dedurre la struttura interna del nostro pianeta, i modi di oscillazione solari sono stati utilizzati per investigare e vincolare con estrema precisione la struttura interna del Sole.
+
+L'eliosismologia ha rappresentato un successo enorme, permettendo di verificare sperimentalmente le teorie di struttura stellare. Successivamente, sebbene in maniera inevitabilmente più approssimata rispetto al caso solare, la medesima tecnica è stata applicata alle altre stelle, dando vita all'astrosismologia vera e propria.
+
+\textit{Nota a margine:} L'astrosismologia condivide molte tecniche osservative (basate su misurazioni spettroscopiche ad altissima stabilità) con i metodi utilizzati per la ricerca dei pianeti extrasolari.
+
+\section{Stabilità Dinamica e Oscillazioni Interne}
+
+L'approccio teorico sviluppato per la stabilità dinamica fornisce lo strumento formale per descrivere le oscillazioni interne negli strati stellari.
+
+In una condizione di \textbf{stabilità dinamica}, qualora un elemento di plasma subisca una perturbazione che lo sposta dalla sua posizione di equilibrio, nascerà una forza di galleggiamento che tenderà a riportarlo verso la posizione di partenza. Tuttavia, l'elemento non ritornerà nel punto di equilibrio con energia cinetica nulla: vi arriverà con una certa energia cinetica acquisita durante il moto di richiamo. Di conseguenza, l'elemento oltrepasserà il punto di equilibrio, innescando un moto armonico e iniziando a \textbf{oscillare} attorno ad esso.
+
+Queste oscillazioni, caratteristiche degli strati interni della stella, possono essere più o meno smorzate a seconda delle condizioni fisiche e termodinamiche del plasma, in particolare a seconda del grado di adiabaticità delle trasformazioni.
+
+\section{Variazioni di Temperatura ed Effetti Non Adiabatici}
+
+Per comprendere l'entità di queste oscillazioni e il loro smorzamento, dobbiamo considerare in che misura i moti si discostino dalle \textbf{condizioni adiabatiche}. Concentriamoci sulla differenza di temperatura ($dT$) che si instaura tra l'elemento di plasma in moto e l'ambiente circostante (\textit{surrounding}).
+
+La differenza di temperatura associata a uno spostamento radiale $\Delta r$ può essere espressa come la differenza tra il gradiente termico spaziale all'interno dell'elemento e quello dell'ambiente:
+\begin{equation}
+dT = \left[ \left(\frac{dT}{dr}\right)_e - \left(\frac{dT}{dr}\right)_s \right] \Delta r
+\end{equation}
+
+Eseguendo gli opportuni passaggi algebrici e introducendo l'\textbf{altezza scala di pressione} ($H_P$), questa espressione può essere riscritta in maniera fisicamente più conveniente sfruttando i gradienti termici rispetto alla pressione ($\nabla \equiv \frac{d\ln T}{d\ln P}$):
+\begin{equation}
+dT = \frac{T}{H_P} \left( \nabla_e - \nabla \right) \Delta r
+\end{equation}
+dove $\nabla_e$ è il gradiente dell'elemento e $\nabla$ è il gradiente reale dell'ambiente.
+
+\subsection{Smorzamento Termico dei Modi Convettivi}
+
+Consideriamo uno scenario semplificato in cui \textbf{non vi è variazione di peso molecolare medio} ($\mu = \text{costante}$). Se lo strato è intrinsecamente stabile, il gradiente reale dell'ambiente risulta minore del gradiente dell'elemento:
+\begin{equation}
+\nabla < \nabla_e
+\end{equation}
+
+In questa configurazione, se imponiamo uno spostamento verso l'alto ($\Delta r > 0$), la differenza $\nabla_e - \nabla$ risulta positiva per la condizione di stabilità, ma, ricordando la convenzione dei segni sui gradienti spaziali, l'elemento si raffredderà più rapidamente dell'ambiente. Di conseguenza, la variazione di temperatura tra l'elemento e l'ambiente sarà negativa ($dT < 0$). L'elemento risulterà quindi \textbf{più freddo} del plasma circostante.
+
+Se ci troviamo in \textbf{condizioni non puramente adiabatiche}, questa differenza termica innesca un trasferimento di energia termica (calore) dall'ambiente esterno verso l'interno dell'elemento. Questo flusso di calore produce una catena di effetti fisici:
+\begin{enumerate}
+\item Il calore in ingresso riscalda l'elemento, facendo \textbf{diminuire la differenza di temperatura} ($dT$ tende a ridursi).
+\item L'assorbimento di calore fa espandere l'elemento, comportando una \textbf{diminuzione della differenza di densità} ($d\rho$) rispetto all'ambiente.
+\item Una minore differenza di densità si traduce direttamente in una \textbf{riduzione della forza di galleggiamento} (forza di richiamo).
+\end{enumerate}
+In conclusione, gli \textbf{effetti non adiabatici portano a smorzare le oscillazioni} del plasma e gli eventuali modi convettivi incipienti.
+
+\section{Stabilità Marginale e Gradiente Chimico}
+
+Vi sono condizioni particolari nell'interno stellare in cui si realizza una \textbf{stabilità marginale}, governata dalla composizione chimica del gas. Supponiamo l'esistenza di un gradiente di \textbf{peso molecolare medio} ($\mu$).
+
+Potrebbe verificarsi una situazione in cui la mera differenza tra i gradienti termici indicherebbe una condizione di instabilità. Tuttavia, introducendo il termine legato alla variazione di peso molecolare medio ($\nabla_\mu^*$), la somma algebrica totale potrebbe tornare ad essere positiva, stabilizzando lo strato.
+
+In sintesi, un gradiente di peso molecolare medio può avere un \textbf{effetto stabilizzante} sul plasma stellare. Questa configurazione particolare si presenta quando il gradiente adiabatico ($\nabla_{ad}$) è strettamente minore del gradiente reale dell'ambiente ($\nabla$), ma quest'ultimo si mantiene comunque inferiore alla somma del gradiente adiabatico e del termine dovuto alla variazione del peso molecolare:
+\begin{equation}
+\nabla_{ad} < \nabla < \nabla_{ad} + \nabla_\mu^*
+\end{equation}
+A seconda dell'entità e del segno di questo gradiente di peso molecolare, esso determinerà se lo strato tenderà verso la stabilizzazione definitiva o evolverà verso un regime di instabilità.
