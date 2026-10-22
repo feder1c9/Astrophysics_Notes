@@ -1,1 +1,372 @@
-\chapter{Lezione 3 - }
+\chapter{Lezione 3 - 13-10-2026}
+
+\section{L'Equazione di Stato Generalizzata}
+
+Nello studio dell'evoluzione stellare è fondamentale poter descrivere in maniera continua la transizione tra diversi regimi fisici del plasma (ad esempio, passando da un gas perfetto a un gas degenere o parzialmente degenere). A tal fine, si introduce un'\textbf{equazione di stato generalizzata}, che prescinde dalla forma funzionale specifica di un singolo regime.
+
+Dal punto di vista analitico, consideriamo la densità $\rho$ come una generica funzione di due variabili indipendenti, ovvero la pressione $P$ e la temperatura $T$:
+\begin{equation}
+\rho = \rho(P, T)
+\end{equation}
+Nel caso specifico del gas perfetto, per fare un esempio noto, tale funzione assume la forma:
+\begin{equation}
+\rho = \frac{\mu}{R} \frac{P}{T}
+\end{equation}
+dove $\mu$ è il peso molecolare medio e $R$ la costante dei gas perfetti.
+
+Sfruttando le proprietà del calcolo differenziale per una funzione a due variabili, possiamo esprimere il differenziale esatto della densità come somma delle sue derivate parziali:
+\begin{equation}
+d\rho = \left(\frac{\partial \rho}{\partial P}\right)_T dP + \left(\frac{\partial \rho}{\partial T}\right)_P dT
+\end{equation}
+Al fine di operare con variazioni frazionarie, dividiamo ambo i membri per $\rho$:
+\begin{equation}
+\frac{d\rho}{\rho} = \frac{1}{\rho} \left(\frac{\partial \rho}{\partial P}\right)_T dP + \frac{1}{\rho} \left(\frac{\partial \rho}{\partial T}\right)_P dT
+\end{equation}
+Moltiplicando e dividendo opportunamente per $P$ e $T$ i rispettivi termini a destra dell'uguaglianza, l'equazione può essere riscritta nella forma:
+\begin{equation}
+\frac{d\rho}{\rho} = \left[ \frac{P}{\rho} \left(\frac{\partial \rho}{\partial P}\right)_T \right] \frac{dP}{P} + \left[ \frac{T}{\rho} \left(\frac{\partial \rho}{\partial T}\right)_P \right] \frac{dT}{T}
+\end{equation}
+
+I termini tra parentesi quadre possono essere identificati come le derivate dei logaritmi naturali:
+\begin{equation}
+\frac{d\rho}{\rho} = \left( \frac{\partial \ln \rho}{\partial \ln P} \right)_T \frac{dP}{P} + \left( \frac{\partial \ln \rho}{\partial \ln T} \right)_P \frac{dT}{T}
+\end{equation}
+
+\subsection{Volume Specifico e Parametri Termodinamici}
+
+Prima di assegnare un nome a queste derivate logaritmiche, è utile introdurre il concetto di \textbf{volume specifico} (volume per unità di massa), indicato con $v$. Esso è semplicemente l'inverso della densità:
+\begin{equation}
+v = \frac{1}{\rho} \implies \rho = \frac{1}{v}
+\end{equation}
+Differenziando tale relazione si ottiene:
+\begin{equation}
+d\rho = - \frac{1}{v^2} dv
+\end{equation}
+Questa trasformazione permette di esprimere agevolmente le equazioni termodinamiche sia in termini di densità $\rho$ sia in termini di volume specifico $v$.
+
+Definiamo ora due parametri fondamentali, intrinseci allo stato del gas, che caratterizzano univocamente la nostra equazione di stato generalizzata:
+\begin{enumerate}
+\item Il \textbf{parametro di compressibilità} $\alpha$, definito come la variazione frazionaria della densità rispetto alla pressione a temperatura costante:
+\begin{equation}
+\alpha = \left( \frac{\partial \ln \rho}{\partial \ln P} \right)_T = \frac{P}{\rho} \left(\frac{\partial \rho}{\partial P}\right)_T
+\end{equation}
+Scritto in funzione del volume specifico $v$, diventa:
+\begin{equation}
+\alpha = - \frac{P}{v} \left(\frac{\partial v}{\partial P}\right)_T
+\end{equation}
+
+```
+\item Il \textbf{parametro di espansione termica} $\delta$, definito (con segno meno convenzionale) come la variazione frazionaria della densità rispetto alla temperatura a pressione costante:
+\begin{equation}
+    \delta = - \left( \frac{\partial \ln \rho}{\partial \ln T} \right)_P = - \frac{T}{\rho} \left(\frac{\partial \rho}{\partial T}\right)_P
+\end{equation}
+Scritto in funzione del volume specifico $v$, diventa:
+\begin{equation}
+    \delta = \frac{T}{v} \left(\frac{\partial v}{\partial T}\right)_P
+\end{equation}
+
+```
+
+\end{enumerate}
+
+Sostituendo $\alpha$ e $\delta$ nell'espressione differenziale, giungiamo alla forma definitiva dell'equazione di stato generalizzata:
+\begin{equation}
+\frac{d\rho}{\rho} = \alpha \frac{dP}{P} - \delta \frac{dT}{T}
+\end{equation}
+Questo potente formalismo permette, modulando opportunamente i soli parametri $\alpha$ e $\delta$, di modellare in maniera continua qualsiasi condizione di gas (ad esempio, si può dimostrare che per un gas perfetto classico si ottiene $\alpha = 1$ e $\delta = 1$).
+
+\section{Generalizzazione delle Relazioni Termodinamiche}
+
+Avendo generalizzato l'equazione di stato, è necessario generalizzare di conseguenza tutte le principali relazioni termodinamiche. Partiamo dalla \textbf{prima legge della termodinamica}:
+\begin{equation}
+dq = du + P dv
+\end{equation}
+dove $dq$ è il calore scambiato per unità di massa, $du$ è la variazione di energia interna per unità di massa e $P dv$ rappresenta il lavoro infinitesimo ($dv = d(1/\rho)$).
+
+Assumiamo che anche l'energia interna specifica $u$ sia esprimibile come una generica funzione di stato dipendente da $v$ (ovvero $\rho$) e $T$:
+\begin{equation}
+u = u(v, T)
+\end{equation}
+
+Vediamo come si ridefiniscono i calori specifici a fronte di queste generalizzazioni.
+
+\subsection{Calori Specifici}
+Il \textbf{calore specifico a pressione costante} ($c_P$) è definito come:
+\begin{equation}
+c_P = \left( \frac{\partial q}{\partial T} \right)_P
+\end{equation}
+Applicando la prima legge della termodinamica e tenendo presente che la pressione è costante (pertanto il termine $P$ esce dalla derivazione del lavoro), otteniamo:
+\begin{equation}
+c_P = \left( \frac{\partial u}{\partial T} \right)_P + P \left( \frac{\partial v}{\partial T} \right)_P
+\end{equation}
+
+Il \textbf{calore specifico a volume costante} ($c_V$) è definito come:
+\begin{equation}
+c_V = \left( \frac{\partial q}{\partial T} \right)_V
+\end{equation}
+A volume costante il termine di lavoro è nullo ($dv = 0$), pertanto l'espressione si riduce unicamente alla variazione dell'energia interna rispetto alla temperatura:
+\begin{equation}
+c_V = \left( \frac{\partial u}{\partial T} \right)_V
+\end{equation}
+
+\section{Entropia Specifica e Differenziali Esatti}
+
+L'obiettivo è esprimere la variazione di energia interna, ed in seguito la differenza tra i calori specifici, in termini dei parametri fondamentali dell'equazione di stato generalizzata ($\alpha$ e $\delta$).
+Sfruttiamo l'assunzione per cui l'energia interna specifica $u$ sia una funzione del volume specifico $v$ e della temperatura $T$, ovvero $u = u(v, T)$. La sua variazione differenziale è data da:
+\begin{equation}
+du = \left(\frac{\partial u}{\partial v}\right)_T dv + \left(\frac{\partial u}{\partial T}\right)_v dT
+\end{equation}
+
+Introduciamo inoltre l'\textbf{entropia specifica} $s$, definita dalla relazione fondamentale:
+\begin{equation}
+ds = \frac{dq}{T}
+\end{equation}
+Sostituendo $dq$ tramite il primo principio della termodinamica generalizzato ($dq = du + P dv$), otteniamo:
+\begin{equation}
+ds = \frac{1}{T} du + \frac{P}{T} dv
+\end{equation}
+Sostituiamo ora l'espressione di $du$ all'interno dell'equazione per $ds$:
+\begin{equation}
+ds = \frac{1}{T} \left[ \left(\frac{\partial u}{\partial v}\right)_T dv + \left(\frac{\partial u}{\partial T}\right)_v dT \right] + \frac{P}{T} dv
+\end{equation}
+Riorganizzando i termini e raccogliendo i differenziali esatti $dv$ e $dT$, giungiamo a esprimere il differenziale dell'entropia come:
+\begin{equation}
+ds = \left[ \frac{1}{T} \left(\frac{\partial u}{\partial v}\right)_T + \frac{P}{T} \right] dv + \left[ \frac{1}{T} \left(\frac{\partial u}{\partial T}\right)_v \right] dT
+\end{equation}
+
+\subsection{Uso delle Relazioni di Maxwell}
+L'entropia specifica $s$ è una funzione di stato e, pertanto, il suo differenziale $ds$ è un \textbf{differenziale esatto}. Per il teorema di Schwarz sulle derivate miste, la derivata seconda di $s$ rispetto a $v$ e poi a $T$ deve essere uguale alla derivata seconda di $s$ rispetto a $T$ e poi a $v$:
+\begin{equation}
+\frac{\partial^2 s}{\partial T \partial v} = \frac{\partial^2 s}{\partial v \partial T}
+\end{equation}
+Identificando le derivate prime di $s$ dall'espressione del differenziale:
+\begin{itemize}
+\item $\left(\frac{\partial s}{\partial v}\right)_T = \frac{1}{T} \left(\frac{\partial u}{\partial v}\right)_T + \frac{P}{T}$
+\item $\left(\frac{\partial s}{\partial T}\right)_v = \frac{1}{T} \left(\frac{\partial u}{\partial T}\right)_v$
+\end{itemize}
+Eguagliamo ora le derivate miste:
+\begin{equation}
+\left(\frac{\partial}{\partial T}\right)_v \left[ \frac{1}{T} \left(\frac{\partial u}{\partial v}\right)_T + \frac{P}{T} \right] = \left(\frac{\partial}{\partial v}\right)_T \left[ \frac{1}{T} \left(\frac{\partial u}{\partial T}\right)_v \right]
+\end{equation}
+
+Svolgiamo le derivate applicando la regola del prodotto.
+A primo membro, teniamo conto che $\frac{\partial}{\partial T}\left(\frac{1}{T}\right) = -\frac{1}{T^2}$:
+\begin{equation}
+-\frac{1}{T^2} \left(\frac{\partial u}{\partial v}\right)_T + \frac{1}{T} \frac{\partial^2 u}{\partial T \partial v} + \frac{1}{T} \left(\frac{\partial P}{\partial T}\right)_v - \frac{P}{T^2}
+\end{equation}
+A secondo membro, poiché la temperatura $T$ è tenuta costante durante la derivazione rispetto a $v$, essa si comporta come un fattore moltiplicativo:
+\begin{equation}
+\frac{1}{T} \frac{\partial^2 u}{\partial v \partial T}
+\end{equation}
+Poiché $u$ è a sua volta una funzione di stato, le derivate miste seconde dell'energia interna si elidono da ambo i membri. Eguagliando quanto rimane e moltiplicando tutto per $T$, isoliamo il termine $\left(\frac{\partial u}{\partial v}\right)_T$:
+\begin{equation}
+\left(\frac{\partial u}{\partial v}\right)_T = T \left(\frac{\partial P}{\partial T}\right)_v - P
+\end{equation}
+Questa è un'importante relazione termodinamica che lega la variazione isoterma di energia interna rispetto al volume alla derivata isocora della pressione.
+
+\section{Espressione Generale per la Differenza dei Calori Specifici}
+
+L'obiettivo finale è determinare un'espressione analitica elegante per la differenza tra i calori specifici, $c_P - c_V$, basata sui parametri $\alpha$ e $\delta$.
+Ricordando le definizioni introdotte in precedenza:
+\begin{itemize}
+\item $c_P = \left(\frac{\partial u}{\partial T}\right)_P + P \left(\frac{\partial v}{\partial T}\right)_P$
+\item $c_V = \left(\frac{\partial u}{\partial T}\right)_v$
+\end{itemize}
+La loro differenza si scrive come:
+\begin{equation}
+c_P - c_V = \left[ \left(\frac{\partial u}{\partial T}\right)_P - \left(\frac{\partial u}{\partial T}\right)_v \right] + P \left(\frac{\partial v}{\partial T}\right)_P
+\end{equation}
+
+Dalla relazione differenziale dell'energia interna ($du = \left(\frac{\partial u}{\partial v}\right)_T dv + \left(\frac{\partial u}{\partial T}\right)_v dT$), calcoliamo la derivata rispetto a $T$ a pressione costante:
+\begin{equation}
+\left(\frac{\partial u}{\partial T}\right)_P = \left(\frac{\partial u}{\partial v}\right)_T \left(\frac{\partial v}{\partial T}\right)_P + \left(\frac{\partial u}{\partial T}\right)_v
+\end{equation}
+Sostituendo questo risultato nell'espressione della differenza dei calori specifici, notiamo che il termine $c_V$ si elide:
+\begin{equation}
+c_P - c_V = \left[ \left(\frac{\partial u}{\partial v}\right)_T \left(\frac{\partial v}{\partial T}\right)_P + \left(\frac{\partial u}{\partial T}\right)_v \right] - \left(\frac{\partial u}{\partial T}\right)_v + P \left(\frac{\partial v}{\partial T}\right)_P
+\end{equation}
+\begin{equation}
+c_P - c_V = \left( \frac{\partial v}{\partial T} \right)_P \left[ \left(\frac{\partial u}{\partial v}\right)_T + P \right]
+\end{equation}
+
+Sfruttando l'identità ricavata in precedenza ($\left(\frac{\partial u}{\partial v}\right)_T = T \left(\frac{\partial P}{\partial T}\right)_v - P$), il termine in parentesi quadre si semplifica nettamente:
+\begin{equation}
+\left(\frac{\partial u}{\partial v}\right)_T + P = T \left(\frac{\partial P}{\partial T}\right)_v
+\end{equation}
+Dunque, la differenza dei calori specifici si riduce a:
+\begin{equation}
+c_P - c_V = T \left( \frac{\partial P}{\partial T} \right)_v \left( \frac{\partial v}{\partial T} \right)_P
+\end{equation}
+
+\subsection{Esplicitazione tramite i Parametri $\alpha$ e $\delta$}
+
+Per condurre il risultato nella notazione canonica della struttura stellare, rielaboriamo le due derivate utilizzando le proprietà dei logaritmi e i parametri introdotti.
+Prima espandiamo la derivata isocora della pressione:
+\begin{equation}
+\left(\frac{\partial P}{\partial T}\right)_v = - \frac{\left( \frac{\partial v}{\partial T} \right)_P}{\left( \frac{\partial v}{\partial P} \right)_T}
+\end{equation}
+(Applicando la regola della catena ciclica di Eulero). Sostituendolo in $c_P - c_V$, ma mantenendo le forme derivate dirette e richiamando le definizioni logaritmiche di $\alpha$ e $\delta$:
+
+\begin{itemize}
+\item Il parametro di espansione termica $\delta$ è legato al termine isobaro:
+\begin{equation}
+\delta = - \left( \frac{\partial \ln \rho}{\partial \ln T} \right)_P = \frac{T}{v} \left(\frac{\partial v}{\partial T}\right)_P \implies \left(\frac{\partial v}{\partial T}\right)_P = \frac{v \delta}{T}
+\end{equation}
+
+```
+\item Applicando la regola della catena logaritmica alle variabili $P, \rho, T$, si ricava il termine isocoro tramite $\alpha$ e $\delta$:
+\begin{equation}
+    \left( \frac{\partial P}{\partial T} \right)_v = \frac{P}{T} \frac{\delta}{\alpha}
+\end{equation}
+
+```
+
+\end{itemize}
+
+Sostituendo queste espressioni finali nella relazione della differenza dei calori specifici:
+\begin{equation}
+c_P - c_V = T \left( \frac{P}{T} \frac{\delta}{\alpha} \right) \left( \frac{v \delta}{T} \right)
+\end{equation}
+Riordinando i fattori e ricordando che il volume specifico è l'inverso della densità ($v = 1/\rho$), perveniamo al risultato fondamentale:
+\begin{equation}
+c_P - c_V = \frac{P}{\rho T} \frac{\delta^2}{\alpha}
+\end{equation}
+
+Questa relazione generalizzata è cruciale per la fisica stellare e verrà utilizzata estensivamente nel resto della trattazione. Sebbene non sia richiesta all'esame la dimostrazione rigorosa, padroneggiare concettualmente questi passaggi termodinamici fornisce un notevole supporto alla comprensione fisica della teoria.
+
+\section{Verifica della Forma Generalizzata}
+
+Possiamo testare la coerenza della nostra formalizzazione ricalcolando la differenza dei calori specifici nel caso limite di un gas perfetto.
+Sappiamo che per un gas perfetto valgono le seguenti proprietà:
+\begin{itemize}
+\item Il parametro di compressibilità è $\alpha = 1$.
+\item Il parametro di espansione termica è $\delta = 1$.
+\item Il rapporto $\frac{P}{\rho T}$ è costante e pari a $\frac{R}{\mu}$.
+\end{itemize}
+
+Sostituendo questi valori nella formula generalizzata appena dimostrata:
+\begin{equation}
+c_P - c_V = \frac{P}{\rho T} \frac{\delta^2}{\alpha}
+\end{equation}
+\begin{equation}
+c_P - c_V = \left( \frac{R}{\mu} \right) \frac{1^2}{1} = \frac{R}{\mu}
+\end{equation}
+Il risultato, come ci aspettavamo, coincide perfettamente con la classica relazione di Mayer per il gas perfetto.
+
+L'approccio generalizzato, introducendo i soli due parametri $\alpha$ e $\delta$, ci fornisce dunque uno strumento potentissimo: estendere le equazioni di stato per poter passare fluidamente dallo studio di un gas perfetto allo studio di plasmi con equazioni di stato arbitrarie, come ad esempio il gas degenere, in cui densità estreme e temperature non eccessivamente elevate portano a effetti quantistici dominati dal principio di esclusione di Pauli.
+
+Sebbene i passaggi algebrici iniziali possano risultare laboriosi e apparentemente astratti, essi sono strettamente necessari per costruire questo impianto teorico.
+
+\section{Prima Legge della Termodinamica Generalizzata}
+
+Avendo derivato le relazioni per i calori specifici, riconsideriamo la prima legge della termodinamica per esprimerla nelle variabili di stato $(P, T)$ o $(\rho, T)$ in modo generalizzato.
+Ricordiamo il punto di partenza per il calore infinitesimo scambiato a volume costante:
+\begin{equation}
+dq_v = c_V dT
+\end{equation}
+
+Per esprimere $dq$ in funzione di temperatura e pressione, partiamo dal differenziale dell'energia interna:
+\begin{equation}
+du = \left(\frac{\partial u}{\partial v}\right)_T dv + \left(\frac{\partial u}{\partial T}\right)_v dT
+\end{equation}
+Ricordiamo che:
+\begin{itemize}
+\item $\left(\frac{\partial u}{\partial T}\right)_v = c_V$.
+\item Tramite il teorema di Schwartz sull'entropia, avevamo ricavato che $\left(\frac{\partial u}{\partial v}\right)_T = T \left(\frac{\partial P}{\partial T}\right)_v - P$.
+\end{itemize}
+
+Dalla prima legge ($dq = du + P dv$), sostituendo l'espressione di $du$:
+\begin{equation}
+dq = \left[ T \left(\frac{\partial P}{\partial T}\right)_v - P \right] dv + c_V dT + P dv
+\end{equation}
+I termini $P dv$ e $-P dv$ si elidono reciprocamente. Sostituendo la derivata isocora della pressione ($\left(\frac{\partial P}{\partial T}\right)_v = \frac{P}{T} \frac{\delta}{\alpha}$) e sostituendo $dv$ ricavato dall'equazione di stato generalizzata (passando per il volume specifico), e raccogliendo i termini, la prima legge termodinamica assume la forma:
+\begin{equation}
+dq = c_P dT - \frac{\delta}{\alpha \rho} dP
+\end{equation}
+
+Questa equazione costituisce l'\textbf{analogo generalizzato} della prima legge della termodinamica in termini di $(T, P)$. Da un lato, abbiamo il termine legato all'energia interna (rappresentato da $c_P dT$), e dall'altro un termine che rappresenta il lavoro, in cui il gas risponde in maniera diversa a seconda del suo stato fisico (dettato dal coefficiente $\frac{\delta}{\alpha \rho}$).
+
+\section{Implicazioni Astrofisiche: Il Caso del Gas Degenere}
+
+L'importanza fondamentale di questa generalizzazione emerge quando analizziamo regimi fisici in cui il gas stellare devia fortemente dal comportamento di gas perfetto, rendendo manifesti effetti quantistici che non potremmo descrivere altrimenti.
+
+Consideriamo lo scenario limite di un \textbf{gas completamente degenere}. In tali condizioni estreme, il parametro di espansione termica $\delta$ tende a zero:
+\begin{equation}
+\delta \to 0
+\end{equation}
+
+Cosa comporta fisicamente avere $\delta \approx 0$? Analizziamolo attraverso le equazioni generalizzate che abbiamo derivato.
+\begin{itemize}
+\item \textbf{Variazione dei calori specifici:} Poiché la differenza $c_P - c_V$ scala con $\delta^2$, se $\delta$ si annulla i due calori specifici tendono ad uguagliarsi ($c_P \approx c_V$).
+\item \textbf{Assenza di espansione termica:} Osservando la prima legge della termodinamica nella forma $dq = c_P dT - \frac{\delta}{\alpha \rho} dP$, il termine di lavoro (legato alle variazioni di pressione e volume) sparisce. Se si fornisce o si toglie pressione a un gas degenere, non vi è apprezzabile variazione di calore (e viceversa). Gli effetti quantistici, dovuti all'incomprimibilità imposta dal principio di Pauli, si comportano come un "muro" contro la compressione meccanica associata alla termodinamica classica.
+\end{itemize}
+
+\subsection{Il Runaway Termico (Flash dell'Elio e Supernovae)}
+La conseguenza astrofisica più drammatica di questa condizione si ha qualora avvengano reazioni nucleari (le quali generano calore $dq > 0$) in un ambiente composto da materia degenere.
+
+Se $\delta = 0$, il gas \textbf{non può compiere lavoro termodinamico} (non può espandersi). La prima legge si riduce a:
+\begin{equation}
+dq = c_V dT
+\end{equation}
+Ciò significa che l'intera energia prodotta dalle reazioni nucleari si riversa esclusivamente nell'aumento dell'energia interna del sistema, causando un drastico e immediato innalzamento della temperatura. Poiché il tasso delle reazioni nucleari dipende in maniera fortemente non lineare dalla temperatura, l'aumento termico accelererà vertiginosamente le reazioni stesse, producendo ancora più calore, che a sua volta innalzerà ulteriormente la temperatura senza che il gas possa espandersi per raffreddarsi (come avverrebbe invece nel meccanismo di \textit{termostato} tipico di un gas perfetto).
+
+Questo ciclo di retroazione positiva incontrollata prende il nome di \textbf{runaway termico} (\textit{thermal runaway}). È esattamente questo il fenomeno fisico alla base di eventi parossistici come il \textit{flash} dell'elio nei nuclei delle stelle giganti rosse o, in scala ancora più distruttiva, l'esplosione termonucleare che origina le \textbf{Supernovae di tipo Ia}.
+
+\section{Il Gradiente Adiabatico e la Stabilità Dinamica}
+
+Per concludere l'analisi della termodinamica stellare, è fondamentale introdurre il concetto di \textbf{gradiente adiabatico}. Comprendere questo regime è cruciale per descrivere cosa accade all'interno delle stelle quando si verifica una \textbf{instabilità dinamica} e il trasporto di energia passa dal regime radiativo a quello convettivo.
+
+Il criterio di Schwarzschild (che introdurremo formalmente in seguito sfruttando l'equazione di stato generalizzata) si basa sul confronto diretto tra due grandezze:
+\begin{enumerate}
+\item Il \textbf{gradiente termico reale} (spesso radiativo) che si instaura nel mezzo stellare a causa dell'opacità e della produzione di energia nucleare locale.
+\item Il \textbf{gradiente adiabatico} del gas.
+\end{enumerate}
+
+È di vitale importanza precisare la natura fisica del gradiente adiabatico. Esso \textit{non} descrive il gradiente di temperatura spaziale (reale) all'interno dell'astro, ma è una \textbf{proprietà termodinamica intrinseca del gas}. Il gradiente adiabatico definisce come risponde la temperatura del gas a una variazione della sua pressione, in condizioni rigorosamente \textbf{adiabatiche} (ovvero in assenza di scambi di calore con l'ambiente esterno). Sebbene in regimi convettivi il gradiente reale del plasma possa coincidere numericamente con il gradiente adiabatico, concettualmente i due gradienti restano distinti: il primo è una caratteristica strutturale della stella, il secondo è una traccia nel piano termodinamico $(P, T)$ dettata unicamente dalla fisica del fluido.
+
+\subsection{Definizione e Derivazione del Gradiente Adiabatico}
+
+Per mantenere coerenza con l'equazione di stato generalizzata precedentemente ricavata, è conveniente definire il gradiente adiabatico utilizzando il formalismo delle derivate logaritmiche. Definiamo il gradiente adiabatico ($\nabla_{ad}$) come la variazione del logaritmo naturale della temperatura rispetto al logaritmo naturale della pressione a \textbf{entropia costante}:
+\begin{equation}
+\nabla_{ad} = \left( \frac{\partial \ln T}{\partial \ln P} \right)_S
+\end{equation}
+
+La condizione di entropia costante ($dS = 0$) implica l'assenza di scambi termici:
+\begin{equation}
+dS = \frac{dq}{T} = 0 \implies dq = 0
+\end{equation}
+
+Sfruttando la prima legge della termodinamica generalizzata appena dimostrata, poniamo $dq = 0$:
+\begin{equation}
+0 = c_P dT - \frac{\delta}{\alpha \rho} dP
+\end{equation}
+Da questa uguaglianza, isoliamo il rapporto differenziale tra temperatura e pressione a entropia costante:
+\begin{equation}
+\left( \frac{\partial T}{\partial P} \right)_S = \frac{\delta}{\alpha \rho c_P}
+\end{equation}
+
+Per ricondurre questa derivata alla forma logaritmica richiesta, sfruttiamo la regola del calcolo differenziale per cui $d \ln x = dx / x$. Moltiplicando ambo i membri per il rapporto $\frac{P}{T}$:
+\begin{equation}
+\frac{P}{T} \left( \frac{\partial T}{\partial P} \right)*S = \frac{P \delta}{T \alpha \rho c_P}
+\end{equation}
+Giungiamo così all'espressione fondamentale per il gradiente adiabatico:
+\begin{equation}
+\nabla*{ad} = \frac{P \delta}{T \rho \alpha c_P}
+\end{equation}
+
+\subsection{Caso Limite: Il Gas Perfetto}
+Verifichiamo la validità di questa espressione generale applicandola al caso limite di un \textbf{gas perfetto}. In tale scenario, sappiamo che:
+\begin{itemize}
+\item Il parametro di espansione termica è $\delta = 1$.
+\item Il parametro di compressibilità è $\alpha = 1$.
+\item Il fattore $\frac{P}{\rho T}$ coincide con $\frac{R}{\mu}$.
+\end{itemize}
+
+Sostituendo queste quantità nella formula di $\nabla_{ad}$, si ottiene:
+\begin{equation}
+\nabla_{ad} = \frac{R}{\mu c_P}
+\end{equation}
+Questo risultato corrisponde all'espressione canonica del gradiente adiabatico per un gas perfetto, confermando la solidità dell'approccio generalizzato. Tale formalismo è inoltre in grado di descrivere immediatamente scenari complessi; ad esempio, se la materia diventa fortemente degenere ($\delta \to 0$), il gradiente adiabatico tenderà coerentemente a zero ($\nabla_{ad} \to 0$).
+
+\section*{Prospetto delle Lezioni Successive}
+Nelle prossime lezioni, il quadro teorico appena costruito verrà applicato all'analisi del gas monoatomico perfetto. Verrà inoltre approfondito lo studio del peso molecolare medio $\mu$, un parametro fondamentale per descrivere la composizione stellare. Successivamente, integrando i criteri di stabilità dinamica, l'equazione di stato generalizzata e il concetto di gradiente adiabatico, si affronterà in maniera organica il problema del trasporto dell'energia nelle varie zone dell'interno stellare.

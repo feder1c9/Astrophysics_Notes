@@ -1,1 +1,576 @@
-\chapter{Lezione 4 - }
+\chapter{Lezione 4 - 14/10/2026}
+
+\section{Verifica della Relazione per il Gas Perfetto Monoatomico}
+
+Dobbiamo tenere in considerazione la notazione che usiamo per la derivazione del gradiente adiabatico. Come ben sapete dalle nozioni di astrofisica, si tratta di un termine di confronto fondamentale per stabilire il tipo di trasporto dell'energia che noi troviamo nell'interno stellare.
+
+Quello che abbiamo fatto in precedenza è stato generalizzare le equazioni dell'interno stellare per un'equazione di stato qualsiasi. Come avrete visto, entra in gioco il termine di espansione termica $\delta$ e il termine di compressibilità $\alpha$.
+Abbiamo visto che ponendo $\alpha = 1$ e $\delta = 1$ ritorniamo alle equazioni del gas perfetto. Oggi partiamo proprio dal dimostrare questa cosa qui: verifichiamo che questa formula generalizzata, applicata a un \textbf{gas perfetto monoatomico} (\textit{monatomic perfect gas}), riporta alla forma nota. In questo modo evitiamo ambiguità.
+
+Per un gas perfetto monoatomico, l'energia interna specifica $u$ è data in pratica dalla sola energia cinetica di traslazione, legata ai tre gradi di libertà ($f=3$) traslazionali spaziali.
+Quindi questa energia, per singola particella, è:
+\begin{equation}
+E_{kin} = \frac{3}{2} k T
+\end{equation}
+Esprimendola per unità di massa (energia interna specifica $u$), otteniamo:
+\begin{equation}
+u = \frac{3}{2} \frac{k}{m} T
+\end{equation}
+(dove spesso nella letteratura si usa $R/\mu$ al posto di $k/m$).
+
+Scriviamo l'equazione di stato del gas perfetto come:
+\begin{equation}
+P = \frac{\rho}{\mu m_H} k T \implies \frac{P}{\rho} = \frac{k}{\mu m_H} T
+\end{equation}
+dove $m_H$ (o $m_u$) è l'unità di massa atomica.
+Confrontando le due espressioni, possiamo scrivere l'energia interna in funzione del rapporto $P/\rho$:
+\begin{equation}
+u = \frac{3}{2} \frac{P}{\rho} \implies \frac{P}{\rho} = \frac{2}{3} u
+\end{equation}
+E da cui possiamo anche isolare la densità:
+\begin{equation}
+\rho = \frac{3}{2} \frac{P}{u}
+\end{equation}
+
+\subsection{Derivazione del parametro di compressibilità $\alpha$}
+Per come abbiamo definito il parametro $\alpha$, esso è la derivata logaritmica della densità rispetto alla pressione a temperatura costante:
+\begin{equation}
+\alpha = \left( \frac{\partial \ln \rho}{\partial \ln P} \right)_T = \frac{P}{\rho} \left( \frac{\partial \rho}{\partial P} \right)_T
+\end{equation}
+Sostituendo $\frac{P}{\rho}$ con $\frac{2}{3}u$, e calcolando la derivata di $\rho = \frac{3}{2}\frac{P}{u}$ rispetto a $P$ (ricordando che $u$ dipende solo da $T$, quindi a $T$ costante è una costante), otteniamo:
+\begin{equation}
+\left( \frac{\partial \rho}{\partial P} \right)_T = \frac{3}{2} \frac{1}{u}
+\end{equation}
+Moltiplicando i due termini:
+\begin{equation}
+\alpha = \left( \frac{2}{3} u \right) \left( \frac{3}{2} \frac{1}{u} \right) = 1
+\end{equation}
+Questo dimostra che per un gas perfetto (monoatomico o meno), $\alpha = 1$.
+
+\subsection{Derivazione del parametro di espansione termica $\delta$}
+Analogamente, il termine $\delta$ è definito come:
+\begin{equation}
+\delta = - \left( \frac{\partial \ln \rho}{\partial \ln T} \right)_P = - \frac{T}{\rho} \left( \frac{\partial \rho}{\partial T} \right)_P
+\end{equation}
+Possiamo scrivere $\rho$ esplicitando la dipendenza da $T$:
+\begin{equation}
+\rho = P \frac{\mu m_H}{k T}
+\end{equation}
+Quindi il rapporto $\frac{T}{\rho}$ è:
+\begin{equation}
+\frac{T}{\rho} = \frac{k T^2}{P \mu m_H} = \frac{T}{P \frac{\mu m_H}{k T}} = T \frac{1}{\rho}
+\end{equation}
+(In maniera più immediata, $\frac{T}{\rho} = \frac{k T}{\mu m_H P}$).
+La derivata di $\rho$ rispetto a $T$ a pressione costante è:
+\begin{equation}
+\left( \frac{\partial \rho}{\partial T} \right)_P = P \frac{\mu m_H}{k} \left( -\frac{1}{T^2} \right) = - \frac{\rho}{T}
+\end{equation}
+Moltiplicando i due termini:
+\begin{equation}
+\delta = - \left( \frac{T}{\rho} \right) \left( - \frac{\rho}{T} \right) = 1
+\end{equation}
+Abbiamo così dimostrato rigorosamente che per un gas perfetto $\alpha = 1$ e $\delta = 1$.
+
+\section{Calori Specifici e Gradiente Adiabatico}
+
+Torniamo a quello che abbiamo detto riguardo le differenze nei calori specifici. La differenza tra il calore specifico a pressione costante ($c_P$) e il calore specifico a volume costante ($c_V$) nell'equazione di stato generalizzata è:
+\begin{equation}
+c_P - c_V = \frac{P}{\rho T} \frac{\delta^2}{\alpha}
+\end{equation}
+Questo è ciò che abbiamo dimostrato nella lezione precedente. Sostituendo $\delta^2 = 1$ e $\alpha = 1$, l'espressione si riduce ovviamente a:
+\begin{equation}
+c_P - c_V = \frac{P}{\rho T} = \frac{R}{\mu}
+\end{equation}
+(dove $R$ è la costante dei gas e $\mu$ il peso molecolare medio). Questa è la classica relazione di Mayer.
+
+Questo implica, e lascio la dimostrazione a voi come esercizio, che per un gas perfetto monoatomico il calore specifico a volume costante (che è la variazione di energia interna per una variazione di temperatura a densità costante) è:
+\begin{equation}
+c_V = \frac{3}{2} \frac{R}{\mu}
+\end{equation}
+E di conseguenza, $c_P$ è:
+\begin{equation}
+c_P = \frac{5}{2} \frac{R}{\mu}
+\end{equation}
+
+\subsection{Il Gradiente Adiabatico $\nabla_{ad}$}
+Vediamo ora quanto vale il \textbf{gradiente adiabatico} per questo gas. Definito in forma logaritmica, esso è:
+\begin{equation}
+\nabla_{ad} = \left( \frac{\partial \ln T}{\partial \ln P} \right)*S = \frac{P}{T} \left( \frac{\partial T}{\partial P} \right)*S
+\end{equation}
+Come ricavato in precedenza dalla generalizzazione, l'espressione per il gradiente adiabatico è:
+\begin{equation}
+\nabla*{ad} = \frac{P \delta}{T \rho \alpha c_P}
+\end{equation}
+Ponendo $\delta=1$, $\alpha=1$ e ricordando che $\frac{P}{T \rho} = c_P - c_V$, l'espressione diventa:
+\begin{equation}
+\nabla*{ad} = \frac{c_P - c_V}{c_P} = 1 - \frac{c_V}{c_P}
+\end{equation}
+Sostituendo i valori di $c_P$ e $c_V$ del gas perfetto monoatomico, otteniamo:
+\begin{equation}
+\nabla_{ad} = \frac{\frac{5}{2} - \frac{3}{2}}{\frac{5}{2}} = \frac{1}{\frac{5}{2}} = \frac{2}{5} = 0.4
+\end{equation}
+Il gradiente adiabatico per un gas perfetto monoatomico ammonta quindi a $2/5$.
+
+\subsection{Definizioni alternative del Gradiente Adiabatico ($\Gamma$)}
+Nella letteratura potreste trovare il gradiente adiabatico definito anche tramite la variabile $\gamma$ (o $\Gamma_1$). A volte è definito come la derivata logaritmica della pressione rispetto alla densità a entropia costante:
+\begin{equation}
+\Gamma_1 = \left( \frac{\partial \ln P}{\partial \ln \rho} \right)_S
+\end{equation}
+Questo non cambia molto il quadro fisico, poiché in termodinamica possiamo esprimere il sistema scegliendo due variabili qualsiasi (ad esempio temperatura e pressione, o pressione e densità) per descrivere lo stato del gas. Questa è semplicemente un'altra maniera di esprimere il comportamento adiabatico.
+
+Potete verificare voi stessi (utilizzando le relazioni viste finora) che questa definizione ammonta al rapporto dei calori specifici:
+\begin{equation}
+\Gamma_1 = \frac{c_P}{c_V}
+\end{equation}
+Invece di $\frac{c_P - c_V}{c_P}$. Per un gas perfetto monoatomico, questo porta a:
+\begin{equation}
+\Gamma_1 = \frac{5}{3} \approx 1.67
+\end{equation}
+È una descrizione differente ma posta sullo stesso livello teorico; si utilizza la definizione che più si adatta al problema in esame. Per i nostri scopi (la struttura stellare in cui compare il gradiente di temperatura $\nabla$), la definizione migliore è $\nabla_{ad} = \frac{d\ln T}{d\ln P}$, poiché semplifica le equazioni del trasporto radiativo e convettivo. Bisogna quindi prestare attenzione alla definizione utilizzata.
+
+\section{Introduzione al Peso Molecolare Medio ($\mu$)}
+
+Abbiamo introdotto il gradiente adiabatico perché vogliamo generalizzare il \textbf{criterio di Schwarzschild} per un'equazione di stato qualsiasi. Come sapete, questo criterio stabilisce l'innesco del trasporto convettivo di energia in luogo del trasporto radiativo, e la soglia limite per l'instaurarsi della convezione è data proprio dal gradiente adiabatico del gas.
+
+Ma prima di procedere con questa generalizzazione, è necessario dedicare un po' di tempo al concetto di \textbf{peso molecolare medio} (\textit{mean molecular weight}, $\mu$).
+
+Il nome dice tutto: il peso molecolare medio rappresenta la massa media di una singola particella (atomo, ione o elettrone libero) nel gas stellare, espressa in \textbf{unità di massa atomica} (che è tipicamente la massa dell'idrogeno $m_H$ o del protone).
+
+Se indichiamo con $n$ la densità numerica delle particelle (numero di particelle per unità di volume), e con $\rho$ la densità di massa, il peso molecolare medio fa da ponte tra queste due grandezze. Se esprimiamo la densità di massa $\rho$ come il prodotto tra il numero totale di particelle nel volume e la massa media di una singola particella ($\mu m_H$), otteniamo:
+\begin{equation}
+\rho = n \mu m_H \implies n = \frac{\rho}{\mu m_H}
+\end{equation}
+
+Questa parametrizzazione è un modo per semplificare enormemente il problema. Il plasma stellare è una miscela complessa di fotoni, elettroni liberi, nuclei di idrogeno, nuclei di elio e atomi più pesanti. Quando siamo interessati alla densità numerica (ad esempio per calcolare la pressione cinetica del gas), il peso molecolare medio ci permette di convertire agilmente la densità di massa in densità numerica e viceversa, senza dover tracciare le abbondanze singole in ogni equazione.
+
+\section{Il Peso Molecolare Medio: Concetti e Applicazioni}
+
+Esprimere la complessa situazione di una miscela di particelle attraverso il \textbf{peso molecolare medio} ($\mu$) è essenziale. Questo parametro rappresenta il significato stesso del peso molecolare medio: è un modo per semplificare enormemente il problema. Altrimenti, saremmo costretti a specificare costantemente "ho un milione di atomi di idrogeno, centomila particelle di elio, eccetera", e tenere traccia di quanto ciascuna specie diventi due, tre o più particelle a seconda dello stato di ionizzazione. In questo modo, invece, semplifichiamo la trattazione.
+
+Vediamo ora cosa significhi quantitativamente questo peso molecolare medio e quali siano i suoi valori nelle diverse condizioni di interesse astrofisico.
+
+Definiamo $X_j$ come la \textbf{frazione di massa} dell'elemento $j$-esimo. Come è noto, nella versione semplificata per le stelle indichiamo tipicamente le frazioni di massa dell'idrogeno ($X$), dell'elio ($Y$) e dei "metalli" ($Z$, che in astronomia indicano tutti gli elementi più pesanti dell'elio). La somma di queste frazioni deve necessariamente restituire l'unità ($X+Y+Z=1$). Il concetto è identico se esteso a tutti i singoli elementi, con $\sum X_j = 1$.
+
+Definiamo inoltre $f_j$ come il \textbf{numero di particelle libere per nucleo atomico} dell'elemento $j$-esimo.
+Cosa si intende con questo termine?
+\begin{itemize}
+\item Consideriamo un gas di puro idrogeno. Se il gas è neutro, si ha 1 sola particella (l'atomo) per ogni nucleo: $f_H = 1$. Se è completamente ionizzato, si hanno 2 particelle per ogni nucleo (il protone e l'elettrone libero): $f_H = 2$.
+\item Consideriamo l'elio. Se è neutro, è 1 particella. Se è singolarmente ionizzato, sono 2 particelle. Se è completamente ionizzato (nucleo nudo), sono 3 particelle per nucleo: $f_{He} = 3$.
+\end{itemize}
+Quindi, il parametro $f_j$ fornisce la frazione di atomi ionizzati, tenendo conto del nucleo e di quanti elettroni liberi esso contribuisce al plasma. In una miscela di idrogeno ed elio completamente ionizzati, si dovrà tenere conto che l'idrogeno contribuisce con 1 elettrone libero per nucleo, mentre l'elio contribuisce con 2 elettroni liberi per nucleo.
+
+\subsection{Densità Numerica e Formula Generale per $\mu$}
+
+Avendo introdotto questi termini, il numero di particelle (densità numerica) corrispondente all'elemento $j$ può essere scritto come:
+\begin{equation}
+n_j = \frac{X_j f_j}{A_j m_H} \rho
+\end{equation}
+dove:
+\begin{itemize}
+\item $X_j$ è la frazione di massa dell'elemento;
+\item $f_j$ è il numero di particelle libere fornite dall'elemento;
+\item $A_j$ è il numero di massa (peso atomico) dell'elemento;
+\item $m_H$ è l'unità di massa atomica (approssimata alla massa del protone);
+\item $\rho$ è la densità di massa totale del gas.
+\end{itemize}
+
+La densità numerica totale del gas, $n$, sarà la somma delle densità numeriche di tutti gli elementi:
+\begin{equation}
+n = \sum_j n_j = \sum_j \left( \frac{X_j f_j}{A_j m_H} \rho \right)
+\end{equation}
+
+Se confrontiamo questa espressione con la formula generale che lega densità di massa, densità numerica e peso molecolare medio ($n = \frac{\rho}{\mu m_H}$), risulta chiaro che l'inverso del peso molecolare medio può essere definito rigorosamente come:
+\begin{equation}
+\frac{1}{\mu} = \sum_j \frac{X_j f_j}{A_j}
+\end{equation}
+perché, affinché le equazioni siano equivalenti, questa somma deve soddisfare la relazione $n = \frac{\rho}{\mu m_H}$.
+
+\subsection{Stati di Ionizzazione Estremi}
+
+\begin{enumerate}
+\item \textbf{Gas Completamente Ionizzato:}
+Se il gas è completamente ionizzato, $f_j$ è pari al numero di elettroni liberi che l'atomo può cedere (che è uguale al numero atomico $Z_j$, ovvero la carica nucleare) più il nucleo stesso (che contribuisce per $1$). Pertanto:
+\begin{equation}
+f_j = Z_j + 1
+\end{equation}
+Per l'elio, per esempio, la carica nucleare è $Z_{He} = 2$. Esso contribuisce con 2 elettroni liberi più il nucleo; quindi, per l'elio completamente ionizzato, il numero totale di particelle per nucleo è $f_{He} = 3$.
+
+```
+\item \textbf{Gas Neutro:}
+Chiaramente, per un gas neutro non ci sono elettroni liberi. Esiste solo il nucleo (mantenente i suoi elettroni legati in un singolo blocco atomico). Dunque:
+\begin{equation}
+    f_j = 1
+\end{equation}
+
+\item \textbf{Formazione di Molecole:}
+Cosa succede al termine $f_j$ se abbiamo gas molecolare, come l'idrogeno biatomico $H_2$?
+L'$H_2$ è una molecola formata da due atomi di idrogeno raggruppati in un'unica particella libera. Quindi il numero di particelle libere per singolo nucleo (atomo) è:
+\begin{equation}
+    f_{H_2} = \frac{1}{2}
+\end{equation}
+Analogamente, per una molecola d'acqua ($H_2O$), formata da 3 atomi in 1 particella, sarebbe $\frac{1}{3}$.
+
+```
+
+\end{enumerate}
+
+\section{Calcolo di $\mu$ per una Stella di Popolazione I}
+
+Detto ciò per le basi teoriche, andiamo a calcolare quali sono i valori tipici di $\mu$ nei regimi fisici che si incontrano in astrofisica, che è ciò di cui necessitiamo per la nostra discussione. Consideriamo una \textbf{stella di Popolazione I}.
+
+Le stelle di Popolazione I sono le stelle più giovani e relativamente ricche di metalli (es. il Sole). Torneremo alla semplificazione abituale: idrogeno, elio e metalli. I valori tipici delle frazioni di massa per una stella di Popolazione I sono:
+\begin{itemize}
+\item Idrogeno ($X$): $X = 0.70$
+\item Elio ($Y$): $Y = 0.28$
+\item Metalli ($Z$): $Z = 0.02$
+\end{itemize}
+
+Qui affrontiamo una complicazione che rende il problema potenzialmente difficile: $Z$ non rappresenta un singolo atomo particolare, ma una complessa \textit{miscela} di innumerevoli atomi pesanti. Non vogliamo specificare la frazione di massa per ciascun metallo individualmente. Per la maggior parte delle applicazioni (come i modelli di base di struttura stellare) questo non è affatto importante, poiché il contributo totale di $Z$ è piccolo. (Sarebbe essenziale solo se fosse richiesto lo studio dettagliato delle singole abbondanze chimiche).
+
+Per una stima pratica sufficiente ai nostri scopi, associamo ai "metalli" un \textbf{peso atomico medio rappresentativo} ($A_{metalli}$), basato sulla curva di abbondanza universale degli elementi. Adotteremo il valore:
+\begin{equation}
+A_{metalli} \approx 17
+\end{equation}
+In questo modo otteniamo una semplificazione formidabile per i calcoli.
+
+\subsection{Caso 1: Gas Neutro (Popolazione I)}
+Calcoliamo $\mu$ per un gas completamente neutro. In questo caso, $f_j = 1$ per tutte le specie chimiche. Applichiamo la formula $\frac{1}{\mu} = \sum \frac{X_j f_j}{A_j}$:
+\begin{itemize}
+\item Contributo dell'Idrogeno: $A_H = 1 \implies \frac{0.70 \times 1}{1} = 0.70$
+\item Contributo dell'Elio: $A_{He} = 4 \implies \frac{0.28 \times 1}{4} = 0.07$
+\item Contributo dei Metalli: $A_{metalli} \approx 17 \implies \frac{0.02 \times 1}{17} \approx 0.001$
+\end{itemize}
+Sommando i contributi:
+\begin{equation}
+\frac{1}{\mu} = 0.70 + 0.07 + 0.001 = 0.771 \approx 0.77
+\end{equation}
+Come si nota, il contributo dei metalli al denominatore è essenzialmente trascurabile. Prendendo l'inverso:
+\begin{equation}
+\mu = \frac{1}{0.77} \approx 1.3
+\end{equation}
+\textit{Messaggio chiave:} Il peso molecolare medio per una composizione di Popolazione I, in caso di \textbf{gas neutro}, è $\mu \approx 1.3$.
+
+\subsection{Caso 2: Gas Completamente Ionizzato (Popolazione I)}
+L'estremo opposto si ha quando il gas è completamente ionizzato (che è la situazione standard nelle zone interne stellari). Per calcolarlo, possiamo scinderne la formula in due parti: il contributo dei \textit{nuclei} (gli ioni) che abbiamo appena calcolato ($0.77$), a cui aggiungere semplicemente il contributo degli \textit{elettroni liberi}.
+
+Calcoliamo il contributo al numero di particelle dovuto unicamente agli elettroni liberi, $\left(\frac{1}{\mu}\right)_{elettroni}$:
+\begin{itemize}
+\item \textbf{Idrogeno:} Contribuisce con $1$ elettrone libero per nucleo ($A_H=1$). Il contributo è $\frac{0.70 \times 1}{1} = 0.70$.
+\item \textbf{Elio:} Contribuisce con $2$ elettroni liberi per nucleo ($A_{He}=4$). Il contributo è pari al doppio del suo contributo nucleare calcolato prima: $\frac{0.28 \times 2}{4} = 0.14$.
+\item \textbf{Metalli:} Qui sorge una criticità: cosa significa "completamente ionizzato" per i metalli pesanti? Per ionizzare completamente il piombo o il ferro servirebbero energie termiche spaventose (per il ferro completamente ionizzato servono temperature superiori ai $10^7$ K). Al di fuori del nucleo stellare profondo, non avremo queste energie. Tuttavia, adottiamo un parametro rappresentativo, assumendo che i metalli abbiano un rapporto costante tra peso atomico ($A$) e carica nucleare ($Z$). Tipicamente si assume che l'atomo metta a disposizione $Z_{metalli} = A_{metalli}/2 \approx 17/2$ elettroni. Questo significa che il numero di elettroni liberi $f_{e, Z}$ si approssima con la metà del peso atomico. Quindi il contributo degli elettroni per i metalli è: $\frac{0.02 \times (17/2)}{17} = \frac{0.02}{2} = 0.01$. Semplificando per calcoli veloci, si utilizza spesso il doppio del contributo nucleare (come se la specie cedesse in media quasi la totalità della sua massa proporzionale): $\sim 0.04$ (come mostrato nei calcoli grossolani esposti a voce, pur sapendo che per i metalli il rapporto è sfumato).
+In sede di calcolo in aula: se arrotondiamo grossolanamente i pesi, il contributo degli elettroni per la componente Z è piccolo e porta il totale a circa:
+\end{itemize}
+\begin{equation}
+\left(\frac{1}{\mu}\right)_{elettroni} \approx 0.70 + 0.14 + 0.04 = 0.88
+\end{equation}
+
+Il termine $\frac{1}{\mu_{tot}}$ sarà quindi la somma del contributo dei nuclei (\textit{ion contribution}) e del contributo degli elettroni (\textit{electron contribution}):
+\begin{equation}
+\frac{1}{\mu_{tot}} = \left(\frac{1}{\mu}\right)*{nuclei} + \left(\frac{1}{\mu}\right)*{elettroni} = 0.77 + 0.88 = 1.65
+\end{equation}
+Prendendo l'inverso per trovare $\mu$:
+\begin{equation}
+\mu = \frac{1}{1.65} \approx 0.6
+\end{equation}
+
+In conclusione, per una stella di Popolazione I, il range di interesse va da $\mu \approx 1.3$ per il gas neutro atmosferico a $\mu \approx 0.6$ per il gas completamente ionizzato degli interni profondi.
+
+\section{Il Peso Molecolare Medio per un Gas Molecolare}
+
+Per completare e rendere esaustiva la nostra descrizione, consideriamo come ultimo caso quello di un gas molecolare, prendendo in esame specificamente l'idrogeno molecolare ($H_2$).
+
+Ripetendo il ragionamento introdotto in precedenza, per l'idrogeno in forma molecolare il numero di particelle libere per nucleo è pari a $f_H = \frac{1}{2}$. Procediamo quindi al calcolo dell'inverso del \textbf{peso molecolare medio} ($\mu$), considerando i contributi dei singoli elementi:
+\begin{itemize}
+\item Per l'idrogeno, assumendo una frazione di massa tipica $X = 0.70$, dobbiamo considerarne la metà (a causa del fattore $f_H$). Il suo contributo sarà pertanto pari a $0.35$.
+\item Lasciando inalterato il contributo dell'elio ($Y = 0.28$), il quale, diviso per il suo numero di massa $A_{He} = 4$, fornisce un valore pari a $0.07$.
+\item Per semplicità, in questo specifico esempio, possiamo trascurare il contributo residuo dei metalli.
+\end{itemize}
+
+Sommando questi termini, otteniamo:
+\begin{equation}
+\frac{1}{\mu} \approx 0.35 + 0.07 = 0.42
+\end{equation}
+
+Per trovare il valore del peso molecolare medio per un gas di idrogeno molecolare, calcoliamo l'inverso di tale somma:
+\begin{equation}
+\mu = \frac{1}{0.42} \approx 2.4
+\end{equation}
+Questi sono i valori numerici tipici con cui ci troveremo a lavorare nel prosieguo della trattazione.
+
+\section{Importanza del Peso Molecolare Medio nell'Evoluzione Stellare}
+
+A questo punto possedete tutte le regole necessarie per calcolare il peso molecolare medio e ne avete compreso appieno il significato fisico e l'impatto sul sistema.
+
+Considerando che $\mu$ compare esplicitamente all'interno dell'equazione di stato dei gas perfetti:
+\begin{equation}
+P = \frac{\rho}{\mu m_H} k T
+\end{equation}
+è evidente che tale parametro non può in alcun modo essere trascurato. Una variazione del peso molecolare medio, indotta ad esempio dallo stato di \textbf{ionizzazione} del gas, produce una differenza sostanziale nello stato termodinamico del sistema.
+
+\subsection{Effetto delle Reazioni Nucleari: Competizione tra Nucleosintesi e Ionizzazione}
+
+Un altro fattore cruciale da considerare riguarda l'innesco delle \textbf{reazioni nucleari} nel nucleo della stella (\textit{core}). Questi processi generano nuclei progressivamente più pesanti; di conseguenza, la nucleosintesi tende intrinsecamente ad \textbf{aumentare} il peso molecolare medio.
+
+Tuttavia, le reazioni nucleari producono anche un notevole innalzamento della temperatura ($T$). Un aumento di temperatura può indurre un grado di ionizzazione maggiore rispetto a quello preesistente. Una maggiore ionizzazione si traduce in un aumento del numero di particelle libere all'interno del plasma (nuclei ed elettroni sfuggiti), il che tende, al contrario, a \textbf{diminuire} il peso molecolare medio.
+
+Si instaura pertanto una competizione tra due effetti contrapposti:
+\begin{itemize}
+\item La creazione di elementi pesanti spinge verso l'aumento di $\mu$.
+\item L'aumento della temperatura e della conseguente ionizzazione spinge verso la diminuzione di $\mu$.
+\end{itemize}
+Il valore effettivo del peso molecolare medio — e ciò che accade fisicamente all'interno della stella durante la sua evoluzione — è determinato dall'esatto bilancio tra questi due fenomeni.
+
+\subsection{Variazioni Spaziali e Temporali di $\mu$}
+
+Se analizziamo la struttura stellare in un singolo istante, notiamo che il peso molecolare medio varia spostandosi dal centro verso la superficie. Questa variazione spaziale è dettata dal \textbf{gradiente di temperatura}, il quale controlla lo stato di ionizzazione nelle diverse \textit{shell} (strati) stellari.
+
+Tuttavia, man mano che la stella evolve, è la \textbf{composizione chimica} all'interno del nucleo a subire la prima e più profonda variazione temporale. Inizialmente, la superficie stellare non "sa" nulla di ciò che sta accadendo nel nucleo e mantiene la sua composizione originale.
+
+Questa variazione temporale del peso molecolare medio nel \textit{core} è il vero motore che guida l'\textbf{evoluzione stellare}. La struttura globale della stella non fa altro che adattarsi e cambiare gradualmente in risposta alla lenta ma inesorabile variazione temporale di $\mu$.
+
+Sebbene i dettagli di ciò che accadrà negli stadi evolutivi più avanzati dipendano da molteplici altri fattori fisici che esploreremo in seguito, il peso molecolare medio si afferma come il parametro critico e fondamentale per comprendere l'evoluzione stellare nel suo complesso.
+
+\section{Introduzione alla Conservazione dell'Energia nella Struttura Stellare}
+
+In linea di principio, è possibile ottenere una sorta di soluzione puramente meccanica alle equazioni della struttura stellare, senza dover ricorrere all'equazione dell'energia. Tuttavia, questo è vero solo in casi idealizzati.
+
+Quando utilizziamo un'equazione di stato completa (in cui la densità dipende sia dalla pressione che dalla temperatura, ovvero $\rho = f(P, T)$), ci troviamo di fronte a una variabile extra: la temperatura. Per chiudere il sistema di equazioni differenziali e trovare una soluzione analitica o numerica per la struttura stellare, è imperativo introdurre un'ulteriore equazione (sperando di non dover introdurre a sua volta ulteriori variabili).
+
+Nel caso generale, l'equazione aggiuntiva necessaria per chiudere il sistema è l'\textbf{equazione di conservazione dell'energia}. Come vedremo in futuro, questa equazione andrà poi accoppiata alle equazioni che descrivono il \textit{trasporto} dell'energia (come l'energia si trasferisce da uno strato all'altro). Iniziamo però con la derivazione della conservazione dell'energia.
+
+\section{Conservazione dell'Energia nel Caso Stazionario}
+
+Consideriamo una stella descritta tramite gusci sferici concentrici (\textit{shells}). Analizziamo uno di questi gusci, situato a una distanza $r$ dal centro della stella e con uno spessore infinitesimo $dr$.
+L'energia totale emessa nell'unità di tempo che fluisce attraverso l'area di questa sfera è la luminosità locale, che indichiamo con $L(r)$.
+
+Ovviamente, per le condizioni al contorno:
+\begin{itemize}
+\item Al centro della stella ($r = 0$), non c'è volume racchiuso, per cui $L(0) = 0$.
+\item Alla superficie della stella ($r = R$), otteniamo la luminosità totale osservabile $L$.
+\end{itemize}
+
+Cominciamo dal \textbf{caso stazionario}. In un regime stazionario, assumiamo che il gas non compia lavoro termodinamico e non subisca lavoro dagli strati adiacenti. Localmente, l'unica sorgente in grado di far variare il flusso di energia (la luminosità) è la produzione di energia tramite reazioni nucleari.
+
+Se il guscio produce energia nucleare, l'incremento di luminosità $dL$ attraverso il guscio sarà pari alla massa del guscio moltiplicata per il tasso di produzione di energia. La massa del guscio si ottiene moltiplicando l'area della sfera ($4 \pi r^2$) per lo spessore $dr$ e per la densità locale $\rho$:
+\begin{equation}
+dm = 4 \pi r^2 \rho , dr
+\end{equation}
+
+Introduciamo il coefficiente $\epsilon$, definito come l'\textbf{energia nucleare prodotta per unità di massa e per unità di tempo}. L'incremento di luminosità è dunque:
+\begin{equation}
+dL = 4 \pi r^2 \rho , \epsilon , dr
+\end{equation}
+
+Utilizzando la massa $m$ come variabile indipendente al posto del raggio $r$, l'equazione si scrive molto più semplicemente come:
+\begin{equation}
+dL = \epsilon , dm
+\end{equation}
+
+Dividendo per il differenziale di massa, otteniamo la derivata (che scriviamo come derivata parziale per mantenere validità formale anche in casi non stazionari in cui compare il tempo):
+\begin{equation}
+\frac{\partial L}{\partial m} = \epsilon
+\end{equation}
+
+In base a questa equazione, in un caso stazionario, il coefficiente $\epsilon$ sarà non nullo solo nel nucleo della stella (\textit{core}), dove le temperature sono sufficientemente alte per innescare reazioni nucleari. Al di fuori del nucleo nucleosinteticamente attivo, $\epsilon$ diventa zero.
+Di conseguenza, al di fuori del nucleo:
+\begin{equation}
+\frac{\partial L}{\partial m} = 0 \implies L = \text{costante}
+\end{equation}
+Ciò significa che, negli strati più esterni, l'energia creata nel nucleo viene semplicemente trasferita inalterata da un layer a quello successivo fino alla superficie. La luminosità si conserva.
+
+\textit{Nota:} Questo è lo stesso approccio classico derivato nei corsi di base di astrofisica.
+
+\section{Conservazione dell'Energia nel Caso Non Stazionario (Dinamico)}
+
+Nella realtà fisica, dobbiamo tenere in considerazione la possibilità che il plasma non sia stazionario (ad esempio durante l'evoluzione rapida, espansioni/contrazioni, pulsazioni stellari o thermal pulses nelle stelle del ramo asintotico delle giganti).
+
+In un caso \textbf{non stazionario (dinamico)}, gli strati di gas compiono lavoro l'uno sull'altro, scambiandosi volume e scambiandosi energia termica. In questo regime, la luminosità può variare localmente \textit{anche} in assenza di reazioni nucleari ($\epsilon = 0$).
+
+Consideriamo la variazione di calore $dq$ per unità di massa ceduta o assorbita da un guscio in un certo intervallo di tempo $dt$. Dal bilancio energetico, la differenza tra l'energia nucleare prodotta ($\epsilon$) e la variazione locale del flusso radiativo ($\frac{\partial L}{\partial m}$) nel tempo $dt$ deve uguagliare il calore $dq$ introdotto o rimosso:
+\begin{equation}
+dq = \left( \epsilon - \frac{\partial L}{\partial m} \right) dt
+\end{equation}
+
+Richiamiamo il primo principio della termodinamica, che lega il calore assorbito alla variazione di energia interna specifica ($du$) e al lavoro di volume ($P dv$, dove $v = 1/\rho$ è il volume specifico):
+\begin{equation}
+dq = du + P dv
+\end{equation}
+
+Eguagliando i tassi per unità di tempo (dividendo tutto per $dt$), scopriamo che la variazione di luminosità deve bilanciare la produzione nucleare, al netto del costo energetico in energia interna e in lavoro:
+\begin{equation}
+\frac{\partial L}{\partial m} = \epsilon - \frac{\partial u}{\partial t} - P \frac{\partial v}{\partial t}
+\end{equation}
+
+Se preferiamo utilizzare la densità $\rho$ al posto del volume specifico $v$, poiché $v = \rho^{-1}$, la derivata temporale diventa $\frac{\partial v}{\partial t} = - \frac{1}{\rho^2} \frac{\partial \rho}{\partial t}$. L'equazione si riscrive come:
+\begin{equation}
+\frac{\partial L}{\partial m} = \epsilon - \frac{\partial u}{\partial t} + \frac{P}{\rho^2} \frac{\partial \rho}{\partial t}
+\end{equation}
+
+\textbf{Takeaway:} Nel caso dinamico, compaiono esplicitamente le \textbf{derivate temporali}. Se c'è lavoro compiuto su un guscio o da un guscio, l'energia scambiata per via meccanica contribuisce al bilancio termico della stella. In una stella stazionaria come il Sole (all'attuale stadio evolutivo), queste derivate temporali si annullano e si ritorna al caso semplice $\frac{\partial L}{\partial m} = \epsilon$.
+
+\subsection{Formulazione in Pressione e Temperatura}
+
+Dal punto di vista pratico e computazionale, nei calcoli termodinamici della struttura stellare è spesso molto più conveniente lavorare con \textbf{pressione e temperatura} come variabili di stato, piuttosto che con pressione e densità.
+
+Per operare questo cambio di variabili, utilizziamo la forma generalizzata della prima legge della termodinamica che abbiamo ricavato nelle lezioni precedenti:
+\begin{equation}
+dq = c_P dT - \frac{\delta}{\alpha \rho} dP
+\end{equation}
+Esprimendo queste grandezze per unità di tempo e riorganizzando l'equazione dell'energia, otteniamo la formulazione generale definitiva per la conservazione dell'energia:
+\begin{equation}
+\frac{\partial L}{\partial m} = \epsilon - c_P \frac{\partial T}{\partial t} + \frac{\delta}{\alpha \rho} \frac{\partial P}{\partial t}
+\end{equation}
+
+Questa equazione include tutti i casi che possiamo incontrare in un interno stellare:
+\begin{itemize}
+\item La produzione di energia tramite nucleosintesi ($\epsilon$).
+\item La variazione di energia interna, pesata dal calore specifico a pressione costante ($c_P \frac{\partial T}{\partial t}$).
+\item Il lavoro termodinamico, che nella formulazione $P-T$ dipenderà dai parametri del gas $\alpha$ e $\delta$ ($\frac{\delta}{\alpha \rho} \frac{\partial P}{\partial t}$).
+\end{itemize}
+
+I termini dipendenti dal tempo non sono trascurabili ogni qual volta la scala temporale delle variazioni termodinamiche diventa rilevante.
+
+\section{Distinzione tra Luminosità e Flusso}
+
+Per concludere con un richiamo fondamentale (come ad esempio per la struttura interna del Sole, dove $L$ è costante al di fuori del \textit{core}): è cruciale non confondere la luminosità $L$ con il \textbf{flusso} $F$.
+\begin{itemize}
+\item La \textbf{luminosità} $L$ è l'energia totale irradiata per unità di tempo. Come dimostrato, al di fuori delle zone di produzione nucleare (in assenza di espansioni), la luminosità si conserva ed è costante.
+\item Il \textbf{flusso} $F$ è l'energia irradiata per unità di tempo \textit{e per unità di superficie}. Poiché la superficie dei gusci sferici cresce col raggio come $4 \pi r^2$, il flusso deve necessariamente diluirsi e decrescere seguendo la legge dell'inverso del quadrato della distanza:
+\end{itemize}
+\begin{equation}
+F = \frac{L}{4 \pi r^2} \propto \frac{1}{r^2}
+\end{equation}
+
+\section{Il Flusso Radiativo e la Luminosità}
+
+È fondamentale stabilire con estrema chiarezza la distinzione tra flusso e luminosità.
+\begin{itemize}
+\item Il \textbf{flusso} ($F$) è l'energia per unità di area e per unità di tempo.
+\item La \textbf{luminosità} ($L$) è l'energia totale che fluisce attraverso l'intera superficie del guscio (shell) nell'unità di tempo.
+\end{itemize}
+
+Pertanto, per passare dalla luminosità al flusso locale a una distanza $r$ dal centro, occorre dividere per la superficie sferica del guscio:
+\begin{equation}
+F = \frac{L}{4 \pi r^2}
+\end{equation}
+In corrispondenza della superficie della stella ($r = R$), il flusso emergente sarà analogamente pari a $F_{sup} = \frac{L}{4 \pi R^2}$. Non devono esserci dubbi su queste definizioni fondamentali.
+
+\section{Produzione di Energia Termodinamica}
+
+Concludiamo ora la discussione riguardante la conservazione dell'energia. Per le nostre applicazioni, semplificheremo la notazione definendo un termine che descrive la produzione (o l'assorbimento) di energia dovuta puramente a effetti termodinamici del gas.
+
+Definiamo la \textbf{produzione di energia termodinamica} ($\epsilon_g$) come la variazione dell'entropia specifica nel tempo, pesata per la temperatura (con il segno meno convenzionale):
+\begin{equation}
+\epsilon_g = - T \frac{\partial S}{\partial t}
+\end{equation}
+Ricordando che l'entropia specifica è definita dal rapporto tra il calore scambiato e la temperatura ($dS = dq/T$), possiamo espandere l'equazione sfruttando la prima legge della termodinamica generalizzata ricavata nelle lezioni precedenti:
+\begin{equation}
+\epsilon_g = - c_P \frac{\partial T}{\partial t} + \frac{\delta}{\rho} \frac{\partial P}{\partial t}
+\end{equation}
+
+Confrontando questa espressione con l'equazione di conservazione dell'energia precedentemente ricavata, riconosciamo che questi due termini rappresentano esattamente il contributo dinamico scambiato con l'ambiente. Di conseguenza, l'equazione della luminosità può essere riscritta in forma molto compatta:
+\begin{equation}
+\frac{\partial L}{\partial m} = \epsilon + \epsilon_g
+\end{equation}
+
+\subsection{L'Epsilon Termodinamico in Funzione del Gradiente Adiabatico}
+Si noti la stretta correlazione tra l'espressione di $\epsilon_g$ e il gradiente adiabatico ($\nabla_{ad}$). Dalla definizione del gradiente adiabatico per un'equazione di stato generalizzata, abbiamo:
+\begin{equation}
+\nabla_{ad} = \frac{P \delta}{T \rho c_P}
+\end{equation}
+Possiamo invertire questa relazione per isolare il termine $\frac{\delta}{\rho}$:
+\begin{equation}
+\frac{\delta}{\rho} = \frac{c_P T}{P} \nabla_{ad}
+\end{equation}
+Sostituendo questa identità nell'equazione della produzione di energia termodinamica e raccogliendo il termine $c_P T$, giungiamo a una nuova e utilissima formulazione:
+\begin{equation}
+\epsilon_g = - c_P T \left[ \frac{1}{T} \frac{\partial T}{\partial t} - \frac{\nabla_{ad}}{P} \frac{\partial P}{\partial t} \right]
+\end{equation}
+In futuro faremo ampio uso di questa espressione, che lega esplicitamente la produzione di energia termodinamica al gradiente adiabatico del gas.
+
+\section{La Produzione di Neutrini}
+
+Dobbiamo introdurre un ultimo termine fondamentale nella nostra equazione di conservazione dell'energia: la \textbf{perdita di energia dovuta alla produzione di neutrini} ($\epsilon_\nu$).
+
+I neutrini vengono prodotti direttamente durante le reazioni nucleari nel nucleo stellare. Sotto questo aspetto, la loro generazione è intimamente legata alla produzione di energia nucleare ($\epsilon$). Tuttavia, vi è una profonda differenza dal punto di vista del trasporto energetico.
+
+Quando parliamo di \textit{luminosità} (nel senso classico di $L$), ci riferiamo all'energia trasportata dai fotoni dal centro verso la superficie. I fotoni sono soggetti a uno scattering continuo con il gas; la loro propagazione dipende strettamente dal cammino libero medio dettato dall'opacità del plasma.
+Al contrario, i neutrini possiedono una peculiarità straordinaria: la loro opacità con la materia stellare è essenzialmente zero. Una volta prodotti nel \textit{core}, sfuggono istantaneamente dalla stella, senza interagire con gli strati sovrastanti. Essi costituiscono dunque un pozzo (sink) irreversibile di energia termica sottratta alla stella nel suo complesso.
+
+Per includere formalmente questo effetto, dobbiamo sottrarre la produzione dei neutrini dal bilancio termico. L'equazione di conservazione dell'energia locale completa e definitiva assume la forma:
+\begin{equation}
+\frac{\partial L}{\partial m} = \epsilon - \epsilon_\nu + \epsilon_g
+\end{equation}
+Questa è l'equazione di conservazione dell'energia locale generale che adotteremo nello studio degli interni stellari.
+
+\subsection{Implicazioni Fisiche dell'Equazione Completa}
+
+Analizziamo i tre termini a destra per comprenderne il profondo significato fisico:
+\begin{enumerate}
+\item \textbf{Espansione Rapida dell'Inviluppo:} Immaginiamo una stella in fase di rapida espansione. A causa dell'espansione del gas, il termine termodinamico ($\epsilon_g$) risulterà fortemente negativo, in quanto l'inviluppo in espansione assorbe energia (lavoro meccanico). In tal caso, la luminosità osservabile alla superficie potrà risultare nettamente \textit{minore} dell'energia prodotta dalle reazioni nucleari nel nucleo. L'energia nucleare viene "spesa" per far espandere la stella.
+\item \textbf{Luminosità Neutrinica Dominante:} In alcune fasi evolutive avanzate (ad esempio poco prima di una supernova), la produzione di neutrini ($\epsilon_\nu$) diventa il meccanismo di raffreddamento dominante. In certi strati della stella si potrà avere un contributo netto negativo alla derivata della luminosità: la materia in quelle zone non \textit{aggiunge} luminosità fotonica, ma la "risucchia" sotto forma di neutrini invisibili. (Si potrà definire analogamente una \textit{luminosità neutrinica} totale globale: $L_\nu = \int_0^M \epsilon_\nu dm$).
+\end{enumerate}
+
+\section{Dalla Conservazione Locale alla Conservazione Globale}
+
+Fino a questo punto abbiamo trattato l'equazione di conservazione dell'energia nella sua forma \textbf{locale}, operando guscio per guscio (layer by layer). Ma qual è il legame con la \textbf{conservazione dell'energia globale} dell'intera stella?
+
+In base al teorema del viriale, l'energia totale ($E_{tot}$) di una stella è data dalla somma dell'energia cinetica macroscopica ($E_{kin}$, che descrive moti globali di espansione o contrazione), dell'energia potenziale gravitazionale ($E_G$), dell'energia interna termica ($E_{int}$) e del potenziale energetico nucleare.
+Da un punto di vista globale, la variazione temporale dell'energia totale della stella è esattamente compensata dalla somma della luminosità fotonica ($L$) e della luminosità neutrinica ($L_\nu$) emesse:
+\begin{equation}
+\frac{d E_{tot}}{dt} = - (L + L_\nu)
+\end{equation}
+L'emissione di radiazione dalla superficie e l'emissione di neutrini corrispondono necessariamente a un attingimento all'energia nucleare, gravitazionale o interna.
+
+Verifichiamo la coerenza passando dall'equazione locale alla forma globale integrando su tutta la massa stellare ($m \in [0, M]$):
+\begin{itemize}
+\item L'integrale della derivata della luminosità fornisce la luminosità totale (luminosità fotonica alla superficie):
+\begin{equation}
+\int_0^M \frac{\partial L}{\partial m} , dm = L
+\end{equation}
+\item L'integrale del termine di perdita fornisce la luminosità neutrinica:
+\begin{equation}
+\int_0^M \epsilon_\nu , dm = L_\nu
+\end{equation}
+\end{itemize}
+
+L'aspetto meno ovvio riguarda l'integrazione della produzione di energia termodinamica ($\epsilon_g$) e il suo legame con l'energia interna e gravitazionale globale.
+
+\subsection{Integrazione del Lavoro Termodinamico e Teorema del Viriale}
+Esplicitiamo l'espressione in funzione di densità e volume:
+\begin{equation}
+\epsilon_g = - \frac{\partial u}{\partial t} + \frac{P}{\rho^2} \frac{\partial \rho}{\partial t}
+\end{equation}
+Integrando il primo termine sulla massa:
+\begin{equation}
+\int_0^M \left( - \frac{\partial u}{\partial t} \right) dm = - \frac{d E_{int}}{dt}
+\end{equation}
+Si ottiene direttamente la variazione dell'energia interna totale nel tempo.
+
+Il secondo termine (il lavoro di volume) è legato all'energia gravitazionale $E_G$. Ricordando la dimostrazione del teorema del viriale per una sfera di gas in equilibrio:
+\begin{equation}
+E_G = - 3 \int_0^M \frac{P}{\rho} , dm
+\end{equation}
+Se prendiamo la derivata temporale di questa espressione (la variazione dell'energia gravitazionale nel tempo), otteniamo due contributi sotto il segno di integrale:
+\begin{equation}
+\frac{d E_G}{dt} = - 3 \int_0^M \frac{\partial}{\partial t}\left(\frac{P}{\rho}\right) dm = - 3 \int_0^M \frac{1}{\rho} \frac{\partial P}{\partial t} , dm + 3 \int_0^M \frac{P}{\rho^2} \frac{\partial \rho}{\partial t} , dm
+\end{equation}
+Attraverso le relazioni termodinamiche integrali, è possibile dimostrare che l'integrazione sull'intera massa del termine locale di lavoro $\left(\frac{P}{\rho^2} \frac{\partial \rho}{\partial t}\right)$ è l'anello di congiunzione esatto tra la variazione locale di volume e la variazione globale dell'energia potenziale gravitazionale della stella nel suo complesso. La trattazione locale implica in maniera rigorosa la conservazione globale dell'energia.
+
+\section{Completamento del Quadro dell'Energia Globale}
+
+D'altra parte, occorre considerare il fatto che la variazione dell'energia gravitazionale può essere espressa anche in una forma alternativa. Nello specifico, essa è descrivibile come l'integrale sulla massa del termine associato alla variazione radiale spaziale nel tempo:
+\begin{equation}
+\frac{dE_G}{dt} = \int_0^M \frac{G m}{r} \frac{\dot{r}}{r} , dm
+\end{equation}
+La validità di questo passaggio matematico dovrebbe risultare di ovvia comprensione.
+
+Poiché il tempo a nostra disposizione per questa sessione è terminato, riprenderemo l'argomento nella prossima lezione, dove analizzeremo nel dettaglio la derivazione esatta di questa formula.
+
+In tale sede dimostreremo esplicitamente che questa derivata temporale è equivalente all'integrale del termine di lavoro di volume (legato alla variazione di densità), ovvero:
+\begin{equation}
+\int_0^M \frac{G m}{r} \frac{\dot{r}}{r} , dm = \int_0^M \frac{P}{\rho^2} \dot{\rho} , dm
+\end{equation}
+dove $\dot{\rho}$ rappresenta la derivata temporale della densità ($\frac{\partial \rho}{\partial t}$).
+
+L'uguaglianza tra questi integrali ci permetterà di chiudere il cerchio concettuale, completando in maniera rigorosa il quadro teorico relativo alla \textbf{trasformazione dell'energia globale} all'interno della struttura stellare.
