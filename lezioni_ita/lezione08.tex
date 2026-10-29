@@ -1,1 +1,324 @@
-\chapter{Lezione 8 - }
+\chapter{Lezione 8 - 28/10/2026}
+
+\section{Efficienza del Trasporto Convettivo e Mixing Length}
+
+In pratica, arrivati a questo punto, abbiamo definito un termine di flusso convettivo che dipende direttamente dalla differenza di temperatura tra l'elemento convettivo (il \textit{blob}) e l'ambiente circostante. Come abbiamo ampiamente visto, questa differenza di temperatura può essere legata ai gradienti termici del sistema.
+
+Il nocciolo del problema diventa quindi capire \textbf{quanto sia efficiente} questo elemento convettivo. In altre parole: di quanto spazio si sposta mediamente l'elemento prima di dissolversi, ovvero prima di portarsi in perfetto equilibrio termico con l'ambiente e scomparire?
+
+Per rispondere a questa domanda interviene il concetto fondamentale di \textbf{Mixing Length} (lunghezza di mescolamento), che indicheremo con $l_m$ (o $L_M$). In seguito la esprimeremo in unità di altezza scala di pressione ($H_P$), ma per ora concepiamola fisicamente come una lunghezza caratteristica: lo spazio tipico, o l'altezza, lungo la quale l'elemento si muove e trasporta calore durante un suo "giro" (ciclo convettivo).
+
+L'introduzione della mixing length ci permette di esprimere la differenza di temperatura (assumendo, per comodità logica, che l'elemento venga seguito per un tratto pari a $l_m/2$) in questo modo:
+\begin{equation}
+\Delta T = T_{elemento} - T_{ambiente} = \frac{T}{H_P} (\nabla_e - \nabla) \frac{l_m}{2}
+\end{equation}
+(Come si può notare, l'equazione può essere facilmente scalata in termini di $H_P$, ma per ora la manteniamo in questa forma esplicita).
+
+\subsection{Dalla Temperatura alla Densità e Spinta di Archimede}
+Ricordiamo che questa differenza di temperatura produce istantaneamente una differenza di densità. Le assunzioni fisiche che ci permettono di legare direttamente le due grandezze sono:
+\begin{itemize}
+\item $dP = 0$: la pressione all'interno dell'elemento si porta sempre e immediatamente in equilibrio meccanico con l'ambiente.
+\item $d\mu = 0$: assumiamo che non vi siano differenze di composizione chimica o di stato di ionizzazione tra l'elemento e l'ambiente (nessun gradiente di peso molecolare medio).
+\end{itemize}
+
+Sotto queste ipotesi, l'equazione di stato generalizzata si riduce a:
+\begin{equation}
+\frac{d\rho}{\rho} = - \delta \frac{dT}{T}
+\end{equation}
+
+A questa differenza di densità è associata la \textbf{forza di galleggiamento} (spinta di Archimede). Se esprimiamo la forza di Archimede \textbf{per unità di massa} (invece che per unità di volume, che era $-g \, d\rho$), essa si scrive come:
+\begin{equation}
+k_r = - g \frac{d\rho}{\rho} = g , \delta \frac{dT}{T}
+\end{equation}
+
+\section{Stima Energetica della Velocità Convettiva}
+
+Dallo sviluppo del nostro modello emerge che il parametro chiave per quantificare il flusso convettivo è la velocità ascensionale $v$ dell'elemento di plasma.
+Ricordiamo che il flusso convettivo $F_{conv}$ trasportato verso l'alto (l'eccesso di energia interna) è dato da:
+\begin{equation}
+F_{conv} = \rho v c_P \Delta T
+\end{equation}
+Il nostro obiettivo primario ora è stabilire quanto valga $v$. Lo possiamo dedurre da un punto di vista strettamente \textbf{energetico}, una volta introdotta la mixing length.
+
+Se l'elemento di fluido è sottoposto alla forza di Archimede e si sposta mediamente di una distanza $l_m/2$, il \textbf{lavoro} $W$ compiuto da tale forza sarà proporzionale al prodotto tra forza e spostamento:
+\begin{equation}
+W \propto k_r \times \frac{l_m}{2}
+\end{equation}
+Sostituendo l'espressione della forza di Archimede per unità di massa e il gradiente di temperatura:
+\begin{equation}
+W \propto \left( g , \delta \frac{dT}{T} \right) \frac{l_m}{2}
+\end{equation}
+Ricordando che $\frac{dT}{T} = \frac{1}{H_P} (\nabla_e - \nabla) \frac{l_m}{2}$, si ottiene:
+\begin{equation}
+W \propto g , \delta \left[ \frac{1}{H_P} (\nabla_e - \nabla) \frac{l_m}{2} \right] \frac{l_m}{2}
+\end{equation}
+Il termine $(\nabla_e - \nabla)$ è la differenza tra i gradienti (che nel caso adiabatico rappresenta la cosiddetta \textit{superadiabaticità}). Riordinando i termini, il lavoro per unità di massa diventa:
+\begin{equation}
+W \propto \frac{g , \delta}{H_P} (\nabla_e - \nabla) \frac{l_m^2}{4}
+\end{equation}
+
+\subsection{Energia Cinetica e Assorbimento delle Costanti}
+Seguendo il ragionamento di Kippenhahn (che cerca di dare una struttura logica alle costanti numeriche in gioco), facciamo un'ulteriore assunzione: supponiamo che solo \textbf{metà} di questo lavoro si traduca in \textbf{energia cinetica} dell'elemento, mentre l'altra metà venga spesa in lavoro meccanico per espandere il volume dell'elemento durante la risalita.
+
+Quindi l'energia cinetica per unità di massa ($\frac{1}{2}v^2$) sarà pari a metà del lavoro calcolato:
+\begin{equation}
+\frac{1}{2} v^2 = \frac{1}{2} W = \frac{1}{2} \left[ \frac{g , \delta}{H_P} (\nabla_e - \nabla) \frac{l_m^2}{4} \right]
+\end{equation}
+Semplificando il fattore $1/2$ da ambo i membri, si isola direttamente il quadrato della velocità:
+\begin{equation}
+v^2 = \frac{g , \delta}{8 H_P} (\nabla_e - \nabla) l_m^2
+\end{equation}
+
+\textit{Nota metodologica:} L'apparizione di fattori come $1/2$, $1/4$ o $1/8$ potrebbe sembrare arbitraria o disorientante. In realtà, il valore esatto di questi pre-fattori numerici ha poca importanza fisica. Potrebbero essere $1/3$, $1/16$ o qualsiasi altra frazione: la loro natura esatta "lascia il tempo che trova", poiché verranno tutti \textbf{completamente assorbiti} dal parametro libero di scala (la mixing length, misurata in frazioni di $H_P$) durante la fase di calibrazione del modello.
+
+Ciò che è fisicamente inconfutabile e che conta davvero è la \textbf{dipendenza funzionale}:
+L'energia cinetica acquisita dall'elemento (e quindi il quadrato della sua velocità) dipende strettamente dall'accelerazione di gravità $g$, e in modo lineare dalla \textit{differenza dei gradienti termici} $(\nabla_e - \nabla)$.
+Questa è la velocità $v$ che andrà inserita nell'equazione del flusso convettivo.
+
+\section{Adiabaticità e Tempi Scala}
+
+Si noti che, nell'impostare questa derivazione, ci siamo mantenuti nel caso più generale in cui \textbf{non vi è rigorosa adiabaticità}.
+Cosa significa "adiabaticità" in questo contesto? Significa che l'elemento di plasma in risalita non scambia calore con l'ambiente circostante.
+
+Affinché l'adiabaticità sia rispettata (almeno approssimativamente), è necessario che il \textbf{tempo di aggiustamento termico} (ovvero il tempo impiegato dal \textit{blob} per perdere o acquisire energia radiativamente e portarsi in equilibrio termico con l'ambiente) sia \textbf{molto più lungo} rispetto agli altri tempi scala dinamici in gioco. Nello specifico, deve essere molto più lungo del \textbf{convective turnover time}, che è il tempo impiegato dall'elemento per completare fisicamente la sua risalita. In questa situazione, il trasporto convettivo risulta altamente efficiente.
+
+\section{Deviazione dall'Adiabaticità e Perdita Radiativa}
+
+Il nocciolo del problema del trasporto convettivo risiede nello stabilire quanto tempo impiega l'elemento convettivo per salire e scendere e, soprattutto, a quanto ammonta la sua deviazione dall'adiabaticità.
+
+Come facciamo a stabilire questa deviazione? Abbiamo analizzato come il nostro elemento convettivo perde energia.
+Prima di procedere, è essenziale sottolineare che la formulazione che stiamo sviluppando è di carattere generale. Essa descrive la convezione in qualsiasi regime fisico: non solo all'interno dell'inviluppo solare o nel \textit{core} delle stelle massicce, ma è applicabile persino a sistemi terrestri (come i moti convettivi estremamente lenti del magma sotto la crosta terrestre).
+
+Per specializzare la trattazione al caso stellare, dobbiamo quantificare quanta energia radiativa l'elemento convettivo cede all'ambiente durante il suo moto.
+Lo scambio di calore con l'ambiente si traduce formalmente in una variazione dei \textbf{gradienti di temperatura}.
+Ricordiamo che se il criterio di Schwarzschild per la stabilità non viene violato, i moti convettivi non si innescano. Quando invece il criterio di stabilità viene violato, i gradienti (reale e adiabatico) differiscono e si instaura la convezione. Maggiore è la differenza tra i gradienti, maggiore sarà l'energia trasportata.
+
+Tuttavia, quando l'elemento irradiando perde energia, diminuisce anche la differenza di temperatura rispetto all'ambiente. Come quantificare analiticamente questa discrepanza?
+Se ragioniamo in termini di gradienti spaziali ($\frac{dT}{dr}$), il gradiente di temperatura dell'elemento ($\nabla_e$) sarà pari al gradiente adiabatico ($\nabla_{ad}$) ridotto di un termine proporzionale alla perdita radiativa:
+\begin{equation}
+\left( \frac{dT}{dr} \right)*e = \left( \frac{dT}{dr} \right)*{ad} - \text{termine radiativo}
+\end{equation}
+
+Per ricavare questo "termine radiativo", riprendiamo il bilancio dell'energia interna calcolato in precedenza:
+\begin{equation}
+\frac{d E_{int}}{dt} = \rho V c_P \frac{\partial T}{\partial t} = - \Lambda
+\end{equation}
+dove $\Lambda$ è la perdita radiativa (luminosità dissipata dall'elemento).
+Possiamo esprimere la derivata temporale della temperatura come prodotto tra il gradiente spaziale e la velocità ascensionale $v$ ($\frac{dr}{dt}$):
+\begin{equation}
+\frac{\partial T}{\partial t} = \frac{dT}{dr} \frac{dr}{dt} = \frac{dT}{dr} v
+\end{equation}
+Sostituendo questa espressione nell'equazione del calore:
+\begin{equation}
+\rho V c_P \left( \frac{dT}{dr} v \right) = - \Lambda \implies \frac{dT}{dr} = - \frac{\Lambda}{\rho V c_P v}
+\end{equation}
+Quindi, la perdita di gradiente dovuta a $\Lambda$ è esattamente pari a $\frac{\Lambda}{\rho V c_P v}$.
+
+Passando dai gradienti spaziali a quelli logaritmici ($\nabla$), l'equazione si trasforma moltiplicando per l'altezza scala di pressione ($H_P$) e dividendo per $T$. Si ottiene l'equazione per la deviazione dall'adiabaticità:
+\begin{equation}
+\nabla_e - \nabla_{ad} = \frac{\Lambda H_P}{\rho V c_P v T}
+\end{equation}
+
+\subsection{Esplicitazione del Termine di Perdita Radiativa ($\Lambda$)}
+Ricordiamo di aver espresso $\Lambda$ in termini di differenza di temperatura e coefficiente di conducibilità:
+\begin{equation}
+\Lambda \approx \frac{4 a c T^3}{3 \kappa \rho} \left( \frac{2 \Delta T}{d} \right) S
+\end{equation}
+Se riscriviamo $\Delta T$ in funzione della differenza dei gradienti logaritmici ($\nabla_e - \nabla$) e della \textit{mixing length} ($l_m$), e sostituiamo il rapporto geometrico superficie-volume ($S/V$), l'equazione per il rapporto delle differenze di gradiente si complica notevolmente.
+
+Attraverso opportuni passaggi algebrici (che qui omettiamo per brevità, giungendo direttamente al risultato compatto), si ricava la seguente equazione fondamentale:
+\begin{equation}
+\frac{\nabla_e - \nabla_{ad}}{\nabla - \nabla_e} = \frac{6 a c T^3}{\kappa \rho^2 c_P l_m v}
+\end{equation}
+
+\textit{Nota metodologica sui coefficienti numerici:} Nel derivare l'equazione, emergono rapporti geometrici legati alla forma del \textit{blob} (es. $S/V = 6/d$). Alcuni autori utilizzano un fattore $6/l_m$, altri adottano $9/2 l_m$. In realtà non ha alcuna importanza quale fattore numerico venga scelto, poiché esso viene interamente \textbf{assorbito dal parametro di calibrazione libera} della \textit{mixing length} (solitamente calibrata affinché il modello riproduca accuratamente il raggio del Sole, o appoggiandosi a simulazioni magnetoidrodinamiche 3D). La potenza del formalismo risiede nelle dipendenze fisiche funzionali, non nel coefficiente scalare.
+
+\section{Le Cinque Equazioni della Convezione (Mixing Length Theory)}
+
+Riassumendo l'intera trattazione analitica svolta: nel momento in cui il criterio di Schwarzschild viene violato, l'unica equazione che descriveva l'equilibrio radiativo puro deve essere sostituita da un sistema chiuso di \textbf{cinque equazioni} governanti il trasporto convettivo.
+
+Queste equazioni (nella notazione della \textit{Mixing Length Theory}) sono le seguenti:
+
+\begin{enumerate}
+\item \textbf{Conservazione del flusso totale:} Il flusso totale, al quale è teoricamente associato il gradiente radiativo (ideale) $\nabla_{rad}$, è la somma del flusso effettivamente trasportato dalla radiazione e di quello trasportato dalla convezione:
+\begin{equation}
+F_{tot} = F_{rad} + F_{conv} = \mathcal{K} \nabla_{rad}
+\end{equation}
+dove il termine $\mathcal{K}$ raccoglie le dipendenze fisiche ($\mathcal{K} \propto \frac{T^4}{\kappa P}$).
+
+```
+\item \textbf{Flusso Radiativo reale:} Il flusso smaltito radiativamente dipende esclusivamente dal gradiente reale $\nabla$ instauratosi nell'ambiente:
+\begin{equation}
+    F_{rad} = \mathcal{K} \nabla
+\end{equation}
+
+\item \textbf{Flusso Convettivo:} Il calore convettivo corrisponde all'eccesso di energia interna ($c_P \Delta T$) trasportato alla velocità ascensionale $v$:
+\begin{equation}
+    F_{conv} = \rho c_P v T (\nabla - \nabla_e) \frac{l_m}{2 H_P}
+\end{equation}
+
+\item \textbf{Velocità dell'Elemento Convettivo:} Il quadrato della velocità, acquisita grazie al lavoro meccanico della forza di Archimede, è proporzionale alla differenza tra i gradienti e al quadrato della mixing length:
+\begin{equation}
+    v^2 \propto \frac{g \delta}{H_P} (\nabla - \nabla_e) l_m^2
+\end{equation}
+(Il parametro libero $l_m$ assorbe le eventuali costanti geometriche o di dissipazione energetica).
+
+\item \textbf{Deviazione dall'Adiabaticità:} Il rapporto che misura quanto l'elemento si raffreddi prima di dissolversi è legato alle proprietà dissipative del mezzo (opacità, densità e capacità termica):
+\begin{equation}
+    \frac{\nabla_e - \nabla_{ad}}{\nabla - \nabla_e} = \frac{6 a c T^3}{\kappa \rho^2 c_P l_m v}
+\end{equation}
+
+```
+
+\end{enumerate}
+
+\subsection{Chiusura del Sistema}
+Questo sistema è costituito da \textbf{5 equazioni} per \textbf{5 incognite}:
+\begin{enumerate}
+\item Flusso radiativo reale ($F_{rad}$)
+\item Flusso convettivo ($F_{conv}$)
+\item Velocità dell'elemento convettivo ($v$)
+\item Gradiente dell'elemento ($\nabla_e$)
+\item Gradiente reale dell'ambiente ($\nabla$)
+\end{enumerate}
+
+Le restanti grandezze che appaiono nel sistema non sono incognite:
+\begin{itemize}
+\item Il \textbf{gradiente adiabatico} ($\nabla_{ad}$) e il \textbf{calore specifico} ($c_P$) si ricavano a priori dall'equazione di stato del gas (noti $P$, $T$, $\rho$ e $\mu$).
+\item Il \textbf{flusso totale} (e dunque la luminosità e il gradiente $\nabla_{rad}$ ad esso associato), la massa relativa dello strato e l'accelerazione di gravità locale $g$ derivano dall'integrazione accoppiata delle altre equazioni differenziali della struttura stellare (equilibrio idrostatico, equazione della massa ed equazione dell'energia comprendente i rate nucleari e l'emissione neutrinica).
+\end{itemize}
+
+È vero che il sistema appare complesso; non stiamo descrivendo un elemento isolato, bensì un "bolla" interagente che si muove in un ambiente macroscopicamente instabile. Tuttavia, questo apparato matematico fornisce il modo quantitativo rigoroso per bilanciare l'energia posseduta dall'elemento, l'energia dissipata nell'ambiente e l'efficienza con cui il flusso termico netto raggiunge gli strati superiori della stella.
+
+\section{La Teoria della Mixing Length e la Modellizzazione Parametrica}
+
+Il meccanismo fondamentale introdotto è il significato fisico della \textit{Mixing Length}. In molta della letteratura specialistica (e nei codici di calcolo numerico), questo parametro viene indicato con $\alpha_{MLT}$ ed è definito come il rapporto tra la mixing length $l_m$ e l'altezza scala di pressione $H_P$:
+\begin{equation}
+\alpha_{MLT} = \frac{l_m}{H_P}
+\end{equation}
+Esprimere questa lunghezza spaziale tipica in unità di altezza scala di pressione è un approccio estremamente potente e comodo. Cambiando le condizioni fisiche locali della stella (e quindi variando l'altezza scala di pressione), la formulazione si adatta automaticamente all'ambiente circostante. In virtù di questo, $\alpha_{MLT}$ può essere trattato come un parametro "universale" di calibrazione. Tipicamente, nei modelli stellari si adotta un valore prossimo a $2$ (ad esempio, $\alpha_{MLT} \approx 1.93$ viene spesso utilizzato in quanto è il valore calibrato specificamente affinché il modello riproduca il Sole al suo stato attuale).
+
+Prima di procedere con l'analisi matematica del sistema, è opportuno fermarsi a riflettere sulla complessità intrinseca del problema idrodinamico della convezione (in cui innumerevoli elementi di plasma nascono, si muovono caoticamente guadagnando energia, si espandono e si dissolvono turbolentemente) e su quanto l'impianto teorico della \textit{Mixing Length Theory} (MLT) semplifichi questa spaventosa complessità in un modello algebrico maneggevole.
+
+La MLT è una delle trovate fisico-matematiche più ingegnose e brillanti del Novecento: pur essendo un'approssimazione macroscopica basata su pochi concetti fondamentali (il fulcro del processo convettivo), dopo oltre $70$ anni dalla sua formulazione rimane l'infrastruttura standard impiegata dai codici di evoluzione e struttura stellare per risolvere il trasporto convettivo.
+
+Il plasma può presentare comportamenti fluidodinamici radicalmente differenti a seconda del regime in cui ci si trova:
+\begin{itemize}
+\item \textbf{Moti laminari lenti:} come avviene per il magma sotto la crosta terrestre.
+\item \textbf{Moti altamente turbolenti:} come accade all'interno del Sole. Il grado di turbolenza è quantificato dal numero di Reynolds, che discrimina tra flusso laminare e turbolento.
+\end{itemize}
+
+Lo scopo del nostro modello adimensionale sarà proprio quello di comprendere in quale regime fisico ci si trovi: siamo in prossimità dell'adiabaticità? In regime di stabilità marginale? Il trasporto è altamente efficiente oppure no?
+
+Ricordiamo sempre l'obiettivo finale del codice di calcolo della struttura stellare: trovare il valore del \textbf{gradiente termico reale} dell'ambiente. Una volta determinato il corretto $\nabla_{reale}$, il codice integra l'andamento spaziale della temperatura; le restanti equazioni di struttura e di stato restituiscono a cascata pressione, densità, massa e tutte le altre grandezze.
+
+\section{Le Equazioni Adimensionali della Convezione}
+
+Per semplificare la risoluzione del sistema delle cinque equazioni fondamentali della convezione e poter mappare tutti i regimi fisici, è prassi ricombinare le equazioni dimensionali in un sistema di variabili adimensionali.
+
+Cominciamo dalla quinta equazione della convezione, che descrive lo scostamento dall'adiabaticità (rapporto tra differenze di gradienti):
+\begin{equation}
+\frac{\nabla_e - \nabla_{ad}}{\nabla - \nabla_e} = \frac{6 a c T^3}{\kappa \rho^2 c_P l_m v}
+\end{equation}
+(Si ricorda che il fattore numerico $6$, $9/2$ o simili non ha rilevanza per le dipendenze funzionali). Sostituiamo in questa formula la velocità ascensionale $v$, espressa come:
+\begin{equation}
+v = \frac{l_m}{2} \sqrt{\frac{g \delta}{2 H_P}} (\nabla - \nabla_e)^{1/2} = \frac{1}{l_m} \sqrt{\frac{8 H_P}{g \delta}} (\nabla - \nabla_e)^{-1/2}
+\end{equation}
+(Riportando le costanti in diverse configurazioni, l'importante è la dipendenza funzionale $v \propto (\nabla - \nabla_e)^{1/2}$).
+
+Sostituendo la radice quadrata all'interno dell'equazione e raggruppando ordinatamente tutti i termini termodinamici costanti, il rapporto dei gradienti assume una forma compatta:
+\begin{equation}
+\nabla_e - \nabla_{ad} = 2 U \sqrt{\nabla - \nabla_e}
+\end{equation}
+(Spesso denominata \textbf{Equazione A}), dove il parametro adimensionale $U$ ingloba tutte le grandezze fisiche strutturali e termodinamiche dello strato:
+\begin{equation}
+U = \frac{3 a c T^3}{\kappa \rho^2 c_P l_m^2} \sqrt{\frac{8 H_P}{g \delta}}
+\end{equation}
+
+Se invece combiniamo l'equazione del flusso radiativo ($F_{rad}$), del flusso convettivo ($F_{conv}$) e l'equazione per il flusso totale (associato al gradiente radiativo virtuale $\nabla_{rad}$) sostituendo nuovamente l'espressione per la velocità $v$, otteniamo con semplici passaggi algebrici la \textbf{Equazione B}:
+\begin{equation}
+(\nabla - \nabla_e)^{3/2} = \frac{8}{9} U (\nabla_{rad} - \nabla)
+\end{equation}
+Queste due equazioni (A e B) governano matematicamente la termodinamica della convezione locale e collegano le quattro "variabili gradiente" in gioco: $\nabla_{rad}$ (noto), $\nabla_{ad}$ (noto), $\nabla_e$ e $\nabla$ (le nostre vere incognite).
+
+\section{Risoluzione del Sistema: L'Equazione Cubica}
+
+Per ricavare il gradiente termico reale dell'ambiente ($\nabla$), possiamo procedere per via puramente algebrica ricombinando le equazioni A e B.
+Partiamo dall'equazione A:
+\begin{equation}
+\nabla_e - \nabla_{ad} = 2 U \sqrt{\nabla - \nabla_e}
+\end{equation}
+Aggiungendo e sottraendo il termine $\nabla$ al primo membro:
+\begin{equation}
+(\nabla - \nabla_{ad}) - (\nabla - \nabla_e) = 2 U \sqrt{\nabla - \nabla_e}
+\end{equation}
+Al fine di semplificare l'espressione, eseguiamo una sostituzione di variabile. Definiamo $x$ come la radice quadrata della superadiabaticità effettiva dell'elemento:
+\begin{equation}
+x = \sqrt{\nabla - \nabla_e}
+\end{equation}
+Sostituendo $x$ nell'equazione precedente:
+\begin{equation}
+(\nabla - \nabla_{ad}) - x^2 = 2 U x \implies x^2 + 2 U x - (\nabla - \nabla_{ad}) = 0
+\end{equation}
+Questa è un'equazione di secondo grado in $x$, la cui soluzione è:
+\begin{equation}
+x = -U \pm \sqrt{U^2 + (\nabla - \nabla_{ad})}
+\end{equation}
+
+Per evitare l'insorgere di radici complesse superflue, introduciamo una seconda variabile ausiliaria $\xi$, definita in modo che il suo quadrato rappresenti il radicando:
+\begin{equation}
+\xi^2 = U^2 + (\nabla - \nabla_{ad})
+\end{equation}
+Da questa definizione, possiamo isolare $\nabla$:
+\begin{equation}
+\nabla = \xi^2 - U^2 + \nabla_{ad}
+\end{equation}
+Quindi l'espressione per $x$ diviene semplicemente:
+\begin{equation}
+x = -U \pm \xi
+\end{equation}
+Per via del significato fisico di $x$ (radice quadrata di una differenza di gradienti fisicamente positiva in regime convettivo), scartiamo la soluzione con il segno negativo in quanto priva di senso fisico. Adotteremo dunque:
+\begin{equation}
+x = \xi - U
+\end{equation}
+Ricordando che $x^2 = \nabla - \nabla_e$, segue che:
+\begin{equation}
+\nabla - \nabla_e = (\xi - U)^2
+\end{equation}
+
+Andiamo ora a inserire questo risultato nella nostra seconda relazione (l'equazione B):
+\begin{equation}
+(\nabla - \nabla_e)^{3/2} = \frac{8}{9} U (\nabla_{rad} - \nabla)
+\end{equation}
+Il termine a sinistra diventa $(\xi - U)^3$.
+Per il termine di destra, riscriviamo sapientemente la parentesi aggiungendo e sottraendo $\nabla_{ad}$:
+\begin{equation}
+\nabla_{rad} - \nabla = (\nabla_{rad} - \nabla_{ad}) - (\nabla - \nabla_{ad})
+\end{equation}
+Per semplificare, definiamo un termine costante noto (dal momento che dipende unicamente dai dati in input e dalle condizioni dell'equazione di stato) pari alla differenza tra il gradiente radiativo necessario e il gradiente adiabatico ideale:
+\begin{equation}
+W \equiv \nabla_{rad} - \nabla_{ad}
+\end{equation}
+Sostituendo inoltra l'espressione di $(\nabla - \nabla_{ad}) = \xi^2 - U^2$, l'equazione B diventa:
+\begin{equation}
+(\xi - U)^3 = \frac{8}{9} U \left[ W - (\xi^2 - U^2) \right]
+\end{equation}
+
+Questa equazione è l'equazione \textbf{Cubica in $\xi$}.
+Da un punto di vista dell'implementazione computazionale per calcolare la struttura stellare, i codici procedono esattamente in questo modo: valutate le costanti termodinamiche ($U$ e $W$), il codice risolve numericamente questa equazione cubica calcolandone l'unica radice reale fisicamente accettabile $\xi$. Trovato il valore numerico di $\xi$, calcola immediatamente il gradiente termico reale dell'ambiente utilizzando la relazione:
+\begin{equation}
+\nabla = \xi^2 - U^2 + \nabla_{ad}
+\end{equation}
+Nota la derivata della temperatura in funzione della pressione, l'integrazione strutturale del modello procede allo strato spaziale successivo.
+
+\section{L'Efficienza Convettiva: Il Parametro $\Gamma$}
+
+La soluzione dell'equazione cubica ci offre una prospettiva analitica per esplorare in quale regime fisico stia operando la convezione. Un parametro chiave per quantificare l'efficienza della convezione è comunemente denotato con $\Gamma$.
+
+La quantità $\Gamma$ può essere definita come il rapporto tra l'energia effettivamente trasportata e l'energia dispersa (irradiata):
+\begin{equation}
+\Gamma \propto \frac{\text{Energia trasportata per convezione}}{\text{Energia radiata dall'elemento}} = \frac{\nabla - \nabla_e}{\nabla_e - \nabla_{ad}} = \frac{1}{2U} \sqrt{\nabla - \nabla_e}
+\end{equation}
+Un valore elevato di $\Gamma$ indica che l'elemento convettivo cede pochissima energia all'ambiente durante la sua corsa rispetto all'energia termica netta che muove spazialmente; in questo caso, il processo opera in condizioni quasi puramente \textbf{adiabatiche}. Al contrario, un valore molto basso di $\Gamma$ segnala una convezione \textbf{inefficiente}, nella quale il blob irradia il calore all'ambiente circostante quasi alla stessa velocità con cui lo accumula o lo trasporta (situazione tipica dei bordi marginali delle zone di convezione).
+
+Nelle prossime lezioni, esploreremo graficamente come il parametro adimensionale $U$ e il paramentro $W$ controllino il comportamento asintotico di queste soluzioni. Ciò ci permetterà di comprendere se, in un particolare strato (nel \textit{core} di una stella massiccia, nell'inviluppo del Sole o nell'interno di un corpo planetario), il trasporto dell'energia segua un regime convettivo adiabatico ultra-efficiente, una convezione turbolenta parzialmente dissipativa, o regredisca a un equilibrio puramente radiativo.
