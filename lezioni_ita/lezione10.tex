@@ -1,1 +1,521 @@
 \chapter{Lezione 10 - 04/11/2026}
+
+\section{Transizione all'Evoluzione Stellare}
+
+Fino ad ora abbiamo esaminato le equazioni fondamentali per la \textbf{struttura stellare}. Queste sono, di fatto, le equazioni utilizzate dai codici numerici per calcolare la struttura delle stelle. Come abbiamo già discusso, l'evoluzione di una stella deriva dalle condizioni mutevoli nel nucleo (o in qualsiasi altra regione in cui avvengono reazioni nucleari).
+
+Vi sono fasi in cui questa evoluzione risulta essere piuttosto rapida. In tali fasi, entrano in gioco \textbf{instabilità globali} e si verificano numerosi processi fisici. L'aspetto più importante è che, in alcune fasi dell'evoluzione, lo stato del gas diventa \textbf{degenere}. Questo concetto è cruciale per comprendere gli eventi che caratterizzano l'evoluzione stellare avanzata.
+
+Tuttavia, analizzare direttamente l'output numerico di questi complessi calcoli non è molto utile, o per lo meno, dal punto di vista pedagogico, risulta più proficuo estrarre i principi fisici di base che governano il sistema. Come di consueto, per raggiungere questo obiettivo, ricorriamo a dei \textbf{modelli semplificati}.
+
+\section{Modelli Teorici per la Struttura Stellare}
+
+Per cogliere l'essenza della fisica dell'evoluzione stellare, è necessario acquisire la padronanza di un paio di strumenti teorici fondamentali:
+\begin{enumerate}
+\item I \textbf{modelli politropici}.
+\item Le \textbf{relazioni di omologia} (relazioni omologhe).
+\end{enumerate}
+
+Queste, come vedremo, costituiscono delle semplificazioni, ma in alcuni casi approssimano in modo eccellente i risultati forniti dai modelli numerici più avanzati. Questi strumenti teorici ci aiutano enormemente a comprendere i meccanismi fisici che si celano dietro i calcoli più complessi. Inizieremo trattando i modelli politropici.
+
+Come noto storico, \textbf{Chandrasekhar} calcolò la sua celebre massa limite (il Limite di Chandrasekhar) proprio utilizzando dei modelli politropici. Alcune fasi evolutive, o alcuni oggetti astrofisici, come ad esempio la struttura interna delle stelle di \textbf{pre-sequenza principale}, possono essere descritti in modo molto accurato tramite questi modelli. Più in generale, i loro principi rimangono estremamente utili per comprendere una vasta gamma di situazioni astrofisiche.
+
+\subsection{Costruzione di Modelli Meccanici}
+
+È già stato introdotto in precedenza il concetto di \textbf{modello meccanico} o struttura meccanica. Ogniqualvolta si riesca a semplificare il problema, ovvero quando si dispone di un'\textbf{equazione di stato} dipendente da \textbf{una sola variabile indipendente} (anziché tre variabili termodinamiche, se ne considerano solo due interdipendenti), non è più necessario risolvere le equazioni di conservazione e di trasporto dell'energia.
+
+In queste circostanze, è possibile costruire la struttura meccanica della stella (o dell'oggetto in esame) basandosi esclusivamente su due elementi:
+\begin{itemize}
+\item L'equazione di \textbf{equilibrio idrostatico} (se il sistema è effettivamente in tale stato).
+\item L'\textbf{equazione di stato} semplificata.
+\end{itemize}
+
+I \textbf{modelli politropici} appartengono esattamente a questa categoria. Ogniqualvolta l'equazione di stato possa essere semplificata in una forma tale per cui, ad esempio, la densità è funzione esclusivamente della pressione (e non della temperatura), si può ricorrere a una soluzione puramente meccanica.
+
+\section{Derivazione del Modello Politropico}
+
+Il punto di partenza fondamentale è la condizione di \textbf{equilibrio idrostatico}. Possiamo esprimerla matematicamente legando il gradiente di pressione alla derivata del potenziale gravitazionale ($\Phi$):
+\begin{equation}
+\frac{dP}{dr} = \rho \frac{d\Phi}{dr}
+\end{equation}
+Questo equivale ad affermare che la forza in gioco è la forza di gravità; tuttavia, invece di esplicitare il termine accelerativo come $-G M / r^2$, utilizziamo direttamente la derivata del potenziale gravitazionale.
+
+In una geometria a \textbf{simmetria sferica}, la relazione che lega il potenziale gravitazionale alla distribuzione di densità è l'\textbf{Equazione di Poisson}. In simmetria sferica, essa si semplifica nella forma:
+\begin{equation}
+\frac{1}{r^2} \frac{d}{dr} \left( r^2 \frac{d\Phi}{dr} \right) = - 4 \pi G \rho
+\end{equation}
+Questa è un'espressione ricorrente nella fisica fondamentale (inclusa la meccanica quantistica).
+
+A questo sistema dobbiamo affiancare l'\textbf{equazione di stato}. In generale, l'equazione di stato assume la forma $\rho = \rho(P, T)$. Se questo fosse il caso, saremmo costretti ad accoppiare al sistema le equazioni della conservazione e del trasporto dell'energia, ricadendo nelle complicazioni analitiche discusse nelle lezioni precedenti.
+
+Tuttavia, come anticipato, se l'equazione di stato è del tipo $\rho = \rho(P)$ (densità funzione esclusiva della pressione), \textbf{nessun'altra equazione strutturale è necessaria} per chiudere il sistema.
+
+\subsection{Esempio: Gas Completamente Degenere}
+
+Un esempio lampante di questa semplificazione si verifica in presenza di un \textbf{gas completamente degenere} non-relativistico. In tali condizioni, l'equazione di stato assume una forma in cui la densità è proporzionale alla pressione elevata alla potenza di $3/5$ (omettendo costanti e fattori di scala):
+\begin{equation}
+\rho \propto P^{3/5}
+\end{equation}
+In questo specifico scenario, la densità è unicamente funzione della pressione. Di conseguenza, nel caso di un gas completamente degenere, la struttura può essere risolta senza dover ricorrere alle equazioni dell'energia, portando a una soluzione analitica o numerica nettamente più semplice.
+
+Pur apparendo controintuitivo, le \textbf{nane bianche} (\textit{white dwarfs}), che sono sostenute proprio dalla pressione di degenerazione di un gas di elettroni, possiedono una struttura interna sorprendentemente semplice, derivabile unicamente da questo set di equazioni. Questo è l'esatto procedimento impiegato da Chandrasekhar per il suo celebre limite.
+
+Il gas degenere, tuttavia, non è l'unica condizione fisica a cui si può applicare un modello politropico. Qualsiasi configurazione fisica in cui l'equazione di stato segua questa relazione univoca può essere trattata con il medesimo approccio.
+
+\section{Definizione e Parametrizzazione dell'Equazione Politropica}
+
+In termini generali, l'equazione di stato che definisce un modello politropico è espressa nella forma:
+\begin{equation}
+P = K \rho^{\gamma}
+\end{equation}
+dove:
+\begin{itemize}
+\item $K$ è la \textbf{costante politropica}. È fondamentale fare attenzione alla nomenclatura, poiché la lettera $K$ viene utilizzata in molti contesti fisici; in questo caso, il suo valore deve essere derivato dall'equazione di stato specifica o dalle condizioni fisiche del sistema.
+\item $\gamma$ è l'\textbf{esponente politropico}.
+\end{itemize}
+
+È comune e matematicamente conveniente definire l'esponente politropico introducendo un nuovo parametro $n$, definito \textbf{indice politropico}, in modo tale che:
+\begin{equation}
+\gamma = 1 + \frac{1}{n}
+\end{equation}
+Pertanto, l'equazione politropica può essere riscritta indifferentemente in termini di $\gamma$ o di $n$, essendo le due quantità legate da questa semplice relazione algebrica:
+\begin{equation}
+P = K \rho^{1 + \frac{1}{n}}
+\end{equation}
+
+\subsection{Esempio: Gas Isotermo}
+
+Un altro esempio di notevole interesse, utile ad illustrare condizioni fisiche generali (come ad esempio le considerazioni sulla stabilità) piuttosto che derivare da un'equazione di stato quantistica, è il caso di un \textbf{gas isotermo}.
+
+In un sistema isotermo, la temperatura $T_0$ è fissata e costante in tutto il volume. Fissando la temperatura, è come se l'equazione di stato dipendesse unicamente da densità e pressione. Assumendo il comportamento di un \textbf{gas perfetto}, la cui densità è data da:
+\begin{equation}
+\rho = \frac{\mu P}{R T}
+\end{equation}
+imponendo $T = T_0 = \text{costante}$, l'espressione può essere manipolata per assumere una forma politropica:
+\begin{equation}
+P = \left( \frac{R T_0}{\mu} \right) \rho
+\end{equation}
+In questa formulazione:
+\begin{itemize}
+\item La costante politropica è chiaramente identificabile come $K = \frac{R T_0}{\mu}$ (poiché né la temperatura $T_0$ né il peso molecolare medio $\mu$ variano).
+\item L'esponente politropico è $\gamma = 1$.
+\end{itemize}
+Sostituendo $\gamma = 1$ nella definizione dell'indice politropico ($1 = 1 + 1/n$), si deduce che per un gas isotermo l'\textbf{indice politropico tende a infinito} ($n = \infty$).
+
+Questi esempi dimostrano come anche situazioni fisiche più complesse e apparentemente slegate possano essere ricondotte e trattate all'interno del formalismo dei modelli politropici.
+
+\section{Modelli Politropici in Astrofisica}
+
+L'utilizzo dei modelli politropici risulta particolarmente calzante per descrivere svariati scenari astrofisici, oltre a quelli già citati in relazione ai gas degeneri (come le nane bianche) o alle sfere isoterme. Esaminiamo ora un paio di ulteriori esempi chiave in cui la struttura stellare può essere efficacemente modellata attraverso queste approssimazioni.
+
+\subsection{Stelle Completamente Convettive}
+
+Un caso di estrema rilevanza pratica si presenta quando si ha a che fare con una \textbf{stella completamente convettiva}. Questa condizione accomuna diverse tipologie di oggetti celesti:
+\begin{itemize}
+\item \textbf{Stelle di piccolissima massa}, le quali mantengono una struttura puramente convettiva lungo tutto l'arco della loro evoluzione.
+\item \textbf{Stelle in fase di pre-sequenza principale} (Pre-Main Sequence, PMS), la cui fase contrattiva iniziale è dominata dai moti convettivi globali.
+\end{itemize}
+La struttura interna di questi oggetti può essere egregiamente riprodotta adottando un modello politropico. La validità di questo approccio poggia sull'assunto, robusto e confermato, secondo cui, in un regime di convezione molto efficiente tipico dei plasmi stellari, il gradiente di temperatura reale coincide di fatto con il \textbf{gradiente adiabatico} ($\nabla \approx \nabla_{ad}$).
+
+Per specificare ulteriormente, ammettiamo di trovarci in presenza di un gas perfetto, un'assunzione ragionevole almeno per quanto concerne gli inviluppi delle stelle in pre-sequenza e delle stelle di piccola massa. Assumendo in prima approssimazione le proprietà di un \textbf{gas perfetto monoatomico}, sappiamo dalla termodinamica classica (ricavata in precedenza partendo dall'equazione di stato) che il valore del gradiente adiabatico è pari a $0.4$, ovvero $\frac{2}{5}$:
+\begin{equation}
+\nabla_{ad} \equiv \left(\frac{d \ln T}{d \ln P}\right)_{ad} = \frac{2}{5}
+\end{equation}
+Integrare questa derivata logaritmica ci conduce a ricavare una dipendenza diretta tra la temperatura e la pressione, legata proprio all'esponente adiabatico. In particolare, si ottiene che:
+\begin{equation}
+T \propto P^{2/5}
+\end{equation}
+Questa relazione si configura come un vero e proprio vincolo imposto alla struttura. Ci troviamo di fronte a una stella in equilibrio idrostatico, dominata dal trasporto convettivo, in cui la stratificazione termica è univocamente determinata (fissata a meno di costanti) dalla variazione della pressione secondo la legge della termodinamica adiabatica.
+
+Per ricondurre questa condizione alla forma canonica di un modello politropico, introduciamo il vincolo del \textbf{peso molecolare medio ($\mu$)}: imponiamo (o assumiamo per semplicità) che il peso molecolare medio rimanga \textbf{costante} lungo tutto il profilo stellare. Sfruttando la legge dei gas perfetti, sappiamo che la densità si relaziona a pressione e temperatura in base alla proporzionalità $T \propto \frac{P}{\rho}$. Sostituendo questa identità nell'equazione di derivazione adiabatica trovata poco fa, $T \propto P^{2/5}$, otteniamo:
+\begin{equation}
+\frac{P}{\rho} \propto P^{2/5} \implies P^{1 - 2/5} \propto \rho \implies P^{3/5} \propto \rho \implies P \propto \rho^{5/3}
+\end{equation}
+Pertanto, una stella completamente convettiva può essere approssimata, sotto queste specifiche ipotesi, tramite un'equazione di stato politropica:
+\begin{equation}
+P = K \rho^{5/3}
+\end{equation}
+Questa espressione stabilisce che, per questo specifico caso:
+\begin{itemize}
+\item L'\textbf{esponente politropico} è $\gamma = \frac{5}{3}$.
+\item L'\textbf{indice politropico} associato è determinato dall'identità $\gamma = 1 + \frac{1}{n} = \frac{5}{3}$, da cui discende $n = \frac{3}{2}$ ($n = 1.5$).
+\end{itemize}
+A riprova dell'utilità di questa schematizzazione, è doveroso segnalare che ancora oggi, in vari articoli di ricerca, si sfrutta attivamente questa politropica ($n = 1.5$) per descrivere le proprietà di base e la struttura delle stelle di pre-sequenza principale.
+
+\subsection{La Sfera Omogenea a Densità Costante}
+
+Un altro esempio eclatante e particolarmente utile come \textit{benchmark} teorico è il modello della \textbf{sfera omogenea}, ovvero una massa sferica al cui interno la densità si mantiene rigorosamente costante:
+\begin{equation}
+\rho = \text{costante}
+\end{equation}
+Anche questa condizione limite può essere formalizzata all'interno della teoria delle politropiche. Invertendo analiticamente la consueta legge politropica $P \propto \rho^\gamma$, possiamo scrivere:
+\begin{equation}
+\rho = K_1 P^{1/\gamma}
+\end{equation}
+dove $K_1$ accorpa le relative costanti. Affinché la densità $\rho$ risulti totalmente indipendente dalla pressione e resti fissa, l'esponente di $P$ in questa formulazione inversa deve necessariamente azzerarsi, portando alla conclusione che l'esponente politropico $\gamma$ debba divergere:
+\begin{equation}
+\frac{1}{\gamma} = 0 \implies \gamma \to \infty
+\end{equation}
+Ricordando la relazione fra $\gamma$ e l'indice politropico $n$ ($\gamma = 1 + 1/n$), la condizione $\gamma \to \infty$ implica direttamente che:
+\begin{equation}
+n = 0
+\end{equation}
+Pertanto, un modello politropico di \textbf{indice $n = 0$} descrive perfettamente un sistema fluido incompressibile, o in termini astrofisici, un ipotetico corpo in equilibrio governato da una densità intrinsecamente uniforme ($\rho = K_1 = \text{costante}$).
+
+\subsection{Sintesi dei Criteri di Applicabilità}
+
+In sintesi, i modelli politropici costituiscono un formidabile strumento di indagine teorica cui possiamo fare ricorso ogniqualvolta si verifichi una delle seguenti due circostanze:
+\begin{enumerate}
+\item Il fluido o il mezzo in esame possiede un'\textbf{equazione di stato che può essere posta nativamente nella forma canonica} $P = K \rho^\gamma$ (con $K$ costante politropica, eventualmente legata ad altre grandezze macroscopiche fisse).
+\item Il sistema obbedisce all'equazione di stato generale (es. gas perfetto), ma esiste \textbf{un vincolo fisico aggiuntivo o una condizione termodinamica globale} che lega le variazioni termiche esclusivamente alle fluttuazioni di pressione (come nel caso appena visto dell'espansione adiabatica), consentendo di eliminare di fatto la temperatura dal set di equazioni.
+\end{enumerate}
+
+\section{Integrazione dell'Equilibrio Idrostatico}
+
+Una volta chiarite le condizioni in cui operare con le relazioni politropiche, torniamo alla formalizzazione della struttura. I due pilastri matematici fondamentali restano l'equazione di Poisson e l'equilibrio idrostatico, quest'ultimo espresso in termini di potenziale gravitazionale ($\Phi$):
+\begin{equation}
+-\frac{d\Phi}{dr} = \frac{1}{\rho} \frac{dP}{dr}
+\end{equation}
+Sostituendo la relazione politropica canonica $P = K \rho^\gamma$ all'interno del gradiente di pressione nell'equazione di equilibrio idrostatico, eseguiamo la differenziazione:
+\begin{equation}
+\frac{dP}{dr} = \frac{d}{dr} \left( K \rho^\gamma \right) = K \gamma \rho^{\gamma-1} \frac{d\rho}{dr}
+\end{equation}
+Reinserendo questa derivata nell'equazione per il potenziale e semplificando per $\rho$ (precedentemente a denominatore), otteniamo un'espressione per il gradiente del potenziale gravitazionale dipendente unicamente dal campo di densità:
+\begin{equation}
+\frac{d\Phi}{dr} = - K \gamma \rho^{\gamma-2} \frac{d\rho}{dr}
+\end{equation}
+(Nota: Si premette che questo sviluppo e l'integrazione successiva \textbf{non sono validi} per il caso limite isotermo visto in precedenza, richiedendo esplicitamente che \textbf{$\gamma \neq 1$}).
+
+Al fine di allinearsi con il consueto e matematicamente più maneggevole formalismo che sfrutta l'indice politropico $n$, sostituiamo $\gamma$ con l'espressione in funzione di $n$ ($1 + 1/n$):
+\begin{equation}
+\frac{d\Phi}{dr} = - K \left( 1 + \frac{1}{n} \right) \rho^{\left(1 + \frac{1}{n}\right) - 2} \frac{d\rho}{dr} = - K \left( 1 + \frac{1}{n} \right) \rho^{\frac{1}{n} - 1} \frac{d\rho}{dr}
+\end{equation}
+Il profondo significato analitico e l'enorme convenienza derivante da questo approccio metodologico risiedono nel fatto che, giunti a questo livello formale, l'espressione per il gradiente del potenziale assume una forma esatta. \textbf{Tale forma risulta ora trivialmente integrabile}, permettendoci di calcolare agevolmente l'espressione algebrica chiusa per lo stesso potenziale gravitazionale locale in funzione della densità del plasma circostante.
+
+Procediamo dunque all'integrazione. Considerata una generica costante di integrazione associata al livello zero del potenziale (che possiamo includere nella costante generale in chiusura), e ricordando la regola standard per l'integrazione delle potenze, scriviamo l'integrale formale:
+\begin{equation}
+\Phi = - K \left( 1 + \frac{1}{n} \right) \int \rho^{\frac{1}{n} - 1} , d\rho + \text{costante}
+\end{equation}
+Per risolvere questo integrale in modo rigoroso, applichiamo un cambio di variabile strategico. Definiamo un parametro ausiliario $z$:
+\begin{equation}
+z = \rho^{1/n}
+\end{equation}
+Calcoliamo conseguentemente il differenziale $dz$ per sostituzione:
+\begin{equation}
+dz = \frac{1}{n} \rho^{\frac{1}{n} - 1} , d\rho
+\end{equation}
+L'esame dell'espressione mostra chiaramente come i termini differenziali e la potenza di $\rho$ combacino perfettamente con l'integrando originale. A seguito del cambio di variabile, l'integrale si snellisce e si riduce a un'espressione proporzionale a $z$:
+\begin{equation}
+\int \rho^{\frac{1}{n} - 1} , d\rho = n \int dz = n z = n \rho^{1/n}
+\end{equation}
+Moltiplicando l'integrale appena calcolato per i termini pre-fattoriali originali, otteniamo infine l'espressione analitica compatta per il potenziale gravitazionale all'interno del modello politropico, a meno di una costante additiva:
+\begin{equation}
+\Phi = - K \left( 1 + \frac{1}{n} \right) n \rho^{1/n} + \text{costante} = - K (n + 1) \rho^{1/n} + \text{costante}
+\end{equation}
+
+\section{Dalla Relazione Densità-Potenziale all'Equazione di Lane-Emden}
+
+Abbiamo appena ricavato una relazione fondamentale. Invertendo analiticamente l'espressione precedentemente calcolata, possiamo affermare che, per un determinato potenziale gravitazionale ($\Phi$), il profilo di densità del modello politropico è descritto dalla seguente identità:
+\begin{equation}
+\rho = \left[ - \frac{\Phi}{(n+1) K} \right]^n
+\end{equation}
+(Nota del docente: nella derivazione orale le potenze e i raggruppamenti algebrici variano per comodità di calcolo, ma la dipendenza funzionale resta valida).
+
+In questa formulazione abbiamo deliberatamente ignorato la costante di integrazione, o per meglio dire, l'abbiamo posta uguale a zero ($\text{costante} = 0$). Questa scelta non è arbitraria, ma deriva da un vincolo fisico al contorno: il potenziale gravitazionale deve annullarsi in corrispondenza del raggio dove la densità si annulla (ovvero alla superficie limite della struttura). Esplicitamente:
+\begin{equation}
+\Phi = 0 \quad \text{per} \quad \rho = 0 \implies \text{costante} = 0
+\end{equation}
+Questo passaggio mette in luce l'estrema semplificazione matematica ottenuta applicando il modello politropico.
+
+\subsection{Combinazione con l'Equazione di Poisson}
+
+Ricordiamo che la relazione che lega densità e potenziale gravitazionale origina dall'accoppiamento tra l'equilibrio idrostatico e l'equazione di stato politropica. Tuttavia, per chiudere il sistema strutturale, è imperativo includere anche l'\textbf{Equazione di Poisson}:
+\begin{equation}
+\frac{1}{r^2} \frac{d}{dr} \left( r^2 \frac{d\Phi}{dr} \right) = - 4\pi G \rho
+\end{equation}
+Applicando la derivata di un prodotto al membro di sinistra (il Laplaciano radiale), l'Equazione di Poisson può essere scritta nella sua forma espansa:
+\begin{equation}
+\frac{d^2\Phi}{dr^2} + \frac{2}{r} \frac{d\Phi}{dr} = - 4\pi G \rho
+\end{equation}
+Poiché abbiamo appena derivato l'espressione esatta di $\rho$ in funzione di $\Phi$ ($\rho \propto (-\Phi)^n$), possiamo sostituire la densità all'interno dell'Equazione di Poisson. Questa operazione matematicamente elegante elimina la variabile densità e trasforma il sistema in un'unica equazione differenziale governata esclusivamente dal potenziale gravitazionale.
+
+\section{Adimensionalizzazione e l'Equazione di Lane-Emden}
+
+Per generalizzare questa formulazione differenziale rendendola scalabile e applicabile a svariati casi astrofisici, introduciamo un set di \textbf{variabili adimensionali}, operando un cambio di variabile standard che ci condurrà all'illustre \textbf{Equazione di Lane-Emden}.
+
+Il primo passo consiste nell'adimensionalizzare la variabile radiale $r$. Introduciamo una nuova variabile adimensionale \textbf{$\xi$} (o $z$ nella notazione della lezione), definita scalandola per un parametro con le dimensioni fisiche di una lunghezza, che chiameremo $A$:
+\begin{equation}
+r = A \xi
+\end{equation}
+Il parametro di scala $A$ raccoglie tutte le costanti fisiche necessarie per rendere la coordinata adimensionale. Sebbene l'espressione analitica in funzione del potenziale appaia complessa, è più utile definire il parametro di scala direttamente in funzione della \textbf{densità centrale ($\rho_c$)} del modello, sfruttando le relazioni precedentemente ricavate.
+
+Si può dimostrare, calcolando i coefficienti dell'equazione differenziale al centro della struttura, che $A$ (o più comodamente $A^2$) è espresso da:
+\begin{equation}
+A^2 = \frac{(n+1) K}{4\pi G} \rho_c^{\frac{1}{n} - 1} = \frac{(n+1) K}{4\pi G} \rho_c^{\frac{1-n}{n}}
+\end{equation}
+In sostanza, stiamo fissando le condizioni termodinamiche e gravitazionali al centro della struttura (tramite $\rho_c$) per definire l'unità di misura intrinseca della scala spaziale del modello.
+
+\subsection{Adimensionalizzazione del Potenziale (Variabile $\theta$)}
+
+Il secondo passo consiste nell'adimensionalizzare il potenziale gravitazionale $\Phi$. Introduciamo una funzione adimensionale \textbf{$w$} (più comunemente indicata in letteratura con $\theta$), definita come il rapporto tra il potenziale locale e il potenziale gravitazionale al centro della struttura ($\Phi_c$):
+\begin{equation}
+w(\xi) = \frac{\Phi}{\Phi_c}
+\end{equation}
+In virtù della relazione tra densità e potenziale, la funzione $w$ (o $\theta$) può essere direttamente correlata al profilo di densità radiale:
+\begin{equation}
+w(\xi) = \left( \frac{\rho}{\rho_c} \right)^{1/n}
+\end{equation}
+
+Sostituendo i nuovi parametri ($r = A \xi$ e $\Phi = \Phi_c w$) all'interno dell'Equazione di Poisson precedentemente derivata e semplificando i coefficienti costanti in base alla definizione di $A$, l'equazione differenziale si contrae in una forma magistralmente pulita e compatta, ovvero l'\textbf{Equazione di Lane-Emden}:
+\begin{equation}
+\frac{d^2w}{d\xi^2} + \frac{2}{\xi} \frac{dw}{d\xi} + w^n = 0
+\end{equation}
+Un'altra formulazione equivalente, e spesso più compatta da maneggiare analiticamente, raggruppa i termini differenziali ricreando l'operatore Laplaciano sferico adimensionale:
+\begin{equation}
+\frac{1}{\xi^2} \frac{d}{d\xi} \left( \xi^2 \frac{dw}{d\xi} \right) + w^n = 0
+\end{equation}
+Questa è l'equazione differenziale del second'ordine standard che descrive integralmente l'andamento del potenziale gravitazionale, e di conseguenza dell'intera struttura meccanica, di un modello politropico. \textbf{I modelli politropici sono per definizione le soluzioni dell'Equazione di Lane-Emden.}
+
+L'Equazione di Lane-Emden emerge costantemente in svariati rami dell'astrofisica stellare e planetaria. Come anticipato, il suo potere risiede nella capacità di risolvere analiticamente strutture regolate esclusivamente dall'equilibrio idrostatico, simmetria sferica, e un'equazione di stato a singola dipendenza (o assoggettata a un vincolo globale, come l'adiabaticità).
+
+\section{Condizioni al Contorno per la Soluzione}
+
+Essendo un'equazione differenziale del second'ordine, necessitiamo rigorosamente di due \textbf{condizioni al contorno} (\textit{boundary conditions}) fissate al centro della struttura ($\xi = 0$) per poterla risolvere:
+
+\begin{enumerate}
+\item \textbf{Normalizzazione al centro:} Dalla definizione formale della funzione $w = \Phi / \Phi_c$, discende banalmente che al centro del modello (dove $r=0$ e $\xi=0$), il valore della funzione deve essere unitario:
+\begin{equation}
+w(0) = 1
+\end{equation}
+
+```
+\item \textbf{Criterio di finitezza (Profilo piatto):} Analizzando l'equazione di Lane-Emden (in particolare la sua forma espansa con il termine $2/\xi \cdot dw/d\xi$), è evidente che in prossimità del centro ($\xi \to 0$) la soluzione divergerebbe verso infinito a causa del denominatore infinitesimo, a meno che la derivata prima della funzione non si annulli contemporaneamente. Pertanto, affinché le soluzioni fisiche siano finite e stabili al centro, imponiamo che il gradiente del potenziale adimensionale sia nullo nell'origine:
+\begin{equation}
+    \left( \frac{dw}{d\xi} \right)_{\xi=0} = 0
+\end{equation}
+
+```
+
+\end{enumerate}
+In termini geometrici, la seconda condizione impone che la curva descrivente il potenziale (e la densità) sia perfettamente \textbf{piatta} nell'origine della struttura.
+
+\subsection{Recupero delle Variabili Strutturali Fisiche}
+
+Una volta ottenuta una soluzione $w(\xi)$ (analitica o numerica) per un dato indice politropico $n$ sottoposta alle suddette condizioni al contorno, è banale ricostruire l'intero assetto strutturale e termodinamico della stella o del corpo astrofisico in analisi.
+
+Il profilo della \textbf{densità radiale} si ricava immediatamente dalla definizione di $w$:
+\begin{equation}
+\rho(r) = \rho_c , w(\xi)^n
+\end{equation}
+
+Conoscendo l'andamento della densità $\rho(r)$, è possibile invocare l'equazione di stato politropica per derivare l'andamento della \textbf{pressione radiale}:
+\begin{equation}
+P(r) = P_c , w(\xi)^{n+1}
+\end{equation}
+dove la pressione centrale $P_c$ è calcolata tramite l'equazione di stato applicata alla densità centrale: $P_c = K \rho_c^\gamma = K \rho_c^{1+1/n}$.
+
+In conclusione, la risoluzione di questa singola equazione adimensionale permette di derivare completamente le caratteristiche meccaniche del modello, definendo a tutti gli effetti la validità teorica del modello politropico adottato.
+
+\section{Soluzioni Analitiche dell'Equazione di Lane-Emden}
+
+Dall'equazione differenziale di Lane-Emden si possono ricavare relazioni ricorsive e sono stati condotti innumerevoli studi. Tuttavia, in questo contesto, l'obiettivo primario è delineare le proprietà fondamentali dell'equazione e delle sue soluzioni.
+
+Non esiste una soluzione analitica per tutti i valori dell'indice politropico $n$ (o equivalentemente dell'esponente $\gamma$). La risoluzione in forma chiusa è nota e matematicamente rigorosa \textbf{solamente per tre specifici casi}:
+
+\begin{enumerate}
+\item \textbf{Indice $n = 0$ (Sfera Omogenea):}
+La soluzione analitica per il potenziale adimensionale assume la forma di una parabola rovesciata:
+\begin{equation}
+w(\xi) = 1 - \frac{1}{6} \xi^2
+\end{equation}
+
+```
+\item \textbf{Indice $n = 1$:} 
+In questo caso, la soluzione è descritta dalla ben nota \textit{funzione sinc} (spesso incontrata nello studio dell'interferenza ottica):
+\begin{equation}
+    w(\xi) = \frac{\sin \xi}{\xi}
+\end{equation}
+(Nota: il docente pronuncia $z$, ma convenzionalmente la coordinata adimensionale si indica con $\xi$ o $z$. Nel testo useremo la notazione $\xi$ o $z$ interscambiabilmente come a lezione).
+
+\item \textbf{Indice $n = 5$:} 
+Questa costituisce l'ultima soluzione in forma analitica chiusa. L'espressione è:
+\begin{equation}
+    w(\xi) = \frac{1}{\left( 1 + \frac{\xi^2}{3} \right)^{1/2}}
+\end{equation}
+
+```
+
+\end{enumerate}
+
+Per tutti gli altri valori dell'indice $n$, l'equazione deve necessariamente essere integrata numericamente.
+
+\section{Comportamento Generale e Sviluppo in Serie}
+
+A livello generale, come si comportano queste soluzioni?
+Possiamo investigarne la natura esprimendo la funzione $w(z)$ (utilizzeremo $z$ in questa sezione per aderenza alla notazione vocale della lezione) come uno \textbf{sviluppo in serie di Taylor} centrato nell'origine ($z=0$):
+\begin{equation}
+w(z) = 1 + a_1 z + a_2 z^2 + \dots
+\end{equation}
+In questo sviluppo:
+\begin{itemize}
+\item Il primo coefficiente $a_1$ corrisponde alla derivata prima calcolata in zero: $a_1 = w'(0)$. Come abbiamo già stabilito in precedenza attraverso le condizioni al contorno affinché la soluzione sia finita e stabile, questa derivata deve annullarsi. Quindi $a_1 = 0$, il che implica un profilo piatto al centro.
+\item Il secondo coefficiente $a_2$ corrisponde, a meno di un fattore $\frac{1}{2}$, alla derivata seconda in zero: $a_2 \propto w''(0)$, e così via per i termini successivi.
+\end{itemize}
+
+L'annullamento della derivata prima al centro ha un significato fisico profondo. Il differenziale del potenziale gravitazionale rispetto al raggio ($\frac{d\Phi}{dr}$) definisce l'\textbf{accelerazione di gravità} locale. Adimensionalizzando questa relazione, l'accelerazione scala con la derivata prima della funzione adimensionale $\frac{dw}{dz}$.
+Nel centro geometrico e di massa della struttura, la gravità netta deve essere rigorosamente nulla per questioni di simmetria. Pertanto:
+\begin{equation}
+\left( \frac{dw}{dz} \right)_{z=0} = 0 \implies a_1 = 0
+\end{equation}
+
+Da una prospettiva puramente matematica dello studio di funzione, la condizione per cui la derivata prima si annulla definisce la presenza di un estremo locale. Poiché il termine di ordine due ($a_2$) si rivelerà essere negativo, questo estremo è un \textbf{massimo locale}.
+Si deduce quindi che:
+\begin{equation}
+\max(w) = w(0) = 1
+\end{equation}
+In definitiva, indipendentemente dal valore di $n$, tutte le soluzioni partono dal valore unitario al centro ($w=1$ per $z=0$), con pendenza orizzontale (piatta), per poi decrescere monotonicamente all'aumentare di $z$.
+
+\section{Definizione della Superficie e Compattezza della Struttura}
+
+Nello spazio delle fasi geometrico adimensionale, l'andamento della funzione differisce a seconda dell'indice $n$.
+Ad esempio, per un modello con $n = \frac{3}{2}$ (che abbiamo visto descrivere una stella convettiva), la curva scende intersecando l'asse delle ascisse a un certo valore finito. All'aumentare di $n$ (ad esempio per $n = 3$), la funzione presenta una "coda" più estesa, andando a intersecare l'asse $x$ a valori di $z$ progressivamente più alti.
+
+Il punto esatto in cui la curva interseca l'asse delle ascisse (asse $x$) corrisponde al punto in cui $w = 0$. In accordo con le equazioni costitutive, se $w = 0$, la densità locale $\rho$ è nulla. Questo punto segna pertanto la \textbf{superficie limite della struttura}.
+Chiameremo questa specifica coordinata $z_n$ (ovvero il valore di $z$ sulla superficie per un dato indice $n$).
+\begin{equation}
+w(z_n) = 0 \implies \rho(z_n) = 0 \implies z_n \text{ è la Superficie}
+\end{equation}
+
+Analizzando i tre casi risolvibili analiticamente, la coordinata adimensionale della superficie si calcola facilmente imponendo l'annullamento della funzione:
+\begin{itemize}
+\item Per \textbf{$n = 0$} (parabola): $1 - \frac{1}{6} z^2 = 0 \implies z_0 = \sqrt{6}$. Questo è il \textbf{valore minimo assoluto} di estensione adimensionale della superficie tra tutti i modelli.
+\item Per \textbf{$n = 1$} (funzione sinc): $\frac{\sin z}{z} = 0 \implies z_1 = \pi$.
+\item Per \textbf{$n = 5$}: Affinché la funzione tenda a zero, il denominatore deve divergere. Ciò avviene unicamente per \textbf{$z_5 \to \infty$}.
+\end{itemize}
+
+\subsection{Limiti di Applicabilità Astrofisica}
+
+La divergenza asintotica del modello a indice $n=5$ comporta che, per qualsiasi valore di $n \geq 5$, la superficie della struttura è situata matematicamente all'\textbf{infinito}. Poiché nessuna stella reale ha raggio infinito, si giunge a una limitazione fondamentale del formalismo:
+\textbf{Perché i modelli politropici mantengano un senso e una coerenza fisica in astrofisica, l'indice $n$ deve essere strettamente minore di $5$}.
+\begin{equation}
+n < 5 \quad \text{(Condizione di Validità Fisica)}
+\end{equation}
+
+In conclusione, tracciando un parallelo tra la curva delle soluzioni e l'assetto fisico, possiamo enunciare la seguente regola aurea della \textit{compattezza}:
+\textbf{Minore è l'indice politropico $n$, maggiore risulta la compattezza strutturale del modello}.
+Diminuendo $n$, il valore di frontiera $z_n$ si riduce inesorabilmente (fino al limite compattissimo $z_0 = \sqrt{6}$). Al contrario, incrementando $n$, l'inviluppo si espande verso valori di $z$ sempre più ampi, fino a svanire all'infinito per $n=5$. È essenziale ricordare, tuttavia, che $z$ rappresenta pur sempre una distanza adimensionale, la quale va successivamente riscalata in unità fisiche moltiplicandola per il parametro geometrico $A$, che assorbe al suo interno le costanti del modello e la densità centrale.
+
+\section{Calcolo della Massa Frazionaria in un Modello Politropico}
+
+Avendo introdotto le basi teoriche dei modelli politropici e l'equazione di Lane-Emden, analizziamo in dettaglio la loro applicazione pratica allo studio della struttura stellare.
+Innanzitutto, teniamo sempre a mente il vincolo fondamentale: affinché il modello abbia significato fisico, l'indice politropico $n$ deve essere strettamente minore di $5$.
+
+L'obiettivo primario è calcolare la \textbf{massa frazionaria} ($m_r$) contenuta entro una generica distanza radiale $r$ dal centro della stella. L'espressione classica di questa quantità è l'integrale di volume della densità:
+\begin{equation}
+m_r = \int_0^r 4\pi \rho (r') , r'^2 , dr'
+\end{equation}
+È esattamente in questo punto che il modello politropico si inserisce nella teoria della struttura stellare: esso fornisce una prescrizione analitica chiara per l'andamento della densità $\rho(r)$.
+Ricordando la definizione di densità in termini della funzione adimensionale $w$ (soluzione dell'equazione di Lane-Emden):
+\begin{equation}
+\rho(r) = \rho_c w^n
+\end{equation}
+Possiamo sostituire questa prescrizione all'interno dell'integrale della massa, portando le costanti ($4\pi$ e la densità centrale $\rho_c$) fuori dall'operatore:
+\begin{equation}
+m_r = 4\pi \rho_c \int_0^r w^n , r'^2 , dr'
+\end{equation}
+Dato un certo indice politropico $n$ (vincolato dall'equazione di stato o da specifiche condizioni fisiche termodinamiche), la funzione $w$ è nota; essa è una \textbf{funzione universale} che scaturisce dalla soluzione dell'equazione di Lane-Emden.
+
+\subsection{Cambio di Variabile (da $r$ a $z$)}
+
+Tuttavia, l'integrale scritto in questa forma presenta un problema formale: $w$ non è direttamente funzione del raggio fisico $r$, bensì della variabile geometrica adimensionale $z$ (utilizzeremo di nuovo $z$ in luogo di $\xi$ seguendo l'esposizione della lezione).
+È quindi obbligatorio operare un \textbf{cambio di variabile} da $r$ a $z$ affinché l'integrale sia risolvibile.
+
+Ricordiamo la relazione di scala:
+\begin{equation}
+z = \frac{r}{A} \implies r = A z
+\end{equation}
+dove $A$ è il fattore di scala geometrico costante introdotto nella derivazione dell'equazione di Lane-Emden. Differenziando ambo i membri otteniamo $dr = A dz$.
+Sostituendo queste identità all'interno dell'integrale otteniamo:
+\begin{equation}
+r^2 dr = (A z)^2 (A dz) = A^3 z^2 dz
+\end{equation}
+Per mantenere coerenza dimensionale ed espressiva con $r$ e $z$ fuori dall'integrale, possiamo sfruttare l'identità algebrica elementare $A = r/z$, ricavando $A^3 = \frac{r^3}{z^3}$. Avremo quindi:
+\begin{equation}
+r^2 dr = \frac{r^3}{z^3} z^2 dz
+\end{equation}
+Sapendo che $A^3 = \frac{r^3}{z^3}$ è rigorosamente una costante, la portiamo fuori dall'integrale, riscrivendo la massa frazionaria come:
+\begin{equation}
+m_r = 4\pi \rho_c \left( \frac{r^3}{z^3} \right) \int_0^z w^n , z'^2 , dz'
+\end{equation}
+
+\subsection{Sfruttare l'Equazione di Lane-Emden}
+
+A questo punto del calcolo, interviene l'ingegnosa eleganza del metodo politropico. Invece di dover calcolare direttamente l'integrale della funzione potenza $w^n$, \textbf{sfruttiamo l'equazione differenziale di Lane-Emden al contrario}.
+L'equazione, nella sua forma estesa, afferma che:
+\begin{equation}
+\frac{1}{z^2} \frac{d}{dz} \left( z^2 \frac{dw}{dz} \right) + w^n = 0
+\end{equation}
+Da questa, isoliamo il termine $w^n$:
+\begin{equation}
+w^n = - \frac{1}{z^2} \frac{d}{dz} \left( z^2 \frac{dw}{dz} \right)
+\end{equation}
+Moltiplicando ambo i membri per $z^2$, l'espressione integranda presente nella formula della massa si riduce alla \textbf{derivata esatta} del gradiente:
+\begin{equation}
+z^2 w^n = - \frac{d}{dz} \left( z^2 \frac{dw}{dz} \right)
+\end{equation}
+
+Sostituendo questa identità nell'integrale della massa, esso diviene del tutto \textbf{banale}: stiamo integrando una derivata perfetta rispetto a $dz$.
+\begin{equation}
+\int_0^z w^n , z'^2 , dz' = \int_0^z - \frac{d}{dz'} \left( z'^2 \frac{dw}{dz'} \right) , dz' = - \left[ z'^2 \frac{dw}{dz'} \right]_0^z
+\end{equation}
+Poiché la condizione al contorno impone che al centro ($z=0$) il gradiente $\frac{dw}{dz}$ sia nullo, il limite inferiore dell'integrale si annulla. L'espressione per la massa frazionaria collassa in una semplice forma algebrica:
+\begin{equation}
+m_r = 4\pi \rho_c \left( \frac{r^3}{z^3} \right) \left( - z^2 \frac{dw}{dz} \right) = - 4\pi \rho_c \frac{r^3}{z} \frac{dw}{dz}
+\end{equation}
+
+\section{Massa Totale e Densità Media}
+
+Questa potentissima relazione vale per ogni generica distanza $r$.
+Se vogliamo calcolare la \textbf{massa totale} ($M$) della stella, ci basta estendere il calcolo alla superficie.
+Poniamo dunque $r = R$ (il raggio stellare) e $z = z_n$ (il valore della radice dell'equazione di Lane-Emden, ovvero la superficie adimensionale).
+La derivata sarà calcolata in corrispondenza della superficie.
+\begin{equation}
+M = - 4\pi \rho_c \frac{R^3}{z_n} \left( \frac{dw}{dz} \right)_{z=z_n}
+\end{equation}
+
+Una quantità di straordinario interesse astrofisico è il rapporto tra la densità media della stella e la densità centrale.
+La \textbf{densità media} ($\bar{\rho}$) è banalmente il rapporto tra la massa totale e il volume totale:
+\begin{equation}
+\bar{\rho} = \frac{M}{\frac{4}{3}\pi R^3}
+\end{equation}
+Sostituendo l'espressione ricavata per la massa totale $M$ all'interno di questa definizione:
+\begin{equation}
+\bar{\rho} = \frac{- 4\pi \rho_c \frac{R^3}{z_n} \left( \frac{dw}{dz} \right)*{z=z_n}}{\frac{4}{3}\pi R^3}
+\end{equation}
+Semplificando i termini comuni ($4\pi R^3$), otteniamo un'elegantissima \textbf{equazione universale che lega la densità media alla densità centrale} in un modello politropico:
+\begin{equation}
+\frac{\bar{\rho}}{\rho_c} = - \frac{3}{z_n} \left( \frac{dw}{dz} \right)*{z=z_n}
+\end{equation}
+
+L'importanza pratica di questa formula è immensa. In generale, in astrofisica misuriamo il raggio e la massa di un oggetto (ricavando facilmente la densità media). Sfruttando questa semplice relazione, innescata puramente dalla scelta dell'indice politropico $n$, è possibile procedere a ritroso e inferire con buona precisione il valore della \textbf{densità centrale} dell'oggetto.
+
+\section{L'Importanza Pedagogica e Pratica dei Modelli Semplificati}
+
+Nonostante l'impiego di una certa dose di calcolo infinitesimale e algebra (seppur non complessa), l'enorme vantaggio derivante da questa trattazione è lo sviluppo di un \textbf{modello analitico estremamente versatile}.
+
+Questo modello permette, per esempio, di inferire cosa avvenga nel nucleo di una nana bianca massiccia, oppure di comprendere come scalino i valori di massa, raggio e densità centrale senza dover far girare complessi codici numerici iterativi.
+I codici numerici avanzati implementano tutta la fisica nota, ma proprio per questo celano l'intima essenza dei fenomeni: all'aumentare della complessità, si perde irreparabilmente il quadro generale del comportamento fisico.
+
+È un principio generale ineluttabile: \textbf{maggiore è la complessità del modello, maggiori sono le possibilità di commettere errori sistematici}. Esattamente come nella progettazione di strumentazione scientifica (gli strumenti più semplici sono sempre i più robusti e quelli meno soggetti a rotture), in fisica teorica \textbf{i modelli complessi necessitano sempre del conforto e del solido ancoraggio fornito da modelli semplificati o approssimati}. Se un calcolo analitico semplice restituisce gli stessi ordini di grandezza del codice numerico, si acquisisce la certezza che il simulatore non stia producendo risultati totalmente irrealistici.
+
+Questo è il motivo per cui i modelli politropici, pur avendo goduto del loro picco di popolarità tra gli anni '50 e '60 (quando i calcolatori moderni non erano disponibili per restituire modelli solari standard ad altissima risoluzione), mantengono oggi intatto il loro valore conoscitivo e di ricerca.
+
+\subsection{Esempio di Ricerca Contemporanea}
+
+Per illustrare come questi concetti non siano pura archeologia astronomica, consideriamo un dibattito recente (circa $5-6$ anni fa) scaturito da una collaborazione con l'Università di Kiel.
+Lo studio verteva sull'anomalo incremento del raggio stellare osservato in alcune \textbf{stelle di pre-sequenza principale}. Un'ipotesi solida imputava l'espansione alla diffusa presenza di \textbf{macchie stellari} (connessa a forti campi magnetici), le quali avrebbero agito da "coperta termica" bloccando in parte il flusso energetico proveniente dal nucleo.
+
+I modelli di evoluzione stellare standard (codici mono-dimensionali) non contemplano geometrie tridimensionali come le macchie o i campi magnetici complessi; accoppiare tutti questi fenomeni in una simulazione numerica è attualmente un'impresa ai limiti dell'impossibile.
+Per dimostrare teoricamente la tesi per cui una diffusa maculazione porta a un rigonfiamento della stella, il gruppo di ricerca si è affidato proprio alla solidità analitica dei \textbf{modelli politropici} applicati a stelle interamente convettive, aggirando le barriere numeriche e fornendo una base robusta alla teoria.
+
+In conclusione, dai fondamenti del Limite di Chandrasekhar alle ricerche odierne, queste semplici relazioni algebriche governano una sterminata casistica di problemi fisici. Pertanto, l'investimento di tempo nello studio di queste derivazioni ripaga ampiamente con l'acquisizione di uno strumento analitico universale e profondamente potente.
